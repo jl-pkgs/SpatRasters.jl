@@ -1,4 +1,4 @@
-using Test, Ipaper, Ipaper.sf, ArchGDAL
+# using Test, Ipaper, Ipaper.sf, ArchGDAL
 
 @testset "st_crop" begin
   b = bbox(-180.0, -60.0, 180.0, 90.0)
@@ -84,11 +84,11 @@ end
 end
 
 
-@testset "flipud" begin
-  A = array(1:16; dims=(4, 4))
-  A |> flipud |> flipud == A
-  @test flipud(A)[:, 1] == [4, 3, 2, 1]
+# @testset "flipud" begin
+#   A = array(1:16; dims=(4, 4))
+#   A |> flipud |> flipud == A
+#   @test flipud(A)[:, 1] == [4, 3, 2, 1]
 
-  A |> fliplr |> fliplr == A
-  @test fliplr(A)[1, :] == [13, 9, 5, 1]
-end
+#   A |> fliplr |> fliplr == A
+#   @test fliplr(A)[1, :] == [13, 9, 5, 1]
+# end

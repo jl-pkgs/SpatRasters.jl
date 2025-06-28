@@ -1,7 +1,3 @@
-using Ipaper
-using Ipaper.sf
-using Test
-
 @testset "bbox" begin
   lon = 70:140
   lat = 15:55

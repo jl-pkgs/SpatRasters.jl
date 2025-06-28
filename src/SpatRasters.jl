@@ -27,9 +27,11 @@ export read_sf, write_sf
 
 export xy2ij, cellArea
 
-# export gdal_polygonize, nband, nlayer
-# export write_gdal, read_gdal
-# export bandnames, set_bandnames
+export write_gdal, read_gdal
+export ogr_info, gdal_info, gdalinfo, gdal_nodata
+export bandnames, set_bandnames, nband, nlayer
+export gdal_polygonize
+
 function read_sf end
 function write_sf end
 
@@ -49,6 +51,7 @@ nlyr = nband
 st_write = write_gdal
 st_read = read_gdal
 
+include("tools_Ipaper.jl")
 include("bbox.jl")
 include("SpatRaster.jl")
 include("Ops.jl")
@@ -82,9 +85,6 @@ function rm_shp(f)
 end
 
 
-## cell info
-# b = st_bbox(f)
-# cellx, celly = sf.gdalinfo(f)["cellsize"]
 function xy2ij(x::T, y::T, b::bbox, cellsize) where {T<:Real}
   cellx, celly = cellsize
   i = floor(Int, (x - b.xmin) / cellx)

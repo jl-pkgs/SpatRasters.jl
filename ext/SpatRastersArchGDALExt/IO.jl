@@ -7,7 +7,7 @@ end
 # convert into a rast
 function read_gdal(file::AbstractString, indices, b::bbox, options...)
   # cellsize = 1 / 1200
-  cellsize = sf.gdalinfo(file)["cellsize"]
+  cellsize = gdalinfo(file)["cellsize"]
   box = st_bbox(file)
   lon, lat = st_dims(file)
   ilon, ilat = bbox_overlap(b, box; cellsize)

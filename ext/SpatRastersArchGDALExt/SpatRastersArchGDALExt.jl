@@ -1,8 +1,6 @@
 export SpatRastersArchGDALExt
 module SpatRastersArchGDALExt
 
-export write_tiff
-
 using DocStringExtensions: TYPEDSIGNATURES, METHODLIST
 
 using ArchGDAL

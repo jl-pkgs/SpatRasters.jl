@@ -1,4 +1,4 @@
-using Test, Ipaper, Ipaper.sf, ArchGDAL
+# using Test, Ipaper, Ipaper.sf, ArchGDAL
 
 # not perfect
 function black2white(A::Array{UInt8,3}; threshold::Int=10, white::Int=255)
@@ -33,8 +33,8 @@ end
   write_gdal(r, f_rast)
 
   gdal_info(f_data)
-  @test sf.gdalinfo(f_rast)["bbox"] == b
-  
+  @test gdalinfo(f_rast)["bbox"] == b
+
   isfile(f_data) && rm(f_data)
   isfile(f_rast) && rm(f_rast)
 end

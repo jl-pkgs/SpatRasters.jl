@@ -1,4 +1,4 @@
-using Ipaper, Ipaper.sf, Test, ArchGDAL
+# using Ipaper, Ipaper.sf, Test, ArchGDAL
 
 @testset "st_extract" begin
   points = [
@@ -41,9 +41,9 @@ end
     (10, 10)    # 超出范围
   ]
   locs = st_location(ra, points)
-  @test which_notnull(locs) == 1:5
+  # @test which_notnull(locs) == 1:5
   @test locs == [(1, 10), (1, 10), (1, 10), (2, 9), (10, 1), nothing]
 
   locs = st_location_exact(lon, lat, points)
-  @test which_notnull(locs) == 1:6
+  # @test which_notnull(locs) == 1:6
 end

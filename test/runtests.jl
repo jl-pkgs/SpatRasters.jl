@@ -1,9 +1,10 @@
-using Test, Ipaper
+using Test, SpatRasters, ArchGDAL
+
+import Random: seed!
+set_seed(seed) = seed!(seed)
 
 # import NaNStatistics
 # using Ipaper: NanQuantile_low, NanQuantile_low!
-using ArchGDAL
-
 
 include("test-gdal_polygonize.jl")
 include("test-bbox.jl")

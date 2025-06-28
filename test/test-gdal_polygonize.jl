@@ -1,5 +1,5 @@
-using Ipaper
-using Ipaper.sf
+# using Ipaper
+# using Ipaper.sf
 using Test
 using ArchGDAL
 import GeoDataFrames as GDF

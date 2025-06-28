@@ -1,4 +1,4 @@
-using Test, Ipaper, Ipaper.sf, ArchGDAL
+# using Test, Ipaper, Ipaper.sf, ArchGDAL
 
 @testset "st_mosaic" begin
   bands = string.(1:4)
