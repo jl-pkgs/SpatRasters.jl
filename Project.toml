@@ -1,0 +1,18 @@
+name = "SpatRasters"
+uuid = "25a4c9b9-c310-4d6e-b9a7-fa79274760a1"
+authors = ["Dongdong Kong <kongdd@users.noreply.github.com>"]
+version = "0.1.0"
+
+[deps]
+ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+[weakdeps]
+ArchGDAL = "c9ce4bd3-c3d5-55b8-8973-c0e20141b8c3"
+
+[extensions]
+SpatRastersArchGDALExt = "ArchGDAL"
+
+[compat]
+ProgressMeter = "1.10.4"
+Statistics = "1.11.1"
