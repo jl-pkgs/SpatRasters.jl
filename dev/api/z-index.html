@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/2-bbox.html" rel="prev">
+<link href="../api/4-Operation.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -445,6 +445,16 @@ window.onload = function () {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../api/2-bbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. bbox</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/3-IO.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3. IO</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/4-Operation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Operation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1358,8 +1368,12 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.read_gdal</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "read_gdal" from SpatRasters:
- [1] read_gdal(files::Vector{&lt;:AbstractString}, options...)
+<pre><code># 3 methods for generic function "read_gdal" from SpatRasters:
+ [1] read_gdal(file::AbstractString, b::bbox, options...)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:35
+ [2] read_gdal(file::AbstractString, indices, b::bbox, options...)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:22
+ [3] read_gdal(files::Vector{&lt;:AbstractString}, options...)
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:13</code></pre>
 </div>
 </div>
@@ -1671,8 +1685,12 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.read_gdal</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "read_gdal" from SpatRasters:
- [1] read_gdal(files::Vector{&lt;:AbstractString}, options...)
+<pre><code># 3 methods for generic function "read_gdal" from SpatRasters:
+ [1] read_gdal(file::AbstractString, b::bbox, options...)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:35
+ [2] read_gdal(file::AbstractString, indices, b::bbox, options...)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:22
+ [3] read_gdal(files::Vector{&lt;:AbstractString}, options...)
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:13</code></pre>
 </div>
 </div>
@@ -2183,8 +2201,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/2-bbox.html" class="pagination-link" aria-label="2. bbox">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">2. bbox</span></span>
+      <a href="../api/4-Operation.html" class="pagination-link" aria-label="4. Operation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">4. Operation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
