@@ -102,7 +102,7 @@ ul.task-list li input[type="checkbox"] {
 // SOFTWARE.
 
 window.onload = function () {
-    const versionsUrl = 'https://raw.githubusercontent.com/cadojo/DocumenterQuarto.jl/gh-pages/versions.js';
+    const versionsUrl = 'https://raw.githubusercontent.com/jl-pkgs/SpatRasters.jl/gh-pages/versions.js';
 
     // Fetch the versions.js file
     fetch(versionsUrl)
@@ -142,7 +142,7 @@ window.onload = function () {
                         const li = document.createElement('li');
                         const a = document.createElement('a');
                         a.className = 'dropdown-item';
-                        a.href = `/DocumenterQuarto.jl/${version}/index.html`;
+                        a.href = `/SpatRasters.jl/${version}/index.html`;
 
                         // Wrap version text in a <code> element
                         const code = document.createElement('code');
