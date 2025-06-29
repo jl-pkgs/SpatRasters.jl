@@ -475,7 +475,6 @@ window.onload = function () {
   <li><a href="#abstractspatraster" id="toc-abstractspatraster" class="nav-link active" data-scroll-target="#abstractspatraster"><code>AbstractSpatRaster</code></a></li>
   <li><a href="#d8direction" id="toc-d8direction" class="nav-link" data-scroll-target="#d8direction"><code>D8Direction</code></a></li>
   <li><a href="#dirlength" id="toc-dirlength" class="nav-link" data-scroll-target="#dirlength"><code>DirLength</code></a></li>
-  <li><a href="#filldem_flowdirection" id="toc-filldem_flowdirection" class="nav-link" data-scroll-target="#filldem_flowdirection"><code>FillDEM_FlowDirection</code></a></li>
   <li><a href="#ingrid" id="toc-ingrid" class="nav-link" data-scroll-target="#ingrid"><code>InGrid</code></a></li>
   <li><a href="#nextcell" id="toc-nextcell" class="nav-link" data-scroll-target="#nextcell"><code>NextCell</code></a></li>
   <li><a href="#spatraster" id="toc-spatraster" class="nav-link" data-scroll-target="#spatraster"><code>SpatRaster</code></a></li>
@@ -614,24 +613,7 @@ window.onload = function () {
 <p><code>SpatRasters.DirLength</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "DirLength" from SpatRasters:
  [1] DirLength(idir::Int64)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:117</code></pre>
-</div>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</section>
-<section id="filldem_flowdirection" class="level2">
-<h2 class="anchored" data-anchor-id="filldem_flowdirection"><code>FillDEM_FlowDirection</code></h2>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>fillDEMAndComputeFlowDirection(dem::AbstractMatrix)</p>
-<p>#! dem was modified!</p>
-<p>fill<em>depressions</em>wang<em>and</em>liu</p>
-<p>Wang&amp;Liu(2006) to fill depressions</p>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:116</code></pre>
 </div>
 </div>
 </div>
@@ -649,9 +631,9 @@ window.onload = function () {
 <p><code>SpatRasters.InGrid</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "InGrid" from SpatRasters:
  [1] InGrid(i::Int64, j::Int64, nrow::Int64, ncol::Int64)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:107
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:106
  [2] InGrid(x::AbstractMatrix, i::Int64, j::Int64)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:111</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:110</code></pre>
 </div>
 </div>
 </div>
@@ -669,7 +651,7 @@ window.onload = function () {
 <p><code>SpatRasters.NextCell</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "NextCell" from SpatRasters:
  [1] NextCell(dem::AbstractMatrix, i::Int64, j::Int64, dir::UInt8)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:121</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:120</code></pre>
 </div>
 </div>
 </div>
@@ -714,7 +696,7 @@ window.onload = function () {
 <p>No docstring found for public module <code>SpatRasters</code>.</p>
 <section id="public-names" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="public-names">Public names</h3>
-<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>FillDEM_FlowDirection</code>, <code>InGrid</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>earth_dist</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
+<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>earth_dist</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
 </section>
 <section id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md">Displaying contents of readme found at <code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md</code></h3>
@@ -728,6 +710,8 @@ window.onload = function () {
 <p><code>SpatRaster</code> is a simple spatial raster with WGS84 projection, abbreviated as <code>rast</code>.</p>
 <p>Due to its simplicity, <code>SpatRasters.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatRasters.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
 <p><code>SpatRasters.jl</code> used the class and function of R language <code>terra</code> and <code>sf</code> packages.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatRasters"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -927,7 +911,7 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <p><code>SpatRasters.col_goto</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "col_goto" from SpatRasters:
  [1] col_goto(col::Int64, idir::Int64)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:105</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:104</code></pre>
 </div>
 </div>
 </div>
@@ -943,9 +927,9 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <div class="callout-body-container">
 <pre><code>earth_dist(x1::Matrix, x2::Matrix; R=6378.388)
 earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1085,7 +1069,7 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <p><code>SpatRasters.gis2tau</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "gis2tau" from SpatRasters:
  [1] gis2tau(A::AbstractArray)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:60</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:59</code></pre>
 </div>
 </div>
 </div>
@@ -1103,7 +1087,7 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <p><code>SpatRasters.gis2wflow</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "gis2wflow" from SpatRasters:
  [1] gis2wflow(A::AbstractArray)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:51</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:50</code></pre>
 </div>
 </div>
 </div>
@@ -1213,7 +1197,7 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 </section>
 <section id="examples" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples">Examples</h3>
-<div class="sourceCode" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -1630,7 +1614,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p>return the overlaping indexes <code>inds</code>, and corresponding (i,j)</p>
 <section id="examples-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples-1">Examples</h3>
-<div class="sourceCode" id="cb61"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -1725,7 +1709,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.tau2gis</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "tau2gis" from SpatRasters:
  [1] tau2gis(A::AbstractArray)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:68</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:67</code></pre>
 </div>
 </div>
 </div>

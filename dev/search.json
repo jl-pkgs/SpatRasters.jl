@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "SpatRasters",
     "section": "",
-    "text": "SpatRasters.jl: Simple Spatial Rasters in Julia\n\n  \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.",
+    "text": "SpatRasters.jl: Simple Spatial Rasters in Julia\n\n  \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
@@ -134,17 +134,7 @@
     "href": "api/z-index.html#dirlength",
     "title": "Reference",
     "section": "DirLength",
-    "text": "DirLength\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.DirLength is a Function.\n# 1 method for generic function \"DirLength\" from SpatRasters:\n [1] DirLength(idir::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:117",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
-    ]
-  },
-  {
-    "objectID": "api/z-index.html#filldem_flowdirection",
-    "href": "api/z-index.html#filldem_flowdirection",
-    "title": "Reference",
-    "section": "FillDEM_FlowDirection",
-    "text": "FillDEM_FlowDirection\n\n\n\n\n\n\nfillDEMAndComputeFlowDirection(dem::AbstractMatrix)\n#! dem was modified!\nfilldepressionswangandliu\nWang&Liu(2006) to fill depressions",
+    "text": "DirLength\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.DirLength is a Function.\n# 1 method for generic function \"DirLength\" from SpatRasters:\n [1] DirLength(idir::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:116",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -154,7 +144,7 @@
     "href": "api/z-index.html#ingrid",
     "title": "Reference",
     "section": "InGrid",
-    "text": "InGrid\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.InGrid is a Function.\n# 2 methods for generic function \"InGrid\" from SpatRasters:\n [1] InGrid(i::Int64, j::Int64, nrow::Int64, ncol::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:107\n [2] InGrid(x::AbstractMatrix, i::Int64, j::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:111",
+    "text": "InGrid\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.InGrid is a Function.\n# 2 methods for generic function \"InGrid\" from SpatRasters:\n [1] InGrid(i::Int64, j::Int64, nrow::Int64, ncol::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:106\n [2] InGrid(x::AbstractMatrix, i::Int64, j::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:110",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -164,7 +154,7 @@
     "href": "api/z-index.html#nextcell",
     "title": "Reference",
     "section": "NextCell",
-    "text": "NextCell\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.NextCell is a Function.\n# 1 method for generic function \"NextCell\" from SpatRasters:\n [1] NextCell(dem::AbstractMatrix, i::Int64, j::Int64, dir::UInt8)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:121",
+    "text": "NextCell\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.NextCell is a Function.\n# 1 method for generic function \"NextCell\" from SpatRasters:\n [1] NextCell(dem::AbstractMatrix, i::Int64, j::Int64, dir::UInt8)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:120",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -184,7 +174,7 @@
     "href": "api/z-index.html#spatrasters",
     "title": "Reference",
     "section": "SpatRasters",
-    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, FillDEM_FlowDirection, InGrid, NextCell, SpatRaster, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, earth_dist, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, merge_var, merge_var!, nband, nlayer, nlyr, ogr_info, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, st_bbox, st_cellsize, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.",
+    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, InGrid, NextCell, SpatRaster, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, earth_dist, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, merge_var, merge_var!, nband, nlayer, nlyr, ogr_info, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, st_bbox, st_cellsize, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -294,7 +284,7 @@
     "href": "api/z-index.html#col_goto",
     "title": "Reference",
     "section": "col_goto",
-    "text": "col_goto\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.col_goto is a Function.\n# 1 method for generic function \"col_goto\" from SpatRasters:\n [1] col_goto(col::Int64, idir::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:105",
+    "text": "col_goto\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.col_goto is a Function.\n# 1 method for generic function \"col_goto\" from SpatRasters:\n [1] col_goto(col::Int64, idir::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:104",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -384,7 +374,7 @@
     "href": "api/z-index.html#gis2tau",
     "title": "Reference",
     "section": "gis2tau",
-    "text": "gis2tau\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gis2tau is a Function.\n# 1 method for generic function \"gis2tau\" from SpatRasters:\n [1] gis2tau(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:60",
+    "text": "gis2tau\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gis2tau is a Function.\n# 1 method for generic function \"gis2tau\" from SpatRasters:\n [1] gis2tau(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:59",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -394,7 +384,7 @@
     "href": "api/z-index.html#gis2wflow",
     "title": "Reference",
     "section": "gis2wflow",
-    "text": "gis2wflow\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gis2wflow is a Function.\n# 1 method for generic function \"gis2wflow\" from SpatRasters:\n [1] gis2wflow(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:51",
+    "text": "gis2wflow\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gis2wflow is a Function.\n# 1 method for generic function \"gis2wflow\" from SpatRasters:\n [1] gis2wflow(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:50",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -704,7 +694,7 @@
     "href": "api/z-index.html#tau2gis",
     "title": "Reference",
     "section": "tau2gis",
-    "text": "tau2gis\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.tau2gis is a Function.\n# 1 method for generic function \"tau2gis\" from SpatRasters:\n [1] tau2gis(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:68",
+    "text": "tau2gis\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.tau2gis is a Function.\n# 1 method for generic function \"tau2gis\" from SpatRasters:\n [1] tau2gis(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:67",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
