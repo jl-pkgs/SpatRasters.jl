@@ -4,24 +4,6 @@ function read_gdal(file::AbstractString, options...)
   end
 end
 
-# convert into a rast
-function read_gdal(file::AbstractString, indices, b::bbox, options...)
-  # cellsize = 1 / 1200
-  cellsize = gdalinfo(file)["cellsize"]
-  box = st_bbox(file)
-  lon, lat = st_dims(file)
-  ilon, ilat = bbox_overlap(b, box; cellsize)
-
-  _lon, _lat = lon[ilon], lat[ilat]
-  _b = st_bbox(_lon, _lat)
-  _A = read_gdal(file, indices, ilat, ilon, options...)
-  rast(_A, _b; nodata=gdal_nodata(file))
-end
-
-function read_gdal(file::AbstractString, b::bbox, options...)
-  indices = 1:nband(file)
-  read_gdal(file, indices, b, options...)
-end
 
 ## This part is borrowed from the GeoArrays.jl package.
 # MIT License, Copyright (c) 2018 Maarten Pronk

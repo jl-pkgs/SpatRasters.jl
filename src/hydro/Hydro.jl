@@ -1,8 +1,12 @@
+export FillDEM_FlowDirection, D8Direction
+
 # https://juliacollections.github.io/DataStructures.jl/v0.12/priority-queue.html
-using DataStructures: PriorityQueue, dequeue!
+import DataStructures: PriorityQueue, dequeue!
 using ProgressMeter
 
+include("D8Direction.jl")
 include("FlowDirection.jl")
+
 
 ## Note: 
 # 1. The dimemsion of `dem`: [lon, lat], which is different from ArcGIS. Hence, DIR

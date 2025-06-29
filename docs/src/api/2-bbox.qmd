@@ -1,0 +1,52 @@
+---
+title: "2. bbox"
+number-depth: 2
+execute:
+  echo: true
+  output: asis
+---
+
+```{julia}
+#| echo: true
+#| output: false
+using SpatRasters, ArchGDAL
+```
+
+## bbox
+
+```julia
+Base.@kwdef struct bbox
+  xmin::Float64
+  ymin::Float64
+  xmax::Float64
+  ymax::Float64
+end
+```
+
+```{julia}
+A = rand(70, 40)
+b = bbox(70, 15, 140, 55) # China
+```
+
+```{julia}
+ra = rast(A, b)
+```
+
+## st_bbox
+
+- `st_bbox(lon, lat)` : construct bbox from lon, lat
+- `st_bbox(ra)`       : retrieve bbox from SpatRaster
+- `st_bbox(file)`     : get bbox from tiff or netcdf file directly
+
+```{julia}
+lon, lat = st_dims(ra)
+st_bbox(lon, lat) == st_bbox(ra)
+```
+
+```{julia}
+guanshan_dem
+```
+
+```{julia}
+st_bbox(guanshan_dem)
+```

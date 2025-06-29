@@ -10,8 +10,11 @@ book:
     date: "2025-06-29"
     chapters:
         - index.md
-        - api/SpatRaster.qmd
-        - api/index.qmd 
+        - api/1-SpatRaster.qmd
+        - api/2-bbox.qmd
+        - api/3-IO.qmd
+        - api/4-Operation.qmd
+        - api/z-index.qmd 
 
     navbar: 
         background: primary
@@ -34,7 +37,7 @@ toc-title: "Table of Contents"
 execute:
     echo: false
     output: true
-    cache: false
+    cache: true
     freeze: false
 
 bibliography: references.bib

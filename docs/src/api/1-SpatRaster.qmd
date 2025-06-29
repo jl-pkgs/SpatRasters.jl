@@ -1,4 +1,5 @@
 ---
+title: "1. SpatRaster"
 number-depth: 2
 execute:
   echo: true

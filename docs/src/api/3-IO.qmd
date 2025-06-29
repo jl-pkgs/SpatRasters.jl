@@ -1,0 +1,13 @@
+---
+title: "3. IO"
+number-depth: 2
+execute:
+  echo: true
+  output: asis
+---
+
+```{julia}
+#| echo: true
+#| output: false
+using SpatRasters, ArchGDAL
+```
