@@ -16,7 +16,7 @@ export bbox, in_bbox, bbox_overlap
 export bbox2lims,
   bbox2cellsize,
   bbox2range, bbox2vec,
-  bbox2dims, bbox2ndim
+  bbox2dims, bbox2ndimn
 export range2bbox
 export st_points
 export st_bbox, st_dims, st_cellsize, st_mosaic
@@ -66,6 +66,7 @@ include("st_mosaic.jl")
 include("st_crop.jl")
 
 include("distance.jl")
+include("hydro/Hydro.jl")
 
 function st_points(x::AbstractVector, y::AbstractVector)
   [(x[i], y[i]) for i in eachindex(x)]

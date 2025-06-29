@@ -5,6 +5,7 @@ set_seed(seed) = seed!(seed)
 
 # import NaNStatistics
 # using Ipaper: NanQuantile_low, NanQuantile_low!
+include("hydro/test-flowdir.jl")
 
 include("test-gdal_polygonize.jl")
 include("test-bbox.jl")
@@ -13,7 +14,6 @@ include("test-st_extract.jl")
 include("test-st_mosaic.jl")
 include("test-write_gdal.jl")
 
-# include("hydro/test-flowdir.jl")
 # include("sf/test_sf.jl")
 
 # using Distributions
