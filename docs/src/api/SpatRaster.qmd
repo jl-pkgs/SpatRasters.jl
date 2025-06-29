@@ -1,16 +1,56 @@
 ---
 number-depth: 2
+execute:
+  echo: true
 ---
 
 # SpatRaster
 
 ```{julia}
-1 + 1
+using SpatRasters
+using Dates
+
+dates = Date(2010, 1, 1):Day(1):Date(2010, 1, 10)
+ntime = length(dates)
+
+ra = rast(rand(180, 90, ntime); time=dates)
+ra
+```
+
+## Construction
+
+- A : `AbstractArray`
+- b : `bbox`, default is the global scale, `bbox(-180.0, -90.0, 180.0, 90.0)`
+
+```{julia}
+
+```
+
+
+## Subset
+
+- `ra[i, j]` will automatically alter `lon`, `lat` and `bbox`. If both of `i` 
+  and `j` are integer, value of ra.A[i, j] will be retrieved.
+
+- `ra[i, j, k]` will additionally alter `bands`, and `time`
+
+```{julia}
+ra[1, 1]
+ra[1:10, 1:10]
 ```
 
 ```{julia}
-using SpatRasters
-
-ra = rast(rand(180, 90))
-ra
+ra[1:10, 1:10, 1:2]
 ```
+
+```{julia}
+ra[1:10, 1:10, 1:1]
+```
+
+```{julia}
+ra[1:10, 1:10, 1]
+```
+
+## crop
+
+截取部分范围

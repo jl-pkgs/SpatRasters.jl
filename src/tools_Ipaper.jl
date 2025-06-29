@@ -13,11 +13,11 @@ obj_size(x)
 obj_size(dims, Float32)
 ```
 """
-function obj_size(x)
+function obj_size(io::IO, x)
   ans = Base.summarysize(x) / 1024^2
   ans = round(ans, digits=2)
-  print(typeof(x), " | ", size(x), " | ")
-  printstyled("$ans Mb\n"; color=:blue, bold=true, underline=true)
+  print(io, typeof(x), " | ", size(x), " | ")
+  printstyled(io, "$ans Mb\n"; color=:blue, bold=true, underline=true)
 end
 
 function obj_size(dims, T)

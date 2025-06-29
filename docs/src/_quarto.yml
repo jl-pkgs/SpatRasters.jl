@@ -10,8 +10,8 @@ book:
     date: "2025-06-29"
     chapters:
         - index.md
-        - api/index.qmd 
         - api/SpatRaster.qmd
+        - api/index.qmd 
 
     navbar: 
         background: primary

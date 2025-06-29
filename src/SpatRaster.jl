@@ -12,6 +12,9 @@ Base.@kwdef mutable struct SpatRaster{T,N} <: AbstractSpatRaster{T,N}
   nodata::Union{AbstractVector{T},Nothing} = nothing
 end
 
+force_index_vec(x::Union{Colon,Nothing,AbstractVector}) = x
+force_index_vec(x::Int) = [x]
+
 function nband(ra::SpatRaster{T,N}) where {T,N}
   n = 1
   N == 3 && (n == size(ra.A)[end])
@@ -59,9 +62,9 @@ function Base.getindex(ra::AbstractSpatRaster, i, j, args...; deep=true)
 
   cols = repeat([:], max(ndims(ra) - 2 - length(args), 0))
   inds = (i, j, args..., cols...)
-  
+
   if length(args) > 0
-    k = args[1]
+    k = force_index_vec(args[1])
     !isnothing(bands) && (bands = bands[k])
     !isnothing(time) && (time = time[k])
   end
@@ -124,7 +127,7 @@ function Base.show(io::IO, x::SpatRaster)
   printstyled(io, "$(x.name)\n", color=:green, underline=true)
 
   print(io, "  A        : ")
-  obj_size(x.A)
+  obj_size(io, x.A)
 
   println(io, "  b        : $(x.b)")
   println(io, "  cellsize : $(x.cellsize)")
@@ -133,6 +136,8 @@ function Base.show(io::IO, x::SpatRaster)
     time_beg = x.time[1]
     time_end = x.time[end]
     println(io, "  time     : $time_beg ~ $time_end, ntime=$(length(x.time))")
+  else
+    println(io, "  time     : $(x.time)")
   end
   println(io, "  bands    : $(x.bands)")
   print(io, "  nodata   : $(x.nodata)")
