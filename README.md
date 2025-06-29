@@ -6,3 +6,13 @@
 [![Codecov](https://codecov.io/gh/jl-pkgs/SpatRasters.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/jl-pkgs/SpatRasters.jl)
 
 > Dongdong Kong
+
+`SpatRaster` is a simple spatial raster with WGS84 projection, abbreviated as
+`rast`.
+
+Due to its simplicity, `SpatRasters.jl` doesn't rely on any other geospatial
+packages, which makes `SpatRasters.jl` more lightweight than `GeoArrays` and
+`Rasters.jl`.
+
+`SpatRasters.jl` used the class and function of R language `terra` and `sf`
+packages.

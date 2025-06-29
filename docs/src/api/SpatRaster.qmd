@@ -2,9 +2,50 @@
 number-depth: 2
 execute:
   echo: true
+  output: asis
 ---
 
+```{julia}
+#| echo: false
+#| output: false
+using DocumenterQuarto
+using SpatRasters
+```
+
 # SpatRaster
+
+`SpatRaster` is a simple spatial raster with WGS84 projection, abbreviated as `rast`.
+
+<!-- ```{julia, echo=false}
+@doc(SpatRaster)
+``` -->
+
+```julia
+Base.@kwdef mutable struct SpatRaster{T,N} <: AbstractSpatRaster{T,N}
+  A::AbstractArray{T,N}
+  b::bbox = bbox(-180.0, -90.0, 180.0, 90.0)
+  cellsize::NTuple{2,Real}
+  lon::AbstractVector{<:Real}
+  lat::AbstractVector{<:Real}
+  time::Union{AbstractVector,Nothing} = nothing
+  bands::Union{AbstractVector{String},Nothing} = nothing
+  name::String = "Raster"
+  nodata::Union{AbstractVector{T},Nothing} = nothing
+end
+```
+
+- `A`        : The raster data array where T is the element type and N is the number of dimensions
+- `b`        : Bounding box defining the spatial extent, defaults to global extent `bbox(-180.0, -90.0, 180.0, 90.0)`
+- `cellsize` : Cell size in degrees as (longitude_size, latitude_size)  
+- `lon`      : Longitude coordinates for each column
+- `lat`      : Latitude coordinates for each row
+- `time`     : Time dimension values (optional)
+- `bands`    : Band names for multi-band rasters (optional)
+- `name`     : Name identifier for the raster, defaults to "Raster"
+- `nodata`   : No-data values for each band (optional)
+
+
+## Construction
 
 ```{julia}
 using SpatRasters
@@ -17,15 +58,11 @@ ra = rast(rand(180, 90, ntime); time=dates)
 ra
 ```
 
-## Construction
-
-- A : `AbstractArray`
-- b : `bbox`, default is the global scale, `bbox(-180.0, -90.0, 180.0, 90.0)`
-
 ```{julia}
-
+A = rand(70, 40)
+b = bbox(70, 15, 140, 55) # China
+rast(A, b)
 ```
-
 
 ## Subset
 

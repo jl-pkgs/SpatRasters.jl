@@ -1,5 +1,8 @@
 abstract type AbstractSpatRaster{T,N} end
 
+"""
+$(TYPEDFIELDS)
+"""
 Base.@kwdef mutable struct SpatRaster{T,N} <: AbstractSpatRaster{T,N}
   A::AbstractArray{T,N}
   b::bbox = bbox(-180.0, -90.0, 180.0, 90.0)
@@ -12,8 +15,8 @@ Base.@kwdef mutable struct SpatRaster{T,N} <: AbstractSpatRaster{T,N}
   nodata::Union{AbstractVector{T},Nothing} = nothing
 end
 
-force_index_vec(x::Union{Colon,Nothing,AbstractVector}) = x
-force_index_vec(x::Int) = [x]
+force_vec(x::Union{Colon,Nothing,AbstractVector}) = x
+force_vec(x) = [x]
 
 function nband(ra::SpatRaster{T,N}) where {T,N}
   n = 1
@@ -64,7 +67,7 @@ function Base.getindex(ra::AbstractSpatRaster, i, j, args...; deep=true)
   inds = (i, j, args..., cols...)
 
   if length(args) > 0
-    k = force_index_vec(args[1])
+    k = force_vec(args[1])
     !isnothing(bands) && (bands = bands[k])
     !isnothing(time) && (time = time[k])
   end
