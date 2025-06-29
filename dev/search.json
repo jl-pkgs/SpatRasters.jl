@@ -10,683 +10,713 @@
     ]
   },
   {
-    "objectID": "api/SpatRaster.html",
-    "href": "api/SpatRaster.html",
-    "title": "SpatRaster",
+    "objectID": "api/1-SpatRaster.html",
+    "href": "api/1-SpatRaster.html",
+    "title": "1. SpatRaster",
     "section": "",
-    "text": "Construction\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.",
+    "text": "SpatRaster\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>SpatRaster</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. SpatRaster</span>"
     ]
   },
   {
-    "objectID": "api/SpatRaster.html#construction",
-    "href": "api/SpatRaster.html#construction",
-    "title": "SpatRaster",
-    "section": "",
-    "text": "using SpatRasters\nusing Dates\n\ndates = Date(2010, 1, 1):Day(1):Date(2010, 1, 10)\nntime = length(dates)\n\nra = rast(rand(180, 90, ntime); time=dates)\nra\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (180, 90, 10) | 1.24 Mb\n  b        : bbox(-180.0, -90.0, 180.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:179.0, 89.0:-2.0:-89.0\n  time     : 2010-01-01 ~ 2010-01-10, ntime=10\n  bands    : nothing\n  nodata   : nothing\n\nA = rand(70, 40)\nb = bbox(70, 15, 140, 55) # China\nrast(A, b)\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (70, 40) | 0.02 Mb\n  b        : bbox(70.0, 15.0, 140.0, 55.0)\n  cellsize : (1.0, 1.0)\n  lon, lat : 70.5:1.0:139.5, 54.5:-1.0:15.5\n  time     : nothing\n  bands    : nothing\n  nodata   : nothing",
+    "objectID": "api/1-SpatRaster.html#construction",
+    "href": "api/1-SpatRaster.html#construction",
+    "title": "1. SpatRaster",
+    "section": "Construction",
+    "text": "Construction\nusing SpatRasters\nusing Dates\n\ndates = Date(2010, 1, 1):Day(1):Date(2010, 1, 10)\nntime = length(dates)\n\nra = rast(rand(180, 90, ntime); time=dates)\nra\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (180, 90, 10) | 1.24 Mb\n  b        : bbox(-180.0, -90.0, 180.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:179.0, 89.0:-2.0:-89.0\n  time     : 2010-01-01 ~ 2010-01-10, ntime=10\n  bands    : nothing\n  nodata   : nothing\n\nA = rand(70, 40)\nb = bbox(70, 15, 140, 55) # China\nrast(A, b)\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (70, 40) | 0.02 Mb\n  b        : bbox(70.0, 15.0, 140.0, 55.0)\n  cellsize : (1.0, 1.0)\n  lon, lat : 70.5:1.0:139.5, 54.5:-1.0:15.5\n  time     : nothing\n  bands    : nothing\n  nodata   : nothing",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>SpatRaster</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. SpatRaster</span>"
     ]
   },
   {
-    "objectID": "api/SpatRaster.html#subset",
-    "href": "api/SpatRaster.html#subset",
-    "title": "SpatRaster",
+    "objectID": "api/1-SpatRaster.html#subset",
+    "href": "api/1-SpatRaster.html#subset",
+    "title": "1. SpatRaster",
     "section": "Subset",
     "text": "Subset\n\nra[i, j] will automatically alter lon, lat and bbox. If both of i and j are integer, value of ra.A[i, j] will be retrieved.\nra[i, j, k] will additionally alter bands, and time\n\nra[1, 1]\nra[1:10, 1:10]\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (10, 10, 10) | 0.01 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-10, ntime=10\n  bands    : nothing\n  nodata   : nothing\n\nra[1:10, 1:10, 1:2]\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (10, 10, 2) | 0.0 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-02, ntime=2\n  bands    : nothing\n  nodata   : nothing\n\nra[1:10, 1:10, 1:1]\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (10, 10, 1) | 0.0 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-01, ntime=1\n  bands    : nothing\n  nodata   : nothing\n\nra[1:10, 1:10, 1]\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (10, 10) | 0.0 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-01, ntime=1\n  bands    : nothing\n  nodata   : nothing",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>SpatRaster</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. SpatRaster</span>"
     ]
   },
   {
-    "objectID": "api/SpatRaster.html#crop",
-    "href": "api/SpatRaster.html#crop",
-    "title": "SpatRaster",
+    "objectID": "api/1-SpatRaster.html#crop",
+    "href": "api/1-SpatRaster.html#crop",
+    "title": "1. SpatRaster",
     "section": "crop",
     "text": "crop\n截取部分范围",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>SpatRaster</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>1. SpatRaster</span>"
     ]
   },
   {
-    "objectID": "api/index.html",
-    "href": "api/index.html",
+    "objectID": "api/2-bbox.html",
+    "href": "api/2-bbox.html",
+    "title": "2. bbox",
+    "section": "",
+    "text": "bbox",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>2. bbox</span>"
+    ]
+  },
+  {
+    "objectID": "api/2-bbox.html#bbox",
+    "href": "api/2-bbox.html#bbox",
+    "title": "2. bbox",
+    "section": "",
+    "text": "Base.@kwdef struct bbox\n  xmin::Float64\n  ymin::Float64\n  xmax::Float64\n  ymax::Float64\nend\nA = rand(70, 40)\nb = bbox(70, 15, 140, 55) # China\nbbox(70.0, 15.0, 140.0, 55.0)\nra = rast(A, b)\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (70, 40) | 0.02 Mb\n  b        : bbox(70.0, 15.0, 140.0, 55.0)\n  cellsize : (1.0, 1.0)\n  lon, lat : 70.5:1.0:139.5, 54.5:-1.0:15.5\n  time     : nothing\n  bands    : nothing\n  nodata   : nothing",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>2. bbox</span>"
+    ]
+  },
+  {
+    "objectID": "api/2-bbox.html#st_bbox",
+    "href": "api/2-bbox.html#st_bbox",
+    "title": "2. bbox",
+    "section": "st_bbox",
+    "text": "st_bbox\n\nst_bbox(lon, lat) : construct bbox from lon, lat\nst_bbox(ra) : retrieve bbox from SpatRaster\nst_bbox(file) : get bbox from tiff or netcdf file directly\n\nlon, lat = st_dims(ra)\nst_bbox(lon, lat) == st_bbox(ra)\ntrue\nguanshan_dem\n\"/home/runner/work/SpatRasters.jl/SpatRasters.jl/data/GuanShan_dem250m.tif\"\nst_bbox(guanshan_dem)\nbbox(110.7, 32.25, 111.025, 32.5)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>2. bbox</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html",
+    "href": "api/z-index.html",
     "title": "Reference",
     "section": "",
     "text": "AbstractSpatRaster\nDocstrings for SpatRasters.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#abstractspatraster",
-    "href": "api/index.html#abstractspatraster",
+    "objectID": "api/z-index.html#abstractspatraster",
+    "href": "api/z-index.html#abstractspatraster",
     "title": "Reference",
     "section": "",
     "text": "No documentation found for public symbol.\n\nSummary\nabstract type AbstractSpatRaster{T, N}\n\n\nSubtypes\nSpatRaster{T, N}",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#d8direction",
-    "href": "api/index.html#d8direction",
+    "objectID": "api/z-index.html#d8direction",
+    "href": "api/z-index.html#d8direction",
     "title": "Reference",
     "section": "D8Direction",
-    "text": "D8Direction\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.D8Direction is a Function.\n# 1 method for generic function \"D8Direction\" from SpatRasters:\n [1] D8Direction(dem::AbstractMatrix{T}, i::Int64, j::Int64, spill::T) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/FlowDirection.jl:75",
+    "text": "D8Direction\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.D8Direction is a Function.\n# 1 method for generic function \"D8Direction\" from SpatRasters:\n [1] D8Direction(dem::AbstractMatrix{T}, i::Int64, j::Int64, spill::T) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/D8Direction.jl:2",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#dirlength",
-    "href": "api/index.html#dirlength",
+    "objectID": "api/z-index.html#dirlength",
+    "href": "api/z-index.html#dirlength",
     "title": "Reference",
     "section": "DirLength",
-    "text": "DirLength\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.DirLength is a Function.\n# 1 method for generic function \"DirLength\" from SpatRasters:\n [1] DirLength(idir::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:113",
+    "text": "DirLength\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.DirLength is a Function.\n# 1 method for generic function \"DirLength\" from SpatRasters:\n [1] DirLength(idir::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:117",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#filldem_flowdirection",
-    "href": "api/index.html#filldem_flowdirection",
+    "objectID": "api/z-index.html#filldem_flowdirection",
+    "href": "api/z-index.html#filldem_flowdirection",
     "title": "Reference",
     "section": "FillDEM_FlowDirection",
     "text": "FillDEM_FlowDirection\n\n\n\n\n\n\nfillDEMAndComputeFlowDirection(dem::AbstractMatrix)\n#! dem was modified!\nfilldepressionswangandliu\nWang&Liu(2006) to fill depressions",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#ingrid",
-    "href": "api/index.html#ingrid",
+    "objectID": "api/z-index.html#ingrid",
+    "href": "api/z-index.html#ingrid",
     "title": "Reference",
     "section": "InGrid",
-    "text": "InGrid\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.InGrid is a Function.\n# 2 methods for generic function \"InGrid\" from SpatRasters:\n [1] InGrid(i::Int64, j::Int64, nrow::Int64, ncol::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:103\n [2] InGrid(x::AbstractMatrix, i::Int64, j::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:107",
+    "text": "InGrid\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.InGrid is a Function.\n# 2 methods for generic function \"InGrid\" from SpatRasters:\n [1] InGrid(i::Int64, j::Int64, nrow::Int64, ncol::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:107\n [2] InGrid(x::AbstractMatrix, i::Int64, j::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:111",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#nextcell",
-    "href": "api/index.html#nextcell",
+    "objectID": "api/z-index.html#nextcell",
+    "href": "api/z-index.html#nextcell",
     "title": "Reference",
     "section": "NextCell",
-    "text": "NextCell\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.NextCell is a Function.\n# 1 method for generic function \"NextCell\" from SpatRasters:\n [1] NextCell(dem::AbstractMatrix, i::Int64, j::Int64, dir::UInt8)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:117",
+    "text": "NextCell\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.NextCell is a Function.\n# 1 method for generic function \"NextCell\" from SpatRasters:\n [1] NextCell(dem::AbstractMatrix, i::Int64, j::Int64, dir::UInt8)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:121",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#spatraster",
-    "href": "api/index.html#spatraster",
+    "objectID": "api/z-index.html#spatraster",
+    "href": "api/z-index.html#spatraster",
     "title": "Reference",
     "section": "SpatRaster",
     "text": "SpatRaster\n\n\n\n\n\n\n\nA::AbstractArray\nb::bbox\ncellsize::Tuple{Real, Real}\nlon::AbstractVector{&lt;:Real}\nlat::AbstractVector{&lt;:Real}\ntime::Union{Nothing, AbstractVector}\nbands::Union{Nothing, AbstractVector{String}}\nname::String\nnodata::Union{Nothing, AbstractVector{T}} where T\n\nSpatRaster(A, b::bbox; reverse_lat=true, kw...)\n\nkw: other parameters: time, name",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#spatrasters",
-    "href": "api/index.html#spatrasters",
+    "objectID": "api/z-index.html#spatrasters",
+    "href": "api/z-index.html#spatrasters",
     "title": "Reference",
     "section": "SpatRasters",
     "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, FillDEM_FlowDirection, InGrid, NextCell, SpatRaster, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, earth_dist, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, merge_var, merge_var!, nband, nlayer, nlyr, ogr_info, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, st_bbox, st_cellsize, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#bandnames",
-    "href": "api/index.html#bandnames",
+    "objectID": "api/z-index.html#bandnames",
+    "href": "api/z-index.html#bandnames",
     "title": "Reference",
     "section": "bandnames",
     "text": "bandnames\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.bandnames is a Function.\n# 0 methods for generic function \"bandnames\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#bbox",
-    "href": "api/index.html#bbox",
+    "objectID": "api/z-index.html#bbox",
+    "href": "api/z-index.html#bbox",
     "title": "Reference",
     "section": "bbox",
     "text": "bbox\n\n\n\n\n\n\nbbox(xmin, ymin, xmax, ymax)\nbbox(;xmin, ymin, xmax, ymax)\nbbox2tuple(b::bbox)\nbbox2vec(b::bbox)\nbbox2affine(size::Tuple{Integer, Integer}, b::bbox)\nSpatial bounding box",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#bbox2cellsize",
-    "href": "api/index.html#bbox2cellsize",
+    "objectID": "api/z-index.html#bbox2cellsize",
+    "href": "api/z-index.html#bbox2cellsize",
     "title": "Reference",
     "section": "bbox2cellsize",
     "text": "bbox2cellsize\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.bbox2cellsize is a Function.\n# 1 method for generic function \"bbox2cellsize\" from SpatRasters:\n [1] bbox2cellsize(b::bbox, size)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:19",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#bbox2dims",
-    "href": "api/index.html#bbox2dims",
+    "objectID": "api/z-index.html#bbox2dims",
+    "href": "api/z-index.html#bbox2dims",
     "title": "Reference",
     "section": "bbox2dims",
     "text": "bbox2dims\n\n\n\n\n\n\nbbox2dims(b::bbox; size=nothing, cellsize=nothing, reverse_lat=true)\n\nArguments\n\ncellsize: celly为负，则lat倒序",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#bbox2lims",
-    "href": "api/index.html#bbox2lims",
+    "objectID": "api/z-index.html#bbox2lims",
+    "href": "api/z-index.html#bbox2lims",
     "title": "Reference",
     "section": "bbox2lims",
     "text": "bbox2lims\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.bbox2lims is a Function.\n# 1 method for generic function \"bbox2lims\" from SpatRasters:\n [1] bbox2lims(b::bbox)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:66",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#bbox2ndim",
-    "href": "api/index.html#bbox2ndim",
+    "objectID": "api/z-index.html#bbox2ndim",
+    "href": "api/z-index.html#bbox2ndim",
     "title": "Reference",
     "section": "bbox2ndim",
     "text": "bbox2ndim\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.bbox2ndim is a Function.\n# 1 method for generic function \"bbox2ndim\" from SpatRasters:\n [1] bbox2ndim(b; size, cellsize)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:49",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#bbox2range",
-    "href": "api/index.html#bbox2range",
+    "objectID": "api/z-index.html#bbox2range",
+    "href": "api/z-index.html#bbox2range",
     "title": "Reference",
     "section": "bbox2range",
     "text": "bbox2range\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.bbox2range is a Function.\n# 1 method for generic function \"bbox2range\" from SpatRasters:\n [1] bbox2range(b::bbox)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:63",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#bbox2vec",
-    "href": "api/index.html#bbox2vec",
+    "objectID": "api/z-index.html#bbox2vec",
+    "href": "api/z-index.html#bbox2vec",
     "title": "Reference",
     "section": "bbox2vec",
     "text": "bbox2vec\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.bbox2vec is a Function.\n# 1 method for generic function \"bbox2vec\" from SpatRasters:\n [1] bbox2vec(b::bbox)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:65",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#bbox_overlap",
-    "href": "api/index.html#bbox_overlap",
+    "objectID": "api/z-index.html#bbox_overlap",
+    "href": "api/z-index.html#bbox_overlap",
     "title": "Reference",
     "section": "bbox_overlap",
     "text": "bbox_overlap\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.bbox_overlap is a Function.\n# 1 method for generic function \"bbox_overlap\" from SpatRasters:\n [1] bbox_overlap(b::bbox, box::bbox; size, cellsize, reverse_lat, zip)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:70",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#cellarea",
-    "href": "api/index.html#cellarea",
+    "objectID": "api/z-index.html#cellarea",
+    "href": "api/z-index.html#cellarea",
     "title": "Reference",
     "section": "cellArea",
     "text": "cellArea\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.cellArea is a Function.\n# 1 method for generic function \"cellArea\" from SpatRasters:\n [1] cellArea(x, y, cellsize)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:106",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#col_goto",
-    "href": "api/index.html#col_goto",
+    "objectID": "api/z-index.html#col_goto",
+    "href": "api/z-index.html#col_goto",
     "title": "Reference",
     "section": "col_goto",
-    "text": "col_goto\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.col_goto is a Function.\n# 1 method for generic function \"col_goto\" from SpatRasters:\n [1] col_goto(col::Int64, idir::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:101",
+    "text": "col_goto\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.col_goto is a Function.\n# 1 method for generic function \"col_goto\" from SpatRasters:\n [1] col_goto(col::Int64, idir::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:105",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#earth_dist",
-    "href": "api/index.html#earth_dist",
+    "objectID": "api/z-index.html#earth_dist",
+    "href": "api/z-index.html#earth_dist",
     "title": "Reference",
     "section": "earth_dist",
     "text": "earth_dist\n\n\n\n\n\n\nearth_dist(x1::Matrix, x2::Matrix; R=6378.388)\nearth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}\np1 = [110 30; 111 31]\np2 = [113 32; 115 35]\nearth_dist(p1, p2)",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#fliplr",
-    "href": "api/index.html#fliplr",
+    "objectID": "api/z-index.html#fliplr",
+    "href": "api/z-index.html#fliplr",
     "title": "Reference",
     "section": "fliplr",
     "text": "fliplr\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.fliplr is a Function.\n# 2 methods for generic function \"fliplr\" from SpatRasters:\n [1] fliplr(x::AbstractArray{T, 3}) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:14\n [2] fliplr(x::AbstractMatrix{T}) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:13",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#flipud",
-    "href": "api/index.html#flipud",
+    "objectID": "api/z-index.html#flipud",
+    "href": "api/z-index.html#flipud",
     "title": "Reference",
     "section": "flipud",
     "text": "flipud\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.flipud is a Function.\n# 2 methods for generic function \"flipud\" from SpatRasters:\n [1] flipud(x::AbstractArray{T, 3}) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:12\n [2] flipud(x::AbstractMatrix{T}) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:11",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#gdal_info",
-    "href": "api/index.html#gdal_info",
+    "objectID": "api/z-index.html#gdal_info",
+    "href": "api/z-index.html#gdal_info",
     "title": "Reference",
     "section": "gdal_info",
     "text": "gdal_info\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gdal_info is a Function.\n# 0 methods for generic function \"gdal_info\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#gdal_nodata",
-    "href": "api/index.html#gdal_nodata",
+    "objectID": "api/z-index.html#gdal_nodata",
+    "href": "api/z-index.html#gdal_nodata",
     "title": "Reference",
     "section": "gdal_nodata",
     "text": "gdal_nodata\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gdal_nodata is a Function.\n# 0 methods for generic function \"gdal_nodata\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#gdal_polygonize",
-    "href": "api/index.html#gdal_polygonize",
+    "objectID": "api/z-index.html#gdal_polygonize",
+    "href": "api/z-index.html#gdal_polygonize",
     "title": "Reference",
     "section": "gdal_polygonize",
     "text": "gdal_polygonize\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gdal_polygonize is a Function.\n# 0 methods for generic function \"gdal_polygonize\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#gdalinfo",
-    "href": "api/index.html#gdalinfo",
+    "objectID": "api/z-index.html#gdalinfo",
+    "href": "api/z-index.html#gdalinfo",
     "title": "Reference",
     "section": "gdalinfo",
     "text": "gdalinfo\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gdalinfo is a Function.\n# 0 methods for generic function \"gdalinfo\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#getgeotransform",
-    "href": "api/index.html#getgeotransform",
+    "objectID": "api/z-index.html#getgeotransform",
+    "href": "api/z-index.html#getgeotransform",
     "title": "Reference",
     "section": "getgeotransform",
     "text": "getgeotransform\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.getgeotransform is a Function.\n# 1 method for generic function \"getgeotransform\" from SpatRasters:\n [1] getgeotransform(ra::AbstractSpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:2",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#gis2tau",
-    "href": "api/index.html#gis2tau",
+    "objectID": "api/z-index.html#gis2tau",
+    "href": "api/z-index.html#gis2tau",
     "title": "Reference",
     "section": "gis2tau",
-    "text": "gis2tau\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gis2tau is a Function.\n# 1 method for generic function \"gis2tau\" from SpatRasters:\n [1] gis2tau(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:56",
+    "text": "gis2tau\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gis2tau is a Function.\n# 1 method for generic function \"gis2tau\" from SpatRasters:\n [1] gis2tau(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:60",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#gis2wflow",
-    "href": "api/index.html#gis2wflow",
+    "objectID": "api/z-index.html#gis2wflow",
+    "href": "api/z-index.html#gis2wflow",
     "title": "Reference",
     "section": "gis2wflow",
-    "text": "gis2wflow\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gis2wflow is a Function.\n# 1 method for generic function \"gis2wflow\" from SpatRasters:\n [1] gis2wflow(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:47",
+    "text": "gis2wflow\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.gis2wflow is a Function.\n# 1 method for generic function \"gis2wflow\" from SpatRasters:\n [1] gis2wflow(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:51",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#guanshan_dem",
-    "href": "api/index.html#guanshan_dem",
+    "objectID": "api/z-index.html#guanshan_dem",
+    "href": "api/z-index.html#guanshan_dem",
     "title": "Reference",
     "section": "guanshan_dem",
     "text": "guanshan_dem\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.guanshan_dem is of type String.\n\nSummary\nmutable struct String\n\n\nSupertype Hierarchy\nString &lt;: AbstractString &lt;: Any",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#guanshan_flowdir_cpp",
-    "href": "api/index.html#guanshan_flowdir_cpp",
+    "objectID": "api/z-index.html#guanshan_flowdir_cpp",
+    "href": "api/z-index.html#guanshan_flowdir_cpp",
     "title": "Reference",
     "section": "guanshan_flowdir_cpp",
     "text": "guanshan_flowdir_cpp\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.guanshan_flowdir_cpp is of type String.\n\nSummary\nmutable struct String\n\n\nSupertype Hierarchy\nString &lt;: AbstractString &lt;: Any",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#guanshan_flowdir_gis",
-    "href": "api/index.html#guanshan_flowdir_gis",
+    "objectID": "api/z-index.html#guanshan_flowdir_gis",
+    "href": "api/z-index.html#guanshan_flowdir_gis",
     "title": "Reference",
     "section": "guanshan_flowdir_gis",
     "text": "guanshan_flowdir_gis\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.guanshan_flowdir_gis is of type String.\n\nSummary\nmutable struct String\n\n\nSupertype Hierarchy\nString &lt;: AbstractString &lt;: Any",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#in_bbox",
-    "href": "api/index.html#in_bbox",
+    "objectID": "api/z-index.html#in_bbox",
+    "href": "api/z-index.html#in_bbox",
     "title": "Reference",
     "section": "in_bbox",
     "text": "in_bbox\n\n\n\n\n\n\nin_bbox(b::bbox, (lon, lat))  \nin_bbox(bs::Vector{bbox}, (lon, lat))",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#merge_var",
-    "href": "api/index.html#merge_var",
+    "objectID": "api/z-index.html#merge_var",
+    "href": "api/z-index.html#merge_var",
     "title": "Reference",
     "section": "merge_var",
     "text": "merge_var\n\n\n\n\n\n\nmerge_var(fs; vars=nothing, var=nothing,\n    progress=true, box::Union{bbox,Nothing}=nothing)\n\nArguments\n\nfs: tiff file paths\nvars: variables in the tiff\nvar: variable to merge\n\n\n\nExamples\nbox = bbox(-180, -60, 180, 90)",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#merge_var-1",
-    "href": "api/index.html#merge_var-1",
+    "objectID": "api/z-index.html#merge_var-1",
+    "href": "api/z-index.html#merge_var-1",
     "title": "Reference",
     "section": "merge_var!",
     "text": "merge_var!\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.merge_var! is a Function.\n# 1 method for generic function \"merge_var!\" from SpatRasters:\n [1] merge_var!(R::AbstractArray, f; var, box, cellsize)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_mosaic.jl:35",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#nband",
-    "href": "api/index.html#nband",
+    "objectID": "api/z-index.html#nband",
+    "href": "api/z-index.html#nband",
     "title": "Reference",
     "section": "nband",
     "text": "nband\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.nband is a Function.\n# 1 method for generic function \"nband\" from SpatRasters:\n [1] nband(ra::SpatRaster{T, N}) where {T, N}\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:21",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#nlayer",
-    "href": "api/index.html#nlayer",
+    "objectID": "api/z-index.html#nlayer",
+    "href": "api/z-index.html#nlayer",
     "title": "Reference",
     "section": "nlayer",
     "text": "nlayer\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.nlayer is a Function.\n# 0 methods for generic function \"nlayer\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#nlyr",
-    "href": "api/index.html#nlyr",
+    "objectID": "api/z-index.html#nlyr",
+    "href": "api/z-index.html#nlyr",
     "title": "Reference",
     "section": "nlyr",
     "text": "nlyr\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.nband is a Function.\n# 1 method for generic function \"nband\" from SpatRasters:\n [1] nband(ra::SpatRaster{T, N}) where {T, N}\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:21",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#ogr_info",
-    "href": "api/index.html#ogr_info",
+    "objectID": "api/z-index.html#ogr_info",
+    "href": "api/z-index.html#ogr_info",
     "title": "Reference",
     "section": "ogr_info",
     "text": "ogr_info\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.ogr_info is a Function.\n# 0 methods for generic function \"ogr_info\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#range2bbox",
-    "href": "api/index.html#range2bbox",
+    "objectID": "api/z-index.html#range2bbox",
+    "href": "api/z-index.html#range2bbox",
     "title": "Reference",
     "section": "range2bbox",
     "text": "range2bbox\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.range2bbox is a Function.\n# 1 method for generic function \"range2bbox\" from SpatRasters:\n [1] range2bbox(r::AbstractVector)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:68",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#rast",
-    "href": "api/index.html#rast",
+    "objectID": "api/z-index.html#rast",
+    "href": "api/z-index.html#rast",
     "title": "Reference",
     "section": "rast",
     "text": "rast\n\n\n\n\n\n\nNo documentation found for public symbol.\n\nSummary\nmutable struct SpatRaster{T, N}\n\n\nFields\nA        :: AbstractArray{T, N}\nb        :: bbox\ncellsize :: Tuple{Real, Real}\nlon      :: AbstractVector{&lt;:Real}\nlat      :: AbstractVector{&lt;:Real}\ntime     :: Union{Nothing, AbstractVector}\nbands    :: Union{Nothing, AbstractVector{String}}\nname     :: String\nnodata   :: Union{Nothing, AbstractArray{T, 1}}\n\n\nSupertype Hierarchy\nSpatRaster{T, N} &lt;: AbstractSpatRaster{T, N} &lt;: Any",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#read_gdal",
-    "href": "api/index.html#read_gdal",
+    "objectID": "api/z-index.html#read_gdal",
+    "href": "api/z-index.html#read_gdal",
     "title": "Reference",
     "section": "read_gdal",
     "text": "read_gdal\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.read_gdal is a Function.\n# 1 method for generic function \"read_gdal\" from SpatRasters:\n [1] read_gdal(files::Vector{&lt;:AbstractString}, options...)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:13",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#read_sf",
-    "href": "api/index.html#read_sf",
+    "objectID": "api/z-index.html#read_sf",
+    "href": "api/z-index.html#read_sf",
     "title": "Reference",
     "section": "read_sf",
     "text": "read_sf\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.read_sf is a Function.\n# 0 methods for generic function \"read_sf\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#resample_first",
-    "href": "api/index.html#resample_first",
+    "objectID": "api/z-index.html#resample_first",
+    "href": "api/z-index.html#resample_first",
     "title": "Reference",
     "section": "resample_first",
     "text": "resample_first\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.resample_first is a Function.\n# 1 method for generic function \"resample_first\" from SpatRasters:\n [1] resample_first(r::AbstractArray; fact, deepcopy)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_resample.jl:6",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#rm_shp",
-    "href": "api/index.html#rm_shp",
+    "objectID": "api/z-index.html#rm_shp",
+    "href": "api/z-index.html#rm_shp",
     "title": "Reference",
     "section": "rm_shp",
     "text": "rm_shp\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.rm_shp is a Function.\n# 1 method for generic function \"rm_shp\" from SpatRasters:\n [1] rm_shp(f)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:83",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#row_goto",
-    "href": "api/index.html#row_goto",
+    "objectID": "api/z-index.html#row_goto",
+    "href": "api/z-index.html#row_goto",
     "title": "Reference",
     "section": "row_goto",
     "text": "row_goto\n\n\n\n\n\n\nrowgoto(row::Int, idir::Int)::Int colgoto(col::Int, idir::Int)::Int\n\nDetails\n\nflow direction 32 64 128 16 0 1 8 4 2\n\n\n\nArguments\n\nk: 8-neighbor 6 7 8 5 1 4 3 2",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#set_bandnames",
-    "href": "api/index.html#set_bandnames",
+    "objectID": "api/z-index.html#set_bandnames",
+    "href": "api/z-index.html#set_bandnames",
     "title": "Reference",
     "section": "set_bandnames",
     "text": "set_bandnames\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.set_bandnames is a Function.\n# 0 methods for generic function \"set_bandnames\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_bbox",
-    "href": "api/index.html#st_bbox",
+    "objectID": "api/z-index.html#st_bbox",
+    "href": "api/z-index.html#st_bbox",
     "title": "Reference",
     "section": "st_bbox",
     "text": "st_bbox\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_bbox is a Function.\n# 5 methods for generic function \"st_bbox\" from SpatRasters:\n [1] st_bbox(bs::Vector{bbox})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:22\n [2] st_bbox(f::String)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:15\n [3] st_bbox(lon, lat)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:8\n [4] st_bbox(v::Vector{&lt;:Real})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:4\n [5] st_bbox(r::AbstractSpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_cellsize",
-    "href": "api/index.html#st_cellsize",
+    "objectID": "api/z-index.html#st_cellsize",
+    "href": "api/z-index.html#st_cellsize",
     "title": "Reference",
     "section": "st_cellsize",
     "text": "st_cellsize\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_cellsize is a Function.\n# 3 methods for generic function \"st_cellsize\" from SpatRasters:\n [1] st_cellsize(f::AbstractString)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:51\n [2] st_cellsize(lon::AbstractVector, lat::AbstractVector)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:47\n [3] st_cellsize(r::AbstractSpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:45",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_crop",
-    "href": "api/index.html#st_crop",
+    "objectID": "api/z-index.html#st_crop",
+    "href": "api/z-index.html#st_crop",
     "title": "Reference",
     "section": "st_crop",
     "text": "st_crop\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_crop is a Function.\n# 2 methods for generic function \"st_crop\" from SpatRasters:\n [1] st_crop(f::String, b::bbox)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_crop.jl:3\n [2] st_crop(ra::SpatRaster, b::bbox)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_crop.jl:5",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_dims",
-    "href": "api/index.html#st_dims",
+    "objectID": "api/z-index.html#st_dims",
+    "href": "api/z-index.html#st_dims",
     "title": "Reference",
     "section": "st_dims",
     "text": "st_dims\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_dims is a Function.\n# 3 methods for generic function \"st_dims\" from SpatRasters:\n [1] st_dims(x::SpatRasters.FileGDAL)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:32\n [2] st_dims(f::String)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:26\n [3] st_dims(r::AbstractSpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:24",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_extract",
-    "href": "api/index.html#st_extract",
+    "objectID": "api/z-index.html#st_extract",
+    "href": "api/z-index.html#st_extract",
     "title": "Reference",
     "section": "st_extract",
     "text": "st_extract\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_extract is a Function.\n# 1 method for generic function \"st_extract\" from SpatRasters:\n [1] st_extract(ra::AbstractSpatRaster, points::Array{Tuple{T, T}, 1}; combine) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:69",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_location",
-    "href": "api/index.html#st_location",
+    "objectID": "api/z-index.html#st_location",
+    "href": "api/z-index.html#st_location",
     "title": "Reference",
     "section": "st_location",
     "text": "st_location\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_location is a Function.\n# 1 method for generic function \"st_location\" from SpatRasters:\n [1] st_location(ra::AbstractSpatRaster, points::Array{Tuple{T, T}, 1}; kw...) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:63",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_location_exact",
-    "href": "api/index.html#st_location_exact",
+    "objectID": "api/z-index.html#st_location_exact",
+    "href": "api/z-index.html#st_location_exact",
     "title": "Reference",
     "section": "st_location_exact",
     "text": "st_location_exact\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_location_exact is a Function.\n# 1 method for generic function \"st_location_exact\" from SpatRasters:\n [1] st_location_exact(lon::AbstractVector, lat::AbstractVector, points::Array{Tuple{T, T}, 1}; rm_empty, cellsize, tol) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:12",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_location_fast",
-    "href": "api/index.html#st_location_fast",
+    "objectID": "api/z-index.html#st_location_fast",
+    "href": "api/z-index.html#st_location_fast",
     "title": "Reference",
     "section": "st_location_fast",
     "text": "st_location_fast\n\n\n\n\n\n\nst_location(r::Raster, points::Vector{Tuple{T,T}})\nreturn the overlaping indexes inds, and corresponding (i,j)\n\nExamples\ninds, locs = st_location(r, points)",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_mosaic",
-    "href": "api/index.html#st_mosaic",
+    "objectID": "api/z-index.html#st_mosaic",
+    "href": "api/z-index.html#st_mosaic",
     "title": "Reference",
     "section": "st_mosaic",
     "text": "st_mosaic\n\n\n\n\n\n\nst_mosaic(rs::Vector{SpatRaster{T,N}}; kw...) where {T,N}\n\nArguments\n\nkw: others to SpatRaster",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_points",
-    "href": "api/index.html#st_points",
+    "objectID": "api/z-index.html#st_points",
+    "href": "api/z-index.html#st_points",
     "title": "Reference",
     "section": "st_points",
     "text": "st_points\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_points is a Function.\n# 1 method for generic function \"st_points\" from SpatRasters:\n [1] st_points(x::AbstractVector, y::AbstractVector)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:71",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_read",
-    "href": "api/index.html#st_read",
+    "objectID": "api/z-index.html#st_read",
+    "href": "api/z-index.html#st_read",
     "title": "Reference",
     "section": "st_read",
     "text": "st_read\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.read_gdal is a Function.\n# 1 method for generic function \"read_gdal\" from SpatRasters:\n [1] read_gdal(files::Vector{&lt;:AbstractString}, options...)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:13",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#st_write",
-    "href": "api/index.html#st_write",
+    "objectID": "api/z-index.html#st_write",
+    "href": "api/z-index.html#st_write",
     "title": "Reference",
     "section": "st_write",
     "text": "st_write\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.write_gdal is a Function.\n# 0 methods for generic function \"write_gdal\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#tau2gis",
-    "href": "api/index.html#tau2gis",
+    "objectID": "api/z-index.html#tau2gis",
+    "href": "api/z-index.html#tau2gis",
     "title": "Reference",
     "section": "tau2gis",
-    "text": "tau2gis\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.tau2gis is a Function.\n# 1 method for generic function \"tau2gis\" from SpatRasters:\n [1] tau2gis(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:64",
+    "text": "tau2gis\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.tau2gis is a Function.\n# 1 method for generic function \"tau2gis\" from SpatRasters:\n [1] tau2gis(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:68",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#write_gdal",
-    "href": "api/index.html#write_gdal",
+    "objectID": "api/z-index.html#write_gdal",
+    "href": "api/z-index.html#write_gdal",
     "title": "Reference",
     "section": "write_gdal",
     "text": "write_gdal\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.write_gdal is a Function.\n# 0 methods for generic function \"write_gdal\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#write_sf",
-    "href": "api/index.html#write_sf",
+    "objectID": "api/z-index.html#write_sf",
+    "href": "api/z-index.html#write_sf",
     "title": "Reference",
     "section": "write_sf",
     "text": "write_sf\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.write_sf is a Function.\n# 0 methods for generic function \"write_sf\" from SpatRasters",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   },
   {
-    "objectID": "api/index.html#xy2ij",
-    "href": "api/index.html#xy2ij",
+    "objectID": "api/z-index.html#xy2ij",
+    "href": "api/z-index.html#xy2ij",
     "title": "Reference",
     "section": "xy2ij",
     "text": "xy2ij\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.xy2ij is a Function.\n# 2 methods for generic function \"xy2ij\" from SpatRasters:\n [1] xy2ij(point::Tuple{T, T}, ra::SpatRaster) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:100\n [2] xy2ij(x::T, y::T, b::bbox, cellsize) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:89",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Reference</span>"
     ]
   }
 ]

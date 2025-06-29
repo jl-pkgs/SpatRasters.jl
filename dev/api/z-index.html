@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/SpatRaster.html" rel="prev">
+<link href="../api/2-bbox.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -412,7 +412,7 @@ window.onload = function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/index.html"><span class="chapter-title">Reference</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/z-index.html"><span class="chapter-title">Reference</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -439,12 +439,17 @@ window.onload = function () {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/SpatRaster.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">SpatRaster</span></a>
+  <a href="../api/1-SpatRaster.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. SpatRaster</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Reference</span></a>
+  <a href="../api/2-bbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. bbox</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/z-index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Reference</span></a>
   </div>
 </li>
     </ul>
@@ -581,7 +586,7 @@ window.onload = function () {
 <p><code>SpatRasters.D8Direction</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "D8Direction" from SpatRasters:
  [1] D8Direction(dem::AbstractMatrix{T}, i::Int64, j::Int64, spill::T) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/FlowDirection.jl:75</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/D8Direction.jl:2</code></pre>
 </div>
 </div>
 </div>
@@ -599,7 +604,7 @@ window.onload = function () {
 <p><code>SpatRasters.DirLength</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "DirLength" from SpatRasters:
  [1] DirLength(idir::Int64)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:113</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:117</code></pre>
 </div>
 </div>
 </div>
@@ -634,9 +639,9 @@ window.onload = function () {
 <p><code>SpatRasters.InGrid</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "InGrid" from SpatRasters:
  [1] InGrid(i::Int64, j::Int64, nrow::Int64, ncol::Int64)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:103
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:107
  [2] InGrid(x::AbstractMatrix, i::Int64, j::Int64)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:107</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:111</code></pre>
 </div>
 </div>
 </div>
@@ -654,7 +659,7 @@ window.onload = function () {
 <p><code>SpatRasters.NextCell</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "NextCell" from SpatRasters:
  [1] NextCell(dem::AbstractMatrix, i::Int64, j::Int64, dir::UInt8)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:117</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:121</code></pre>
 </div>
 </div>
 </div>
@@ -912,7 +917,7 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <p><code>SpatRasters.col_goto</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "col_goto" from SpatRasters:
  [1] col_goto(col::Int64, idir::Int64)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:101</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:105</code></pre>
 </div>
 </div>
 </div>
@@ -1070,7 +1075,7 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <p><code>SpatRasters.gis2tau</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "gis2tau" from SpatRasters:
  [1] gis2tau(A::AbstractArray)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:56</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:60</code></pre>
 </div>
 </div>
 </div>
@@ -1088,7 +1093,7 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <p><code>SpatRasters.gis2wflow</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "gis2wflow" from SpatRasters:
  [1] gis2wflow(A::AbstractArray)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:47</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:51</code></pre>
 </div>
 </div>
 </div>
@@ -1702,7 +1707,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.tau2gis</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "tau2gis" from SpatRasters:
  [1] tau2gis(A::AbstractArray)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:64</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:68</code></pre>
 </div>
 </div>
 </div>
@@ -2178,8 +2183,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/SpatRaster.html" class="pagination-link" aria-label="SpatRaster">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">SpatRaster</span></span>
+      <a href="../api/2-bbox.html" class="pagination-link" aria-label="2. bbox">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">2. bbox</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

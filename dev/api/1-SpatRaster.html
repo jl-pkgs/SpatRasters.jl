@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dongdong Kong">
-<meta name="dcterms.date" content="2025-06-29">
 
-<title>SpatRasters</title>
+<title>1. SpatRaster – SpatRasters</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,31 +20,67 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./api/1-SpatRaster.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e48d11066fe46049b8056d961f78ce1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-8baa932c728ac0b72af33d3ff6ac96e9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-e48d11066fe46049b8056d961f78ce1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../api/2-bbox.html" rel="next">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e48d11066fe46049b8056d961f78ce1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-8baa932c728ac0b72af33d3ff6ac96e9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-e48d11066fe46049b8056d961f78ce1a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -171,11 +205,11 @@ window.onload = function () {
 </script>
 
 
-<link rel="stylesheet" href="_static/style.css">
-<meta property="og:title" content="SpatRasters">
+<link rel="stylesheet" href="../_static/style.css">
+<meta property="og:title" content="1. SpatRaster – SpatRasters">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="SpatRasters">
-<meta name="twitter:title" content="SpatRasters">
+<meta name="twitter:title" content="1. SpatRaster – SpatRasters">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -349,7 +383,7 @@ window.onload = function () {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">SpatRasters</span>
     </a>
   </div>
@@ -379,7 +413,7 @@ window.onload = function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/1-SpatRaster.html"><span class="chapter-title">1. SpatRaster</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -401,22 +435,22 @@ window.onload = function () {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Overview</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./api/1-SpatRaster.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1. SpatRaster</span></a>
+  <a href="../api/1-SpatRaster.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">1. SpatRaster</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./api/2-bbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. bbox</span></a>
+  <a href="../api/2-bbox.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2. bbox</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./api/z-index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Reference</span></a>
+  <a href="../api/z-index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Reference</span></a>
   </div>
 </li>
     </ul>
@@ -429,7 +463,12 @@ window.onload = function () {
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#spatrasters.jl-simple-spatial-rasters-in-julia" id="toc-spatrasters.jl-simple-spatial-rasters-in-julia" class="nav-link active" data-scroll-target="#spatrasters.jl-simple-spatial-rasters-in-julia">SpatRasters.jl: Simple Spatial Rasters in Julia</a></li>
+  <li><a href="#spatraster" id="toc-spatraster" class="nav-link active" data-scroll-target="#spatraster">SpatRaster</a>
+  <ul class="collapse">
+  <li><a href="#construction" id="toc-construction" class="nav-link" data-scroll-target="#construction">Construction</a></li>
+  <li><a href="#subset" id="toc-subset" class="nav-link" data-scroll-target="#subset">Subset</a></li>
+  <li><a href="#crop" id="toc-crop" class="nav-link" data-scroll-target="#crop">crop</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -439,26 +478,14 @@ window.onload = function () {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">SpatRasters</h1>
+<h1 class="title"><span class="chapter-title">1. SpatRaster</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dongdong Kong <a href="mailto:kongdd@users.noreply.github.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 29, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -468,18 +495,127 @@ window.onload = function () {
 </header>
 
 
-<section id="spatrasters.jl-simple-spatial-rasters-in-julia" class="level1">
-<h1>SpatRasters.jl: Simple Spatial Rasters in Julia</h1>
-<!-- [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://jl-pkgs.github.io/SpatRasters.jl/stable) -->
-<p><a href="https://jl-pkgs.github.io/SpatRasters.jl/dev"><img src="https://img.shields.io/badge/docs-dev-blue.svg" class="img-fluid" alt="Dev"></a> <a href="https://github.com/jl-pkgs/SpatRasters.jl/actions/workflows/CI.yml"><img src="https://github.com/jl-pkgs/SpatRasters.jl/actions/workflows/CI.yml/badge.svg" class="img-fluid" alt="CI"></a> <a href="https://codecov.io/gh/jl-pkgs/SpatRasters.jl"><img src="https://codecov.io/gh/jl-pkgs/SpatRasters.jl/branch/master/graph/badge.svg" class="img-fluid" alt="Codecov"></a></p>
-<blockquote class="blockquote">
-<p>Dongdong Kong</p>
-</blockquote>
+<section id="spatraster" class="level1">
+<h1>SpatRaster</h1>
 <p><code>SpatRaster</code> is a simple spatial raster with WGS84 projection, abbreviated as <code>rast</code>.</p>
-<p>Due to its simplicity, <code>SpatRasters.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatRasters.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
-<p><code>SpatRasters.jl</code> used the class and function of R language <code>terra</code> and <code>sf</code> packages.</p>
+<!-- ```{julia, echo=false}
+@doc(SpatRaster)
+``` -->
+<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="pp">@kwdef</span> <span class="kw">mutable struct</span> SpatRaster{T,N} <span class="op">&lt;:</span><span class="dt"> AbstractSpatRaster{T,N}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  A<span class="op">::</span><span class="dt">AbstractArray{T,N}</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  b<span class="op">::</span><span class="dt">bbox </span><span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180.0</span>, <span class="op">-</span><span class="fl">90.0</span>, <span class="fl">180.0</span>, <span class="fl">90.0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  cellsize<span class="op">::</span><span class="dt">NTuple{2,Real}</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  lon<span class="op">::</span><span class="dt">AbstractVector{&lt;:Real}</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  lat<span class="op">::</span><span class="dt">AbstractVector{&lt;:Real}</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  time<span class="op">::</span><span class="dt">Union{AbstractVector,Nothing} </span><span class="op">=</span> <span class="cn">nothing</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  bands<span class="op">::</span><span class="dt">Union{AbstractVector{String},Nothing} </span><span class="op">=</span> <span class="cn">nothing</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  name<span class="op">::</span><span class="dt">String </span><span class="op">=</span> <span class="st">"Raster"</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  nodata<span class="op">::</span><span class="dt">Union{AbstractVector{T},Nothing} </span><span class="op">=</span> <span class="cn">nothing</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>A</code> : The raster data array where T is the element type and N is the number of dimensions</li>
+<li><code>b</code> : Bounding box defining the spatial extent, defaults to global extent <code>bbox(-180.0, -90.0, 180.0, 90.0)</code></li>
+<li><code>cellsize</code> : Cell size in degrees as (longitude_size, latitude_size)<br>
+</li>
+<li><code>lon</code> : Longitude coordinates for each column</li>
+<li><code>lat</code> : Latitude coordinates for each row</li>
+<li><code>time</code> : Time dimension values (optional)</li>
+<li><code>bands</code> : Band names for multi-band rasters (optional)</li>
+<li><code>name</code> : Name identifier for the raster, defaults to “Raster”</li>
+<li><code>nodata</code> : No-data values for each band (optional)</li>
+</ul>
+<section id="construction" class="level2">
+<h2 class="anchored" data-anchor-id="construction">Construction</h2>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatRasters</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Dates</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> <span class="fu">Date</span>(<span class="fl">2010</span>, <span class="fl">1</span>, <span class="fl">1</span>)<span class="op">:</span><span class="fu">Day</span>(<span class="fl">1</span>)<span class="op">:</span><span class="fu">Date</span>(<span class="fl">2010</span>, <span class="fl">1</span>, <span class="fl">10</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ntime <span class="op">=</span> <span class="fu">length</span>(dates)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ra <span class="op">=</span> <span class="fu">rast</span>(<span class="fu">rand</span>(<span class="fl">180</span>, <span class="fl">90</span>, ntime); time<span class="op">=</span>dates)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ra</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Array{Float64, 3} | (180, 90, 10) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">1.24 Mb</span>
+  b        : bbox(-180.0, -90.0, 180.0, 90.0)
+  cellsize : (2.0, 2.0)
+  lon, lat : -179.0:2.0:179.0, 89.0:-2.0:-89.0
+  time     : 2010-01-01 ~ 2010-01-10, ntime=10
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="fu">rand</span>(<span class="fl">70</span>, <span class="fl">40</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fu">bbox</span>(<span class="fl">70</span>, <span class="fl">15</span>, <span class="fl">140</span>, <span class="fl">55</span>) <span class="co"># China</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rast</span>(A, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Matrix{Float64} | (70, 40) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.02 Mb</span>
+  b        : bbox(70.0, 15.0, 140.0, 55.0)
+  cellsize : (1.0, 1.0)
+  lon, lat : 70.5:1.0:139.5, 54.5:-1.0:15.5
+  time     : nothing
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+</section>
+<section id="subset" class="level2">
+<h2 class="anchored" data-anchor-id="subset">Subset</h2>
+<ul>
+<li><p><code>ra[i, j]</code> will automatically alter <code>lon</code>, <code>lat</code> and <code>bbox</code>. If both of <code>i</code> and <code>j</code> are integer, value of ra.A[i, j] will be retrieved.</p></li>
+<li><p><code>ra[i, j, k]</code> will additionally alter <code>bands</code>, and <code>time</code></p></li>
+</ul>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span>, <span class="fl">1</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Array{Float64, 3} | (10, 10, 10) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.01 Mb</span>
+  b        : bbox(-180.0, 70.0, -160.0, 90.0)
+  cellsize : (2.0, 2.0)
+  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0
+  time     : 2010-01-01 ~ 2010-01-10, ntime=10
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Array{Float64, 3} | (10, 10, 2) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.0 Mb</span>
+  b        : bbox(-180.0, 70.0, -160.0, 90.0)
+  cellsize : (2.0, 2.0)
+  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0
+  time     : 2010-01-01 ~ 2010-01-02, ntime=2
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Array{Float64, 3} | (10, 10, 1) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.0 Mb</span>
+  b        : bbox(-180.0, 70.0, -160.0, 90.0)
+  cellsize : (2.0, 2.0)
+  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0
+  time     : 2010-01-01 ~ 2010-01-01, ntime=1
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Matrix{Float64} | (10, 10) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.0 Mb</span>
+  b        : bbox(-180.0, 70.0, -160.0, 90.0)
+  cellsize : (2.0, 2.0)
+  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0
+  time     : 2010-01-01 ~ 2010-01-01, ntime=1
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+</section>
+<section id="crop" class="level2">
+<h2 class="anchored" data-anchor-id="crop">crop</h2>
+<p>截取部分范围</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -897,10 +1033,13 @@ window.onload = function () {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link" aria-label="Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Overview</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./api/1-SpatRaster.html" class="pagination-link" aria-label="1. SpatRaster">
-        <span class="nav-page-text"><span class="chapter-title">1. SpatRaster</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../api/2-bbox.html" class="pagination-link" aria-label="2. bbox">
+        <span class="nav-page-text"><span class="chapter-title">2. bbox</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
