@@ -1,0 +1,16 @@
+---
+number-depth: 2
+---
+
+# SpatRaster
+
+```{julia}
+1 + 1
+```
+
+```{julia}
+using SpatRasters
+
+ra = rast(rand(180, 90))
+ra
+```
