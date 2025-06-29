@@ -668,6 +668,17 @@ window.onload = function () {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
+<ul>
+<li><code>A::AbstractArray</code></li>
+<li><code>b::bbox</code></li>
+<li><code>cellsize::Tuple{Real, Real}</code></li>
+<li><code>lon::AbstractVector{&lt;:Real}</code></li>
+<li><code>lat::AbstractVector{&lt;:Real}</code></li>
+<li><code>time::Union{Nothing, AbstractVector}</code></li>
+<li><code>bands::Union{Nothing, AbstractVector{String}}</code></li>
+<li><code>name::String</code></li>
+<li><code>nodata::Union{Nothing, AbstractVector{T}} where T</code></li>
+</ul>
 <pre><code>SpatRaster(A, b::bbox; reverse_lat=true, kw...)</code></pre>
 <ul>
 <li><code>kw</code>: other parameters: <code>time</code>, <code>name</code></li>
@@ -699,6 +710,9 @@ window.onload = function () {
 <blockquote class="blockquote">
 <p>Dongdong Kong</p>
 </blockquote>
+<p><code>SpatRaster</code> is a simple spatial raster with WGS84 projection, abbreviated as <code>rast</code>.</p>
+<p>Due to its simplicity, <code>SpatRasters.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatRasters.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
+<p><code>SpatRasters.jl</code> used the class and function of R language <code>terra</code> and <code>sf</code> packages.</p>
 </section>
 </div>
 </div>
@@ -1221,7 +1235,7 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 <p><code>SpatRasters.nband</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "nband" from SpatRasters:
  [1] nband(ra::SpatRaster{T, N}) where {T, N}
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:18</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:21</code></pre>
 </div>
 </div>
 </div>
@@ -1255,7 +1269,7 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 <p><code>SpatRasters.nband</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "nband" from SpatRasters:
  [1] nband(ra::SpatRaster{T, N}) where {T, N}
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:18</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:21</code></pre>
 </div>
 </div>
 </div>

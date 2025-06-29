@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "SpatRasters",
     "section": "",
-    "text": "SpatRasters.jl: Simple Spatial Rasters in Julia\n\n  \n\nDongdong Kong",
+    "text": "SpatRasters.jl: Simple Spatial Rasters in Julia\n\n  \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
@@ -14,7 +14,7 @@
     "href": "api/SpatRaster.html",
     "title": "SpatRaster",
     "section": "",
-    "text": "Construction",
+    "text": "Construction\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>SpatRaster</span>"
     ]
@@ -24,7 +24,7 @@
     "href": "api/SpatRaster.html#construction",
     "title": "SpatRaster",
     "section": "",
-    "text": "A : AbstractArray\nb : bbox, default is the global scale, bbox(-180.0, -90.0, 180.0, 90.0)",
+    "text": "using SpatRasters\nusing Dates\n\ndates = Date(2010, 1, 1):Day(1):Date(2010, 1, 10)\nntime = length(dates)\n\nra = rast(rand(180, 90, ntime); time=dates)\nra\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (180, 90, 10) | 1.24 Mb\n  b        : bbox(-180.0, -90.0, 180.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:179.0, 89.0:-2.0:-89.0\n  time     : 2010-01-01 ~ 2010-01-10, ntime=10\n  bands    : nothing\n  nodata   : nothing\n\nA = rand(70, 40)\nb = bbox(70, 15, 140, 55) # China\nrast(A, b)\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (70, 40) | 0.02 Mb\n  b        : bbox(70.0, 15.0, 140.0, 55.0)\n  cellsize : (1.0, 1.0)\n  lon, lat : 70.5:1.0:139.5, 54.5:-1.0:15.5\n  time     : nothing\n  bands    : nothing\n  nodata   : nothing",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>SpatRaster</span>"
     ]
@@ -34,7 +34,7 @@
     "href": "api/SpatRaster.html#subset",
     "title": "SpatRaster",
     "section": "Subset",
-    "text": "Subset\n\nra[i, j] will automatically alter lon, lat and bbox. If both of i and j are integer, value of ra.A[i, j] will be retrieved.\nra[i, j, k] will additionally alter bands, and time\n\n\nra[1, 1]\nra[1:10, 1:10]\n\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (10, 10, 10) | 0.01 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-10, ntime=10\n  bands    : nothing\n  nodata   : nothing\n\n\n\n\nra[1:10, 1:10, 1:2]\n\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (10, 10, 2) | 0.0 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-02, ntime=2\n  bands    : nothing\n  nodata   : nothing\n\n\n\n\nra[1:10, 1:10, 1:1]\n\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (10, 10, 1) | 0.0 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-01, ntime=1\n  bands    : nothing\n  nodata   : nothing\n\n\n\n\nra[1:10, 1:10, 1]\n\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (10, 10) | 0.0 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-01, ntime=1\n  bands    : nothing\n  nodata   : nothing",
+    "text": "Subset\n\nra[i, j] will automatically alter lon, lat and bbox. If both of i and j are integer, value of ra.A[i, j] will be retrieved.\nra[i, j, k] will additionally alter bands, and time\n\nra[1, 1]\nra[1:10, 1:10]\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (10, 10, 10) | 0.01 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-10, ntime=10\n  bands    : nothing\n  nodata   : nothing\n\nra[1:10, 1:10, 1:2]\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (10, 10, 2) | 0.0 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-02, ntime=2\n  bands    : nothing\n  nodata   : nothing\n\nra[1:10, 1:10, 1:1]\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (10, 10, 1) | 0.0 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-01, ntime=1\n  bands    : nothing\n  nodata   : nothing\n\nra[1:10, 1:10, 1]\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (10, 10) | 0.0 Mb\n  b        : bbox(-180.0, 70.0, -160.0, 90.0)\n  cellsize : (2.0, 2.0)\n  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0\n  time     : 2010-01-01 ~ 2010-01-01, ntime=1\n  bands    : nothing\n  nodata   : nothing",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>SpatRaster</span>"
     ]
@@ -124,7 +124,7 @@
     "href": "api/index.html#spatraster",
     "title": "Reference",
     "section": "SpatRaster",
-    "text": "SpatRaster\n\n\n\n\n\n\nSpatRaster(A, b::bbox; reverse_lat=true, kw...)\n\nkw: other parameters: time, name",
+    "text": "SpatRaster\n\n\n\n\n\n\n\nA::AbstractArray\nb::bbox\ncellsize::Tuple{Real, Real}\nlon::AbstractVector{&lt;:Real}\nlat::AbstractVector{&lt;:Real}\ntime::Union{Nothing, AbstractVector}\nbands::Union{Nothing, AbstractVector{String}}\nname::String\nnodata::Union{Nothing, AbstractVector{T}} where T\n\nSpatRaster(A, b::bbox; reverse_lat=true, kw...)\n\nkw: other parameters: time, name",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -134,7 +134,7 @@
     "href": "api/index.html#spatrasters",
     "title": "Reference",
     "section": "SpatRasters",
-    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, FillDEM_FlowDirection, InGrid, NextCell, SpatRaster, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, earth_dist, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, merge_var, merge_var!, nband, nlayer, nlyr, ogr_info, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, st_bbox, st_cellsize, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong",
+    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, FillDEM_FlowDirection, InGrid, NextCell, SpatRaster, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, earth_dist, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, merge_var, merge_var!, nband, nlayer, nlyr, ogr_info, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, st_bbox, st_cellsize, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -414,7 +414,7 @@
     "href": "api/index.html#nband",
     "title": "Reference",
     "section": "nband",
-    "text": "nband\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.nband is a Function.\n# 1 method for generic function \"nband\" from SpatRasters:\n [1] nband(ra::SpatRaster{T, N}) where {T, N}\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:18",
+    "text": "nband\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.nband is a Function.\n# 1 method for generic function \"nband\" from SpatRasters:\n [1] nband(ra::SpatRaster{T, N}) where {T, N}\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:21",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -434,7 +434,7 @@
     "href": "api/index.html#nlyr",
     "title": "Reference",
     "section": "nlyr",
-    "text": "nlyr\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.nband is a Function.\n# 1 method for generic function \"nband\" from SpatRasters:\n [1] nband(ra::SpatRaster{T, N}) where {T, N}\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:18",
+    "text": "nlyr\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.nband is a Function.\n# 1 method for generic function \"nband\" from SpatRasters:\n [1] nband(ra::SpatRaster{T, N}) where {T, N}\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:21",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reference</span>"
     ]
