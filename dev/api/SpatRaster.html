@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/index.html" rel="prev">
+<link href="../api/index.html" rel="next">
+<link href="../index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -171,8 +207,10 @@ window.onload = function () {
 
 <link rel="stylesheet" href="../_static/style.css">
 <meta property="og:title" content="SpatRaster – SpatRasters">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="SpatRasters">
 <meta name="twitter:title" content="SpatRaster – SpatRasters">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -402,12 +440,12 @@ window.onload = function () {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Reference</span></a>
+  <a href="../api/SpatRaster.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">SpatRaster</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/SpatRaster.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">SpatRaster</span></a>
+  <a href="../api/index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Reference</span></a>
   </div>
 </li>
     </ul>
@@ -415,8 +453,16 @@ window.onload = function () {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#construction" id="toc-construction" class="nav-link active" data-scroll-target="#construction">Construction</a></li>
+  <li><a href="#subset" id="toc-subset" class="nav-link" data-scroll-target="#subset">Subset</a></li>
+  <li><a href="#crop" id="toc-crop" class="nav-link" data-scroll-target="#crop">crop</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -441,34 +487,109 @@ window.onload = function () {
 </header>
 
 
-<div id="c02a3106" class="cell" data-execution_count="1">
+<div id="eaeb0be7" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatRasters</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Dates</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> <span class="fu">Date</span>(<span class="fl">2010</span>, <span class="fl">1</span>, <span class="fl">1</span>)<span class="op">:</span><span class="fu">Day</span>(<span class="fl">1</span>)<span class="op">:</span><span class="fu">Date</span>(<span class="fl">2010</span>, <span class="fl">1</span>, <span class="fl">10</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ntime <span class="op">=</span> <span class="fu">length</span>(dates)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ra <span class="op">=</span> <span class="fu">rast</span>(<span class="fu">rand</span>(<span class="fl">180</span>, <span class="fl">90</span>, ntime); time<span class="op">=</span>dates)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ra</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>2</code></pre>
-</div>
-</div>
-<div id="af1a40c8" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-stdout">
-<pre><code>Matrix{Float64}</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="3">
 <div class="ansi-escaped-output">
 <pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
-  A        :   b        : bbox(-180.0, -90.0, 180.0, 90.0)
+  A        : Array{Float64, 3} | (180, 90, 10) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">1.24 Mb</span>
+  b        : bbox(-180.0, -90.0, 180.0, 90.0)
   cellsize : (2.0, 2.0)
   lon, lat : -179.0:2.0:179.0, 89.0:-2.0:-89.0
+  time     : 2010-01-01 ~ 2010-01-10, ntime=10
   bands    : nothing
   nodata   : nothing</pre>
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
+</div>
+<section id="construction" class="level2">
+<h2 class="anchored" data-anchor-id="construction">Construction</h2>
+<ul>
+<li>A : <code>AbstractArray</code></li>
+<li>b : <code>bbox</code>, default is the global scale, <code>bbox(-180.0, -90.0, 180.0, 90.0)</code></li>
+</ul>
+</section>
+<section id="subset" class="level2">
+<h2 class="anchored" data-anchor-id="subset">Subset</h2>
+<ul>
+<li><p><code>ra[i, j]</code> will automatically alter <code>lon</code>, <code>lat</code> and <code>bbox</code>. If both of <code>i</code> and <code>j</code> are integer, value of ra.A[i, j] will be retrieved.</p></li>
+<li><p><code>ra[i, j, k]</code> will additionally alter <code>bands</code>, and <code>time</code></p></li>
+</ul>
+<div id="f05d213f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span>, <span class="fl">1</span>]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div class="ansi-escaped-output">
-<pre> | (180, 90) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.12 Mb</span>
-</pre>
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Array{Float64, 3} | (10, 10, 10) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.01 Mb</span>
+  b        : bbox(-180.0, 70.0, -160.0, 90.0)
+  cellsize : (2.0, 2.0)
+  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0
+  time     : 2010-01-01 ~ 2010-01-10, ntime=10
+  bands    : nothing
+  nodata   : nothing</pre>
 </div>
 </div>
 </div>
+<div id="3efc956e" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Array{Float64, 3} | (10, 10, 2) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.0 Mb</span>
+  b        : bbox(-180.0, 70.0, -160.0, 90.0)
+  cellsize : (2.0, 2.0)
+  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0
+  time     : 2010-01-01 ~ 2010-01-02, ntime=2
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+</div>
+</div>
+<div id="4185afb8" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Array{Float64, 3} | (10, 10, 1) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.0 Mb</span>
+  b        : bbox(-180.0, 70.0, -160.0, 90.0)
+  cellsize : (2.0, 2.0)
+  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0
+  time     : 2010-01-01 ~ 2010-01-01, ntime=1
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+</div>
+</div>
+<div id="4ee389d6" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ra[<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Matrix{Float64} | (10, 10) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.0 Mb</span>
+  b        : bbox(-180.0, 70.0, -160.0, 90.0)
+  cellsize : (2.0, 2.0)
+  lon, lat : -179.0:2.0:-161.0, 89.0:-2.0:71.0
+  time     : 2010-01-01 ~ 2010-01-01, ntime=1
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="crop" class="level2">
+<h2 class="anchored" data-anchor-id="crop">crop</h2>
+<p>截取部分范围</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -885,11 +1006,14 @@ window.onload = function () {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/index.html" class="pagination-link" aria-label="Reference">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Reference</span></span>
+      <a href="../index.html" class="pagination-link" aria-label="Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Overview</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../api/index.html" class="pagination-link" aria-label="Reference">
+        <span class="nav-page-text"><span class="chapter-title">Reference</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -897,4 +1021,4 @@ window.onload = function () {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
