@@ -1,11 +1,10 @@
-export FillDEM_FlowDirection, D8Direction
+export D8Direction
+# export FillDEM_FlowDirection
 
-# https://juliacollections.github.io/DataStructures.jl/v0.12/priority-queue.html
-import DataStructures: PriorityQueue, dequeue!
 using ProgressMeter
 
 include("D8Direction.jl")
-include("FlowDirection.jl")
+# include("FlowDirection.jl")
 
 
 ## Note: 

@@ -16,3 +16,8 @@ packages, which makes `SpatRasters.jl` more lightweight than `GeoArrays` and
 
 `SpatRasters.jl` used the class and function of R language `terra` and `sf`
 packages.
+
+```bash
+julia -e "@time using SpatRasters"
+# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)
+```

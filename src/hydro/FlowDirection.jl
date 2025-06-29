@@ -1,5 +1,9 @@
+# https://juliacollections.github.io/DataStructures.jl/v0.12/priority-queue.html
+import DataStructures: PriorityQueue, dequeue!
+
+
 """
-  fillDEMAndComputeFlowDirection(dem::AbstractMatrix)
+  FillDEM_FlowDirection(dem::AbstractMatrix)
 
 #! dem was modified!
 
