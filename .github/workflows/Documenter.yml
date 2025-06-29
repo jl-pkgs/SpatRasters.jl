@@ -24,7 +24,7 @@ name: Documentation
 on:
   push:
     branches:
-      - main
+      - [master, main]
     tags: "*"
   workflow_dispatch:
 

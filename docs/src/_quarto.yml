@@ -11,7 +11,7 @@ book:
     chapters:
         - index.md
         - api/index.qmd 
-        - api/SpatRasters.qmd
+        - api/SpatRaster.qmd
 
     navbar: 
         background: primary

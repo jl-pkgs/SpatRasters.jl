@@ -16,7 +16,7 @@ export bbox, in_bbox, bbox_overlap
 export bbox2lims,
   bbox2cellsize,
   bbox2range, bbox2vec,
-  bbox2dims, bbox2ndimn
+  bbox2dims, bbox2ndim
 export range2bbox
 export st_points
 export st_bbox, st_dims, st_cellsize, st_mosaic
