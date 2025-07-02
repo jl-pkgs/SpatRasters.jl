@@ -504,6 +504,7 @@ window.onload = function () {
   <li><a href="#guanshan_flowdir_cpp" id="toc-guanshan_flowdir_cpp" class="nav-link" data-scroll-target="#guanshan_flowdir_cpp"><code>guanshan_flowdir_cpp</code></a></li>
   <li><a href="#guanshan_flowdir_gis" id="toc-guanshan_flowdir_gis" class="nav-link" data-scroll-target="#guanshan_flowdir_gis"><code>guanshan_flowdir_gis</code></a></li>
   <li><a href="#in_bbox" id="toc-in_bbox" class="nav-link" data-scroll-target="#in_bbox"><code>in_bbox</code></a></li>
+  <li><a href="#isscalar" id="toc-isscalar" class="nav-link" data-scroll-target="#isscalar"><code>isscalar</code></a></li>
   <li><a href="#merge_var" id="toc-merge_var" class="nav-link" data-scroll-target="#merge_var"><code>merge_var</code></a></li>
   <li><a href="#merge_var-1" id="toc-merge_var-1" class="nav-link" data-scroll-target="#merge_var-1"><code>merge_var!</code></a></li>
   <li><a href="#nband" id="toc-nband" class="nav-link" data-scroll-target="#nband"><code>nband</code></a></li>
@@ -696,7 +697,7 @@ window.onload = function () {
 <p>No docstring found for public module <code>SpatRasters</code>.</p>
 <section id="public-names" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="public-names">Public names</h3>
-<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>earth_dist</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
+<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>earth_dist</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>isscalar</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
 </section>
 <section id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md">Displaying contents of readme found at <code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md</code></h3>
@@ -1177,6 +1178,26 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 </div>
 <div style="page-break-after: always;"></div>
 </section>
+<section id="isscalar" class="level2">
+<h2 class="anchored" data-anchor-id="isscalar"><code>isscalar</code></h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>No documentation found for public symbol.</p>
+<p><code>SpatRasters.isscalar</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "isscalar" from SpatRasters:
+ [1] isscalar(::Nothing)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:4
+ [2] isscalar(x)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:3</code></pre>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
 <section id="merge_var" class="level2">
 <h2 class="anchored" data-anchor-id="merge_var"><code>merge_var</code></h2>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -1197,7 +1218,7 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 </section>
 <section id="examples" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples">Examples</h3>
-<div class="sourceCode" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -1614,7 +1635,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p>return the overlaping indexes <code>inds</code>, and corresponding (i,j)</p>
 <section id="examples-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples-1">Examples</h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
