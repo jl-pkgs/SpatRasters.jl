@@ -4,6 +4,7 @@
   b = bbox(-180.0, -60.0, 180.0, 90.0)
   A = rand(360, 150)
   r = rast(A, b; nodata=[1.0])
+  r = rast(A, b; nodata=1.0)
 
   f = "test.tif"
   write_gdal(r, f)

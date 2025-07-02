@@ -31,14 +31,18 @@ end
 - `kw`: other parameters: `time`, `name`
 """
 function SpatRaster(A::AbstractArray{T,N}, b::bbox=bbox(-180.0, -90.0, 180.0, 90.0);
-  reverse_lat=true, time=nothing, bands=nothing, name="Raster", kw...) where {T,N}
+  reverse_lat=true, time=nothing, bands=nothing, name="Raster", nodata=nothing, kw...) where {T,N}
 
+  nlyr = N >= 3 ? size(A)[end] : 1
   if N == 3 && size(A, 3) == 1
     A = A[:, :, 1]
   end
+
+  isscalar(nodata) && (nodata = fill(nodata, nlyr))
+
   cellsize = bbox2cellsize(b, size(A))
   lon, lat = bbox2dims(b; cellsize, reverse_lat)
-  SpatRaster(; A, b, cellsize, lon, lat, time, bands, name, kw...)
+  SpatRaster(; A, b, cellsize, lon, lat, time, bands, name, nodata, kw...)
 end
 
 function SpatRaster(A::AbstractArray, r::SpatRaster; reverse_lat=true)

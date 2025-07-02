@@ -1,3 +1,9 @@
+export isscalar
+
+isscalar(x) = !isa(x, AbstractArray)
+isscalar(::Nothing) = false
+
+
 file_ext(file::String) = file[findlast(==('.'), file):end]
 
 
