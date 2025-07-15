@@ -26,7 +26,7 @@ end
 
 function find_neighbor(ra::SpatRaster, points_source; nmax::Int=20, radius::Real=200)
   X = collect(points_source')
-  tree = BallTree(X, Haversine(6371.0); reorder=false)
+  tree = BallTree(X, Haversine(6371.0); reorder=true)
 
   lon, lat = st_dims(ra)
   nlon, nlat = length(lon), length(lat)
@@ -37,7 +37,9 @@ function find_neighbor(ra::SpatRaster, points_source; nmax::Int=20, radius::Real
     p_target = [lon[i], lat[j]]
 
     _inds, _dists = knn(tree, p_target, nmax)
-    _I = _dists .<= radius
+    _I = sortperm(_dists)
+    _I = _I[_dists[_I].<=radius]
+
     _inds = @view _inds[_I]
     _dists = @view _dists[_I]
 
@@ -52,7 +54,7 @@ function find_neighbor(ra::SpatRaster, points_source; nmax::Int=20, radius::Real
 end
 
 
-function weight_idw!(neighbor::Neighbor{FT,N}; m=2) where {FT,N}
+function weight_idw!(neighbor::Neighbor{FT,N}; m::Int=2) where {FT,N}
   (; count, dist, weight, dims) = neighbor
   weight .= FT(0.0)
   nlon, nlat = dims[1:2]
@@ -66,3 +68,41 @@ function weight_idw!(neighbor::Neighbor{FT,N}; m=2) where {FT,N}
   end
 end
 
+
+"""
+"""
+function interp(x::AbstractMatrix, y::AbstractArray{FT}, target::SpatRaster;
+  nmax::Int=20, radius::Real=200, wfun::Function=weight_idw!, kw...) where {FT}
+
+  neighbor = find_neighbor(target, x; nmax, radius)
+  wfun(neighbor; kw...)
+
+  ntime = size(y, 2)
+  lon, lat = st_dims(target)
+  nlon, nlat = length(lon), length(lat)
+  R = zeros(FT, nlon, nlat, ntime)
+
+  (; count, index, weight) = neighbor
+  ∅ = FT(0)
+  for i in 1:nlon, j in 1:nlat
+    n_control = count[i, j]
+    inds = @view index[i, j, 1:n_control]
+    ws = @view weight[i, j, 1:n_control]
+
+    for k in 1:ntime
+      ∑ = FT(0)
+      ∑w = 0
+      for l in 1:n_control # control points
+        _i = inds[l]
+        yᵢ = y[_i, k]
+        notnan = yᵢ == yᵢ
+        ∑ += ifelse(notnan, yᵢ * ws[l], ∅)
+        ∑w += ifelse(notnan, ws[l], ∅)
+      end
+      R[i, j, k] = ∑ / ∑w
+    end
+  end
+  rast(R, target)
+end
+
+export interp
