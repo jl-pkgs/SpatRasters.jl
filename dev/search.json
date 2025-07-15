@@ -174,7 +174,7 @@
     "href": "api/z-index.html#spatrasters",
     "title": "Reference",
     "section": "SpatRasters",
-    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, InGrid, NextCell, SpatRaster, ThinPlateSpline, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, earth_dist, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, isscalar, merge_var, merge_var!, nband, nlayer, nlyr, ogr_info, predict, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, solve_tps, st_bbox, st_cellsize, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)",
+    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, InGrid, NextCell, SpatRaster, ThinPlateSpline, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, distance_earth, distance_norm, earth_dist, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, interp_tps, isscalar, make_rast, merge_var, merge_var!, meshgrid, nband, nlayer, nlyr, ogr_info, predict, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, solve_tps, st_bbox, st_cellsize, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, tps_kernel, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -295,6 +295,26 @@
     "title": "Reference",
     "section": "col_goto",
     "text": "col_goto\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.col_goto is a Function.\n# 1 method for generic function \"col_goto\" from SpatRasters:\n [1] col_goto(col::Int64, idir::Int64)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:104",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html#distance_earth",
+    "href": "api/z-index.html#distance_earth",
+    "title": "Reference",
+    "section": "distance_earth",
+    "text": "distance_earth\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.distance_earth is a Function.\n# 1 method for generic function \"distance_earth\" from SpatRasters:\n [1] distance_earth(p1::AbstractArray{FT}, p2::AbstractArray{FT}; R) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/distance.jl:13",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html#distance_norm",
+    "href": "api/z-index.html#distance_norm",
+    "title": "Reference",
+    "section": "distance_norm",
+    "text": "distance_norm\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.distance_norm is a Function.\n# 1 method for generic function \"distance_norm\" from SpatRasters:\n [1] distance_norm(p1::AbstractArray{FT}, p2::AbstractArray{FT}; kw...) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/distance.jl:4",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -440,11 +460,31 @@
     ]
   },
   {
+    "objectID": "api/z-index.html#interp_tps",
+    "href": "api/z-index.html#interp_tps",
+    "title": "Reference",
+    "section": "interp_tps",
+    "text": "interp_tps\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.interp_tps is a Function.\n# 1 method for generic function \"interp_tps\" from SpatRasters:\n [1] interp_tps(x::AbstractMatrix, y::AbstractArray, target::SpatRaster; λ, distance, progress, kw...)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:155",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
     "objectID": "api/z-index.html#isscalar",
     "href": "api/z-index.html#isscalar",
     "title": "Reference",
     "section": "isscalar",
     "text": "isscalar\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.isscalar is a Function.\n# 2 methods for generic function \"isscalar\" from SpatRasters:\n [1] isscalar(::Nothing)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:4\n [2] isscalar(x)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:3",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html#make_rast",
+    "href": "api/z-index.html#make_rast",
+    "title": "Reference",
+    "section": "make_rast",
+    "text": "make_rast\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.make_rast is a Function.\n# 1 method for generic function \"make_rast\" from SpatRasters:\n [1] make_rast(; b, cellsize)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:67",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -465,6 +505,16 @@
     "title": "Reference",
     "section": "merge_var!",
     "text": "merge_var!\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.merge_var! is a Function.\n# 1 method for generic function \"merge_var!\" from SpatRasters:\n [1] merge_var!(R::AbstractArray, f; var, box, cellsize)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_mosaic.jl:35",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html#meshgrid",
+    "href": "api/z-index.html#meshgrid",
+    "title": "Reference",
+    "section": "meshgrid",
+    "text": "meshgrid\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.meshgrid is a Function.\n# 1 method for generic function \"meshgrid\" from SpatRasters:\n [1] meshgrid(x, y)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:7",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -514,7 +564,7 @@
     "href": "api/z-index.html#predict",
     "title": "Reference",
     "section": "predict",
-    "text": "predict\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.predict is a Function.\n# 1 method for generic function \"predict\" from SpatRasters:\n [1] predict(tps::ThinPlateSpline, x2::AbstractMatrix{FT}; distance) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:98",
+    "text": "predict\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.predict is a Function.\n# 1 method for generic function \"predict\" from SpatRasters:\n [1] predict(tps::ThinPlateSpline, x2::AbstractMatrix{FT}; distance, progress) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:119",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -604,7 +654,7 @@
     "href": "api/z-index.html#solve_tps",
     "title": "Reference",
     "section": "solve_tps",
-    "text": "solve_tps\n\n\n\n\n\n\ntps_solve(x,y,λ,compute_affine=true)\nfind solution of tps transformation (required for some operations but takes additional time.)\n\nArguments\n`x`: control points, n\n`y`: deformed (warped) control points\n`λ`: stiffness coefficient\n`compute_affine`: computes affine component if `true`\nreturns a ThinPlateSpline structure which can be supplied as an argument to tps_deform.\n\n\nSee almost\n`ThinPlateSpline`",
+    "text": "solve_tps\n\n\n\n\n\n\nsolve_tps(x,y,λ,compute_affine=true)\nfind solution of tps transformation (required for some operations but takes additional time.)\n\nArguments\n`x`: control points, n\n`y`: deformed (warped) control points\n`λ`: stiffness coefficient\nreturns a ThinPlateSpline structure which can be supplied as an argument to tps_deform.\n\n\nReferences\n\nGhosh A, Kindermann D D S. Efficient thin plate spline interpolation and its application to adaptive optics[M]. na, 2010.\n\n\n\nSee almost\n`ThinPlateSpline`",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -735,6 +785,16 @@
     "title": "Reference",
     "section": "tau2gis",
     "text": "tau2gis\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.tau2gis is a Function.\n# 1 method for generic function \"tau2gis\" from SpatRasters:\n [1] tau2gis(A::AbstractArray)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:67",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html#tps_kernel",
+    "href": "api/z-index.html#tps_kernel",
+    "title": "Reference",
+    "section": "tps_kernel",
+    "text": "tps_kernel\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.tps_kernel is a Function.\n# 2 methods for generic function \"tps_kernel\" from SpatRasters:\n [1] tps_kernel(x1::AbstractMatrix{FT}, x2::AbstractMatrix{FT}; distance) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:62\n [2] tps_kernel(x::AbstractMatrix{FT}; distance) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:44",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
