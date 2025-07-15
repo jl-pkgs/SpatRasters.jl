@@ -5,8 +5,10 @@ version = "0.1.1"
 
 [deps]
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
+Distances = "b4f34e82-e78d-54a5-968a-f98e89d6e8f7"
 DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+NearestNeighbors = "b8a86587-4115-5ab1-83bc-aa920d37bbce"
 Parameters = "d96e819e-fc66-5662-9728-84c9c7592b0a"
 ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
 Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
@@ -20,8 +22,10 @@ SpatRastersArchGDALExt = "ArchGDAL"
 
 [compat]
 DataStructures = "0.18.22"
+Distances = "0.10.12"
 DocStringExtensions = "0.9.5"
 LinearAlgebra = "1.11.0"
+NearestNeighbors = "0.4.22"
 Parameters = "0.12.3"
 ProgressMeter = "1.10.4"
 Statistics = "1.11.1"
@@ -30,8 +34,8 @@ julia = "1.11"
 [extras]
 ArchGDAL = "c9ce4bd3-c3d5-55b8-8973-c0e20141b8c3"
 GeoDataFrames = "62cb38b5-d8d2-4862-a48e-6a340996859f"
-Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 RTableTools = "76227a05-389e-44bd-84ad-996dde4b1834"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]

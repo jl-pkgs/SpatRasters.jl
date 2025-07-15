@@ -70,6 +70,14 @@ include("hydro/Hydro.jl")
 
 include("Interp/Interp.jl")
 
+export st_coords
+
+function st_coords(ra::SpatRaster)
+  lon, lat = st_dims(ra)
+  Lon, Lat = meshgrid(lon, lat)
+  [Lon[:] Lat[:]]
+end
+
 function st_points(x::AbstractVector, y::AbstractVector)
   [(x[i], y[i]) for i in eachindex(x)]
 end
