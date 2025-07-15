@@ -509,6 +509,7 @@ window.onload = function () {
   <li><a href="#guanshan_flowdir_cpp" id="toc-guanshan_flowdir_cpp" class="nav-link" data-scroll-target="#guanshan_flowdir_cpp"><code>guanshan_flowdir_cpp</code></a></li>
   <li><a href="#guanshan_flowdir_gis" id="toc-guanshan_flowdir_gis" class="nav-link" data-scroll-target="#guanshan_flowdir_gis"><code>guanshan_flowdir_gis</code></a></li>
   <li><a href="#in_bbox" id="toc-in_bbox" class="nav-link" data-scroll-target="#in_bbox"><code>in_bbox</code></a></li>
+  <li><a href="#interp" id="toc-interp" class="nav-link" data-scroll-target="#interp"><code>interp</code></a></li>
   <li><a href="#interp_tps" id="toc-interp_tps" class="nav-link" data-scroll-target="#interp_tps"><code>interp_tps</code></a></li>
   <li><a href="#isscalar" id="toc-isscalar" class="nav-link" data-scroll-target="#isscalar"><code>isscalar</code></a></li>
   <li><a href="#make_rast" id="toc-make_rast" class="nav-link" data-scroll-target="#make_rast"><code>make_rast</code></a></li>
@@ -738,7 +739,7 @@ weight :: AbstractArray{FT, N}</code></pre>
 <p>No docstring found for public module <code>SpatRasters</code>.</p>
 <section id="public-names" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="public-names">Public names</h3>
-<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>ThinPlateSpline</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp_tps</code>, <code>isscalar</code>, <code>make_rast</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>tps_kernel</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
+<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>ThinPlateSpline</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp</code>, <code>interp_tps</code>, <code>isscalar</code>, <code>make_rast</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>tps_kernel</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
 </section>
 <section id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md">Displaying contents of readme found at <code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md</code></h3>
@@ -1289,6 +1290,20 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <div class="callout-body-container">
 <pre><code>in_bbox(b::bbox, (lon, lat))  
 in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="interp" class="level2">
+<h2 class="anchored" data-anchor-id="interp"><code>interp</code></h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+
 </div>
 </div>
 </div>
@@ -2006,7 +2021,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.weight_idw!</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "weight_idw!" from SpatRasters:
  [1] weight_idw!(neighbor::Neighbor{FT, N}; m) where {FT, N}
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/find_neighbor.jl:55</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/find_neighbor.jl:57</code></pre>
 </div>
 </div>
 </div>
