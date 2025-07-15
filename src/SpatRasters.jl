@@ -3,7 +3,7 @@ module SpatRasters
 using DocStringExtensions
 using ProgressMeter
 using Statistics: median
-
+using Parameters
 
 ## add test data
 const dir_data = "$(@__DIR__)/../data" |> abspath
@@ -67,6 +67,8 @@ include("st_crop.jl")
 
 include("distance.jl")
 include("hydro/Hydro.jl")
+
+include("Interp/Interp.jl")
 
 function st_points(x::AbstractVector, y::AbstractVector)
   [(x[i], y[i]) for i in eachindex(x)]

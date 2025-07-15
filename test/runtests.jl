@@ -12,6 +12,7 @@ include("test-st_extract.jl")
 include("test-st_mosaic.jl")
 include("test-write_gdal.jl")
 
+include("Interp/test-tps.jl")
 # println(dirname(@__FILE__))
 # println(pwd())
 # cd(dirname(@__FILE__)) do
