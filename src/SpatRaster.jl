@@ -64,6 +64,13 @@ function SpatRaster(f::String; kw...)
 end
 
 
+function make_rast(; b::bbox=bbox(70, 15, 140, 55), cellsize=0.5)
+  lon, lat = bbox2dims(b; cellsize)
+  nlon, nlat = length(lon), length(lat)
+  rast(zeros(nlon, nlat), b)
+end
+
+
 function Base.getindex(ra::AbstractSpatRaster, i, j, args...; deep=true)
   (; A, cellsize, lon, lat, time, bands, name, nodata) = ra
 
@@ -154,3 +161,4 @@ end
 rast = SpatRaster
 
 export AbstractSpatRaster, SpatRaster, rast
+export make_rast

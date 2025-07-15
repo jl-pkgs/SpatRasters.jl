@@ -1,7 +1,14 @@
-export isscalar
+export isscalar, meshgrid
 
 isscalar(x) = !isa(x, AbstractArray)
 isscalar(::Nothing) = false
+
+
+function meshgrid(x, y)
+  X = repeat(x, 1, length(y))
+  Y = repeat(y', length(x), 1)
+  X, Y
+end
 
 
 file_ext(file::String) = file[findlast(==('.'), file):end]

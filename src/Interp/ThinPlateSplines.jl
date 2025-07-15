@@ -1,6 +1,6 @@
 using LinearAlgebra
 using Base.Threads
-export ThinPlateSpline, solve_tps, predict
+export ThinPlateSpline, solve_tps, interp_tps, tps_kernel, predict
 
 
 """
@@ -17,13 +17,13 @@ the type (structure) holding the deformation information. This is needed to appl
 `d::M`  # Affine component
 `c::M`  # Non-affine component
 """
-@with_kw struct ThinPlateSpline{Λ,TX<:AbstractMatrix,M,Q}
-  λ::Λ  # scalar, Stiffness
+@with_kw struct ThinPlateSpline{TX<:AbstractMatrix,Ty,TΦ}
+  λ::Real  # scalar, Stiffness
   x::TX # [n, nd], control points
-  y::M  # [n, ntime], Homogeneous control point coordinates
-  Φ::Q  # [n, n], TPS kernel
-  d::M  # [1+nd, ntime], Affine component
-  c::M  # [n, ntime], Non-affine component
+  y::Ty  # [n, ntime], Homogeneous control point coordinates
+  Φ::TΦ  # [n, n], TPS kernel
+  d::Ty  # [1+nd, ntime], Affine component
+  c::Ty  # [n, ntime], Non-affine component
 end
 
 # Thin-plate splines.
@@ -32,11 +32,13 @@ end
 # tps_basis is applied to the result of a norm which is either positive or zero
 # using ifelse is faster than the (? x:y) notation
 """
+    Radial Basis Function (径向基函数)
+
 U(r) = r^2 log(r)
 """
-U(r::T) where {T} = ifelse(r < eps(r), zero(T), r * r * log(r))
-
-# _norm(a) = sqrt(sum(a .^ 2))
+function rbf_tps(r::T; eps=1e-6)::T where {T}
+  @fastmath r < eps ? T(0) : r * r * log(r)
+end
 
 # x: matrix of size KxD
 function tps_kernel(x::AbstractMatrix{FT}; distance=distance_norm) where {FT}
@@ -48,7 +50,7 @@ function tps_kernel(x::AbstractMatrix{FT}; distance=distance_norm) where {FT}
     for j in i+1:n
       p2 = @view x[j, :]
       r = distance(p1, p2)
-      Φ[i, j] = U(r)
+      Φ[i, j] = rbf_tps(r)
     end
   end
   @inbounds for i in 1:n, j in 1:i-1  # 下三角
@@ -57,21 +59,40 @@ function tps_kernel(x::AbstractMatrix{FT}; distance=distance_norm) where {FT}
   Φ
 end
 
+function tps_kernel(x1::AbstractMatrix{FT}, x2::AbstractMatrix{FT}; distance=distance_norm) where {FT}
+  n_control = size(x1, 1)
+  n_points = size(x2, 1)
+  Φ = zeros(FT, n_points, n_control)
+
+  @inbounds for i in 1:n_points
+    p1 = @view x1[i, :]
+    for j in 1:n_control
+      p2 = @view x2[j, :]
+      r = distance(p1, p2)
+      Φ[i, j] = rbf_tps(r)
+    end
+  end
+  Φ
+end
+
 """
-	tps_solve(x,y,λ,compute_affine=true)
+	solve_tps(x,y,λ,compute_affine=true)
 
 find solution of tps transformation 
 (required for some operations but takes additional time.)
 
-# Arguments
+## Arguments
 	`x`: control points, n
 	`y`: deformed (warped) control points
 	`λ`: stiffness coefficient
-	`compute_affine`: computes affine component if `true`
 
 returns a `ThinPlateSpline` structure which can be supplied as an argument to `tps_deform`.
 
-# See almost
+## References
+1. Ghosh A, Kindermann D D S. Efficient thin plate spline interpolation and its
+   application to adaptive optics[M]. na, 2010.
+
+## See almost
 	`ThinPlateSpline`
 """
 function solve_tps(x::AbstractMatrix, y::AbstractArray, λ::Real; distance::Function=distance_norm)
@@ -96,7 +117,7 @@ end
 
 
 function predict(tps::ThinPlateSpline, x2::AbstractMatrix{FT};
-  distance::Function=distance_norm) where {FT}
+  distance::Function=distance_norm, progress=true) where {FT}
   (; d, c) = tps
   x1 = tps.x
 
@@ -106,22 +127,40 @@ function predict(tps::ThinPlateSpline, x2::AbstractMatrix{FT};
   ntime = size(tps.y, 2)   # 输出维度
 
   R = zeros(FT, n_points, ntime) # 输出初始化
+  U = tps_kernel(x1, x2; distance) # [n_points, n_control]
 
-  @inbounds for j in 1:ntime
-    @threads for i in 1:n_points
+  p = Progress(ntime)
+  for j in 1:ntime
+    progress && next!(p)
+
+    for i in 1:n_points
       z = d[1, j] # 常数项
       for l in 1:nx
         z += d[l+1, j] * x2[i, l]
       end
 
       for ctrl in 1:n_control
-        _x1 = @view x1[ctrl, :]
-        _x2 = @view x2[i, :]
-        r = distance(_x1, _x2)
-        z += U(r) * c[ctrl, j]
+        # _x1 = @view x1[ctrl, :]
+        # _x2 = @view x2[i, :]
+        # r = distance(_x1, _x2) # 可以提前算好mat_U
+        z += U[i, ctrl] * c[ctrl, j]
       end
       R[i, j] = z
     end
   end
   return R
+end
+
+
+function interp_tps(x::AbstractMatrix, y::AbstractArray, target::SpatRaster;
+  λ=0.01, distance::Function=distance_norm, progress=true, kw...)
+
+  ntime = size(y, 2)
+  tps = solve_tps(x, y, λ)
+  lon, lat = st_dims(target)
+  Lon, Lat = meshgrid(lon, lat)
+  x2 = [Lon[:] Lat[:]]
+  nlon, nlat, _ = size(target)
+  R = predict(tps, x2; distance, progress, kw...)
+  rast(reshape(R, nlon, nlat, ntime), target)
 end
