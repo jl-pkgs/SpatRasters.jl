@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/z-index.html" rel="next">
+<link href="../api/5-Interp.html" rel="next">
 <link href="../api/3-IO.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -207,8 +207,10 @@ window.onload = function () {
 
 <link rel="stylesheet" href="../_static/style.css">
 <meta property="og:title" content="4. Operation – SpatRasters">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="SpatRasters">
 <meta name="twitter:title" content="4. Operation – SpatRasters">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -458,6 +460,11 @@ window.onload = function () {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../api/5-Interp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. Spatial Interpolations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../api/z-index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Reference</span></a>
   </div>
 </li>
@@ -466,8 +473,15 @@ window.onload = function () {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#st_location" id="toc-st_location" class="nav-link active" data-scroll-target="#st_location">st_location</a></li>
+  <li><a href="#st_extrac" id="toc-st_extrac" class="nav-link" data-scroll-target="#st_extrac">st_extrac</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -492,11 +506,34 @@ window.onload = function () {
 </header>
 
 
-<div id="ea3e4d90" class="cell" data-execution_count="1">
+<div id="4eb80262" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatRasters</span>, <span class="bu">ArchGDAL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="st_location" class="level2">
+<h2 class="anchored" data-anchor-id="st_location">st_location</h2>
+<p>默认采用<code>st_location</code>，point压网格边界时，有待商榷如何取值。</p>
+<ul>
+<li><p><code>st_location_exact</code>:</p>
+<p>采用findnear去判断point落在哪个网格中，</p>
+<ol type="1">
+<li>首先判断x落在哪(i) 若距离最近的点，距离超过了<code>0.5cellsize</code>，则返回<code>-1</code></li>
+<li>其次判断y落在哪(j)</li>
+</ol></li>
+<li><p><code>st_location_fast</code>: 直接计算出ij</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> (x <span class="op">-</span> b.xmin) <span class="op">/</span> cellx</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>j <span class="op">=</span> j <span class="op">=</span> (b.ymax <span class="op">-</span> y) <span class="op">/</span> <span class="fu">abs</span>(celly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="st_extrac" class="level2">
+<h2 class="anchored" data-anchor-id="st_extrac">st_extrac</h2>
+<ul>
+<li><code>st_extract(ra::AbstractSpatRaster, points::Vector{Tuple{T,T}}; combine=hcat)</code></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> <span class="fu">st_points</span>(X[<span class="op">:</span>, <span class="fl">1</span>], X[<span class="op">:</span>, <span class="fl">2</span>])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_extract</span>(ra, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -918,8 +955,8 @@ window.onload = function () {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../api/z-index.html" class="pagination-link" aria-label="Reference">
-        <span class="nav-page-text"><span class="chapter-title">Reference</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../api/5-Interp.html" class="pagination-link" aria-label="5. Spatial Interpolations">
+        <span class="nav-page-text"><span class="chapter-title">5. Spatial Interpolations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -928,4 +965,4 @@ window.onload = function () {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

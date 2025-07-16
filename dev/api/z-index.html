@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/4-Operation.html" rel="prev">
+<link href="../api/5-Interp.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -459,6 +459,11 @@ window.onload = function () {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../api/5-Interp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. Spatial Interpolations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../api/z-index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Reference</span></a>
   </div>
 </li>
@@ -493,6 +498,7 @@ window.onload = function () {
   <li><a href="#bbox_overlap" id="toc-bbox_overlap" class="nav-link" data-scroll-target="#bbox_overlap"><code>bbox_overlap</code></a></li>
   <li><a href="#cellarea" id="toc-cellarea" class="nav-link" data-scroll-target="#cellarea"><code>cellArea</code></a></li>
   <li><a href="#col_goto" id="toc-col_goto" class="nav-link" data-scroll-target="#col_goto"><code>col_goto</code></a></li>
+  <li><a href="#cor" id="toc-cor" class="nav-link" data-scroll-target="#cor"><code>cor</code></a></li>
   <li><a href="#distance_earth" id="toc-distance_earth" class="nav-link" data-scroll-target="#distance_earth"><code>distance_earth</code></a></li>
   <li><a href="#distance_norm" id="toc-distance_norm" class="nav-link" data-scroll-target="#distance_norm"><code>distance_norm</code></a></li>
   <li><a href="#earth_dist" id="toc-earth_dist" class="nav-link" data-scroll-target="#earth_dist"><code>earth_dist</code></a></li>
@@ -514,6 +520,7 @@ window.onload = function () {
   <li><a href="#interp_tps" id="toc-interp_tps" class="nav-link" data-scroll-target="#interp_tps"><code>interp_tps</code></a></li>
   <li><a href="#isscalar" id="toc-isscalar" class="nav-link" data-scroll-target="#isscalar"><code>isscalar</code></a></li>
   <li><a href="#make_rast" id="toc-make_rast" class="nav-link" data-scroll-target="#make_rast"><code>make_rast</code></a></li>
+  <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median"><code>median</code></a></li>
   <li><a href="#merge_var" id="toc-merge_var" class="nav-link" data-scroll-target="#merge_var"><code>merge_var</code></a></li>
   <li><a href="#merge_var-1" id="toc-merge_var-1" class="nav-link" data-scroll-target="#merge_var-1"><code>merge_var!</code></a></li>
   <li><a href="#meshgrid" id="toc-meshgrid" class="nav-link" data-scroll-target="#meshgrid"><code>meshgrid</code></a></li>
@@ -741,7 +748,7 @@ weight :: AbstractArray{FT, N}</code></pre>
 <p>No docstring found for public module <code>SpatRasters</code>.</p>
 <section id="public-names" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="public-names">Public names</h3>
-<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>angle_azimuth</code>, <code>angle_azimuth_sphere</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp</code>, <code>interp_tps</code>, <code>isscalar</code>, <code>make_rast</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>tps_kernel</code>, <code>weight_adw!</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
+<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>angle_azimuth</code>, <code>angle_azimuth_sphere</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>cor</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp</code>, <code>interp_tps</code>, <code>isscalar</code>, <code>make_rast</code>, <code>median</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>tps_kernel</code>, <code>weight_adw!</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
 </section>
 <section id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md">Displaying contents of readme found at <code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md</code></h3>
@@ -978,7 +985,7 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <p><code>SpatRasters.cellArea</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "cellArea" from SpatRasters:
  [1] cellArea(x, y, cellsize)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:116</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:118</code></pre>
 </div>
 </div>
 </div>
@@ -997,6 +1004,44 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <pre><code># 1 method for generic function "col_goto" from SpatRasters:
  [1] col_goto(col::Int64, idir::Int64)
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:104</code></pre>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="cor" class="level2">
+<h2 class="anchored" data-anchor-id="cor"><code>cor</code></h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<pre><code>cor(x::AbstractVector)</code></pre>
+<p>Return the number one.</p>
+<pre><code>cor(X::AbstractMatrix; dims::Int=1)</code></pre>
+<p>Compute the Pearson correlation matrix of the matrix <code>X</code> along the dimension <code>dims</code>.</p>
+<pre><code>cor(x::AbstractVector, y::AbstractVector)</code></pre>
+<p>Compute the Pearson correlation between the vectors <code>x</code> and <code>y</code>.</p>
+<pre><code>cor(X::AbstractVecOrMat, Y::AbstractVecOrMat; dims=1)</code></pre>
+<p>Compute the Pearson correlation between the vectors or matrices <code>X</code> and <code>Y</code> along the dimension <code>dims</code>.</p>
+<pre><code>cor(X, w::AbstractWeights, dims=1)</code></pre>
+<p>Compute the Pearson correlation matrix of <code>X</code> along the dimension <code>dims</code> with a weighting <code>w</code> .</p>
+<pre><code>cor(ce::CovarianceEstimator, x::AbstractVector, y::AbstractVector)</code></pre>
+<p>Compute the correlation of the vectors <code>x</code> and <code>y</code> using estimator <code>ce</code>.</p>
+<pre><code>cor(ce::CovarianceEstimator, X::AbstractMatrix, [w::AbstractWeights];
+    mean=nothing, dims::Int=1)</code></pre>
+<p>Compute the correlation matrix of the matrix <code>X</code> along dimension <code>dims</code> using estimator <code>ce</code>. A weighting vector <code>w</code> can be specified. The keyword argument <code>mean</code> can be:</p>
+<ul>
+<li><p><code>nothing</code> (default) in which case the mean is estimated and subtracted from the data <code>X</code>,</p></li>
+<li><p>a precalculated mean in which case it is subtracted from the data <code>X</code>. Assuming <code>size(X)</code> is <code>(N,M)</code>, <code>mean</code> can either be:</p>
+<ul>
+<li>when <code>dims=1</code>, an <code>AbstractMatrix</code> of size <code>(1,M)</code>,</li>
+<li>when <code>dims=2</code>, an <code>AbstractVector</code> of length <code>N</code> or an <code>AbstractMatrix</code> of size <code>(N,1)</code>.</li>
+</ul></li>
+</ul>
+<pre><code>cor(d::MultivariateDistribution)</code></pre>
+<p>Computes the correlation matrix for distribution <code>d</code>.</p>
 </div>
 </div>
 </div>
@@ -1048,9 +1093,9 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <div class="callout-body-container">
 <pre><code>earth_dist(x1::Matrix, x2::Matrix; R=6378.388)
 earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1357,7 +1402,7 @@ interp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignor
 <p><code>SpatRasters.interp_tps</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "interp_tps" from SpatRasters:
  [1] interp_tps(X::AbstractMatrix, Y::AbstractArray, target::SpatRaster; λ, distance, progress, kw...)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:155</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:156</code></pre>
 </div>
 </div>
 </div>
@@ -1401,6 +1446,66 @@ interp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignor
 </div>
 <div style="page-break-after: always;"></div>
 </section>
+<section id="median" class="level2">
+<h2 class="anchored" data-anchor-id="median"><code>median</code></h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<pre><code>median(itr)</code></pre>
+<p>Compute the median of all elements in a collection. For an even number of elements no exact median element exists, so the result is equivalent to calculating mean of two median elements.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Note">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <code>itr</code> contains <code>NaN</code> or <a href="#missing"><code>missing</code></a> values, the result is also <code>NaN</code> or <code>missing</code> (<code>missing</code> takes precedence if <code>itr</code> contains both). Use the <a href="#skipmissing"><code>skipmissing</code></a> function to omit <code>missing</code> entries and compute the median of non-missing values.</p>
+</div>
+</div>
+<section id="examples" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="examples">Examples</h3>
+<pre class="jldoctest"><code>julia&gt; using Statistics
+
+julia&gt; median([1, 2, 3])
+2.0
+
+julia&gt; median([1, 2, 3, 4])
+2.5
+
+julia&gt; median([1, 2, missing, 4])
+missing
+
+julia&gt; median(skipmissing([1, 2, missing, 4]))
+2.0</code></pre>
+<pre><code>median(A::AbstractArray; dims)</code></pre>
+<p>Compute the median of an array along the given dimensions.</p>
+</section>
+<section id="examples-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="examples-1">Examples</h3>
+<pre class="jldoctest"><code>julia&gt; using Statistics
+
+julia&gt; median([1 2; 3 4], dims=1)
+1×2 Matrix{Float64}:
+ 2.0  3.0</code></pre>
+<pre><code>median(v::AbstractVector{&lt;:Real}, w::AbstractWeights)</code></pre>
+<p>Compute the weighted median of <code>v</code> with weights <code>w</code> (of type <code>AbstractWeights</code>). See the documentation for <a href="#quantile"><code>quantile</code></a> for more details.</p>
+<pre><code>median(d::UnivariateDistribution)</code></pre>
+<p>Return the median value of distribution <code>d</code>. The median is the smallest <code>x</code> in the support of <code>d</code> for which <code>cdf(d, x) ≥ 1/2</code>. Corresponding to this definition as 1/2-quantile, a fallback is provided calling the <code>quantile</code> function.</p>
+<pre><code>median(d::MvLogNormal)</code></pre>
+<p>Return the median vector of the lognormal distribution. which is strictly smaller than the mean.</p>
+</section>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
 <section id="merge_var" class="level2">
 <h2 class="anchored" data-anchor-id="merge_var"><code>merge_var</code></h2>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -1419,9 +1524,9 @@ interp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignor
 <li><code>var</code>: variable to merge</li>
 </ul>
 </section>
-<section id="examples" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="examples">Examples</h3>
-<div class="sourceCode" id="cb50"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="examples-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="examples-2">Examples</h3>
+<div class="sourceCode" id="cb65"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -1544,7 +1649,7 @@ interp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignor
 <p><code>SpatRasters.predict</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "predict" from SpatRasters:
  [1] predict(tps::SpatRasters.ThinPlateSpline, x2::AbstractMatrix{FT}; distance, progress) where FT
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:119</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:120</code></pre>
 </div>
 </div>
 </div>
@@ -1670,7 +1775,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.rm_shp</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "rm_shp" from SpatRasters:
  [1] rm_shp(f)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:93</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:95</code></pre>
 </div>
 </div>
 </div>
@@ -1810,7 +1915,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.st_coords</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "st_coords" from SpatRasters:
  [1] st_coords(ra::SpatRaster)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:75</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:77</code></pre>
 </div>
 </div>
 </div>
@@ -1922,9 +2027,9 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <div class="callout-body-container">
 <pre><code>st_location(r::Raster, points::Vector{Tuple{T,T}})</code></pre>
 <p>return the overlaping indexes <code>inds</code>, and corresponding (i,j)</p>
-<section id="examples-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="examples-1">Examples</h3>
-<div class="sourceCode" id="cb79"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="examples-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="examples-3">Examples</h3>
+<div class="sourceCode" id="cb94"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -1963,7 +2068,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.st_points</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "st_points" from SpatRasters:
  [1] st_points(x::AbstractVector, y::AbstractVector)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:81</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:83</code></pre>
 </div>
 </div>
 </div>
@@ -2037,7 +2142,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.tps_kernel</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "tps_kernel" from SpatRasters:
  [1] tps_kernel(x1::AbstractMatrix{FT}, x2::AbstractMatrix{FT}; distance) where FT
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:62
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:63
  [2] tps_kernel(x::AbstractMatrix{FT}; distance) where FT
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:44</code></pre>
 </div>
@@ -2125,9 +2230,9 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.xy2ij</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "xy2ij" from SpatRasters:
  [1] xy2ij(point::Tuple{T, T}, ra::SpatRaster) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:110
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:112
  [2] xy2ij(x::T, y::T, b::bbox, cellsize) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:99</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:101</code></pre>
 </div>
 </div>
 </div>
@@ -2551,8 +2656,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/4-Operation.html" class="pagination-link" aria-label="4. Operation">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">4. Operation</span></span>
+      <a href="../api/5-Interp.html" class="pagination-link" aria-label="5. Spatial Interpolations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">5. Spatial Interpolations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
