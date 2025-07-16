@@ -184,17 +184,7 @@
     "href": "api/z-index.html#spatrasters",
     "title": "Reference",
     "section": "SpatRasters",
-    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, InGrid, Neighbor, NextCell, SpatRaster, ThinPlateSpline, angle_azimuth, angle_azimuth_sphere, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, distance_earth, distance_norm, earth_dist, find_neighbor, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, interp, interp_tps, isscalar, make_rast, merge_var, merge_var!, meshgrid, nband, nlayer, nlyr, ogr_info, predict, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, solve_tps, st_bbox, st_cellsize, st_coords, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, tps_kernel, weight_idw!, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
-    ]
-  },
-  {
-    "objectID": "api/z-index.html#thinplatespline",
-    "href": "api/z-index.html#thinplatespline",
-    "title": "Reference",
-    "section": "ThinPlateSpline",
-    "text": "ThinPlateSpline\n\n\n\n\n\n\nThinPlateSpline{Λ,TX&lt;:AbstractMatrix,M,Q}\nthe type (structure) holding the deformation information. This is needed to apply the deformation to other points using tps_deform. (see http://en.wikipedia.org/wiki/Thinplatespline for more information)\n\nMembers\nλ::Λ # Stiffness. x1::X # control points Y::M # Homogeneous control point coordinates Φ::M # TPS kernel d::M # Affine component c::M # Non-affine component",
+    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, InGrid, Neighbor, NextCell, SpatRaster, angle_azimuth, angle_azimuth_sphere, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, distance_earth, distance_norm, earth_dist, find_neighbor, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, interp, interp_tps, isscalar, make_rast, merge_var, merge_var!, meshgrid, nband, nlayer, nlyr, ogr_info, predict, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, solve_tps, st_bbox, st_cellsize, st_coords, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, tps_kernel, weight_adw!, weight_idw!, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -204,7 +194,7 @@
     "href": "api/z-index.html#angle_azimuth",
     "title": "Reference",
     "section": "angle_azimuth",
-    "text": "angle_azimuth\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.angle_azimuth is a Function.\n# 2 methods for generic function \"angle_azimuth\" from SpatRasters:\n [1] angle_azimuth(p1::AbstractVector{FT}, p2::AbstractMatrix{FT}) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/angle.jl:45\n [2] angle_azimuth(p1::AbstractVector{FT}, p2::AbstractVector{FT}) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/angle.jl:28",
+    "text": "angle_azimuth\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.angle_azimuth is a Function.\n# 2 methods for generic function \"angle_azimuth\" from SpatRasters:\n [1] angle_azimuth(p1::AbstractVector{FT}, p2::AbstractMatrix{FT}) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/angle.jl:58\n [2] angle_azimuth(p1::AbstractVector{FT}, p2::AbstractVector{FT}; to_degree) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/angle.jl:38",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -214,7 +204,7 @@
     "href": "api/z-index.html#angle_azimuth_sphere",
     "title": "Reference",
     "section": "angle_azimuth_sphere",
-    "text": "angle_azimuth_sphere\n\n\n\n\n\n\n球面方位角 (0~360°)\nangle_azimuth_sphere((0, 0), (0, 1)) # 正北，0\nangle_azimuth((0, 0), (0, 1))        # 正北，0",
+    "text": "angle_azimuth_sphere\n\n\n\n\n\n\n球面方位角 (0~360°)\nangle_azimuth_sphere((0, 0), (0, 1)) # 正北，0\nangle_azimuth((0, 0), (0, 1))        # 正北，0\n\nReferences\nhttps://chatgpt.com/c/6876ff2c-834c-8012-98cd-2bc9691d453f",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -504,7 +494,7 @@
     "href": "api/z-index.html#interp",
     "title": "Reference",
     "section": "interp",
-    "text": "interp",
+    "text": "interp\n\n\n\n\n\n\ninterp(x::AbstractMatrix, y::AbstractArray{FT}, target::SpatRaster;\n    nmax::Int=20, radius::Real=200, do_angle=false,\n    wfun::Function=weight_idw!, kw...)\ninterp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignored...)\n\nArguments\n\nkw: other parameters to wfun\n\nweight_idw!: m\nweight_adw!: cdd, m",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -514,7 +504,7 @@
     "href": "api/z-index.html#interp_tps",
     "title": "Reference",
     "section": "interp_tps",
-    "text": "interp_tps\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.interp_tps is a Function.\n# 1 method for generic function \"interp_tps\" from SpatRasters:\n [1] interp_tps(x::AbstractMatrix, y::AbstractArray, target::SpatRaster; λ, distance, progress, kw...)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:155",
+    "text": "interp_tps\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.interp_tps is a Function.\n# 1 method for generic function \"interp_tps\" from SpatRasters:\n [1] interp_tps(X::AbstractMatrix, Y::AbstractArray, target::SpatRaster; λ, distance, progress, kw...)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:155",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -614,7 +604,7 @@
     "href": "api/z-index.html#predict",
     "title": "Reference",
     "section": "predict",
-    "text": "predict\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.predict is a Function.\n# 1 method for generic function \"predict\" from SpatRasters:\n [1] predict(tps::ThinPlateSpline, x2::AbstractMatrix{FT}; distance, progress) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:119",
+    "text": "predict\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.predict is a Function.\n# 1 method for generic function \"predict\" from SpatRasters:\n [1] predict(tps::SpatRasters.ThinPlateSpline, x2::AbstractMatrix{FT}; distance, progress) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:119",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -854,7 +844,17 @@
     "href": "api/z-index.html#tps_kernel",
     "title": "Reference",
     "section": "tps_kernel",
-    "text": "tps_kernel\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.tps_kernel is a Function.\n# 2 methods for generic function \"tps_kernel\" from SpatRasters:\n [1] tps_kernel(x1::AbstractMatrix{FT}, x2::AbstractMatrix{FT}; distance) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:62\n [2] tps_kernel(x::AbstractMatrix{FT}; distance) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:44",
+    "text": "tps_kernel\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.tps_kernel is a Function.\n# 2 methods for generic function \"tps_kernel\" from SpatRasters:\n [1] tps_kernel(x1::AbstractMatrix{FT}, x2::AbstractMatrix{FT}; distance) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:62\n [2] tps_kernel(x::AbstractMatrix{FT}; distance) where FT\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:44",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html#weight_adw",
+    "href": "api/z-index.html#weight_adw",
+    "title": "Reference",
+    "section": "weight_adw!",
+    "text": "weight_adw!\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.weight_adw! is a Function.\n# 1 method for generic function \"weight_adw!\" from SpatRasters:\n [1] weight_adw!(neighbor::Neighbor{FT, N}; cdd, m) where {FT, N}\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/weights.jl:19",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -864,7 +864,7 @@
     "href": "api/z-index.html#weight_idw",
     "title": "Reference",
     "section": "weight_idw!",
-    "text": "weight_idw!\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.weight_idw! is a Function.\n# 1 method for generic function \"weight_idw!\" from SpatRasters:\n [1] weight_idw!(neighbor::Neighbor{FT, N}; m) where {FT, N}\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/find_neighbor.jl:70",
+    "text": "weight_idw!\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.weight_idw! is a Function.\n# 1 method for generic function \"weight_idw!\" from SpatRasters:\n [1] weight_idw!(neighbor::Neighbor{FT, N}; m) where {FT, N}\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/weights.jl:4",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Reference</span>"
     ]

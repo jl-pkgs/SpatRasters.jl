@@ -480,7 +480,6 @@ window.onload = function () {
   <li><a href="#nextcell" id="toc-nextcell" class="nav-link" data-scroll-target="#nextcell"><code>NextCell</code></a></li>
   <li><a href="#spatraster" id="toc-spatraster" class="nav-link" data-scroll-target="#spatraster"><code>SpatRaster</code></a></li>
   <li><a href="#spatrasters" id="toc-spatrasters" class="nav-link" data-scroll-target="#spatrasters"><code>SpatRasters</code></a></li>
-  <li><a href="#thinplatespline" id="toc-thinplatespline" class="nav-link" data-scroll-target="#thinplatespline"><code>ThinPlateSpline</code></a></li>
   <li><a href="#angle_azimuth" id="toc-angle_azimuth" class="nav-link" data-scroll-target="#angle_azimuth"><code>angle_azimuth</code></a></li>
   <li><a href="#angle_azimuth_sphere" id="toc-angle_azimuth_sphere" class="nav-link" data-scroll-target="#angle_azimuth_sphere"><code>angle_azimuth_sphere</code></a></li>
   <li><a href="#bandnames" id="toc-bandnames" class="nav-link" data-scroll-target="#bandnames"><code>bandnames</code></a></li>
@@ -547,6 +546,7 @@ window.onload = function () {
   <li><a href="#st_write" id="toc-st_write" class="nav-link" data-scroll-target="#st_write"><code>st_write</code></a></li>
   <li><a href="#tau2gis" id="toc-tau2gis" class="nav-link" data-scroll-target="#tau2gis"><code>tau2gis</code></a></li>
   <li><a href="#tps_kernel" id="toc-tps_kernel" class="nav-link" data-scroll-target="#tps_kernel"><code>tps_kernel</code></a></li>
+  <li><a href="#weight_adw" id="toc-weight_adw" class="nav-link" data-scroll-target="#weight_adw"><code>weight_adw!</code></a></li>
   <li><a href="#weight_idw" id="toc-weight_idw" class="nav-link" data-scroll-target="#weight_idw"><code>weight_idw!</code></a></li>
   <li><a href="#write_gdal" id="toc-write_gdal" class="nav-link" data-scroll-target="#write_gdal"><code>write_gdal</code></a></li>
   <li><a href="#write_sf" id="toc-write_sf" class="nav-link" data-scroll-target="#write_sf"><code>write_sf</code></a></li>
@@ -741,7 +741,7 @@ weight :: AbstractArray{FT, N}</code></pre>
 <p>No docstring found for public module <code>SpatRasters</code>.</p>
 <section id="public-names" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="public-names">Public names</h3>
-<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>ThinPlateSpline</code>, <code>angle_azimuth</code>, <code>angle_azimuth_sphere</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp</code>, <code>interp_tps</code>, <code>isscalar</code>, <code>make_rast</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>tps_kernel</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
+<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>SpatRaster</code>, <code>angle_azimuth</code>, <code>angle_azimuth_sphere</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp</code>, <code>interp_tps</code>, <code>isscalar</code>, <code>make_rast</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>tps_kernel</code>, <code>weight_adw!</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
 </section>
 <section id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md">Displaying contents of readme found at <code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md</code></h3>
@@ -763,25 +763,6 @@ weight :: AbstractArray{FT, N}</code></pre>
 </div>
 <div style="page-break-after: always;"></div>
 </section>
-<section id="thinplatespline" class="level2">
-<h2 class="anchored" data-anchor-id="thinplatespline"><code>ThinPlateSpline</code></h2>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<pre><code>ThinPlateSpline{Λ,TX&lt;:AbstractMatrix,M,Q}</code></pre>
-<p>the type (structure) holding the deformation information. This is needed to apply the deformation to other points using <code>tps_deform</code>. (see http://en.wikipedia.org/wiki/Thin<em>plate</em>spline for more information)</p>
-<section id="members" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="members">Members</h3>
-<p><code>λ::Λ</code> # Stiffness. <code>x1::X</code> # control points <code>Y::M</code> # Homogeneous control point coordinates <code>Φ::M</code> # TPS kernel <code>d::M</code> # Affine component <code>c::M</code> # Non-affine component</p>
-</section>
-</div>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</section>
 <section id="angle_azimuth" class="level2">
 <h2 class="anchored" data-anchor-id="angle_azimuth"><code>angle_azimuth</code></h2>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -794,9 +775,9 @@ weight :: AbstractArray{FT, N}</code></pre>
 <p><code>SpatRasters.angle_azimuth</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "angle_azimuth" from SpatRasters:
  [1] angle_azimuth(p1::AbstractVector{FT}, p2::AbstractMatrix{FT}) where FT
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/angle.jl:45
- [2] angle_azimuth(p1::AbstractVector{FT}, p2::AbstractVector{FT}) where FT
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/angle.jl:28</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/angle.jl:58
+ [2] angle_azimuth(p1::AbstractVector{FT}, p2::AbstractVector{FT}; to_degree) where FT
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/angle.jl:38</code></pre>
 </div>
 </div>
 </div>
@@ -811,8 +792,12 @@ weight :: AbstractArray{FT, N}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>球面方位角 (0~360°)</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth_sphere</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>)) <span class="co"># 正北，0</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>))        <span class="co"># 正北，0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth_sphere</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>)) <span class="co"># 正北，0</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>))        <span class="co"># 正北，0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="references" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="references">References</h4>
+<p>https://chatgpt.com/c/6876ff2c-834c-8012-98cd-2bc9691d453f</p>
+</section>
 </div>
 </div>
 </div>
@@ -1063,9 +1048,9 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <div class="callout-body-container">
 <pre><code>earth_dist(x1::Matrix, x2::Matrix; R=6378.388)
 earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1341,7 +1326,20 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-
+<pre><code>interp(x::AbstractMatrix, y::AbstractArray{FT}, target::SpatRaster;
+    nmax::Int=20, radius::Real=200, do_angle=false,
+    wfun::Function=weight_idw!, kw...)
+interp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignored...)</code></pre>
+<section id="arguments-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arguments-1">Arguments</h4>
+<ul>
+<li><p><code>kw</code>: other parameters to <code>wfun</code></p>
+<ul>
+<li><code>weight_idw!</code>: <code>m</code></li>
+<li><code>weight_adw!</code>: <code>cdd</code>, <code>m</code></li>
+</ul></li>
+</ul>
+</section>
 </div>
 </div>
 </div>
@@ -1358,8 +1356,8 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.interp_tps</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "interp_tps" from SpatRasters:
- [1] interp_tps(x::AbstractMatrix, y::AbstractArray, target::SpatRaster; λ, distance, progress, kw...)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:155</code></pre>
+ [1] interp_tps(X::AbstractMatrix, Y::AbstractArray, target::SpatRaster; λ, distance, progress, kw...)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:155</code></pre>
 </div>
 </div>
 </div>
@@ -1413,8 +1411,8 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 <div class="callout-body-container">
 <pre><code>merge_var(fs; vars=nothing, var=nothing,
     progress=true, box::Union{bbox,Nothing}=nothing)</code></pre>
-<section id="arguments-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="arguments-1">Arguments</h3>
+<section id="arguments-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="arguments-2">Arguments</h3>
 <ul>
 <li><code>fs</code>: tiff file paths</li>
 <li><code>vars</code>: variables in the tiff</li>
@@ -1545,8 +1543,8 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.predict</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "predict" from SpatRasters:
- [1] predict(tps::ThinPlateSpline, x2::AbstractMatrix{FT}; distance, progress) where FT
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:119</code></pre>
+ [1] predict(tps::SpatRasters.ThinPlateSpline, x2::AbstractMatrix{FT}; distance, progress) where FT
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:119</code></pre>
 </div>
 </div>
 </div>
@@ -1693,8 +1691,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <li>flow direction 32 64 128 16 0 1 8 4 2</li>
 </ul>
 </section>
-<section id="arguments-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="arguments-2">Arguments</h3>
+<section id="arguments-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="arguments-3">Arguments</h3>
 <ul>
 <li><code>k</code>: 8-neighbor 6 7 8 5 1 4 3 2</li>
 </ul>
@@ -1730,15 +1728,15 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <div class="callout-body-container">
 <pre><code>solve_tps(x,y,λ,compute_affine=true)</code></pre>
 <p>find solution of tps transformation (required for some operations but takes additional time.)</p>
-<section id="arguments-3" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="arguments-3">Arguments</h4>
+<section id="arguments-4" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arguments-4">Arguments</h4>
 <pre><code>`x`: control points, n
 `y`: deformed (warped) control points
 `λ`: stiffness coefficient</code></pre>
 <p>returns a <code>ThinPlateSpline</code> structure which can be supplied as an argument to <code>tps_deform</code>.</p>
 </section>
-<section id="references" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="references">References</h4>
+<section id="references-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="references-1">References</h4>
 <ol type="1">
 <li>Ghosh A, Kindermann D D S. Efficient thin plate spline interpolation and its application to adaptive optics[M]. na, 2010.</li>
 </ol>
@@ -1942,8 +1940,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <pre><code>st_mosaic(rs::Vector{SpatRaster{T,N}}; kw...) where {T,N}</code></pre>
-<section id="arguments-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="arguments-4">Arguments</h3>
+<section id="arguments-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="arguments-5">Arguments</h3>
 <ul>
 <li><code>kw</code>: others to <code>SpatRaster</code></li>
 </ul>
@@ -2039,9 +2037,27 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.tps_kernel</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "tps_kernel" from SpatRasters:
  [1] tps_kernel(x1::AbstractMatrix{FT}, x2::AbstractMatrix{FT}; distance) where FT
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:62
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:62
  [2] tps_kernel(x::AbstractMatrix{FT}; distance) where FT
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/ThinPlateSplines.jl:44</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/interp_tps.jl:44</code></pre>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="weight_adw" class="level2">
+<h2 class="anchored" data-anchor-id="weight_adw"><code>weight_adw!</code></h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>No documentation found for public symbol.</p>
+<p><code>SpatRasters.weight_adw!</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "weight_adw!" from SpatRasters:
+ [1] weight_adw!(neighbor::Neighbor{FT, N}; cdd, m) where {FT, N}
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/weights.jl:19</code></pre>
 </div>
 </div>
 </div>
@@ -2059,7 +2075,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.weight_idw!</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "weight_idw!" from SpatRasters:
  [1] weight_idw!(neighbor::Neighbor{FT, N}; m) where {FT, N}
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/find_neighbor.jl:70</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/weights.jl:4</code></pre>
 </div>
 </div>
 </div>
