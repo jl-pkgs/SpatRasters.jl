@@ -28,8 +28,8 @@ function weight_adw!(neighbor::Neighbor{FT,N};
   wks = [zeros(nmax) for _ in 1:Threads.nthreads()]
   αs = [zeros(nmax) for _ in 1:Threads.nthreads()]
 
-  @inbounds @threads for j in 1:nlon
-    for i in 1:nlat
+  @inbounds @threads for j in 1:nlat
+    for i in 1:nlon
       wk = wks[Threads.threadid()]
       α = αs[Threads.threadid()]
       @. wk = ∅

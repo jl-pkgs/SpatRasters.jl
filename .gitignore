@@ -2,3 +2,5 @@ Manifest.toml
 # *.tif
 
 *.pdf
+*.png
+*.R
