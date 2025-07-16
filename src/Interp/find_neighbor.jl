@@ -18,7 +18,7 @@ function Neighbor(nmax::Int, dims::Tuple=(); FT=Float64)
 end
 
 
-function find_neighbor(point, tree; nmax::Int=20, radius::Real=200, m=2)
+function find_neighbor(point, tree; nmax::Int=20, radius::Real=100)
   inds, dists = knn(tree, point, nmax)
   I = dists .<= radius
   inds = @view inds[I]
@@ -26,7 +26,7 @@ function find_neighbor(point, tree; nmax::Int=20, radius::Real=200, m=2)
   (; index=inds, distance=dists)
 end
 
-function find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=200, do_angle=true) 
+function find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=100, do_angle=true) 
   Xt = collect(X')
   tree = BallTree(Xt, Haversine(6371.0); reorder=false)
 

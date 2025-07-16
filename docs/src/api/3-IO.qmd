@@ -11,3 +11,5 @@ execute:
 #| output: false
 using SpatRasters, ArchGDAL
 ```
+
+## 1 IO

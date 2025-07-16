@@ -6,7 +6,7 @@ execute:
   output: asis
 ---
 
-### Load packages
+## Load packages
 ```{julia}
 #| echo: true
 #| output: false
@@ -30,7 +30,7 @@ function plot_interp(fig, ra, X, Y; colors=amwg256, colorrange=(0, 60), title="I
 end
 ```
 
-### Interp
+## Interp
 
 ```{julia}
 using SpatRasters, Statistics, Test
@@ -48,8 +48,10 @@ target = make_rast(; b, cellsize=0.01)
 
 ```{julia}
 # neighbor = find_neighbor(target, X; radius=100, do_angle=true)
-@time ra_idw = interp(X, Y, target; wfun=weight_idw!)
-@time ra_adw = interp(X, Y, target; wfun=weight_adw!, cdd=25, nmax=10)
+radius = 100
+nmax = 6
+@time ra_idw = interp(X, Y, target; wfun=weight_idw!, radius, nmax, m=2)
+@time ra_adw = interp(X, Y, target; wfun=weight_adw!, radius, cdd=25, nmax, do_angle=true, m=6)
 @time ra_tps1 = interp_tps(X, Y, target; λ=0.01)
 @time ra_tps2 = interp_tps(X, Y, target; λ=0.1)
 # @profview ra_adw = interp(X, Y, target; wfun=weight_adw!)
@@ -59,5 +61,53 @@ plot_interp(fig[1, 1], ra_idw, X, Y; title="IDW")
 plot_interp(fig[1, 2], ra_adw, X, Y; title="ADW")
 plot_interp(fig[2, 1], ra_tps1, X, Y; title="TPS (λ = 0.01)")
 plot_interp(fig[2, 2], ra_tps2, X, Y; title="TPS (λ = 0.1)")
+fig
+```
+
+### ADW `m`如何选择
+```{julia}
+function k2ij(k; nrow=2)
+  i = ceil(Int, k / nrow)
+  j = k - (i - 1) * nrow
+  i, j
+end
+
+fig = Figure(; size=(1000, 700))
+for (k, m) in enumerate([1, 2, 4, 6])
+  i, j = k2ij(k; nrow=2)
+  @time ra_adw = interp(X, Y, target; wfun=weight_adw!, radius, cdd=25, nmax=8, do_angle=true, m)
+  plot_interp(fig[i, j], ra_adw, X, Y; title="ADW (m=$m)")
+end
+fig
+```
+
+### ADW `cdd`如何选择?
+
+m = 1时，cdd是权重降到0.6对应的距离
+
+```{julia}
+dist = 0:10:500.0
+cal_weight(dist; cdd=100, m=1) = exp(-dist / cdd)^m
+
+function plot_ws!(ax; m, cdd)
+  ws = cal_weight.(dist; m, cdd)
+  lines!(ax, dist, ws; label="cdd = $cdd, m = $m")
+end
+
+fig = Figure(; size=(800, 600))
+ax = Axis(fig[1, 1])
+
+for (k, cdd) = enumerate([25, 50, 100, 200])
+  i, j = k2ij(k; nrow=2)
+  ax = Axis(fig[i, j])
+  ylims!(ax, (0, 1))
+  for (j, m) = enumerate([1, 2])
+    plot_ws!(ax; m, cdd)
+  end
+  axislegend()
+end
+# vlines!(ax, [cdd]; linestyle=:dash, color=:red)
+# lines!(ax, [0, cdd], [1, 1] * cal_weight(cdd); linestyle=:dash, color=:red)
+# lines!(ax, [1, 1] .* cdd, [0, 1] * cal_weight(cdd); linestyle=:dash, color=:red)
 fig
 ```

@@ -44,7 +44,7 @@ include("interp_tps.jl")
   + `weight_adw!`: `cdd`, `m`
 """
 function interp(x::AbstractMatrix, y::AbstractArray{FT}, target::SpatRaster;
-  nmax::Int=20, radius::Real=200, do_angle=false,
+  nmax::Int=20, radius::Real=100, do_angle=false,
   wfun::Function=weight_idw!, kw...) where {FT}
 
   neighbor = find_neighbor(target, x; nmax, radius, do_angle)

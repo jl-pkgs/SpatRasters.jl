@@ -16,8 +16,6 @@ end
 
 # neighbor = find_neighbor(target, X; radius=100, do_angle=true)
 # weight_adw!(neighbor)
-# neighbor.weight[:, :, 1]
-# neighbor.angle[:, :, 1]
 begin
   cdd = 100
   nmax = 5
@@ -37,6 +35,3 @@ begin
   plot_interp(fig[2, 2], ra_tps2, X, Y; title="TPS (λ = 0.1)")
   fig
 end
-
-@time ra_adw0 = interp(X, Y, target; wfun=weight_adw!, cdd=25, nmax=10, do_angle=false)
-@time ra_adw1 = interp(X, Y, target; wfun=weight_adw!, cdd=25, nmax=10, do_angle=true)
