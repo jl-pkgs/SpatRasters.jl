@@ -1,6 +1,6 @@
 using LinearAlgebra
 using Base.Threads
-export ThinPlateSpline, solve_tps, interp_tps, tps_kernel, predict
+export solve_tps, interp_tps, tps_kernel, predict
 
 
 """
@@ -152,15 +152,17 @@ function predict(tps::ThinPlateSpline, x2::AbstractMatrix{FT};
 end
 
 
-function interp_tps(x::AbstractMatrix, y::AbstractArray, target::SpatRaster;
+function interp_tps(X::AbstractMatrix, Y::AbstractArray, target::SpatRaster;
   λ=0.01, distance::Function=distance_norm, progress=true, kw...)
 
-  ntime = size(y, 2)
-  tps = solve_tps(x, y, λ)
+  ntime = size(Y, 2)
+  tps = solve_tps(X, Y, λ)
+  
   lon, lat = st_dims(target)
   Lon, Lat = meshgrid(lon, lat)
-  x2 = [Lon[:] Lat[:]]
+  
+  X2 = [Lon[:] Lat[:]]
   nlon, nlat, _ = size(target)
-  R = predict(tps, x2; distance, progress, kw...)
+  R = predict(tps, X2; distance, progress, kw...)
   rast(reshape(R, nlon, nlat, ntime), target)
 end
