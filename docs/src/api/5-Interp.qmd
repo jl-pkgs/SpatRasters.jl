@@ -1,0 +1,63 @@
+---
+title: "5. Spatial Interpolations"
+number-depth: 2
+execute:
+  echo: true
+  output: asis
+---
+
+### Load packages
+```{julia}
+#| echo: true
+#| output: false
+using SpatRasters
+using MakieLayers, CairoMakie
+import MakieLayers: imagesc, imagesc!
+
+function imagesc(ra::SpatRaster, args...; kw...)
+  lon, lat = st_dims(ra)
+  imagesc(lon, lat, ra.A, args...; kw...)
+end
+
+function imagesc!(handle, ra::SpatRaster, args...; kw...)
+  lon, lat = st_dims(ra)
+  imagesc!(handle, lon, lat, ra.A, args...; kw...)
+end
+
+function plot_interp(fig, ra, X, Y; colors=amwg256, colorrange=(0, 60), title="IDW")
+  ax, plt = imagesc!(fig, ra[:, :, 1]; colorrange, colors, title, force_show_legend=true)
+  scatter!(ax, X[:, 1], X[:, 2]; color=Y, strokecolor=:white, strokewidth=0.6, colorrange, colormap=colors)
+end
+```
+
+### Interp
+
+```{julia}
+using SpatRasters, Statistics, Test
+using RTableTools
+
+indir = "$(@__DIR__)/../../.." |> abspath
+d = fread("$indir/data/prcp_st174_shiyan.csv")
+
+X = [d.lon d.lat] # d.alt
+Y = d.prcp
+# Y = repeat(y, outer=(1, 24 * 30))
+b = bbox(109.5, 31.5, 112 - 0.5, 33.5)
+target = make_rast(; b, cellsize=0.01)
+```
+
+```{julia}
+# neighbor = find_neighbor(target, X; radius=100, do_angle=true)
+@time ra_idw = interp(X, Y, target; wfun=weight_idw!)
+@time ra_adw = interp(X, Y, target; wfun=weight_adw!, cdd=25, nmax=10)
+@time ra_tps1 = interp_tps(X, Y, target; λ=0.01)
+@time ra_tps2 = interp_tps(X, Y, target; λ=0.1)
+# @profview ra_adw = interp(X, Y, target; wfun=weight_adw!)
+
+fig = Figure(; size=(1000, 800))
+plot_interp(fig[1, 1], ra_idw, X, Y; title="IDW")
+plot_interp(fig[1, 2], ra_adw, X, Y; title="ADW")
+plot_interp(fig[2, 1], ra_tps1, X, Y; title="TPS (λ = 0.01)")
+plot_interp(fig[2, 2], ra_tps2, X, Y; title="TPS (λ = 0.1)")
+fig
+```

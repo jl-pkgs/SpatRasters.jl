@@ -70,7 +70,8 @@ function st_extract(ra::AbstractSpatRaster, points::Vector{Tuple{T,T}}; combine=
   inds, locs = st_location(ra, points; rm_empty=true, cellsize=ra.cellsize)
   cols = repeat([:], ndims(ra) - 2)
   lst = [ra.A[i, j, cols...] for (i, j) in locs]
-  inds, combine(lst...) #cbind(lst...)
+  (; index=inds, value=combine(lst...))
+  # inds,  #cbind(lst...)
 end
 
 

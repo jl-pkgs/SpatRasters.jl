@@ -20,3 +20,4 @@ d = fread("$indir/data/prcp_st174_shiyan.csv")
   @test z2[:, 1] == z2[:, 2]
   @test maximum(abs.(z2[:, 1] - z1)) <= 1e-6
 end
+

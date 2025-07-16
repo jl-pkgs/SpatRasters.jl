@@ -2,8 +2,10 @@ module SpatRasters
 
 using DocStringExtensions
 using ProgressMeter
-using Statistics: median
+using Statistics: median, cor
 using Parameters
+
+export cor, median
 
 ## add test data
 const dir_data = "$(@__DIR__)/../data" |> abspath

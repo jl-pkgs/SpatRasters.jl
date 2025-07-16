@@ -11,3 +11,30 @@ execute:
 #| output: false
 using SpatRasters, ArchGDAL
 ```
+
+## st_location
+默认采用`st_location`，point压网格边界时，有待商榷如何取值。
+  
+- `st_location_exact`: 
+
+  采用findnear去判断point落在哪个网格中，
+
+  1. 首先判断x落在哪(i)
+    若距离最近的点，距离超过了`0.5cellsize`，则返回`-1`
+  2. 其次判断y落在哪(j)
+
+- `st_location_fast`: 
+  直接计算出ij
+  ```julia
+  i = (x - b.xmin) / cellx
+  j = j = (b.ymax - y) / abs(celly)
+  ```
+
+## st_extrac
+
+- `st_extract(ra::AbstractSpatRaster, points::Vector{Tuple{T,T}}; combine=hcat)`
+
+```julia
+points = st_points(X[:, 1], X[:, 2])
+st_extract(ra, points)
+```

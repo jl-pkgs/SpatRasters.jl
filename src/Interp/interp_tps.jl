@@ -59,15 +59,16 @@ function tps_kernel(x::AbstractMatrix{FT}; distance=distance_norm) where {FT}
   Φ
 end
 
+## TODO: 若不是lon, lat，包含了其他协变量，U应该如何计算
 function tps_kernel(x1::AbstractMatrix{FT}, x2::AbstractMatrix{FT}; distance=distance_norm) where {FT}
   n_control = size(x1, 1)
   n_points = size(x2, 1)
   Φ = zeros(FT, n_points, n_control)
 
   @inbounds for i in 1:n_points
-    p1 = @view x1[i, :]
+    p2 = @view x2[i, :]
     for j in 1:n_control
-      p2 = @view x2[j, :]
+      p1 = @view x1[j, :]
       r = distance(p1, p2)
       Φ[i, j] = rbf_tps(r)
     end
