@@ -12,7 +12,6 @@ export weight_idw!
   weight::AbstractArray{FT,N} = zeros(FT, dims..., nmax)
 end
 
-
 function Neighbor(nmax::Int, dims::Tuple=(); FT=Float64)
   N = length(dims) + 1
   Neighbor{FT,N}(; nmax, dims)
@@ -27,9 +26,7 @@ function find_neighbor(point, tree; nmax::Int=20, radius::Real=200, m=2)
   (; index=inds, distance=dists)
 end
 
-function find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=200,
-  do_angle=true)
-
+function find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=200, do_angle=true) 
   Xt = collect(X')
   tree = BallTree(Xt, Haversine(6371.0); reorder=false)
 
@@ -40,7 +37,6 @@ function find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=200,
 
   for i in 1:nlon, j in 1:nlat
     p0 = [lon[i], lat[j]]
-
     _inds, _dists = knn(tree, p0, nmax)
     _I = sortperm(_dists)
     _I = _I[_dists[_I].<=radius]

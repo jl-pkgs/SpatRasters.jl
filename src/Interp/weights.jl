@@ -60,3 +60,31 @@ function weight_adw!(neighbor::Neighbor{FT,N};
     end # end of lon
   end # end of lat
 end
+
+# used for test
+function _weight_adw(dist::AbstractVector{FT}, angle::AbstractVector{FT}; cdd::FT=FT(100), m::Int=2) where {FT}
+  n = length(dist)
+  wk = zeros(FT, n)
+  α = zeros(FT, n)
+  for k in 1:n
+    wk[k] = exp(-dist[k] / cdd)^m
+  end
+  ∅ = FT(0)
+  for k in 1:n # for each candidates, update `w` according to `angle`
+    ∑ = ∑w = ∅
+    @inbounds for l in 1:n
+      k == l && continue
+      Δθ::FT = deg2rad(angle[k] - angle[l])
+      w1 = wk[l]
+      ∑ += w1 * FT(1 - cos(Δθ))  # Xavier 2016, Eq. 7
+      ∑w += w1                   # Xavier 2016, Eq. 8
+    end
+    α[k] = ∑ / ∑w
+  end # end of candidates
+  @. wk *= (1 + α)               # Xavier 2016, Eq. 9
+  ∑w = sum(wk)
+  @. wk /= ∑w
+  wk
+end
+
+export _weight_adw
