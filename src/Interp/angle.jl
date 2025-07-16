@@ -42,9 +42,9 @@ function angle_azimuth(p1::AbstractVector{FT}, p2::AbstractVector{FT}; to_degree
   dy = lat2 - lat1
   # 需要atan2(Δx, Δy)来计算从北向东的方位角
   # azimuth = -rad2deg(atan(dy, dx)) + 90
+  θ = atan(dx, dy)
   !to_degree && return θ
   
-  θ = atan(dx, dy)
   azimuth = rad2deg(θ)
   azimuth < 0 && (azimuth += 360) # 标准化方位角为0-360度
   return azimuth
