@@ -21,3 +21,20 @@ packages.
 julia -e "@time using SpatRasters"
 # 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)
 ```
+
+## Functions
+
+*Interpolation (point to raster)*
+
+- [x] Thin Plate Spline Interpolation (tps)
+- [x] Angular Distance Weighting Interpolation (adw)
+- [x] Inverse Distance Weighting Interpolation (idw)
+
+*Terrain*
+
+- [x] Sky view factor (SVF)
+- [ ] sun shade
+
+*methods*
+
+- [x] `intersect` (line & raster)
