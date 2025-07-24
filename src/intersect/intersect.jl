@@ -33,6 +33,7 @@ function intersect_x(line::Line{T}, xs::AbstractVector{T}) where {T}
   (; k) = line
   p0 = line_start(line)
   x0, y0 = p0.x, p0.y
+
   map(x -> begin
       y = k * (x - x0) + y0
       Point(x, y)
@@ -43,16 +44,21 @@ function intersect_y(line::Line{T}, ys::AbstractVector{T}) where {T}
   (; k) = line
   p0 = line_start(line)
   x0, y0 = p0.x, p0.y
-  map(y -> begin
-      x = (y - y0) / k + x0
-      Point(x, y)
-    end, ys)
+
+  if is_vertical(line) # 此时k=±Inf无法使用
+    map(y -> Point(x0, y), ys)
+  else
+    map(y -> begin
+        x = (y - y0) / k + x0
+        Point(x, y)
+      end, ys)
+  end
 end
 
 
 function range_lat(values::AbstractVector{T}, min::T, max::T) where {T}
-  ibeg = searchsortedfirst(values, max) # 逆序
-  iend = searchsortedlast(values, min)
+  ibeg = searchsortedfirst(values, max, rev=true) # 逆序
+  iend = searchsortedlast(values, min, rev=true)
   ibeg:iend
 end
 
@@ -80,7 +86,6 @@ function intersect(ra::SpatRaster, line::Line; cellsize=nothing)
 
   points_y = intersect_y(line, ys) # 与水平线的交点
   points_x = intersect_x(line, xs) # 与垂线的交点
-
   points = cat(points_y, points_x, dims=1) |> rm_empty
 
   x = map(p -> p.x, points)

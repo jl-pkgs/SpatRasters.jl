@@ -41,6 +41,6 @@ function st_bbox(line::Line)
   bbox(; xmin, ymin, xmax, ymax)
 end
 
-# function is_vertical(line::Line; eps=1e-4)
-#   abs(mod(line.azimuth, 180)) <= eps # 0或180，认为是垂线
-# end
+function is_vertical(line::Line; eps=1e-4)
+  abs(mod(line.azimuth, 180)) <= eps # 0或180，认为是垂线
+end

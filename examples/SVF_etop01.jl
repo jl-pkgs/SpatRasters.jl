@@ -12,6 +12,10 @@ write_gdal(R2, "SVF_etop01_G010deg (radian=2.0deg).tif")
 write_gdal(R5, "SVF_etop01_G010deg (radian=5.0deg).tif")
 
 
+# i, j = 1, 1
+# p0 = Point(lon[i], lat[j])
+# svf = SVF(ra, p0; radian=2.0, δψ=15, Φ_slope=0.0, β_slope=0.0, kernel=SVF_azimuth)
+
 ## 绘图 ------------------------------------------------------------------------
 using MakieLayers, GLMakie
 using Shapefile
