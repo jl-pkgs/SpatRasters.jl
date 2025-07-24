@@ -479,7 +479,10 @@ window.onload = function () {
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#spatrasters.jl-simple-spatial-rasters-in-julia" id="toc-spatrasters.jl-simple-spatial-rasters-in-julia" class="nav-link active" data-scroll-target="#spatrasters.jl-simple-spatial-rasters-in-julia">SpatRasters.jl: Simple Spatial Rasters in Julia</a></li>
+  <li><a href="#spatrasters.jl-simple-spatial-rasters-in-julia" id="toc-spatrasters.jl-simple-spatial-rasters-in-julia" class="nav-link active" data-scroll-target="#spatrasters.jl-simple-spatial-rasters-in-julia">SpatRasters.jl: Simple Spatial Rasters in Julia</a>
+  <ul class="collapse">
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -530,8 +533,26 @@ window.onload = function () {
 <p><code>SpatRasters.jl</code> used the class and function of R language <code>terra</code> and <code>sf</code> packages.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatRasters"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<p><em>Interpolation (point to raster)</em></p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Thin Plate Spline Interpolation (tps)</label></li>
+<li><label><input type="checkbox" checked="">Angular Distance Weighting Interpolation (adw)</label></li>
+<li><label><input type="checkbox" checked="">Inverse Distance Weighting Interpolation (idw)</label></li>
+</ul>
+<p><em>Terrain</em></p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Sky view factor (SVF)</label></li>
+<li><label><input type="checkbox">sun shade</label></li>
+</ul>
+<p><em>methods</em></p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><code>intersect</code> (line &amp; raster)</label></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
