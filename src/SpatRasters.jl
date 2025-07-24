@@ -71,8 +71,9 @@ include("distance.jl")
 include("hydro/Hydro.jl")
 
 include("Interp/Interp.jl")
-include("intersect/intersect.jl")
-include("intersect/sky_view_factor.jl")
+include("methods/intersect.jl")
+include("terrain/sky_view_factor.jl")
+include("terrain/shade.jl")
 
 export st_coords
 
