@@ -12,9 +12,9 @@ export SVF
 方位角转换为数学角度，限定在0-360°
 
 ```bash
-0 -> 90
-90 -> 0
-180 -> -90
+  0 ->   90
+ 90 ->    0
+180 ->  -90
 270 -> -180
 ```
 """
@@ -69,7 +69,7 @@ function range_lon(values::AbstractVector{T}, min::T, max::T) where {T}
 end
 
 
-function intersect(ra::SpatRaster, line::Line; cellsize=nothing)
+function intersect(ra::SpatRaster, line::Line; cellsize=nothing, sort=false)
   isnothing(cellsize) && (cellsize = st_cellsize(ra))
   cellx, celly = cellsize
 
@@ -87,11 +87,48 @@ function intersect(ra::SpatRaster, line::Line; cellsize=nothing)
   points_y = intersect_y(line, ys) # 与水平线的交点
   points_x = intersect_x(line, xs) # 与垂线的交点
   points = cat(points_y, points_x, dims=1) |> rm_empty
-
-  # x = map(p -> p.x, points)
-  # inds = sortperm(x)
-  # points = @view points[inds] # 没必要进行排序，因为是判断最大α
+  if sort
+    x = map(p -> p.x, points)
+    inds = sortperm(x)
+    points = @view points[inds] # 没必要进行排序，因为是判断最大α
+  end
 
   ## 然后两点判断一个网格位置
-  _cellij(ra, points; cellsize)
+  interaction_RasterLine(ra, points; cellsize)
+end
+
+
+"""
+仅用于计算相交，两点判断一个网格位置
+
+# Arguments
+points: 与网格边界相交的所有点
+
+# Return
+每两个点 确定一个网格中心，返回的是网格中心的[x, y, elev]
+"""
+function interaction_RasterLine(ra::SpatRaster, points::AbstractVector{Point{T}}; cellsize=nothing) where {T}
+  isnothing(cellsize) && (cellsize = st_cellsize(ra))
+
+  n = length(points)
+  b = st_bbox(ra)
+  lon, lat = st_dims(ra)
+  cellx, celly = cellsize
+  nx, ny = size(ra)[1:2]
+
+  ## 采用push!的效率较低
+  map(i -> begin
+      p1 = points[i]
+      p2 = points[i+1]
+      x = (p1.x + p2.x) / 2
+      y = (p1.y + p2.y) / 2
+      p = _location_fast((x, y); b, cellx, celly, nx, ny) # (i, j)
+
+      if isnothing(p)
+        nothing
+      else
+        i, j = p
+        Point3(lon[i], lat[j], ra.A[i, j])
+      end
+    end, 1:n-1) |> rm_empty
 end

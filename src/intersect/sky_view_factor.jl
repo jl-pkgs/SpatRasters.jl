@@ -1,12 +1,12 @@
 "slope in radian"
-function cal_α(p0::Point3{T}, p1::Point3{T}) where {T}
+function dem_slope(p0::Point3{T}, p1::Point3{T}) where {T}
   dl = earth_dist(p0, p1) * 1000 # 水平面上的距离, [km] to [m]
   dz = p1.z - p0.z # [m]
   atan(dz / dl) # radians
 end
 
-function cal_α(p0::Point3{T}, Points::Vector{Point3{T}}) where {T}
-  map(p1 -> cal_α(p0, p1), Points) # αs, H = pi/2 - maximum(αs)
+function dem_slope(p0::Point3{T}, Points::Vector{Point3{T}}) where {T}
+  map(p1 -> dem_slope(p0, p1), Points) # αs, H = pi/2 - maximum(αs)
 end
 
 
@@ -52,7 +52,7 @@ function SVF(ra::SpatRaster, p0::Point; cellsize=nothing,
     length(points) == 0 && continue
 
     n += 1
-    αs = cal_α(P0, points) # 
+    αs = dem_slope(P0, points) # 
     H = pi / 2 - maximum(αs) # 天顶角范围 [0, pi/2 - α]
     svf = kernel(Φ_sun, Φ_slope, β_slope, H)
     ∑ += svf
