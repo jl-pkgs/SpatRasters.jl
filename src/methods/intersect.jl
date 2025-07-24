@@ -1,32 +1,8 @@
+export intersect
+
+
 include("datatype.jl")
 import Base: intersect
-
-export intersect
-export line_start, line_end
-export azimuth2slope
-export SVF_azimuth, SVF_azimuth_simple
-export SVF
-
-
-"""
-方位角转换为数学角度，限定在0-360°
-
-```bash
-  0 ->   90
- 90 ->    0
-180 ->  -90
-270 -> -180
-```
-"""
-function azimuth2deg(x)
-  x = -x + 90
-  (x > 360) && (x -= 360)
-  (x < 0) && (x += 360)
-  x
-end
-
-azimuth2slope(ψ) = tan(deg2rad(azimuth2deg(ψ)))
-
 
 "和x轴的交点，如果k = Inf or -Inf，则需要用y轴相交的方法"
 function intersect_x(line::Line{T}, xs::AbstractVector{T}) where {T}

@@ -1,4 +1,6 @@
 export Point, Line
+export line_start, line_end
+
 
 abstract type AbstractPoint{T} end
 

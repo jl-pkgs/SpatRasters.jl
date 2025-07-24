@@ -73,7 +73,8 @@ include("hydro/Hydro.jl")
 include("Interp/Interp.jl")
 include("methods/intersect.jl")
 include("terrain/sky_view_factor.jl")
-include("terrain/shade.jl")
+include("terrain/sun_angle.jl")
+include("terrain/sun_shade.jl")
 
 export st_coords
 
