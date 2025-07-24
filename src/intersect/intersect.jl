@@ -1,6 +1,8 @@
 export Point, Line, intersect
 export line_start, line_end
 export azimuth2slope
+export SVF_azimuth, SVF_azimuth_simple
+export SVF
 import Base: intersect
 
 abstract type AbstractPoint{T} end
@@ -105,28 +107,33 @@ function intersect(ra::SpatRaster, line::Line)
   points_y = intersect_y(line, ys) # 与水平线的交点
   points_x = intersect_x(line, xs) # 与垂线的交点
 
-  points = cat(points_y, points_x, dims=1) |> ps -> filter(!isnothing, ps)
+  points = cat(points_y, points_x, dims=1) |> rm_empty
+
   x = map(p -> p.x, points)
   inds = sortperm(x)
-  points = @view points[inds] # 对points进行排序
+  points = @view points[inds] # 对points进行排序  
+
   ## 然后两点判断一个网格位置
   _cellij(ra, points)
 end
 
 
-earth_dist(p1::Point3, p2::Point3) = earth_dist((p1.x, p1.y), (p2.x, p2.y))
+function earth_dist(p1::Point3{T}, p2::Point3{T}) where {T}
+  earth_dist((p1.x, p1.y), (p2.x, p2.y))
+end
 
 "slope in radian"
-function cal_α(P0::Point3, P1::Point3)
+function cal_α(p0::Point3{T}, p1::Point3{T}) where {T}
   dl = earth_dist(p0, p1) * 1000 # 水平面上的距离, [km] to [m]
   dz = p1.z - p0.z # [m]
   atan(dz / dl) # radians
 end
 
 
-function cal_α(P0::Point3, Points::Vector{Point3})
-  map(p1 -> cal_α(P0, P1), Points) # αs, H = pi/2 - maximum(αs)
+function cal_α(p0::Point3{T}, Points::Vector{Point3{T}}) where {T}
+  map(p1 -> cal_α(p0, p1), Points) # αs, H = pi/2 - maximum(αs)
 end
+
 
 function SVF_azimuth(Φ_sun::T, Φ_slope::T, β_slope::T, zenith_max::T) where {T<:Real}
   # Φ_sun = azimuth2deg(Φ_sun) # [天文学] -> [数学]，unnecessary, 二者统一即可
@@ -141,35 +148,40 @@ end
 function SVF_azimuth_simple(zenith_max::T) where {T<:Real}
   # H = pi / 2 - maximum(αs) # 天顶角 in [0, H]
   H = zenith_max # in radian
-  cos(H)^2
+  sin(H)^2
 end
 
 
 """
 - `Φ_slope`: in [deg], 天文学方位角，正北为0
-- `β_slope`: in [radian], 坡面角度
-
+- `β_slope`: in [deg], 坡面角度
 """
-function SVF(ra::SpatRaster, p0::Point; radian=2.0, Φ_slope, β_slope, kernel=SVF_azimuth)
-  δψ = 15
+function SVF(ra::SpatRaster, p0::Point;
+  radian=2.0, δψ=15, Φ_slope, β_slope, kernel::Function=SVF_azimuth)
+
+  β_slope = deg2rad(β_slope) # [deg] to [radian]
+
   ψs = δψ/2:δψ:360 # 天文学方位角
   N = length(ψs)
 
-  z0 = st_extract(ra, [p0]).value # 
+  z0 = st_extract(ra, [(p0.x, p0.y)]).value[1] # 
   P0 = Point3(p0.x, p0.y, z0)
 
   ∑ = 0.0
-  for (i, ψ) in enumerate(ψs)
-    l = Line(; origin=p0, azimuth=ψ, length=radian) # 200km^2
-    Points = intersect(ra, l)
-    ## 需要把高程信息传递
-    αs = cal_α(P0, Points) # 如何传递高程信息
-    H = maximum(αs)
-
+  n = 0 # 网格边界处，防止有的方向找不到网格
+  for (i, Φ_sun) in enumerate(ψs)
+    l = Line(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
+    points = intersect(ra, l)
+    length(points) == 0 && continue
+    # @show i, Φ_sun, length(Points)
+    # @show points, length(points)
+    n += 1
+    αs = cal_α(P0, points) # 
+    H = pi / 2 - maximum(αs) # 天顶角范围 [0, pi/2 - α]
     svf = kernel(Φ_sun, Φ_slope, β_slope, H)
     ∑ += svf
   end
-  return ∑ / N # SVF, dΦ = 2pi/N
+  return ∑ / n # SVF, dΦ = 2pi/N
 end
 
 
@@ -194,10 +206,20 @@ function _cellij(ra::SpatRaster, points::AbstractVector{Point{T}}) where {T}
       p2 = points[i+1]
       x = (p1.x + p2.x) / 2
       y = (p1.y + p2.y) / 2
-      i, j = _location_fast((x, y); b, cellx, celly, nx, ny) # (i, j)
-      Point3(lon[i], lat[j], ra.A[i, j])
-    end, 1:n-1)
+      p = _location_fast((x, y); b, cellx, celly, nx, ny) # (i, j)
+
+      if isnothing(p)
+        nothing # 没有找到点
+      else
+        i, j = p
+        Point3(lon[i], lat[j], ra.A[i, j])
+      end
+    end, 1:n-1) |> rm_empty
 end
+
+
+rm_empty(xs::AbstractVector) = map(x -> x, filter(!isnothing, xs))
+
 
 
 # function intersect_x(line::Line{T}, x::T) where {T}
