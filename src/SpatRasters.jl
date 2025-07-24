@@ -72,6 +72,7 @@ include("hydro/Hydro.jl")
 
 include("Interp/Interp.jl")
 include("intersect/intersect.jl")
+include("intersect/sky_view_factor.jl")
 
 export st_coords
 
