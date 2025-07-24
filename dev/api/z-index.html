@@ -800,7 +800,7 @@ y :: T</code></pre>
 <p><code>SpatRasters.SVF_azimuth</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "SVF_azimuth" from SpatRasters:
  [1] SVF_azimuth(Φ_sun::T, Φ_slope::T, β_slope::T, zenith_max::T) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/intersect/intersect.jl:138</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/intersect/sky_view_factor.jl:13</code></pre>
 </div>
 </div>
 </div>
@@ -818,7 +818,7 @@ y :: T</code></pre>
 <p><code>SpatRasters.SVF_azimuth_simple</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "SVF_azimuth_simple" from SpatRasters:
  [1] SVF_azimuth_simple(zenith_max::T) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/intersect/intersect.jl:148</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/intersect/sky_view_factor.jl:23</code></pre>
 </div>
 </div>
 </div>
@@ -1136,7 +1136,7 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <p><code>SpatRasters.cellArea</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "cellArea" from SpatRasters:
  [1] cellArea(x, y, cellsize)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:119</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:120</code></pre>
 </div>
 </div>
 </div>
@@ -2010,7 +2010,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.rm_shp</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "rm_shp" from SpatRasters:
  [1] rm_shp(f)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:96</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:97</code></pre>
 </div>
 </div>
 </div>
@@ -2152,7 +2152,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.st_coords</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "st_coords" from SpatRasters:
  [1] st_coords(ra::SpatRaster)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:78</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:79</code></pre>
 </div>
 </div>
 </div>
@@ -2307,7 +2307,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.st_points</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "st_points" from SpatRasters:
  [1] st_points(x::AbstractVector, y::AbstractVector)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:84</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:85</code></pre>
 </div>
 </div>
 </div>
@@ -2469,9 +2469,9 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.xy2ij</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "xy2ij" from SpatRasters:
  [1] xy2ij(point::Tuple{T, T}, ra::SpatRaster) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:113
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:114
  [2] xy2ij(x::T, y::T, b::bbox, cellsize) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:102</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:103</code></pre>
 </div>
 </div>
 </div>
