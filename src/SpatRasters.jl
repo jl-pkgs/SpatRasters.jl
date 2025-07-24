@@ -71,6 +71,7 @@ include("distance.jl")
 include("hydro/Hydro.jl")
 
 include("Interp/Interp.jl")
+include("intersect/intersect.jl")
 
 export st_coords
 

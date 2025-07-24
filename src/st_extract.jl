@@ -60,6 +60,12 @@ function _location_fast((x, y)::Tuple{Real,Real};
   end
 end
 
+function st_location(ra::AbstractSpatRaster, point::Tuple{T,T}; kw...) where {T<:Real}
+  lon, lat = st_dims(ra)
+  st_location_fast(lon, lat, [point]; kw...)[1]
+end
+
+
 function st_location(ra::AbstractSpatRaster, points::Vector{Tuple{T,T}}; kw...) where {T<:Real}
   lon, lat = st_dims(ra)
   st_location_fast(lon, lat, points; kw...)
