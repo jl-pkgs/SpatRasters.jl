@@ -67,7 +67,7 @@ function _cellij(ra::SpatRaster, points::AbstractVector{Point{T}}; cellsize=noth
   cellx, celly = cellsize
   nx, ny = size(ra)[1:2]
 
-  # res = Vector{Point3{T}}()
+  ## 采用push!的效率较低
   map(i -> begin
       p1 = points[i]
       p2 = points[i+1]
@@ -82,7 +82,6 @@ function _cellij(ra::SpatRaster, points::AbstractVector{Point{T}}; cellsize=noth
         Point3(lon[i], lat[j], ra.A[i, j])
       end
     end, 1:n-1) |> rm_empty
-  # return res
 end
 
 function earth_dist(p1::Point3{T}, p2::Point3{T}) where {T}
