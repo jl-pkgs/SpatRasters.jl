@@ -134,7 +134,7 @@
     "href": "api/5-Interp.html#interp",
     "title": "5. Spatial Interpolations",
     "section": "Interp",
-    "text": "Interp\nusing SpatRasters, Statistics, Test\nusing RTableTools\n\nindir = \"$(@__DIR__)/../../..\" |&gt; abspath\nd = fread(\"$indir/data/prcp_st174_shiyan.csv\")\n\nX = [d.lon d.lat] # d.alt\nY = d.prcp\n# Y = repeat(y, outer=(1, 24 * 30))\nb = bbox(109.5, 31.5, 112 - 0.5, 33.5)\ntarget = make_rast(; b, cellsize=0.01)\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (200, 200) | 0.31 Mb\n  b        : bbox(109.5, 31.5, 111.5, 33.5)\n  cellsize : (0.01, 0.01)\n  lon, lat : 109.505:0.01:111.495, 33.495:-0.01:31.505\n  time     : nothing\n  bands    : nothing\n  nodata   : nothing\n\n# neighbor = find_neighbor(target, X; radius=100, do_angle=true)\nradius = 100\nnmax = 6\n@time ra_idw = interp(X, Y, target; wfun=weight_idw!, radius, nmax, m=2)\n@time ra_adw = interp(X, Y, target; wfun=weight_adw!, radius, cdd=25, nmax, do_angle=true, m=6)\n@time ra_tps1 = interp_tps(X, Y, target; λ=0.01)\n@time ra_tps2 = interp_tps(X, Y, target; λ=0.1)\n# @profview ra_adw = interp(X, Y, target; wfun=weight_adw!)\n\nfig = Figure(; size=(1000, 800))\nplot_interp(fig[1, 1], ra_idw, X, Y; title=\"IDW\")\nplot_interp(fig[1, 2], ra_adw, X, Y; title=\"ADW\")\nplot_interp(fig[2, 1], ra_tps1, X, Y; title=\"TPS (λ = 0.01)\")\nplot_interp(fig[2, 2], ra_tps2, X, Y; title=\"TPS (λ = 0.1)\")\nfig\n2.139283 seconds (7.00 M allocations: 293.250 MiB, 2.71% gc time, 80.34% compilation time) 1.786365 seconds (20.08 M allocations: 438.468 MiB, 25.42% gc time, 25.02% compilation time) 5.396742 seconds (14.46 M allocations: 776.830 MiB, 2.91% gc time, 96.99% compilation time) 0.147349 seconds (100 allocations: 56.705 MiB, 11.64% gc time)\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264\n\n\n\n\nADW m如何选择\nfunction k2ij(k; nrow=2)\n  i = ceil(Int, k / nrow)\n  j = k - (i - 1) * nrow\n  i, j\nend\n\nfig = Figure(; size=(1000, 700))\nfor (k, m) in enumerate([1, 2, 4, 6])\n  i, j = k2ij(k; nrow=2)\n  @time ra_adw = interp(X, Y, target; wfun=weight_adw!, radius, cdd=25, nmax=8, do_angle=true, m)\n  plot_interp(fig[i, j], ra_adw, X, Y; title=\"ADW (m=$m)\")\nend\nfig\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264\n\n\n1.736846 seconds (31.64 M allocations: 622.909 MiB, 25.66% gc time) 1.314098 seconds (31.64 M allocations: 622.906 MiB, 4.43% gc time) 1.317831 seconds (31.64 M allocations: 622.907 MiB, 4.32% gc time) 1.318905 seconds (31.64 M allocations: 622.906 MiB, 4.43% gc time) \n\n\nADW cdd如何选择?\nm = 1时，cdd是权重降到0.6对应的距离\ndist = 0:10:500.0\ncal_weight(dist; cdd=100, m=1) = exp(-dist / cdd)^m\n\nfunction plot_ws!(ax; m, cdd)\n  ws = cal_weight.(dist; m, cdd)\n  lines!(ax, dist, ws; label=\"cdd = $cdd, m = $m\")\nend\n\nfig = Figure(; size=(800, 600))\nax = Axis(fig[1, 1])\n\nfor (k, cdd) = enumerate([25, 50, 100, 200])\n  i, j = k2ij(k; nrow=2)\n  ax = Axis(fig[i, j])\n  ylims!(ax, (0, 1))\n  for (j, m) = enumerate([1, 2])\n    plot_ws!(ax; m, cdd)\n  end\n  axislegend()\nend\n# vlines!(ax, [cdd]; linestyle=:dash, color=:red)\n# lines!(ax, [0, cdd], [1, 1] * cal_weight(cdd); linestyle=:dash, color=:red)\n# lines!(ax, [1, 1] .* cdd, [0, 1] * cal_weight(cdd); linestyle=:dash, color=:red)\nfig\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264",
+    "text": "Interp\nusing SpatRasters, Statistics, Test\nusing RTableTools\n\nindir = \"$(@__DIR__)/../../..\" |&gt; abspath\nd = fread(\"$indir/data/prcp_st174_shiyan.csv\")\n\nX = [d.lon d.lat] # d.alt\nY = d.prcp\n# Y = repeat(y, outer=(1, 24 * 30))\nb = bbox(109.5, 31.5, 112 - 0.5, 33.5)\ntarget = make_rast(; b, cellsize=0.01)\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (200, 200) | 0.31 Mb\n  b        : bbox(109.5, 31.5, 111.5, 33.5)\n  cellsize : (0.01, 0.01)\n  lon, lat : 109.505:0.01:111.495, 33.495:-0.01:31.505\n  time     : nothing\n  bands    : nothing\n  nodata   : nothing\n\n# neighbor = find_neighbor(target, X; radius=100, do_angle=true)\nradius = 100\nnmax = 6\n@time ra_idw = interp(X, Y, target; wfun=weight_idw!, radius, nmax, m=2)\n@time ra_adw = interp(X, Y, target; wfun=weight_adw!, radius, cdd=25, nmax, do_angle=true, m=6)\n@time ra_tps1 = interp_tps(X, Y, target; λ=0.01)\n@time ra_tps2 = interp_tps(X, Y, target; λ=0.1)\n# @profview ra_adw = interp(X, Y, target; wfun=weight_adw!)\n\nfig = Figure(; size=(1000, 800))\nplot_interp(fig[1, 1], ra_idw, X, Y; title=\"IDW\")\nplot_interp(fig[1, 2], ra_adw, X, Y; title=\"ADW\")\nplot_interp(fig[2, 1], ra_tps1, X, Y; title=\"TPS (λ = 0.01)\")\nplot_interp(fig[2, 2], ra_tps2, X, Y; title=\"TPS (λ = 0.1)\")\nfig\n2.044735 seconds (7.00 M allocations: 293.256 MiB, 2.60% gc time, 79.96% compilation time) 1.797869 seconds (20.08 M allocations: 438.473 MiB, 25.33% gc time, 24.75% compilation time) 5.305118 seconds (14.46 M allocations: 776.794 MiB, 2.87% gc time, 96.97% compilation time) 0.145753 seconds (100 allocations: 56.705 MiB, 11.54% gc time)\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264\n\n\n\n\nADW m如何选择\nfunction k2ij(k; nrow=2)\n  i = ceil(Int, k / nrow)\n  j = k - (i - 1) * nrow\n  i, j\nend\n\nfig = Figure(; size=(1000, 700))\nfor (k, m) in enumerate([1, 2, 4, 6])\n  i, j = k2ij(k; nrow=2)\n  @time ra_adw = interp(X, Y, target; wfun=weight_adw!, radius, cdd=25, nmax=8, do_angle=true, m)\n  plot_interp(fig[i, j], ra_adw, X, Y; title=\"ADW (m=$m)\")\nend\nfig\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264\n\n\n1.732879 seconds (31.64 M allocations: 622.909 MiB, 25.98% gc time) 1.299110 seconds (31.64 M allocations: 622.906 MiB, 4.05% gc time) 1.293549 seconds (31.64 M allocations: 622.907 MiB, 3.90% gc time) 1.309536 seconds (31.64 M allocations: 622.906 MiB, 4.06% gc time) \n\n\nADW cdd如何选择?\nm = 1时，cdd是权重降到0.6对应的距离\ndist = 0:10:500.0\ncal_weight(dist; cdd=100, m=1) = exp(-dist / cdd)^m\n\nfunction plot_ws!(ax; m, cdd)\n  ws = cal_weight.(dist; m, cdd)\n  lines!(ax, dist, ws; label=\"cdd = $cdd, m = $m\")\nend\n\nfig = Figure(; size=(800, 600))\nax = Axis(fig[1, 1])\n\nfor (k, cdd) = enumerate([25, 50, 100, 200])\n  i, j = k2ij(k; nrow=2)\n  ax = Axis(fig[i, j])\n  ylims!(ax, (0, 1))\n  for (j, m) = enumerate([1, 2])\n    plot_ws!(ax; m, cdd)\n  end\n  axislegend()\nend\n# vlines!(ax, [cdd]; linestyle=:dash, color=:red)\n# lines!(ax, [0, cdd], [1, 1] * cal_weight(cdd); linestyle=:dash, color=:red)\n# lines!(ax, [1, 1] .* cdd, [0, 1] * cal_weight(cdd); linestyle=:dash, color=:red)\nfig\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>5. Spatial Interpolations</span>"
     ]
@@ -190,6 +190,16 @@
     ]
   },
   {
+    "objectID": "api/z-index.html#line",
+    "href": "api/z-index.html#line",
+    "title": "Reference",
+    "section": "Line",
+    "text": "Line\n\n\n\n\n\n\nNo documentation found for public symbol.\n\nSummary\nmutable struct Line{T}\n\n\nFields\norigin  :: Point{T}\nazimuth :: T\nlength  :: T\nk       :: T",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
     "objectID": "api/z-index.html#neighbor",
     "href": "api/z-index.html#neighbor",
     "title": "Reference",
@@ -210,6 +220,16 @@
     ]
   },
   {
+    "objectID": "api/z-index.html#point",
+    "href": "api/z-index.html#point",
+    "title": "Reference",
+    "section": "Point",
+    "text": "Point\n\n\n\n\n\n\nNo documentation found for public symbol.\n\nSummary\nmutable struct Point{T}\n\n\nFields\nx :: T\ny :: T\n\n\nSupertype Hierarchy\nPoint{T} &lt;: SpatRasters.AbstractPoint{T} &lt;: Any",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
     "objectID": "api/z-index.html#spatraster",
     "href": "api/z-index.html#spatraster",
     "title": "Reference",
@@ -224,7 +244,7 @@
     "href": "api/z-index.html#spatrasters",
     "title": "Reference",
     "section": "SpatRasters",
-    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, InGrid, Neighbor, NextCell, SpatRaster, _weight_adw, angle_azimuth, angle_azimuth_sphere, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, cor, distance_earth, distance_norm, earth_dist, find_neighbor, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, interp, interp_tps, isscalar, make_rast, median, merge_var, merge_var!, meshgrid, nband, nlayer, nlyr, ogr_info, predict, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, solve_tps, st_bbox, st_cellsize, st_coords, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, tps_kernel, weight_adw!, weight_idw!, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)",
+    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, InGrid, Line, Neighbor, NextCell, Point, SpatRaster, _weight_adw, angle_azimuth, angle_azimuth_sphere, azimuth2slope, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, cor, distance_earth, distance_norm, earth_dist, find_neighbor, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, interp, interp_tps, intersect, isscalar, line_end, line_start, make_rast, median, merge_var, merge_var!, meshgrid, nband, nlayer, nlyr, ogr_info, predict, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, solve_tps, st_bbox, st_cellsize, st_coords, st_crop, st_dims, st_extract, st_location, st_location_exact, st_location_fast, st_mosaic, st_points, st_read, st_write, tau2gis, tps_kernel, weight_adw!, weight_idw!, write_gdal, write_sf, xy2ij\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -255,6 +275,16 @@
     "title": "Reference",
     "section": "angle_azimuth_sphere",
     "text": "angle_azimuth_sphere\n\n\n\n\n\n\n球面方位角 (0~360°)\nangle_azimuth_sphere((0, 0), (0, 1)) # 正北，0\nangle_azimuth((0, 0), (0, 1))        # 正北，0\n\nReferences\nhttps://chatgpt.com/c/6876ff2c-834c-8012-98cd-2bc9691d453f",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html#azimuth2slope",
+    "href": "api/z-index.html#azimuth2slope",
+    "title": "Reference",
+    "section": "azimuth2slope",
+    "text": "azimuth2slope\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.azimuth2slope is a Function.\n# 1 method for generic function \"azimuth2slope\" from SpatRasters:\n [1] azimuth2slope(ψ)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/intersect/intersect.jl:36",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -354,7 +384,7 @@
     "href": "api/z-index.html#cellarea",
     "title": "Reference",
     "section": "cellArea",
-    "text": "cellArea\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.cellArea is a Function.\n# 1 method for generic function \"cellArea\" from SpatRasters:\n [1] cellArea(x, y, cellsize)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:118",
+    "text": "cellArea\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.cellArea is a Function.\n# 1 method for generic function \"cellArea\" from SpatRasters:\n [1] cellArea(x, y, cellsize)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:119",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -570,11 +600,41 @@
     ]
   },
   {
+    "objectID": "api/z-index.html#intersect",
+    "href": "api/z-index.html#intersect",
+    "title": "Reference",
+    "section": "intersect",
+    "text": "intersect\n\n\n\n\n\n\nintersect(s, itrs...)\n∩(s, itrs...)\nConstruct the set containing those elements which appear in all of the arguments.\nThe first argument controls what kind of container is returned. If this is an array, it maintains the order in which elements first appear.\nUnicode ∩ can be typed by writing \\cap then pressing tab in the Julia REPL, and in many editors. This is an infix operator, allowing s ∩ itr.\nSee also setdiff, isdisjoint, issubset, issetequal.\n\nAs of Julia 1.8 intersect returns a result with the eltype of the type-promoted eltypes of the two inputs\n\n\nExamples\njulia&gt; intersect([1, 2, 3], [3, 4, 5])\n1-element Vector{Int64}:\n 3\n\njulia&gt; intersect([1, 4, 4, 5, 6], [6, 4, 6, 7, 8])\n2-element Vector{Int64}:\n 4\n 6\n\njulia&gt; intersect(1:16, 7:99)\n7:16\n\njulia&gt; (0, 0.0) ∩ (-0.0, 0)\n1-element Vector{Real}:\n 0\n\njulia&gt; intersect(Set([1, 2]), BitSet([2, 3]), 1.0:10.0)\nSet{Float64} with 1 element:\n  2.0\nintersect(h1::Rect, h2::Rect)\nPerform a intersection between two Rects.\nintersect(ss, others...)\nEach argument is a SortedSet with the same key and order type. The return variable is a new SortedSet that is the intersection of all the sets that are input. Time: O(cn log n), where n is the total number of items in all the arguments.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
     "objectID": "api/z-index.html#isscalar",
     "href": "api/z-index.html#isscalar",
     "title": "Reference",
     "section": "isscalar",
     "text": "isscalar\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.isscalar is a Function.\n# 2 methods for generic function \"isscalar\" from SpatRasters:\n [1] isscalar(::Nothing)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:4\n [2] isscalar(x)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:3",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html#line_end",
+    "href": "api/z-index.html#line_end",
+    "title": "Reference",
+    "section": "line_end",
+    "text": "line_end\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.line_end is a Function.\n# 1 method for generic function \"line_end\" from SpatRasters:\n [1] line_end(line::Line)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/intersect/intersect.jl:48",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
+    ]
+  },
+  {
+    "objectID": "api/z-index.html#line_start",
+    "href": "api/z-index.html#line_start",
+    "title": "Reference",
+    "section": "line_start",
+    "text": "line_start\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.line_start is a Function.\n# 1 method for generic function \"line_start\" from SpatRasters:\n [1] line_start(line::Line)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/intersect/intersect.jl:46",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -734,7 +794,7 @@
     "href": "api/z-index.html#rm_shp",
     "title": "Reference",
     "section": "rm_shp",
-    "text": "rm_shp\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.rm_shp is a Function.\n# 1 method for generic function \"rm_shp\" from SpatRasters:\n [1] rm_shp(f)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:95",
+    "text": "rm_shp\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.rm_shp is a Function.\n# 1 method for generic function \"rm_shp\" from SpatRasters:\n [1] rm_shp(f)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:96",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -774,7 +834,7 @@
     "href": "api/z-index.html#st_bbox",
     "title": "Reference",
     "section": "st_bbox",
-    "text": "st_bbox\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_bbox is a Function.\n# 5 methods for generic function \"st_bbox\" from SpatRasters:\n [1] st_bbox(bs::Vector{bbox})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:22\n [2] st_bbox(f::String)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:15\n [3] st_bbox(lon, lat)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:8\n [4] st_bbox(v::Vector{&lt;:Real})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:4\n [5] st_bbox(r::AbstractSpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2",
+    "text": "st_bbox\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_bbox is a Function.\n# 6 methods for generic function \"st_bbox\" from SpatRasters:\n [1] st_bbox(bs::Vector{bbox})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:22\n [2] st_bbox(f::String)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:15\n [3] st_bbox(lon, lat)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:8\n [4] st_bbox(line::Line)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/intersect/intersect.jl:56\n [5] st_bbox(v::Vector{&lt;:Real})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:4\n [6] st_bbox(r::AbstractSpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -794,7 +854,7 @@
     "href": "api/z-index.html#st_coords",
     "title": "Reference",
     "section": "st_coords",
-    "text": "st_coords\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_coords is a Function.\n# 1 method for generic function \"st_coords\" from SpatRasters:\n [1] st_coords(ra::SpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:77",
+    "text": "st_coords\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_coords is a Function.\n# 1 method for generic function \"st_coords\" from SpatRasters:\n [1] st_coords(ra::SpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:78",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -824,7 +884,7 @@
     "href": "api/z-index.html#st_extract",
     "title": "Reference",
     "section": "st_extract",
-    "text": "st_extract\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_extract is a Function.\n# 1 method for generic function \"st_extract\" from SpatRasters:\n [1] st_extract(ra::AbstractSpatRaster, points::Array{Tuple{T, T}, 1}; combine) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:69",
+    "text": "st_extract\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_extract is a Function.\n# 1 method for generic function \"st_extract\" from SpatRasters:\n [1] st_extract(ra::AbstractSpatRaster, points::Array{Tuple{T, T}, 1}; combine) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:75",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -834,7 +894,7 @@
     "href": "api/z-index.html#st_location",
     "title": "Reference",
     "section": "st_location",
-    "text": "st_location\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_location is a Function.\n# 1 method for generic function \"st_location\" from SpatRasters:\n [1] st_location(ra::AbstractSpatRaster, points::Array{Tuple{T, T}, 1}; kw...) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:63",
+    "text": "st_location\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_location is a Function.\n# 2 methods for generic function \"st_location\" from SpatRasters:\n [1] st_location(ra::AbstractSpatRaster, points::Array{Tuple{T, T}, 1}; kw...) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:69\n [2] st_location(ra::AbstractSpatRaster, point::Tuple{T, T}; kw...) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:63",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -874,7 +934,7 @@
     "href": "api/z-index.html#st_points",
     "title": "Reference",
     "section": "st_points",
-    "text": "st_points\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_points is a Function.\n# 1 method for generic function \"st_points\" from SpatRasters:\n [1] st_points(x::AbstractVector, y::AbstractVector)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:83",
+    "text": "st_points\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_points is a Function.\n# 1 method for generic function \"st_points\" from SpatRasters:\n [1] st_points(x::AbstractVector, y::AbstractVector)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:84",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -964,7 +1024,7 @@
     "href": "api/z-index.html#xy2ij",
     "title": "Reference",
     "section": "xy2ij",
-    "text": "xy2ij\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.xy2ij is a Function.\n# 2 methods for generic function \"xy2ij\" from SpatRasters:\n [1] xy2ij(point::Tuple{T, T}, ra::SpatRaster) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:112\n [2] xy2ij(x::T, y::T, b::bbox, cellsize) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:101",
+    "text": "xy2ij\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.xy2ij is a Function.\n# 2 methods for generic function \"xy2ij\" from SpatRasters:\n [1] xy2ij(point::Tuple{T, T}, ra::SpatRaster) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:113\n [2] xy2ij(x::T, y::T, b::bbox, cellsize) where T&lt;:Real\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:102",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
