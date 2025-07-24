@@ -44,3 +44,47 @@ end
 function is_vertical(line::Line; eps=1e-4)
   abs(mod(line.azimuth, 180)) <= eps # 0或180，认为是垂线
 end
+
+
+rm_empty(xs::AbstractVector) = map(x -> x, filter(!isnothing, xs))
+
+
+"""
+仅用于计算相交
+
+# Arguments
+points: 与网格边界相交的所有点
+
+# Return
+每两个点 确定一个网格中心，返回的是网格中心的[x, y, elev]
+"""
+function _cellij(ra::SpatRaster, points::AbstractVector{Point{T}}; cellsize=nothing) where {T}
+  isnothing(cellsize) && (cellsize = st_cellsize(ra))
+
+  n = length(points)
+  b = st_bbox(ra)
+  lon, lat = st_dims(ra)
+  cellx, celly = cellsize
+  nx, ny = size(ra)[1:2]
+
+  # res = Vector{Point3{T}}()
+  map(i -> begin
+      p1 = points[i]
+      p2 = points[i+1]
+      x = (p1.x + p2.x) / 2
+      y = (p1.y + p2.y) / 2
+      p = _location_fast((x, y); b, cellx, celly, nx, ny) # (i, j)
+
+      if isnothing(p)
+        nothing
+      else
+        i, j = p
+        Point3(lon[i], lat[j], ra.A[i, j])
+      end
+    end, 1:n-1) |> rm_empty
+  # return res
+end
+
+function earth_dist(p1::Point3{T}, p2::Point3{T}) where {T}
+  earth_dist((p1.x, p1.y), (p2.x, p2.y))
+end

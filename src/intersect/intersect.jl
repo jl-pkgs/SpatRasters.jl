@@ -88,77 +88,10 @@ function intersect(ra::SpatRaster, line::Line; cellsize=nothing)
   points_x = intersect_x(line, xs) # 与垂线的交点
   points = cat(points_y, points_x, dims=1) |> rm_empty
 
-  x = map(p -> p.x, points)
-  inds = sortperm(x)
-  points = @view points[inds] # 对points进行排序  
+  # x = map(p -> p.x, points)
+  # inds = sortperm(x)
+  # points = @view points[inds] # 没必要进行排序，因为是判断最大α
 
   ## 然后两点判断一个网格位置
   _cellij(ra, points; cellsize)
 end
-
-
-function earth_dist(p1::Point3{T}, p2::Point3{T}) where {T}
-  earth_dist((p1.x, p1.y), (p2.x, p2.y))
-end
-
-
-"""
-仅用于计算相交
-
-# Arguments
-points: 与网格边界相交的所有点
-
-# Return
-每两个点 确定一个网格中心，返回的是网格中心的[x, y, elev]
-"""
-function _cellij(ra::SpatRaster, points::AbstractVector{Point{T}}; cellsize=nothing) where {T}
-  isnothing(cellsize) && (cellsize = st_cellsize(ra))
-
-  n = length(points)
-  b = st_bbox(ra)
-  lon, lat = st_dims(ra)
-  cellx, celly = cellsize
-  nx, ny = size(ra)[1:2]
-
-  map(i -> begin
-      p1 = points[i]
-      p2 = points[i+1]
-      x = (p1.x + p2.x) / 2
-      y = (p1.y + p2.y) / 2
-      p = _location_fast((x, y); b, cellx, celly, nx, ny) # (i, j)
-
-      if isnothing(p)
-        nothing # 没有找到点
-      else
-        i, j = p
-        Point3(lon[i], lat[j], ra.A[i, j])
-      end
-    end, 1:n-1) |> rm_empty
-end
-
-
-rm_empty(xs::AbstractVector) = map(x -> x, filter(!isnothing, xs))
-
-# function intersect_x(line::Line{T}, x::T) where {T}
-#   p0 = line_start(line)
-#   x0, y0 = p0.x, p0.y
-#   y = k * (x - x0) + y0
-#   return Point(x, y)
-# end
-# 
-# function intersect_y(line::Line{T}, y::T) where {T}
-#   p0 = line_start(line)
-#   x0, y0 = p0.x, p0.y
-#   x = (y - y0) / k + x0
-#   return Point(x, y)
-# end
-
-# function _cellij(ra::SpatRaster, p1::Point, p2::Point)
-#   x = (p1.x + p2.x) / 2
-#   y = (p1.y + p2.y) / 2
-
-#   b = st_bbox(ra)
-#   cellx, celly = st_cellsize(ra)
-#   nx, ny = size(ra)[1:2]
-#   _location_fast((x, y); b, cellx, celly, nx, ny) # (i, j)
-# end

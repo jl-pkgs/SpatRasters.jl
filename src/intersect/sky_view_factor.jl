@@ -70,17 +70,15 @@ function SVF(ra::SpatRaster;
 
   R = zeros(size(ra.A))
   p = Progress(length(lon))
-
   @threads for i in 1:nlon
     next!(p)
     for j in 1:nlat
       p0 = Point(lon[i], lat[j])
-
-      try
-        R[i, j] = SVF(ra, p0; cellsize, radian, δψ, Φ_slope, β_slope, kernel)
-      catch ex
-        @show i, j, ex
-      end
+      # try
+      R[i, j] = SVF(ra, p0; cellsize, radian, δψ, Φ_slope, β_slope, kernel)
+      # catch ex
+      #   @show i, j, ex
+      # end
     end
   end
   rast(R, st_bbox(ra); bands=["SVF"])
