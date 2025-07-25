@@ -1,4 +1,5 @@
 export dem_angle_MaxElevation
+export dem_slope
 
 
 "slope in radian"
@@ -28,7 +29,7 @@ function dem_angle_MaxElevation(elev::SpatRaster, p0::Point{T};
       points = intersect(elev, l; cellsize)
       length(points) == 0 && return NaN
 
-      αs = dem_slope(P0, points)
+      αs = dem_slope(P0, points) # 最大仰角对应的[radian]
       maximum(αs)
     end, ψs)
 end
