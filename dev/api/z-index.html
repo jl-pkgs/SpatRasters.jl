@@ -513,6 +513,7 @@ window.onload = function () {
   <li><a href="#cor" id="toc-cor" class="nav-link" data-scroll-target="#cor"><code>cor</code></a></li>
   <li><a href="#deg2xy" id="toc-deg2xy" class="nav-link" data-scroll-target="#deg2xy"><code>deg2xy</code></a></li>
   <li><a href="#dem_angle_maxelevation" id="toc-dem_angle_maxelevation" class="nav-link" data-scroll-target="#dem_angle_maxelevation"><code>dem_angle_MaxElevation</code></a></li>
+  <li><a href="#dem_slope" id="toc-dem_slope" class="nav-link" data-scroll-target="#dem_slope"><code>dem_slope</code></a></li>
   <li><a href="#direction" id="toc-direction" class="nav-link" data-scroll-target="#direction"><code>direction</code></a></li>
   <li><a href="#direction_e" id="toc-direction_e" class="nav-link" data-scroll-target="#direction_e"><code>direction_E</code></a></li>
   <li><a href="#direction_n" id="toc-direction_n" class="nav-link" data-scroll-target="#direction_n"><code>direction_N</code></a></li>
@@ -571,7 +572,6 @@ window.onload = function () {
   <li><a href="#st_points" id="toc-st_points" class="nav-link" data-scroll-target="#st_points"><code>st_points</code></a></li>
   <li><a href="#st_read" id="toc-st_read" class="nav-link" data-scroll-target="#st_read"><code>st_read</code></a></li>
   <li><a href="#st_write" id="toc-st_write" class="nav-link" data-scroll-target="#st_write"><code>st_write</code></a></li>
-  <li><a href="#sun_shade" id="toc-sun_shade" class="nav-link" data-scroll-target="#sun_shade"><code>sun_shade</code></a></li>
   <li><a href="#tau2gis" id="toc-tau2gis" class="nav-link" data-scroll-target="#tau2gis"><code>tau2gis</code></a></li>
   <li><a href="#time2local" id="toc-time2local" class="nav-link" data-scroll-target="#time2local"><code>time2local</code></a></li>
   <li><a href="#tps_kernel" id="toc-tps_kernel" class="nav-link" data-scroll-target="#tps_kernel"><code>tps_kernel</code></a></li>
@@ -875,7 +875,7 @@ y :: T</code></pre>
 <p>No docstring found for public module <code>SpatRasters</code>.</p>
 <section id="public-names" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="public-names">Public names</h3>
-<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Line</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>Point</code>, <code>SVF</code>, <code>SVF_azimuth</code>, <code>SVF_azimuth_simple</code>, <code>SpatRaster</code>, <code>_weight_adw</code>, <code>angle_SolarDeclination</code>, <code>angle_SunAzimuth</code>, <code>angle_SunElevation</code>, <code>angle_azimuth</code>, <code>angle_azimuth_sphere</code>, <code>azimuth2deg</code>, <code>azimuth2slope</code>, <code>azimuth2xy</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>cor</code>, <code>deg2xy</code>, <code>dem_angle_MaxElevation</code>, <code>direction</code>, <code>direction_E</code>, <code>direction_N</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp</code>, <code>interp_tps</code>, <code>intersect</code>, <code>isscalar</code>, <code>line_end</code>, <code>line_start</code>, <code>make_rast</code>, <code>median</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>sun_shade</code>, <code>tau2gis</code>, <code>time2local</code>, <code>tps_kernel</code>, <code>weight_adw!</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
+<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Line</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>Point</code>, <code>SVF</code>, <code>SVF_azimuth</code>, <code>SVF_azimuth_simple</code>, <code>SpatRaster</code>, <code>_weight_adw</code>, <code>angle_SolarDeclination</code>, <code>angle_SunAzimuth</code>, <code>angle_SunElevation</code>, <code>angle_azimuth</code>, <code>angle_azimuth_sphere</code>, <code>azimuth2deg</code>, <code>azimuth2slope</code>, <code>azimuth2xy</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>cor</code>, <code>deg2xy</code>, <code>dem_angle_MaxElevation</code>, <code>dem_slope</code>, <code>direction</code>, <code>direction_E</code>, <code>direction_N</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp</code>, <code>interp_tps</code>, <code>intersect</code>, <code>isscalar</code>, <code>line_end</code>, <code>line_start</code>, <code>make_rast</code>, <code>median</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>tau2gis</code>, <code>time2local</code>, <code>tps_kernel</code>, <code>weight_adw!</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
 </section>
 <section id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md">Displaying contents of readme found at <code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md</code></h3>
@@ -1348,9 +1348,23 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <p><code>SpatRasters.dem_angle_MaxElevation</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "dem_angle_MaxElevation" from SpatRasters:
  [1] dem_angle_MaxElevation(elev::SpatRaster; δψ, radian)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/dem_slope.jl:37
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/dem_slope.jl:38
  [2] dem_angle_MaxElevation(elev::SpatRaster, p0::Point{T}; δψ, radian, cellsize) where T
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/dem_slope.jl:17</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/dem_slope.jl:18</code></pre>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="dem_slope" class="level2">
+<h2 class="anchored" data-anchor-id="dem_slope"><code>dem_slope</code></h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>slope in radian</p>
 </div>
 </div>
 </div>
@@ -2558,26 +2572,6 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.write_gdal</code> is a <code>Function</code>.</p>
 <pre><code># 0 methods for generic function "write_gdal" from SpatRasters</code></pre>
-</div>
-</div>
-</div>
-<div style="page-break-after: always;"></div>
-</section>
-<section id="sun_shade" class="level2">
-<h2 class="anchored" data-anchor-id="sun_shade"><code>sun_shade</code></h2>
-<div class="callout callout-style-simple callout-none no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.sun_shade</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "sun_shade" from SpatRasters:
- [1] sun_shade(elev::SpatRaster, time::Dates.DateTime)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:27
- [2] sun_shade(elev::SpatRaster, p0::Point{T}, time::Dates.DateTime; radian, cellsize) where T
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:5</code></pre>
 </div>
 </div>
 </div>
