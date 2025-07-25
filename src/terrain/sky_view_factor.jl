@@ -41,14 +41,14 @@ function SVF(elev::SpatRaster, p0::Point; cellsize=nothing,
 
   β_slope = deg2rad(β_slope) # [deg] to [radian]
 
-  ψs = δψ/2:δψ:360 # 天文学方位角
-  N = length(ψs)
 
   z0 = st_extract(elev, [(p0.x, p0.y)]).value[1] # 
   P0 = Point3(p0.x, p0.y, z0)
 
   ∑ = 0.0
   n = 0 # 网格边界处，防止有的方向找不到网格
+  ψs = δψ/2:δψ:360 # 天文学方位角
+  N = length(ψs)
   for (i, Φ_sun) in enumerate(ψs)
     l = Line(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
     points = intersect(elev, l; cellsize)

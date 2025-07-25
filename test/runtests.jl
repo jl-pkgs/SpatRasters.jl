@@ -4,6 +4,7 @@ import Random: seed!
 set_seed(seed) = seed!(seed)
 
 # include("hydro/test-flowdir.jl")
+include("test-sun_angle.jl")
 include("test-intersect.jl")
 
 include("Interp/test-interp.jl")
