@@ -1,7 +1,4 @@
 export intersect
-
-
-include("datatype.jl")
 import Base: intersect
 
 "和x轴的交点，如果k = Inf or -Inf，则需要用y轴相交的方法"

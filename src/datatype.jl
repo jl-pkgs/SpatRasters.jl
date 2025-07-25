@@ -49,4 +49,3 @@ end
 
 
 rm_empty(xs::AbstractVector) = map(x -> x, filter(!isnothing, xs))
-
