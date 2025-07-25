@@ -17,7 +17,6 @@ end
 ## 提前算好，各个方向的最大坡度
 function dem_angle_MaxElevation(elev::SpatRaster, p0::Point{T};
   δψ=3, radian=2.0, rastersize::RasterSize) where {T}
-  # isnothing(rastersize) && (rastersize = RasterSize(elev))
 
   z0 = st_extract(elev, [(p0.x, p0.y)]).value[1] # 
   P0 = Point3(p0.x, p0.y, z0)
@@ -40,14 +39,14 @@ function dem_angle_MaxElevation(elev::SpatRaster; δψ=3, radian=2.0)
   rastersize = RasterSize(elev)
   lon, lat = st_dims(elev)
   nlon, nlat = length(lon), length(lat)
+  # nlon = 20
 
   ψs = δψ/2:δψ:360 # 天文学方位角
   N = length(ψs)
   R = zeros(nlon, nlat, N)
-
-  p = Progress(length(lon))
-  # @inbounds @threads for i in 1:nlon
-  for i in 1:2
+  
+  p = Progress(nlon)
+  @inbounds @threads for i in 1:nlon
     next!(p)
     for j in 1:nlat
       p0 = Point(lon[i], lat[j])

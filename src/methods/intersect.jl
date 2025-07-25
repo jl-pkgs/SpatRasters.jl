@@ -98,7 +98,7 @@ function interaction_RasterLine(ra::SpatRaster, points::AbstractVector{Point{T}}
       p2 = points[i+1]
       x = (p1.x + p2.x) / 2
       y = (p1.y + p2.y) / 2
-      p = st_location(rastersize, x, y) # (i, j)
+      p = _st_location(rastersize, x, y) # (i, j)
       if isnothing(p)
         nothing
       else

@@ -1,5 +1,6 @@
 export Point, Point3, Line
 export line_start, line_end
+export RasterSize
 
 
 abstract type AbstractPoint{T} end

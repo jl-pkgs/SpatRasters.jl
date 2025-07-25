@@ -163,7 +163,50 @@ function Base.show(io::IO, x::SpatRaster)
   return nothing
 end
 
+
+
+@with_kw mutable struct RasterSize
+  b::bbox = bbox(-180.0, -90.0, 180.0, 90.0)
+  cellsize::NTuple{2,Float64} = (1.0, 1.0)
+  nx::Int = guess_nx(b, cellsize)
+  ny::Int = guess_nx(b, cellsize)
+end
+# lon::AbstractVector{<:Real}
+# lat::AbstractVector{<:Real}
+function guess_nx(b::bbox, cellsize)
+  cellx = cellsize[1]
+  length(b.ymin+cellx/2:cellx:b.ymax)
+end
+
+function guess_ny(b::bbox, cellsize)
+  celly = abs(cellsize[2])
+  length(b.ymin+celly+2:celly:b.ymax)
+end
+
+
+function RasterSize(ra::SpatRaster)
+  b = st_bbox(ra)
+  cellsize = st_cellsize(ra)
+  lon, lat = st_dims(ra)
+  nx, ny = length(lon), length(lat)
+  RasterSize(; b, cellsize, nx, ny)
+end
+
+function RasterSize(lon::AbstractVector{T}, lat::AbstractVector{T}) where {T<:Real}
+  b = st_bbox(lon, lat)
+  nx, ny = length(lon), length(lat)
+  cellsize = st_cellsize(lon, lat)
+  RasterSize(; b, cellsize, nx, ny)
+end
+
+function st_dims(rastersize::RasterSize)
+  (; b, cellsize) = rastersize
+  return bbox2dims(b; cellsize)
+end
+
+
 rast = SpatRaster
 
 export AbstractSpatRaster, SpatRaster, rast
 export make_rast
+export RasterSize

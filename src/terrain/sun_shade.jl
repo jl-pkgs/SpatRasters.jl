@@ -1,3 +1,5 @@
+export sun_shade
+
 function sun_shade(α::SpatRaster, time::DateTime; δψ=3)
   kmax = Int(360 / δψ)
   MaxElevation = α.A # 每个方位的最大仰角

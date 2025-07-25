@@ -1,46 +1,4 @@
-export RasterSize
-export st_location, st_location_exact
-
-
-@with_kw mutable struct RasterSize
-  b::bbox = bbox(-180.0, -90.0, 180.0, 90.0)
-  cellsize::NTuple{2,Real} = (1.0, 1.0)
-  nx::Int = guess_nx(b, cellsize)
-  ny::Int = guess_nx(b, cellsize)
-end
-# lon::AbstractVector{<:Real}
-# lat::AbstractVector{<:Real}
-function guess_nx(b::bbox, cellsize)
-  cellx = cellsize[1]
-  length(b.ymin+cellx/2:cellx:b.ymax)
-end
-
-function guess_ny(b::bbox, cellsize)
-  celly = abs(cellsize[2])
-  length(b.ymin+celly+2:celly:b.ymax)
-end
-
-
-function RasterSize(ra::SpatRaster)
-  b = st_bbox(ra)
-  cellsize = st_cellsize(ra)
-  lon, lat = st_dims(ra)
-  nx, ny = length(lon), length(lat)
-  RasterSize(; b, cellsize, nx, ny)
-end
-
-function RasterSize(lon::AbstractVector{T}, lat::AbstractVector{T}) where {T<:Real}
-  b = st_bbox(lon, lat)
-  nx, ny = length(lon), length(lat)
-  cellsize = st_cellsize(lon, lat)
-  RasterSize(; b, cellsize, nx, ny)
-end
-
-function st_dims(rastersize::RasterSize)
-  (; b, cellsize) = rastersize
-  return bbox2dims(b; cellsize)
-end
-
+export _st_location, st_location, st_location_exact
 
 
 """
@@ -53,7 +11,7 @@ return the overlaping indexes `inds`, and corresponding (i,j)
 inds, locs = st_location(r, points)
 ```
 """
-function st_location(rastsize::RasterSize, x::T, y::T) where {T<:Real}
+function _st_location(rastsize::RasterSize, x::T, y::T) where {T<:Real}
   (; b, cellsize, nx, ny) = rastsize
   cellx, celly = cellsize
   i = (x - b.xmin) / cellx
@@ -74,7 +32,7 @@ end
 
 function st_location(rastersize::RasterSize, points::Vector{P}; rm_empty::Bool=false) where {
   T<:Real,P<:Union{Tuple{T,T},AbstractPoint{T}}}
-  map(p -> st_location(rastersize, get_x(p), get_y(p)), points)
+  map(p -> _st_location(rastersize, get_x(p), get_y(p)), points)
   # return rm_empty ? _rm_empty(locs) : locs
 end
 

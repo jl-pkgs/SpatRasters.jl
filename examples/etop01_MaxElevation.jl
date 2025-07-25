@@ -5,7 +5,7 @@ using NetCDFTools
 
 elev = rast("data/dem_etop01_G010deg.tif", FT=Float64)
 @time MaxElevation = dem_angle_MaxElevation(elev; δψ=3, radian=2.0)
-# @profview R = dem_angle_MaxElevation(ra; δψ=3, radian=2.0)
+# @profview MaxElevation = dem_angle_MaxElevation(elev; δψ=3, radian=2.0)
 
 lon, lat = st_dims(MaxElevation)
 δψ = 3
@@ -13,16 +13,15 @@ lon, lat = st_dims(MaxElevation)
 
 A = Float32.(MaxElevation.A)
 dims = (; lon, lat, ψs)
-fout = "MaxElevation_etop01_G010deg_V2.nc"
-ncsave(fout, true, (; units="radian");
-  dims, MaxElevation=A)
+fout = "MaxElevation_etop01_G010deg_V3.nc"
+ncsave(fout, true, (; units="radian"); dims, MaxElevation=A)
 
 
 
 using NaNStatistics
 using NaNStatistics: nanmean
 
-f = "MaxElevation_etop01_G010deg_V2.nc"
+f = "MaxElevation_etop01_G010deg_V3.nc"
 lon, lat = st_dims(f)
 A = nc_read(f, "MaxElevation")
 R = nanmean(A, dims=3)
@@ -31,6 +30,6 @@ R = nanmean(A, dims=3)
 begin
   using CairoMakie, MakieLayers
   fig = Figure(; size=(1400, 800))
-  imagesc!(fig, lon, lat, rad2deg.(R))
+  imagesc!(fig, lon, lat, rad2deg.(R), colorrange=(0, 2))
   save("Figure.png", fig)
 end

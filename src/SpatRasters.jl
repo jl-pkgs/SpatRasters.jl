@@ -54,9 +54,9 @@ st_write = write_gdal
 st_read = read_gdal
 
 include("datatype.jl")
+include("bbox.jl")
 
 include("tools_Ipaper.jl")
-include("bbox.jl")
 include("SpatRaster.jl")
 include("Ops.jl")
 
