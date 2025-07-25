@@ -4,7 +4,8 @@ using SpatRasters, ArchGDAL
 using NetCDFTools
 
 elev = rast("data/dem_etop01_G010deg.tif", FT=Float64)
-@time MaxElevation = dem_angle_MaxElevation(ra; δψ=3, radian=2.0)
+@time MaxElevation = dem_angle_MaxElevation(elev; δψ=3, radian=2.0)
+
 
 f = "./MaxElevation_etop01_G010deg.nc"
 lon, lat = st_dims(f)
@@ -12,7 +13,12 @@ b = st_bbox(lon, lat)
 @time MaxElevation = nc_read(f, "MaxElevation") # [radian]
 
 ra_α = rast(MaxElevation, b)
-# @profview R = dem_angle_MaxElevation(ra; δψ=3, radian=2.0)
+
+
+begin
+  A = rad2deg.(MaxElevation[:, :, 60])
+  imagesc(lon, lat, A)
+end
 
 time = DateTime(2010, 6, 10, 0)
 @time R = sun_shade(ra_α, time)

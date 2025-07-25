@@ -42,7 +42,7 @@ function range_lon(values::AbstractVector{T}, min::T, max::T) where {T}
 end
 
 
-function intersect(ra::SpatRaster, line::Line; cellsize=nothing, sort=false)
+function intersect(ra::SpatRaster, line::Line; cellsize=nothing, sort=true)
   isnothing(cellsize) && (cellsize = st_cellsize(ra))
   cellx, celly = cellsize
 
@@ -61,9 +61,13 @@ function intersect(ra::SpatRaster, line::Line; cellsize=nothing, sort=false)
   points_x = intersect_x(line, xs) # 与垂线的交点
   points = cat(points_y, points_x, dims=1) |> rm_empty
   if sort
-    x = map(p -> p.x, points)
-    inds = sortperm(x)
-    points = @view points[inds] # 没必要进行排序，因为是判断最大α
+    if is_vertical(line)
+      vals = map(p -> p.x, points)
+    else
+      vals = map(p -> p.y, points)
+    end
+    inds = sortperm(vals)
+    points = @view points[inds] # 需要进行排序，2点判断一个网格位置
   end
 
   ## 然后两点判断一个网格位置

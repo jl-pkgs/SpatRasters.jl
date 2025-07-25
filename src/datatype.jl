@@ -1,4 +1,4 @@
-export Point, Line
+export Point, Point3, Line
 export line_start, line_end
 
 

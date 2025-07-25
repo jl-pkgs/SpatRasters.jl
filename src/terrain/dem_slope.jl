@@ -6,7 +6,7 @@ export dem_slope
 function dem_slope(p0::Point3{T}, p1::Point3{T}) where {T}
   dl = earth_dist(p0, p1) * 1000 # 水平面上的距离, [km] to [m]
   dz = p1.z - p0.z # [m]
-  atan(dz / dl) # radians
+  atan(dz / dl) # radians, [-90°, 90°]
 end
 
 function dem_slope(p0::Point3{T}, Points::Vector{Point3{T}}) where {T}
