@@ -15,6 +15,13 @@ Base.@kwdef mutable struct Point{T} <: AbstractPoint{T}
   y::T
 end
 
+get_x(p::Tuple{T,T}) where {T} = p[1]
+get_y(p::Tuple{T,T}) where {T} = p[2]
+
+get_x(p::AbstractPoint{T}) where {T} = p.x
+get_y(p::AbstractPoint{T}) where {T} = p.y
+
+
 Base.@kwdef mutable struct Line{T}
   origin::Point{T} = Point(0.0, 0.0)
   azimuth::T = 0.0 # deg, 正北为0, 顺时针为正

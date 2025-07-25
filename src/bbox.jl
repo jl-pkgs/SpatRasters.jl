@@ -20,7 +20,7 @@ function bbox2cellsize(b::bbox, size)
   nlon, nlat = size[1:2]
   cellx = (b.xmax - b.xmin) / nlon
   celly = (b.ymax - b.ymin) / nlat
-  cellx, celly
+  cellx, -celly # 默认y是倒序
 end
 
 # 两个至少提供一个

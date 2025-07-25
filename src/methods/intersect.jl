@@ -88,19 +88,16 @@ function interaction_RasterLine(ra::SpatRaster, points::AbstractVector{Point{T}}
   isnothing(cellsize) && (cellsize = st_cellsize(ra))
 
   n = length(points)
-  b = st_bbox(ra)
   lon, lat = st_dims(ra)
-  cellx, celly = cellsize
-  nx, ny = size(ra)[1:2]
-
+  rastsize = RasterSize(ra)
+  
   ## 采用push!的效率较低
   map(i -> begin
       p1 = points[i]
       p2 = points[i+1]
       x = (p1.x + p2.x) / 2
       y = (p1.y + p2.y) / 2
-      p = _location_fast((x, y); b, cellx, celly, nx, ny) # (i, j)
-
+      p = st_location(rastsize, x, y) # (i, j)
       if isnothing(p)
         nothing
       else

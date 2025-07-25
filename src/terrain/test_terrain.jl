@@ -3,8 +3,15 @@ using SpatRasters
 using SpatRasters, ArchGDAL
 using NetCDFTools
 
+const sf = SpatRasters
 elev = rast("data/dem_etop01_G010deg.tif", FT=Float64)
+
 @time MaxElevation = dem_angle_MaxElevation(elev; δψ=3, radian=2.0)
+
+
+p0 = sf.Point(90., 30.0)
+dem_angle_MaxElevation(elev, p0; δψ=3, radian=2.0)
+
 
 
 f = "./MaxElevation_etop01_G010deg.nc"

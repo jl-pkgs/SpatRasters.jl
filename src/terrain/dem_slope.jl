@@ -24,6 +24,7 @@ function dem_angle_MaxElevation(elev::SpatRaster, p0::Point{T};
   P0 = Point3(p0.x, p0.y, z0)
 
   ψs = δψ/2:δψ:360 # 天文学方位角
+  # ψs =[180.0]
   map(Φ_sun -> begin
       l = Line(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
       points = intersect(elev, l; cellsize)

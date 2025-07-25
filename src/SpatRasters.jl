@@ -65,6 +65,7 @@ include("st_dims.jl")
 include("IO.jl")
 
 include("st_extract.jl")
+include("st_location.jl")
 include("st_resample.jl")
 include("st_mosaic.jl")
 include("st_crop.jl")
@@ -99,23 +100,6 @@ end
 function rm_shp(f)
   rm.(shp_files(f))
   nothing
-end
-
-
-function xy2ij(x::T, y::T, b::bbox, cellsize) where {T<:Real}
-  cellx, celly = cellsize
-  i = floor(Int, (x - b.xmin) / cellx)
-  if celly < 0
-    j = floor(Int, (b.ymax - y) / abs(celly))
-  else
-    j = floor(Int, (y - b.ymin) / celly)
-  end
-  return i, j
-end
-
-function xy2ij(point::Tuple{T,T}, ra::SpatRaster) where {T<:Real}
-  x, y = point
-  xy2ij(x, y, st_bbox(ra), st_cellsize(ra))
 end
 
 # in km^2

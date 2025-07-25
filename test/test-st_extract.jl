@@ -24,7 +24,7 @@ end
   @test !isa(r, SubArray)  
 end
 
-@testset "st_location_fast" begin
+@testset "st_location" begin
   lon = 0.5:1:9.5
   lat = 0.5:1:9.5
   nlon, nlat = length(lon), length(lat)
