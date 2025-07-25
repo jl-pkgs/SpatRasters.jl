@@ -44,11 +44,12 @@ function dem_angle_MaxElevation(elev::SpatRaster; δψ=3, radian=2.0)
   R = zeros(nlon, nlat, N)
 
   p = Progress(length(lon))
-  @threads for i in 1:nlon
+  @inbounds @threads for i in 1:nlon
     next!(p)
     for j in 1:nlat
       p0 = Point(lon[i], lat[j])
-      R[i, j, :] = dem_angle_MaxElevation(elev, p0; δψ, radian, cellsize)
+      R[i, j, :] .= dem_angle_MaxElevation(elev, p0; δψ, radian, cellsize)
     end
   end
+  rast(R, st_bbox(elev))
 end

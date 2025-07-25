@@ -62,7 +62,7 @@ function SVF(elev::SpatRaster;
 
   R = zeros(size(elev.A))
   p = Progress(length(lon))
-  @threads for i in 1:nlon
+  @inbounds @threads for i in 1:nlon
     next!(p)
     for j in 1:nlat
       p0 = Point(lon[i], lat[j])

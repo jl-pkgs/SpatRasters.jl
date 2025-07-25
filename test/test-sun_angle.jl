@@ -9,13 +9,11 @@ using SpatRasters, Dates, Test
   @test altitude ≈ 31.976507857271315 # 30.65
   @test azimuth ≈ 82.80601450246094  # 82.08
 
-
   hours = 6:18
   N = length(hours)
 
   Hs = zeros(N)
   As = zeros(N)
-
   for i in 1:N
     time_local = DateTime(2025, 7, 25, hours[i])
     r = angle_SunAzimuth(lat, time_local)
@@ -27,3 +25,9 @@ using SpatRasters, Dates, Test
   @test maximum(As) ≈ 287.5559011982674
   @test maximum(Hs) ≈ 82.63043358648318
 end
+
+# DataFrame(; hour = hours, A = As)
+# lon = 120
+# lat = 26.90248
+# t = DateTime(2015, 7, 25, 7, 47)
+# time2local(t, 60, lon_ref=120.0) # 北京7点，lon=70° 3点
