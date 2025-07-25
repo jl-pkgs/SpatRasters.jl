@@ -511,6 +511,8 @@ window.onload = function () {
   <li><a href="#cellarea" id="toc-cellarea" class="nav-link" data-scroll-target="#cellarea"><code>cellArea</code></a></li>
   <li><a href="#col_goto" id="toc-col_goto" class="nav-link" data-scroll-target="#col_goto"><code>col_goto</code></a></li>
   <li><a href="#cor" id="toc-cor" class="nav-link" data-scroll-target="#cor"><code>cor</code></a></li>
+  <li><a href="#deg2xy" id="toc-deg2xy" class="nav-link" data-scroll-target="#deg2xy"><code>deg2xy</code></a></li>
+  <li><a href="#dem_angle_maxelevation" id="toc-dem_angle_maxelevation" class="nav-link" data-scroll-target="#dem_angle_maxelevation"><code>dem_angle_MaxElevation</code></a></li>
   <li><a href="#direction" id="toc-direction" class="nav-link" data-scroll-target="#direction"><code>direction</code></a></li>
   <li><a href="#direction_e" id="toc-direction_e" class="nav-link" data-scroll-target="#direction_e"><code>direction_E</code></a></li>
   <li><a href="#direction_n" id="toc-direction_n" class="nav-link" data-scroll-target="#direction_n"><code>direction_N</code></a></li>
@@ -571,6 +573,7 @@ window.onload = function () {
   <li><a href="#st_write" id="toc-st_write" class="nav-link" data-scroll-target="#st_write"><code>st_write</code></a></li>
   <li><a href="#sun_shade" id="toc-sun_shade" class="nav-link" data-scroll-target="#sun_shade"><code>sun_shade</code></a></li>
   <li><a href="#tau2gis" id="toc-tau2gis" class="nav-link" data-scroll-target="#tau2gis"><code>tau2gis</code></a></li>
+  <li><a href="#time2local" id="toc-time2local" class="nav-link" data-scroll-target="#time2local"><code>time2local</code></a></li>
   <li><a href="#tps_kernel" id="toc-tps_kernel" class="nav-link" data-scroll-target="#tps_kernel"><code>tps_kernel</code></a></li>
   <li><a href="#weight_adw-1" id="toc-weight_adw-1" class="nav-link" data-scroll-target="#weight_adw-1"><code>weight_adw!</code></a></li>
   <li><a href="#weight_idw" id="toc-weight_idw" class="nav-link" data-scroll-target="#weight_idw"><code>weight_idw!</code></a></li>
@@ -809,7 +812,7 @@ y :: T</code></pre>
 <p><code>SpatRasters.SVF_azimuth</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "SVF_azimuth" from SpatRasters:
  [1] SVF_azimuth(Φ_sun::T, Φ_slope::T, β_slope::T, zenith_max::T) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sky_view_factor.jl:16</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sky_view_factor.jl:5</code></pre>
 </div>
 </div>
 </div>
@@ -827,7 +830,7 @@ y :: T</code></pre>
 <p><code>SpatRasters.SVF_azimuth_simple</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "SVF_azimuth_simple" from SpatRasters:
  [1] SVF_azimuth_simple(zenith_max::T) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sky_view_factor.jl:26</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sky_view_factor.jl:15</code></pre>
 </div>
 </div>
 </div>
@@ -872,7 +875,7 @@ y :: T</code></pre>
 <p>No docstring found for public module <code>SpatRasters</code>.</p>
 <section id="public-names" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="public-names">Public names</h3>
-<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Line</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>Point</code>, <code>SVF</code>, <code>SVF_azimuth</code>, <code>SVF_azimuth_simple</code>, <code>SpatRaster</code>, <code>_weight_adw</code>, <code>angle_SolarDeclination</code>, <code>angle_SunAzimuth</code>, <code>angle_SunElevation</code>, <code>angle_azimuth</code>, <code>angle_azimuth_sphere</code>, <code>azimuth2deg</code>, <code>azimuth2slope</code>, <code>azimuth2xy</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>cor</code>, <code>direction</code>, <code>direction_E</code>, <code>direction_N</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp</code>, <code>interp_tps</code>, <code>intersect</code>, <code>isscalar</code>, <code>line_end</code>, <code>line_start</code>, <code>make_rast</code>, <code>median</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>sun_shade</code>, <code>tau2gis</code>, <code>tps_kernel</code>, <code>weight_adw!</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
+<p><code>AbstractSpatRaster</code>, <code>D8Direction</code>, <code>DirLength</code>, <code>InGrid</code>, <code>Line</code>, <code>Neighbor</code>, <code>NextCell</code>, <code>Point</code>, <code>SVF</code>, <code>SVF_azimuth</code>, <code>SVF_azimuth_simple</code>, <code>SpatRaster</code>, <code>_weight_adw</code>, <code>angle_SolarDeclination</code>, <code>angle_SunAzimuth</code>, <code>angle_SunElevation</code>, <code>angle_azimuth</code>, <code>angle_azimuth_sphere</code>, <code>azimuth2deg</code>, <code>azimuth2slope</code>, <code>azimuth2xy</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>col_goto</code>, <code>cor</code>, <code>deg2xy</code>, <code>dem_angle_MaxElevation</code>, <code>direction</code>, <code>direction_E</code>, <code>direction_N</code>, <code>distance_earth</code>, <code>distance_norm</code>, <code>earth_dist</code>, <code>find_neighbor</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>gis2tau</code>, <code>gis2wflow</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>interp</code>, <code>interp_tps</code>, <code>intersect</code>, <code>isscalar</code>, <code>line_end</code>, <code>line_start</code>, <code>make_rast</code>, <code>median</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>predict</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>row_goto</code>, <code>set_bandnames</code>, <code>solve_tps</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_location_fast</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>sun_shade</code>, <code>tau2gis</code>, <code>time2local</code>, <code>tps_kernel</code>, <code>weight_adw!</code>, <code>weight_idw!</code>, <code>write_gdal</code>, <code>write_sf</code>, <code>xy2ij</code></p>
 </section>
 <section id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md">Displaying contents of readme found at <code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md</code></h3>
@@ -959,6 +962,12 @@ y :: T</code></pre>
 </div>
 <div class="callout-body-container">
 <p>太阳方位角，正北为0°，正东为90°</p>
+<section id="references" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="references">References</h4>
+<ol type="1">
+<li>https://www.suncalc.org/#/26.9025,120,3/2025.07.25/17:14/1/3</li>
+</ol>
+</section>
 </div>
 </div>
 </div>
@@ -1009,8 +1018,8 @@ y :: T</code></pre>
 <p>球面方位角 (0~360°)</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth_sphere</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>)) <span class="co"># 正北，0</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>))        <span class="co"># 正北，0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="references" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="references">References</h4>
+<section id="references-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="references-1">References</h4>
 <p>https://chatgpt.com/c/6876ff2c-834c-8012-98cd-2bc9691d453f</p>
 </section>
 </div>
@@ -1048,7 +1057,7 @@ y :: T</code></pre>
 <p><code>SpatRasters.azimuth2slope</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "azimuth2slope" from SpatRasters:
  [1] azimuth2slope(ψ)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_angle.jl:25</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:23</code></pre>
 </div>
 </div>
 </div>
@@ -1066,7 +1075,7 @@ y :: T</code></pre>
 <p><code>SpatRasters.azimuth2xy</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "azimuth2xy" from SpatRasters:
  [1] azimuth2xy(Φ)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_angle.jl:27</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:25</code></pre>
 </div>
 </div>
 </div>
@@ -1309,6 +1318,44 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div style="page-break-after: always;"></div>
 </section>
+<section id="deg2xy" class="level2">
+<h2 class="anchored" data-anchor-id="deg2xy"><code>deg2xy</code></h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>No documentation found for public symbol.</p>
+<p><code>SpatRasters.deg2xy</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "deg2xy" from SpatRasters:
+ [1] deg2xy(θ::Real)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:34</code></pre>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="dem_angle_maxelevation" class="level2">
+<h2 class="anchored" data-anchor-id="dem_angle_maxelevation"><code>dem_angle_MaxElevation</code></h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>No documentation found for public symbol.</p>
+<p><code>SpatRasters.dem_angle_MaxElevation</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "dem_angle_MaxElevation" from SpatRasters:
+ [1] dem_angle_MaxElevation(elev::SpatRaster; δψ, radian)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:24
+ [2] dem_angle_MaxElevation(elev::SpatRaster, p0::Point{T}; δψ, radian, cellsize) where T
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:4</code></pre>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
 <section id="direction" class="level2">
 <h2 class="anchored" data-anchor-id="direction"><code>direction</code></h2>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -1321,7 +1368,7 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <p><code>SpatRasters.direction</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "direction" from SpatRasters:
  [1] direction(x::T, y::T) where T
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_angle.jl:46</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:52</code></pre>
 </div>
 </div>
 </div>
@@ -1339,7 +1386,7 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <p><code>SpatRasters.direction_E</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "direction_E" from SpatRasters:
  [1] direction_E(x::Real; eps)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_angle.jl:36</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:42</code></pre>
 </div>
 </div>
 </div>
@@ -1357,7 +1404,7 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <p><code>SpatRasters.direction_N</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "direction_N" from SpatRasters:
  [1] direction_N(y::Real; eps)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_angle.jl:41</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:47</code></pre>
 </div>
 </div>
 </div>
@@ -1409,9 +1456,9 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <div class="callout-body-container">
 <pre><code>earth_dist(x1::Matrix, x2::Matrix; R=6378.388)
 earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1804,7 +1851,7 @@ Set{Float64} with 1 element:
 <p><code>SpatRasters.line_end</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "line_end" from SpatRasters:
  [1] line_end(line::Line)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/methods/datatype.jl:28</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:28</code></pre>
 </div>
 </div>
 </div>
@@ -1822,7 +1869,7 @@ Set{Float64} with 1 element:
 <p><code>SpatRasters.line_start</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "line_start" from SpatRasters:
  [1] line_start(line::Line)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/methods/datatype.jl:26</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:26</code></pre>
 </div>
 </div>
 </div>
@@ -1840,7 +1887,7 @@ Set{Float64} with 1 element:
 <p><code>SpatRasters.make_rast</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "make_rast" from SpatRasters:
  [1] make_rast(; b, cellsize)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:67</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:72</code></pre>
 </div>
 </div>
 </div>
@@ -1926,7 +1973,7 @@ julia&gt; median([1 2; 3 4], dims=1)
 </section>
 <section id="examples-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples-3">Examples</h3>
-<div class="sourceCode" id="cb86"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -2240,8 +2287,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 `λ`: stiffness coefficient</code></pre>
 <p>returns a <code>ThinPlateSpline</code> structure which can be supplied as an argument to <code>tps_deform</code>.</p>
 </section>
-<section id="references-1" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="references-1">References</h4>
+<section id="references-2" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="references-2">References</h4>
 <ol type="1">
 <li>Ghosh A, Kindermann D D S. Efficient thin plate spline interpolation and its application to adaptive optics[M]. na, 2010.</li>
 </ol>
@@ -2272,12 +2319,12 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:15
  [3] st_bbox(lon, lat)
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:8
- [4] st_bbox(line::Line)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/methods/datatype.jl:36
- [5] st_bbox(v::Vector{&lt;:Real})
+ [4] st_bbox(v::Vector{&lt;:Real})
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:4
- [6] st_bbox(r::AbstractSpatRaster)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2</code></pre>
+ [5] st_bbox(r::AbstractSpatRaster)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2
+ [6] st_bbox(line::Line)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:36</code></pre>
 </div>
 </div>
 </div>
@@ -2433,7 +2480,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p>return the overlaping indexes <code>inds</code>, and corresponding (i,j)</p>
 <section id="examples-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples-4">Examples</h3>
-<div class="sourceCode" id="cb115"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -2527,10 +2574,10 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.sun_shade</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "sun_shade" from SpatRasters:
- [1] sun_shade(elev::SpatRaster; radian, δψ, Φ_slope, β_slope, kernel)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:23
- [2] sun_shade(elev::SpatRaster, p0::Point{T}, time::Dates.DateTime; radian) where T
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:2</code></pre>
+ [1] sun_shade(elev::SpatRaster, time::Dates.DateTime)
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:67
+ [2] sun_shade(elev::SpatRaster, p0::Point{T}, time::Dates.DateTime; radian, cellsize) where T
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:45</code></pre>
 </div>
 </div>
 </div>
@@ -2549,6 +2596,20 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <pre><code># 1 method for generic function "tau2gis" from SpatRasters:
  [1] tau2gis(A::AbstractArray)
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/hydro/Hydro.jl:67</code></pre>
+</div>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="time2local" class="level2">
+<h2 class="anchored" data-anchor-id="time2local"><code>time2local</code></h2>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>北京时间修正到localtime</p>
 </div>
 </div>
 </div>
