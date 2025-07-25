@@ -36,6 +36,11 @@ function RasterSize(lon::AbstractVector{T}, lat::AbstractVector{T}) where {T<:Re
   RasterSize(; b, cellsize, nx, ny)
 end
 
+function st_dims(rastersize::RasterSize)
+  (; b, cellsize) = rastersize
+  return bbox2dims(b; cellsize)
+end
+
 
 
 """
@@ -55,7 +60,7 @@ function st_location(rastsize::RasterSize, x::T, y::T) where {T<:Real}
   if celly > 0
     j = (y - b.ymin) / celly
   else
-    j = (b.ymax - y) / abs(celly)
+    j = (b.ymax - y) / -celly
   end
   i2 = floor(Int, i) + 1
   j2 = ceil(Int, j)

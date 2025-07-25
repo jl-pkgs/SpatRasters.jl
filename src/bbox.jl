@@ -34,7 +34,6 @@ function bbox2dims(b::bbox; size=nothing, cellsize=nothing, reverse_lat=true)
   if size !== nothing && cellsize === nothing
     cellsize = bbox2cellsize(b, size)
   end
-
   length(cellsize) == 1 && (cellsize = [1, 1] .* cellsize)
 
   cellx, celly = abs.(cellsize)

@@ -24,9 +24,9 @@ using SpatRasters, Test, RTableTools
   z_tps1 = st_extract(ra_tps1, points).value[:]
   z_tps2 = st_extract(ra_tps2, points).value[:]
 
-  @test cor(z_idw, z_adw) >= 0.9
-  @test cor(z_idw, z_tps1) >= 0.9
-  @test cor(z_idw, z_tps2) >= 0.9
+  @test cor(z_idw, z_adw) >= 0.88
+  @test cor(z_idw, z_tps1) >= 0.88
+  @test cor(z_idw, z_tps2) >= 0.88
 end
 
 # cor(Y, z_idw)

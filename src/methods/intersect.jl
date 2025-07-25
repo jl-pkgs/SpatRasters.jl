@@ -42,11 +42,10 @@ function range_lon(values::AbstractVector{T}, min::T, max::T) where {T}
 end
 
 
-function intersect(ra::SpatRaster, line::Line; cellsize=nothing, sort=true)
-  isnothing(cellsize) && (cellsize = st_cellsize(ra))
+function intersect(rastersize::RasterSize, line::Line; sort=true)
+  (; b, cellsize) = rastersize
   cellx, celly = cellsize
-
-  b = st_bbox(ra)
+  
   lon = b.xmin:cellx:b.xmax # 采用的是网格边界
   lat = celly < 0 ? (b.ymax:celly:b.ymin) : (b.ymin:celly:b.ymax)
 
@@ -60,6 +59,7 @@ function intersect(ra::SpatRaster, line::Line; cellsize=nothing, sort=true)
   points_y = intersect_y(line, ys) # 与水平线的交点
   points_x = intersect_x(line, xs) # 与垂线的交点
   points = cat(points_y, points_x, dims=1) |> rm_empty
+  
   if sort
     if is_vertical(line)
       vals = map(p -> p.x, points)
@@ -69,11 +69,15 @@ function intersect(ra::SpatRaster, line::Line; cellsize=nothing, sort=true)
     inds = sortperm(vals)
     points = @view points[inds] # 需要进行排序，2点判断一个网格位置
   end
-
-  ## 然后两点判断一个网格位置
-  interaction_RasterLine(ra, points; cellsize)
+  return points
 end
 
+
+function intersect(ra::SpatRaster, line::Line, rastersize::RasterSize)
+  points = intersect(rastersize, line)
+  # 然后两点判断一个网格位置
+  interaction_RasterLine(ra, points, rastersize)
+end
 
 """
 仅用于计算相交，两点判断一个网格位置
@@ -84,20 +88,17 @@ points: 与网格边界相交的所有点
 # Return
 每两个点 确定一个网格中心，返回的是网格中心的[x, y, elev]
 """
-function interaction_RasterLine(ra::SpatRaster, points::AbstractVector{Point{T}}; cellsize=nothing) where {T}
-  isnothing(cellsize) && (cellsize = st_cellsize(ra))
+function interaction_RasterLine(ra::SpatRaster, points::AbstractVector{Point{T}}, rastersize::RasterSize) where {T}
 
   n = length(points)
   lon, lat = st_dims(ra)
-  rastsize = RasterSize(ra)
-  
   ## 采用push!的效率较低
   map(i -> begin
       p1 = points[i]
       p2 = points[i+1]
       x = (p1.x + p2.x) / 2
       y = (p1.y + p2.y) / 2
-      p = st_location(rastsize, x, y) # (i, j)
+      p = st_location(rastersize, x, y) # (i, j)
       if isnothing(p)
         nothing
       else
