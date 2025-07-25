@@ -1074,7 +1074,7 @@ y :: T</code></pre>
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.azimuth2xy</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "azimuth2xy" from SpatRasters:
- [1] azimuth2xy(Φ)
+ [1] azimuth2xy(Φ::Real)
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:25</code></pre>
 </div>
 </div>
@@ -1348,9 +1348,9 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <p><code>SpatRasters.dem_angle_MaxElevation</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "dem_angle_MaxElevation" from SpatRasters:
  [1] dem_angle_MaxElevation(elev::SpatRaster; δψ, radian)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:24
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/dem_slope.jl:37
  [2] dem_angle_MaxElevation(elev::SpatRaster, p0::Point{T}; δψ, radian, cellsize) where T
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:4</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/dem_slope.jl:17</code></pre>
 </div>
 </div>
 </div>
@@ -2575,9 +2575,9 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.sun_shade</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "sun_shade" from SpatRasters:
  [1] sun_shade(elev::SpatRaster, time::Dates.DateTime)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:67
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:27
  [2] sun_shade(elev::SpatRaster, p0::Point{T}, time::Dates.DateTime; radian, cellsize) where T
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:45</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:5</code></pre>
 </div>
 </div>
 </div>
