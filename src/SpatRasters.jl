@@ -27,7 +27,7 @@ export rm_shp
 export getgeotransform
 export read_sf, write_sf
 
-export xy2ij, cellArea
+export cellArea
 
 export write_gdal, read_gdal
 export ogr_info, gdal_info, gdalinfo, gdal_nodata

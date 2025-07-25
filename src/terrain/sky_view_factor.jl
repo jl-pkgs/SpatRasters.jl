@@ -23,13 +23,10 @@ end
 - `Φ_slope`: in [deg], 天文学方位角，正北为0
 - `β_slope`: in [deg], 坡面角度
 """
-function SVF(elev::SpatRaster, p0::Point; cellsize=nothing,
+function SVF(elev::SpatRaster, p0::Point; rastersize::RasterSize,
   radian=2.0, δψ=15, Φ_slope, β_slope, kernel::Function=SVF_azimuth)
 
-  isnothing(cellsize) && (cellsize = st_cellsize(elev))
-
   β_slope = deg2rad(β_slope) # [deg] to [radian]
-
 
   z0 = st_extract(elev, [(p0.x, p0.y)]).value[1] # 
   P0 = Point3(p0.x, p0.y, z0)
@@ -40,7 +37,7 @@ function SVF(elev::SpatRaster, p0::Point; cellsize=nothing,
   N = length(ψs)
   for (i, Φ_sun) in enumerate(ψs)
     l = Line(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
-    points = intersect(elev, l; cellsize)
+    points = intersect(elev, l, rastersize)
     length(points) == 0 && continue
 
     n += 1
@@ -56,21 +53,21 @@ end
 function SVF(elev::SpatRaster;
   radian=2.0, δψ=15, Φ_slope=0.0, β_slope=0.0, kernel=SVF_azimuth)
 
-  cellsize = st_cellsize(elev)
+  rastersize = RasterSize(elev)
   lon, lat = st_dims(elev)
   nlon, nlat = length(lon), length(lat)
-
+  
   R = zeros(size(elev.A))
   p = Progress(length(lon))
   @inbounds @threads for i in 1:nlon
     next!(p)
     for j in 1:nlat
       p0 = Point(lon[i], lat[j])
-      try
-        R[i, j] = SVF(elev, p0; cellsize, radian, δψ, Φ_slope, β_slope, kernel)
-      catch ex
-        @show i, j, ex
-      end
+      # try
+      R[i, j] = SVF(elev, p0; rastersize, radian, δψ, Φ_slope, β_slope, kernel)
+      # catch ex
+      #   @show i, j, ex
+      # end
     end
   end
   rast(R, st_bbox(elev); bands=["SVF"])

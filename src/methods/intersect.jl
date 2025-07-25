@@ -79,6 +79,12 @@ function intersect(ra::SpatRaster, line::Line, rastersize::RasterSize)
   interaction_RasterLine(ra, points, rastersize)
 end
 
+function intersect(ra::SpatRaster, line::Line)
+  rastersize = RasterSize(ra)
+  intersect(ra, line, rastersize)
+end
+
+
 """
 仅用于计算相交，两点判断一个网格位置
 
