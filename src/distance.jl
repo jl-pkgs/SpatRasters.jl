@@ -21,7 +21,7 @@ function earth_dist(x1::Matrix, x2::AbstractMatrix; R=6378.388)
 end
 
 # 为了追求最大性能, 角度提前转为radian, [in radian]
-function earth_dist(lon1::T, lat1::T, lon2::T, lat2::T; in_radian=true) where {T}
+function earth_dist(lon1::T, lat1::T, lon2::T, lat2::T; R::T=T(6378.388), in_radian=false) where {T}
   if !in_radian
     lon1 = deg2rad(lon1)
     lat1 = deg2rad(lat1)
@@ -35,13 +35,13 @@ function earth_dist(lon1::T, lat1::T, lon2::T, lat2::T; in_radian=true) where {T
 end
 
 # 1 -> 1
-function earth_dist(p1::Tuple{FT,FT}, p2::Tuple{FT,FT}; R=6378.388, in_radian=true) where {FT<:Real}
+function earth_dist(p1::Tuple{T,T}, p2::Tuple{T,T}; R::T=T(6378.388), in_radian=false) where {T<:Real}
   earth_dist(p1[1], p1[2], p2[1], p2[2]; R, in_radian)
 end
 
 # 1 -> 1
-function earth_dist(p1::Point3{T}, p2::Point3{T}) where {T}
-  earth_dist(p1.x, p1.y, p2.x, p2.y)
+function earth_dist(p1::Point3{T}, p2::Point3{T}; in_radian=false) where {T}
+  earth_dist(p1.x, p1.y, p2.x, p2.y; in_radian)
 end
 
 # 1 -> n

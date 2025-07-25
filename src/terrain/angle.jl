@@ -13,7 +13,7 @@ export deg2xy
 270 -> -180
 ```
 """
-function azimuth2deg(Φ)
+function azimuth2deg(Φ::Real)
   Φ = -Φ + 90
   (Φ > 360) && (Φ -= 360)
   (Φ < 0) && (Φ += 360)
@@ -22,10 +22,9 @@ end
 
 azimuth2slope(ψ) = tan(deg2rad(azimuth2deg(ψ)))
 
-function azimuth2xy(Φ)
+function azimuth2xy(Φ::Real)
   θ = azimuth2deg(Φ) |> deg2rad
   x, y = cos(θ), sin(θ)
-
   # dir = direction(x, y)
   # println(dir)
   x, y

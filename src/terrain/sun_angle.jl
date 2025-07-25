@@ -1,7 +1,3 @@
-include("angle.jl")
-using Dates
-
-
 export angle_SolarDeclination, angle_SunAzimuth, angle_SunElevation
 export time2local
 

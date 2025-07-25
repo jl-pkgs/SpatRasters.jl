@@ -1,5 +1,6 @@
-using Dates, Test, DataFrames
+using Dates, Test
 using SpatRasters
+using SpatRasters, ArchGDAL
 
 # using GLMakie
 # DataFrame(; hour = hours, A = As)
@@ -8,10 +9,8 @@ using SpatRasters
 
 # t = DateTime(2015, 7, 25, 7, 47)
 # time2local(t, 60, lon_ref=120.0) # 北京7点，lon=70° 3点
-using SpatRasters, ArchGDAL
-
 
 ## 
 ra = rast("data/dem_etop01_G010deg.tif", FT=Float64)
-R = dem_angle_MaxElevation(ra; δψ=3, radian=2.0)
-# altitude
+@time R = dem_angle_MaxElevation(ra; δψ=3, radian=2.0)
+# @profview R = dem_angle_MaxElevation(ra; δψ=3, radian=2.0)
