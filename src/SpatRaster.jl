@@ -56,10 +56,15 @@ function SpatRaster(A::AbstractArray, r::SpatRaster; reverse_lat=true)
   SpatRaster(; A, b, cellsize, lon, lat, time, bands, name) # rebuild
 end
 
-function SpatRaster(f::String; kw...)
+function SpatRaster(f::String; FT::DataType=nothing, kw...)
   A = read_gdal(f)
   bands = bandnames(f)
   nodata = gdal_nodata(f)
+
+  if !isnothing(FT) 
+    A = FT.(A)
+    nodata = FT.(nodata)
+  end
   SpatRaster(A, st_bbox(f); bands, nodata, kw...)
 end
 

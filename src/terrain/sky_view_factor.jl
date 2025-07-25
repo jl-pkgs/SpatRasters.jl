@@ -1,17 +1,6 @@
 export SVF_azimuth, SVF_azimuth_simple, SVF
 
 
-"slope in radian"
-function dem_slope(p0::Point3{T}, p1::Point3{T}) where {T}
-  dl = earth_dist(p0, p1) * 1000 # 水平面上的距离, [km] to [m]
-  dz = p1.z - p0.z # [m]
-  atan(dz / dl) # radians
-end
-
-function dem_slope(p0::Point3{T}, Points::Vector{Point3{T}}) where {T}
-  map(p1 -> dem_slope(p0, p1), Points) # αs, H = pi/2 - maximum(αs)
-end
-
 
 function SVF_azimuth(Φ_sun::T, Φ_slope::T, β_slope::T, zenith_max::T) where {T<:Real}
   # Φ_sun = azimuth2deg(Φ_sun) # [天文学] -> [数学]，unnecessary, 二者统一即可

@@ -50,7 +50,3 @@ end
 
 rm_empty(xs::AbstractVector) = map(x -> x, filter(!isnothing, xs))
 
-
-function earth_dist(p1::Point3{T}, p2::Point3{T}) where {T}
-  earth_dist((p1.x, p1.y), (p2.x, p2.y))
-end
