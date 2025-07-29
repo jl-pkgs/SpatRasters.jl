@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4. Operation – SpatRasters</title>
+<title>5. Spatial Interpolations – SpatRasters</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/5-Interp.html" rel="next">
-<link href="../api/3-IO.html" rel="prev">
+<link href="../api/6-Visualization.html" rel="next">
+<link href="../api/4-Operation.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -206,12 +206,14 @@ window.onload = function () {
 
 
 <link rel="stylesheet" href="../_static/style.css">
-<meta property="og:title" content="4. Operation – SpatRasters">
+<meta property="og:title" content="5. Spatial Interpolations – SpatRasters">
 <meta property="og:description" content="">
+<meta property="og:image" content="5-Interp_files/figure-html/cell-5-output-2.svg">
 <meta property="og:site_name" content="SpatRasters">
-<meta name="twitter:title" content="4. Operation – SpatRasters">
+<meta name="twitter:title" content="5. Spatial Interpolations – SpatRasters">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="5-Interp_files/figure-html/cell-5-output-2.svg">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -413,7 +415,7 @@ window.onload = function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/4-Operation.html"><span class="chapter-title">4. Operation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/5-Interp.html"><span class="chapter-title">5. Spatial Interpolations</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -455,12 +457,12 @@ window.onload = function () {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/4-Operation.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">4. Operation</span></a>
+  <a href="../api/4-Operation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Operation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/5-Interp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. Spatial Interpolations</span></a>
+  <a href="../api/5-Interp.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">5. Spatial Interpolations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -483,8 +485,12 @@ window.onload = function () {
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#st_location" id="toc-st_location" class="nav-link active" data-scroll-target="#st_location">st_location</a></li>
-  <li><a href="#st_extrac" id="toc-st_extrac" class="nav-link" data-scroll-target="#st_extrac">st_extrac</a></li>
+  <li><a href="#load-packages" id="toc-load-packages" class="nav-link active" data-scroll-target="#load-packages">Load packages</a></li>
+  <li><a href="#interp" id="toc-interp" class="nav-link" data-scroll-target="#interp">Interp</a>
+  <ul class="collapse">
+  <li><a href="#adw-m如何选择" id="toc-adw-m如何选择" class="nav-link" data-scroll-target="#adw-m如何选择">ADW <code>m</code>如何选择</a></li>
+  <li><a href="#adw-cdd如何选择" id="toc-adw-cdd如何选择" class="nav-link" data-scroll-target="#adw-cdd如何选择">ADW <code>cdd</code>如何选择?</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -494,7 +500,7 @@ window.onload = function () {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">4. Operation</span></h1>
+<h1 class="title"><span class="chapter-title">5. Spatial Interpolations</span></h1>
 </div>
 
 
@@ -511,33 +517,187 @@ window.onload = function () {
 </header>
 
 
-<div id="9a8ed376" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatRasters</span>, <span class="bu">ArchGDAL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="load-packages" class="level2">
+<h2 class="anchored" data-anchor-id="load-packages">Load packages</h2>
+<div id="aeeda48b" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatRasters</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MakieLayers</span>, <span class="bu">CairoMakie</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="bu">MakieLayers</span>: imagesc, imagesc!</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">imagesc</span>(ra<span class="op">::</span><span class="dt">SpatRaster</span>, args<span class="op">...</span>; kw<span class="op">...</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  lon, lat <span class="op">=</span> <span class="fu">st_dims</span>(ra)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">imagesc</span>(lon, lat, ra.A, args<span class="op">...</span>; kw<span class="op">...</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">imagesc!</span>(handle, ra<span class="op">::</span><span class="dt">SpatRaster</span>, args<span class="op">...</span>; kw<span class="op">...</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  lon, lat <span class="op">=</span> <span class="fu">st_dims</span>(ra)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">imagesc!</span>(handle, lon, lat, ra.A, args<span class="op">...</span>; kw<span class="op">...</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">plot_interp</span>(fig, ra, X, Y; colors<span class="op">=</span>amwg256, colorrange<span class="op">=</span>(<span class="fl">0</span>, <span class="fl">60</span>), title<span class="op">=</span><span class="st">"IDW"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  ax, plt <span class="op">=</span> <span class="fu">imagesc!</span>(fig, ra[<span class="op">:</span>, <span class="op">:</span>, <span class="fl">1</span>]; colorrange, colors, title, force_show_legend<span class="op">=</span><span class="cn">true</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scatter!</span>(ax, X[<span class="op">:</span>, <span class="fl">1</span>], X[<span class="op">:</span>, <span class="fl">2</span>]; color<span class="op">=</span>Y, strokecolor<span class="op">=:</span>white, strokewidth<span class="op">=</span><span class="fl">0.6</span>, colorrange, colormap<span class="op">=</span>colors)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="st_location" class="level2">
-<h2 class="anchored" data-anchor-id="st_location">st_location</h2>
-<p>默认采用<code>st_location</code>，point压网格边界时，有待商榷如何取值。</p>
-<ul>
-<li><p><code>st_location_exact</code>:</p>
-<p>采用findnear去判断point落在哪个网格中，</p>
-<ol type="1">
-<li>首先判断x落在哪(i) 若距离最近的点，距离超过了<code>0.5cellsize</code>，则返回<code>-1</code></li>
-<li>其次判断y落在哪(j)</li>
-</ol></li>
-<li><p><code>st_location_fast</code>: 直接计算出ij</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> (x <span class="op">-</span> b.xmin) <span class="op">/</span> cellx</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>j <span class="op">=</span> j <span class="op">=</span> (b.ymax <span class="op">-</span> y) <span class="op">/</span> <span class="fu">abs</span>(celly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
 </section>
-<section id="st_extrac" class="level2">
-<h2 class="anchored" data-anchor-id="st_extrac">st_extrac</h2>
-<ul>
-<li><code>st_extract(ra::AbstractSpatRaster, points::Vector{Tuple{T,T}}; combine=hcat)</code></li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> <span class="fu">st_points</span>(X[<span class="op">:</span>, <span class="fl">1</span>], X[<span class="op">:</span>, <span class="fl">2</span>])</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_extract</span>(ra, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="interp" class="level2">
+<h2 class="anchored" data-anchor-id="interp">Interp</h2>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatRasters</span>, <span class="bu">Statistics</span>, <span class="bu">Test</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">RTableTools</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>indir <span class="op">=</span> <span class="st">"</span><span class="sc">$</span>(<span class="pp">@__DIR__</span>)<span class="st">/../../.."</span> <span class="op">|&gt;</span> abspath</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fu">fread</span>(<span class="st">"</span><span class="sc">$</span>indir<span class="st">/data/prcp_st174_shiyan.csv"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [d.lon d.lat] <span class="co"># d.alt</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> d.prcp</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Y = repeat(y, outer=(1, 24 * 30))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>174-element Vector{Float64}:
+  0.5
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  ⋮
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.5
+ 10.0
+  0.0
+  0.0
+  0.0
+  0.0</code></pre>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fu">bbox</span>(<span class="fl">109.5</span>, <span class="fl">31.5</span>, <span class="fl">112</span> <span class="op">-</span> <span class="fl">0.5</span>, <span class="fl">33.5</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="fu">make_rast</span>(; b, cellsize<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># neighbor = find_neighbor(target, X; radius=100, do_angle=true)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="fl">100</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>nmax <span class="op">=</span> <span class="fl">6</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> ra_idw <span class="op">=</span> <span class="fu">interp</span>(X, Y, target; method<span class="op">=</span><span class="st">"idw"</span>, radius, nmax, m<span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> ra_adw <span class="op">=</span> <span class="fu">interp</span>(X, Y, target; method<span class="op">=</span><span class="st">"adw"</span>, radius, cdd<span class="op">=</span><span class="fl">25</span>, nmax, do_angle<span class="op">=</span><span class="cn">true</span>, m<span class="op">=</span><span class="fl">6</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> ra_tps1 <span class="op">=</span> <span class="fu">interp_tps</span>(X, Y, target; λ<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> ra_tps2 <span class="op">=</span> <span class="fu">interp_tps</span>(X, Y, target; λ<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># @profview ra_adw = interp(X, Y, target; wfun=weight_adw!)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>1.723098 seconds (3.32 M allocations: 166.722 MiB, 1.86% gc time, 99.66% compilation time) 0.448480 seconds (874.31 k allocations: 38.760 MiB, 97.70% compilation time) 5.295549 seconds (14.45 M allocations: 722.047 MiB, 4.29% gc time, 99.90% compilation time) 0.003996 seconds (100 allocations: 2.020 MiB)</p>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-blue-fg">SpatRaster{Float64}: </span><span style="text-decoration:underline" class="ansi-green-fg">Raster</span>
+  A        : Array{Float64, 3} | (20, 20, 1) | <span style="font-weight:bold;text-decoration:underline" class="ansi-blue-fg">0.0 Mb</span>
+  b        : bbox(109.5, 31.5, 111.5, 33.5)
+  cellsize : (0.1, -0.1)
+  lon, lat : 109.55:0.1:111.45, 33.45:-0.1:31.55
+  time     : nothing
+  bands    : nothing
+  nodata   : nothing</pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> <span class="fu">Figure</span>(; size<span class="op">=</span>(<span class="fl">1000</span>, <span class="fl">800</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_interp</span>(fig[<span class="fl">1</span>, <span class="fl">1</span>], ra_idw, X, Y; title<span class="op">=</span><span class="st">"IDW"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_interp</span>(fig[<span class="fl">1</span>, <span class="fl">2</span>], ra_adw, X, Y; title<span class="op">=</span><span class="st">"ADW"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_interp</span>(fig[<span class="fl">2</span>, <span class="fl">1</span>], ra_tps1, X, Y; title<span class="op">=</span><span class="st">"TPS (λ = 0.01)"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_interp</span>(fig[<span class="fl">2</span>, <span class="fl">2</span>], ra_tps2, X, Y; title<span class="op">=</span><span class="st">"TPS (λ = 0.1)"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
+
+<span class="ansi-yellow-fg ansi-bold">└ </span><span class="ansi-bright-black-fg">@ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264</span>
+</pre>
+</div>
+<p><img src="5-Interp_files/figure-html/cell-5-output-2.svg" class="img-fluid"></p>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>target_high <span class="op">=</span> <span class="fu">make_rast</span>(; b, cellsize<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ra <span class="op">=</span> ra_idw</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ra_high <span class="op">=</span> <span class="fu">interp</span>(ra, target_high; method<span class="op">=</span><span class="st">"nearest"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ra_high_adw <span class="op">=</span> <span class="fu">interp</span>(ra, target_high; method<span class="op">=</span><span class="st">"adw"</span>, nmax<span class="op">=</span><span class="fl">6</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">size</span>(ra)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="pp">@show</span> <span class="fu">size</span>(ra_high)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>colorrange <span class="op">=</span> (<span class="fl">0</span>, <span class="fl">60</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> <span class="fu">Figure</span>(; size<span class="op">=</span>(<span class="fl">800</span>, <span class="fl">400</span>))</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">imagesc!</span>(fig[<span class="fl">1</span>, <span class="fl">1</span>], ra; colorrange, title<span class="op">=</span><span class="st">"LOW resolution"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">imagesc!</span>(fig[<span class="fl">1</span>, <span class="fl">2</span>], ra_high; colorrange, title<span class="op">=</span><span class="st">"HIGH nearest"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">imagesc!</span>(fig[<span class="fl">1</span>, <span class="fl">3</span>], ra_high_adw; colorrange, title<span class="op">=</span><span class="st">"HIGH adw"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>size(ra) = (20, 20, 1) size(ra_high) = (40, 40, 1)</p>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
+
+<span class="ansi-yellow-fg ansi-bold">└ </span><span class="ansi-bright-black-fg">@ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264</span>
+</pre>
+</div>
+<p><img src="5-Interp_files/figure-html/cell-6-output-3.svg" class="img-fluid"></p>
+<section id="adw-m如何选择" class="level3">
+<h3 class="anchored" data-anchor-id="adw-m如何选择">ADW <code>m</code>如何选择</h3>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">k2ij</span>(k; nrow<span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> <span class="fu">ceil</span>(<span class="dt">Int</span>, k <span class="op">/</span> nrow)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  j <span class="op">=</span> k <span class="op">-</span> (i <span class="op">-</span> <span class="fl">1</span>) <span class="op">*</span> nrow</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  i, j</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> <span class="fu">Figure</span>(; size<span class="op">=</span>(<span class="fl">1000</span>, <span class="fl">700</span>))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k, m) <span class="kw">in</span> <span class="fu">enumerate</span>([<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span>])</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  i, j <span class="op">=</span> <span class="fu">k2ij</span>(k; nrow<span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="pp">@time</span> ra_adw <span class="op">=</span> <span class="fu">interp</span>(X, Y, target; method<span class="op">=</span><span class="st">"adw"</span>, radius, cdd<span class="op">=</span><span class="fl">25</span>, nmax<span class="op">=</span><span class="fl">8</span>, do_angle<span class="op">=</span><span class="cn">true</span>, m)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_interp</span>(fig[i, j], ra_adw, X, Y; title<span class="op">=</span><span class="st">"ADW (m=</span><span class="sc">$</span>m<span class="st">)"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>0.012890 seconds (316.57 k allocations: 6.243 MiB)</p>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
+
+<span class="ansi-yellow-fg ansi-bold">└ </span><span class="ansi-bright-black-fg">@ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264</span>
+</pre>
+</div>
+<p>0.068633 seconds (316.86 k allocations: 6.262 MiB, 73.60% gc time, 5.88% compilation time) 0.012904 seconds (316.57 k allocations: 6.242 MiB) 0.013058 seconds (316.57 k allocations: 6.242 MiB) <img src="5-Interp_files/figure-html/cell-7-output-4.svg" class="img-fluid"></p>
+</section>
+<section id="adw-cdd如何选择" class="level3">
+<h3 class="anchored" data-anchor-id="adw-cdd如何选择">ADW <code>cdd</code>如何选择?</h3>
+<p>m = 1时，cdd是权重降到0.6对应的距离</p>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">10</span><span class="op">:</span><span class="fl">500.0</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cal_weight</span>(dist; cdd<span class="op">=</span><span class="fl">100</span>, m<span class="op">=</span><span class="fl">1</span>) <span class="op">=</span> <span class="fu">exp</span>(<span class="op">-</span>dist <span class="op">/</span> cdd)<span class="op">^</span>m</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">plot_ws!</span>(ax; m, cdd)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  ws <span class="op">=</span> <span class="fu">cal_weight</span>.(dist; m, cdd)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines!</span>(ax, dist, ws; label<span class="op">=</span><span class="st">"cdd = </span><span class="sc">$</span>cdd<span class="st">, m = </span><span class="sc">$</span>m<span class="st">"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> <span class="fu">Figure</span>(; size<span class="op">=</span>(<span class="fl">800</span>, <span class="fl">600</span>))</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> <span class="fu">Axis</span>(fig[<span class="fl">1</span>, <span class="fl">1</span>])</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k, cdd) <span class="op">=</span> <span class="fu">enumerate</span>([<span class="fl">25</span>, <span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">200</span>])</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  i, j <span class="op">=</span> <span class="fu">k2ij</span>(k; nrow<span class="op">=</span><span class="fl">2</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  ax <span class="op">=</span> <span class="fu">Axis</span>(fig[i, j])</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylims!</span>(ax, (<span class="fl">0</span>, <span class="fl">1</span>))</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j, m) <span class="op">=</span> <span class="fu">enumerate</span>([<span class="fl">1</span>, <span class="fl">2</span>])</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot_ws!</span>(ax; m, cdd)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">axislegend</span>()</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># vlines!(ax, [cdd]; linestyle=:dash, color=:red)</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># lines!(ax, [0, cdd], [1, 1] * cal_weight(cdd); linestyle=:dash, color=:red)</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># lines!(ax, [1, 1] .* cdd, [0, 1] * cal_weight(cdd); linestyle=:dash, color=:red)</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-yellow-fg ansi-bold">┌ </span><span class="ansi-yellow-fg ansi-bold">Warning: </span>Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.
+
+<span class="ansi-yellow-fg ansi-bold">└ </span><span class="ansi-bright-black-fg">@ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264</span>
+</pre>
+</div>
+<p><img src="5-Interp_files/figure-html/cell-8-output-2.svg" class="img-fluid"></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -955,13 +1115,13 @@ window.onload = function () {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/3-IO.html" class="pagination-link" aria-label="3. IO">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">3. IO</span></span>
+      <a href="../api/4-Operation.html" class="pagination-link" aria-label="4. Operation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">4. Operation</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../api/5-Interp.html" class="pagination-link" aria-label="5. Spatial Interpolations">
-        <span class="nav-page-text"><span class="chapter-title">5. Spatial Interpolations</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../api/6-Visualization.html" class="pagination-link" aria-label="6. Visualization">
+        <span class="nav-page-text"><span class="chapter-title">6. Visualization</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
