@@ -14,7 +14,7 @@
     "href": "index.html#functions",
     "title": "SpatRasters",
     "section": "Functions",
-    "text": "Functions\nInterpolation (point to raster)\n\nThin Plate Spline Interpolation (tps)\nAngular Distance Weighting Interpolation (adw)\nInverse Distance Weighting Interpolation (idw)\n\nTerrain\n\nSky view factor (SVF)\nsun shade\n\nmethods\n\nintersect (line & raster)",
+    "text": "Functions\nInterpolation (point to raster)\n\nThin Plate Spline Interpolation (tps)\nAngular Distance Weighting Interpolation (adw)\nInverse Distance Weighting Interpolation (idw)\nNearest Interpolation (nearest)\n\nTerrain\n\nSky view factor (SVF)\nsun shade\n\nmethods\n\nintersect (line & raster)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Overview</span>"
     ]
@@ -94,7 +94,27 @@
     "href": "api/3-IO.html",
     "title": "3. IO",
     "section": "",
-    "text": "1 IO",
+    "text": "写数据\n注意：bands信息可以写入tif，但time无法写入\nDriver: GTiff/GeoTIFF Files: test.tif Size is 180, 90 Coordinate System is: GEOGCRS[“WGS 84”, ENSEMBLE[“World Geodetic System 1984 ensemble”, MEMBER[“World Geodetic System 1984 (Transit)”], MEMBER[“World Geodetic System 1984 (G730)”], MEMBER[“World Geodetic System 1984 (G873)”], MEMBER[“World Geodetic System 1984 (G1150)”], MEMBER[“World Geodetic System 1984 (G1674)”], MEMBER[“World Geodetic System 1984 (G1762)”], MEMBER[“World Geodetic System 1984 (G2139)”], MEMBER[“World Geodetic System 1984 (G2296)”], ELLIPSOID[“WGS 84”,6378137,298.257223563, LENGTHUNIT[“metre”,1]], ENSEMBLEACCURACY[2.0]], PRIMEM[“Greenwich”,0, ANGLEUNIT[“degree”,0.0174532925199433]], CS[ellipsoidal,2], AXIS[“geodetic latitude (Lat)”,north, ORDER[1], ANGLEUNIT[“degree”,0.0174532925199433]], AXIS[“geodetic longitude (Lon)”,east, ORDER[2], ANGLEUNIT[“degree”,0.0174532925199433]], USAGE[ SCOPE[“Horizontal component of 3D system.”], AREA[“World.”], BBOX[-90,-180,90,180]], ID[“EPSG”,4326]] Data axis to CRS axis mapping: 2,1 Origin = (-180.000000000000000,90.000000000000000) Pixel Size = (2.000000000000000,-2.000000000000000) Metadata: AREA_OR_POINT=Area Image Structure Metadata: COMPRESSION=DEFLATE INTERLEAVE=PIXEL Corner Coordinates: Upper Left (-180.0000000, 90.0000000) (180d 0’ 0.00”W, 90d 0’ 0.00”N) Lower Left (-180.0000000, -90.0000000) (180d 0’ 0.00”W, 90d 0’ 0.00”S) Upper Right ( 180.0000000, 90.0000000) (180d 0’ 0.00”E, 90d 0’ 0.00”N) Lower Right ( 180.0000000, -90.0000000) (180d 0’ 0.00”E, 90d 0’ 0.00”S) Center ( 0.0000000, 0.0000000) ( 0d 0’ 0.01”E, 0d 0’ 0.01”N) Band 1 Block=256x256 Type=Float64, ColorInterp=Gray NoData Value=-1 Band 2 Block=256x256 Type=Float64, ColorInterp=Undefined NoData Value=-1 Band 3 Block=256x256 Type=Float64, ColorInterp=Undefined NoData Value=-1 Band 4 Block=256x256 Type=Float64, ColorInterp=Undefined NoData Value=-1 Band 5 Block=256x256 Type=Float64, ColorInterp=Undefined NoData Value=-1 Band 6 Block=256x256 Type=Float64, ColorInterp=Undefined NoData Value=-1 Band 7 Block=256x256 Type=Float64, ColorInterp=Undefined NoData Value=-1 Band 8 Block=256x256 Type=Float64, ColorInterp=Undefined NoData Value=-1 Band 9 Block=256x256 Type=Float64, ColorInterp=Undefined NoData Value=-1 Band 10 Block=256x256 Type=Float64, ColorInterp=Undefined NoData Value=-1",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3. IO</span>"
+    ]
+  },
+  {
+    "objectID": "api/3-IO.html#写数据",
+    "href": "api/3-IO.html#写数据",
+    "title": "3. IO",
+    "section": "",
+    "text": "using SpatRasters, ArchGDAL\nusing Dates\n\ndates = Date(2010, 1, 1):Day(1):Date(2010, 1, 10)\nntime = length(dates)\n\nra = rast(rand(180, 90, ntime); time=dates, nodata=-1.0)\nra\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (180, 90, 10) | 1.24 Mb\n  b        : bbox(-180.0, -90.0, 180.0, 90.0)\n  cellsize : (2.0, -2.0)\n  lon, lat : -179.0:2.0:179.0, 89.0:-2.0:-89.0\n  time     : 2010-01-01 ~ 2010-01-10, ntime=10\n  bands    : nothing\n  nodata   : [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]\n\nwrite_gdal(ra, \"test.tif\")\ngdal_info(\"test.tif\")",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>3. IO</span>"
+    ]
+  },
+  {
+    "objectID": "api/3-IO.html#读数据",
+    "href": "api/3-IO.html#读数据",
+    "title": "3. IO",
+    "section": "读数据",
+    "text": "读数据\nrast(\"test.tif\")\n\nSpatRaster{Float64}: Raster\n  A        : Array{Float64, 3} | (180, 90, 10) | 1.24 Mb\n  b        : bbox(-180.0, -90.0, 180.0, 90.0)\n  cellsize : (2.0, -2.0)\n  lon, lat : -179.0:2.0:179.0, 89.0:-2.0:-89.0\n  time     : nothing\n  bands    : [\"\", \"\", \"\", \"\", \"\", \"\", \"\", \"\", \"\", \"\"]\n  nodata   : [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>3. IO</span>"
     ]
@@ -130,23 +150,13 @@
     ]
   },
   {
-    "objectID": "api/5-Interp.html",
-    "href": "api/5-Interp.html",
-    "title": "5. Spatial Interpolations",
+    "objectID": "api/6-Visualization.html",
+    "href": "api/6-Visualization.html",
+    "title": "6. Visualization",
     "section": "",
-    "text": "Load packages\nusing SpatRasters\nusing MakieLayers, CairoMakie\nimport MakieLayers: imagesc, imagesc!\n\nfunction imagesc(ra::SpatRaster, args...; kw...)\n  lon, lat = st_dims(ra)\n  imagesc(lon, lat, ra.A, args...; kw...)\nend\n\nfunction imagesc!(handle, ra::SpatRaster, args...; kw...)\n  lon, lat = st_dims(ra)\n  imagesc!(handle, lon, lat, ra.A, args...; kw...)\nend\n\nfunction plot_interp(fig, ra, X, Y; colors=amwg256, colorrange=(0, 60), title=\"IDW\")\n  ax, plt = imagesc!(fig, ra[:, :, 1]; colorrange, colors, title, force_show_legend=true)\n  scatter!(ax, X[:, 1], X[:, 2]; color=Y, strokecolor=:white, strokewidth=0.6, colorrange, colormap=colors)\nend",
+    "text": "using SpatRasters\nusing MakieLayers, CairoMakie\nimport MakieLayers: imagesc, imagesc!\nimagesc(rand(10, 10))\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>5. Spatial Interpolations</span>"
-    ]
-  },
-  {
-    "objectID": "api/5-Interp.html#interp",
-    "href": "api/5-Interp.html#interp",
-    "title": "5. Spatial Interpolations",
-    "section": "Interp",
-    "text": "Interp\nusing SpatRasters, Statistics, Test\nusing RTableTools\n\nindir = \"$(@__DIR__)/../../..\" |&gt; abspath\nd = fread(\"$indir/data/prcp_st174_shiyan.csv\")\n\nX = [d.lon d.lat] # d.alt\nY = d.prcp\n# Y = repeat(y, outer=(1, 24 * 30))\nb = bbox(109.5, 31.5, 112 - 0.5, 33.5)\ntarget = make_rast(; b, cellsize=0.01)\n\nSpatRaster{Float64}: Raster\n  A        : Matrix{Float64} | (200, 200) | 0.31 Mb\n  b        : bbox(109.5, 31.5, 111.5, 33.5)\n  cellsize : (0.01, -0.01)\n  lon, lat : 109.505:0.01:111.495, 33.495:-0.01:31.505\n  time     : nothing\n  bands    : nothing\n  nodata   : nothing\n\n# neighbor = find_neighbor(target, X; radius=100, do_angle=true)\nradius = 100\nnmax = 6\n@time ra_idw = interp(X, Y, target; wfun=weight_idw!, radius, nmax, m=2)\n@time ra_adw = interp(X, Y, target; wfun=weight_adw!, radius, cdd=25, nmax, do_angle=true, m=6)\n@time ra_tps1 = interp_tps(X, Y, target; λ=0.01)\n@time ra_tps2 = interp_tps(X, Y, target; λ=0.1)\n# @profview ra_adw = interp(X, Y, target; wfun=weight_adw!)\n\nfig = Figure(; size=(1000, 800))\nplot_interp(fig[1, 1], ra_idw, X, Y; title=\"IDW\")\nplot_interp(fig[1, 2], ra_adw, X, Y; title=\"ADW\")\nplot_interp(fig[2, 1], ra_tps1, X, Y; title=\"TPS (λ = 0.01)\")\nplot_interp(fig[2, 2], ra_tps2, X, Y; title=\"TPS (λ = 0.1)\")\nfig\n2.127609 seconds (7.00 M allocations: 293.258 MiB, 3.66% gc time, 79.48% compilation time) 1.753607 seconds (20.08 M allocations: 438.472 MiB, 24.26% gc time, 24.04% compilation time) 5.323365 seconds (14.46 M allocations: 776.852 MiB, 3.24% gc time, 97.01% compilation time) 0.129963 seconds (100 allocations: 56.705 MiB)\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264\n\n\n\n\nADW m如何选择\nfunction k2ij(k; nrow=2)\n  i = ceil(Int, k / nrow)\n  j = k - (i - 1) * nrow\n  i, j\nend\n\nfig = Figure(; size=(1000, 700))\nfor (k, m) in enumerate([1, 2, 4, 6])\n  i, j = k2ij(k; nrow=2)\n  @time ra_adw = interp(X, Y, target; wfun=weight_adw!, radius, cdd=25, nmax=8, do_angle=true, m)\n  plot_interp(fig[i, j], ra_adw, X, Y; title=\"ADW (m=$m)\")\nend\nfig\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264\n\n\n1.681044 seconds (31.64 M allocations: 622.909 MiB, 23.95% gc time) 1.302531 seconds (31.64 M allocations: 622.906 MiB, 4.20% gc time) 1.304048 seconds (31.64 M allocations: 622.907 MiB, 4.02% gc time) 1.773717 seconds (31.64 M allocations: 622.906 MiB, 25.23% gc time) \n\n\nADW cdd如何选择?\nm = 1时，cdd是权重降到0.6对应的距离\ndist = 0:10:500.0\ncal_weight(dist; cdd=100, m=1) = exp(-dist / cdd)^m\n\nfunction plot_ws!(ax; m, cdd)\n  ws = cal_weight.(dist; m, cdd)\n  lines!(ax, dist, ws; label=\"cdd = $cdd, m = $m\")\nend\n\nfig = Figure(; size=(800, 600))\nax = Axis(fig[1, 1])\n\nfor (k, cdd) = enumerate([25, 50, 100, 200])\n  i, j = k2ij(k; nrow=2)\n  ax = Axis(fig[i, j])\n  ylims!(ax, (0, 1))\n  for (j, m) = enumerate([1, 2])\n    plot_ws!(ax; m, cdd)\n  end\n  axislegend()\nend\n# vlines!(ax, [cdd]; linestyle=:dash, color=:red)\n# lines!(ax, [0, cdd], [1, 1] * cal_weight(cdd); linestyle=:dash, color=:red)\n# lines!(ax, [1, 1] .* cdd, [0, 1] * cal_weight(cdd); linestyle=:dash, color=:red)\nfig\n\n┌ Warning: Found `resolution` in the theme when creating a `Scene`. The `resolution` keyword for `Scene`s and `Figure`s has been deprecated. Use `Figure(; size = ...` or `Scene(; size = ...)` instead, which better reflects that this is a unitless size and not a pixel resolution. The key could also come from `set_theme!` calls or related theming functions.\n\n└ @ Makie ~/.julia/packages/Makie/6zcxH/src/scenes.jl:264",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>5. Spatial Interpolations</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>6. Visualization</span>"
     ]
   },
   {
@@ -304,7 +314,7 @@
     "href": "api/z-index.html#spatrasters",
     "title": "Reference",
     "section": "SpatRasters",
-    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, InGrid, Line, Neighbor, NextCell, Point, Point3, RasterSize, SVF, SVF_azimuth, SVF_azimuth_simple, SpatRaster, _st_location, _weight_adw, angle_SolarDeclination, angle_SunAzimuth, angle_SunElevation, angle_azimuth, angle_azimuth_sphere, azimuth2deg, azimuth2slope, azimuth2xy, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, cor, deg2xy, dem_angle_MaxElevation, dem_slope, direction, direction_E, direction_N, distance_earth, distance_norm, earth_dist, find_neighbor, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, interp, interp_tps, intersect, isscalar, line_end, line_start, make_rast, median, merge_var, merge_var!, meshgrid, nband, nlayer, nlyr, ogr_info, predict, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, solve_tps, st_bbox, st_cellsize, st_coords, st_crop, st_dims, st_extract, st_location, st_location_exact, st_mosaic, st_points, st_read, st_write, sun_shade, tau2gis, time2local, tps_kernel, weight_adw!, weight_idw!, write_gdal, write_sf\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)\n\nFunctions\nInterpolation (point to raster)\n\nThin Plate Spline Interpolation (tps)\nAngular Distance Weighting Interpolation (adw)\nInverse Distance Weighting Interpolation (idw)\n\nTerrain\n\nSky view factor (SVF)\nsun shade\n\nmethods\n\nintersect (line & raster)",
+    "text": "SpatRasters\n\n\n\n\n\n\nNo docstring found for public module SpatRasters.\n\nPublic names\nAbstractSpatRaster, D8Direction, DirLength, InGrid, Line, Neighbor, NextCell, Point, Point3, RasterSize, SVF, SVF_azimuth, SVF_azimuth_simple, SpatRaster, _st_location, _weight_adw, angle_SolarDeclination, angle_SunAzimuth, angle_SunElevation, angle_azimuth, angle_azimuth_sphere, azimuth2deg, azimuth2slope, azimuth2xy, bandnames, bbox, bbox2cellsize, bbox2dims, bbox2lims, bbox2ndim, bbox2range, bbox2vec, bbox_overlap, cellArea, col_goto, cor, deg2xy, dem_angle_MaxElevation, dem_slope, direction, direction_E, direction_N, distance_earth, distance_norm, earth_dist, find_neighbor, fliplr, flipud, gdal_info, gdal_nodata, gdal_polygonize, gdalinfo, getgeotransform, gis2tau, gis2wflow, guanshan_dem, guanshan_flowdir_cpp, guanshan_flowdir_gis, in_bbox, interp, interp_tps, intersect, isscalar, line_end, line_start, make_rast, median, merge_var, merge_var!, meshgrid, nband, nlayer, nlyr, ogr_info, predict, range2bbox, rast, read_gdal, read_sf, resample_first, rm_shp, row_goto, set_bandnames, solve_tps, st_bbox, st_cellsize, st_coords, st_crop, st_dims, st_extract, st_location, st_location_exact, st_mosaic, st_points, st_read, st_write, sun_shade, tau2gis, time2local, tps_kernel, weight_adw!, weight_idw!, write_gdal, write_sf\n\n\nDisplaying contents of readme found at /home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md\n\n\nSpatRasters.jl: Simple Spatial Rasters in Julia\n&lt;!–  –&gt;   \n\nDongdong Kong\n\nSpatRaster is a simple spatial raster with WGS84 projection, abbreviated as rast.\nDue to its simplicity, SpatRasters.jl doesn’t rely on any other geospatial packages, which makes SpatRasters.jl more lightweight than GeoArrays and Rasters.jl.\nSpatRasters.jl used the class and function of R language terra and sf packages.\njulia -e \"@time using SpatRasters\"\n# 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)\n\nFunctions\nInterpolation (point to raster)\n\nThin Plate Spline Interpolation (tps)\nAngular Distance Weighting Interpolation (adw)\nInverse Distance Weighting Interpolation (idw)\nNearest Interpolation (nearest)\n\nTerrain\n\nSky view factor (SVF)\nsun shade\n\nmethods\n\nintersect (line & raster)",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -624,7 +634,7 @@
     "href": "api/z-index.html#find_neighbor",
     "title": "Reference",
     "section": "find_neighbor",
-    "text": "find_neighbor\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.find_neighbor is a Function.\n# 2 methods for generic function \"find_neighbor\" from SpatRasters:\n [1] find_neighbor(ra::SpatRaster, X; nmax, radius, do_angle)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/find_neighbor.jl:29\n [2] find_neighbor(point, tree; nmax, radius)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/find_neighbor.jl:21",
+    "text": "find_neighbor\n\n\n\n\n\n\nfind_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=100, do_angle=true)\n已经按照距离进行了排序。",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -764,7 +774,7 @@
     "href": "api/z-index.html#interp",
     "title": "Reference",
     "section": "interp",
-    "text": "interp\n\n\n\n\n\n\ninterp(x::AbstractMatrix, y::AbstractArray{FT}, target::SpatRaster;\n    nmax::Int=20, radius::Real=200, do_angle=false,\n    wfun::Function=weight_idw!, kw...)\ninterp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignored...)\n\nArguments\n\nkw: other parameters to wfun\n\nweight_idw!: m\nweight_adw!: cdd, m",
+    "text": "interp\n\n\n\n\n\n\ninterp(ra::SpatRaster, target::SpatRaster;\n    nmax::Int=20, radius::Real=100, do_angle=false, method=\"adw\", kw...)\n\ninterp(x::AbstractMatrix, y::AbstractArray{FT}, target::SpatRaster;\n    nmax::Int=20, radius::Real=200, do_angle=false, method=\"adw\", kw...)\n\ninterp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignored...)\n\nArguments\n\nmethod: one of “adw”, “idw”, “nearest”, “bilinear”\nkw: other parameters to wfun\n\nweight_idw!: m\nweight_adw!: cdd, m",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]

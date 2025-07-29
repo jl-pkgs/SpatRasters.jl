@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/5-Interp.html" rel="prev">
+<link href="../api/6-Visualization.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -459,7 +459,7 @@ window.onload = function () {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/5-Interp.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5. Spatial Interpolations</span></a>
+  <a href="../api/6-Visualization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6. Visualization</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -953,6 +953,7 @@ ny       :: Int64</code></pre>
 <li><label><input type="checkbox" checked="">Thin Plate Spline Interpolation (tps)</label></li>
 <li><label><input type="checkbox" checked="">Angular Distance Weighting Interpolation (adw)</label></li>
 <li><label><input type="checkbox" checked="">Inverse Distance Weighting Interpolation (idw)</label></li>
+<li><label><input type="checkbox" checked="">Nearest Interpolation (nearest)</label></li>
 </ul>
 <p><em>Terrain</em></p>
 <ul class="task-list">
@@ -1560,13 +1561,8 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.find_neighbor</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "find_neighbor" from SpatRasters:
- [1] find_neighbor(ra::SpatRaster, X; nmax, radius, do_angle)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/find_neighbor.jl:29
- [2] find_neighbor(point, tree; nmax, radius)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Interp/find_neighbor.jl:21</code></pre>
+<pre><code>find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=100, do_angle=true)</code></pre>
+<p>已经按照距离进行了排序。</p>
 </div>
 </div>
 </div>
@@ -1822,13 +1818,17 @@ in_bbox(bs::Vector{bbox}, (lon, lat))</code></pre>
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<pre><code>interp(x::AbstractMatrix, y::AbstractArray{FT}, target::SpatRaster;
-    nmax::Int=20, radius::Real=200, do_angle=false,
-    wfun::Function=weight_idw!, kw...)
+<pre><code>interp(ra::SpatRaster, target::SpatRaster;
+    nmax::Int=20, radius::Real=100, do_angle=false, method="adw", kw...)
+
+interp(x::AbstractMatrix, y::AbstractArray{FT}, target::SpatRaster;
+    nmax::Int=20, radius::Real=200, do_angle=false, method="adw", kw...)
+
 interp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignored...)</code></pre>
 <section id="arguments-2" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="arguments-2">Arguments</h4>
 <ul>
+<li><p><code>method</code>: one of “adw”, “idw”, “nearest”, “bilinear”</p></li>
 <li><p><code>kw</code>: other parameters to <code>wfun</code></p>
 <ul>
 <li><code>weight_idw!</code>: <code>m</code></li>
@@ -3192,8 +3192,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/5-Interp.html" class="pagination-link" aria-label="5. Spatial Interpolations">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">5. Spatial Interpolations</span></span>
+      <a href="../api/6-Visualization.html" class="pagination-link" aria-label="6. Visualization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">6. Visualization</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
