@@ -6,10 +6,34 @@ execute:
   output: asis
 ---
 
+## 写数据
+
+注意：bands信息可以写入tif，但time无法写入
+
 ```{julia}
-#| echo: true
-#| output: false
 using SpatRasters, ArchGDAL
+using Dates
+
+dates = Date(2010, 1, 1):Day(1):Date(2010, 1, 10)
+ntime = length(dates)
+
+ra = rast(rand(180, 90, ntime); time=dates, nodata=-1.0)
+ra
 ```
 
-## 1 IO
+```{julia}
+write_gdal(ra, "test.tif")
+gdal_info("test.tif")
+```
+
+## 读数据
+
+```{julia}
+rast("test.tif")
+```
+
+```{julia}
+#| echo: false
+#| output: false
+rm("test.tif")
+```
