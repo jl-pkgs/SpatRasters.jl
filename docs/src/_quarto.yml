@@ -14,7 +14,8 @@ book:
         - api/2-bbox.qmd
         - api/3-IO.qmd
         - api/4-Operation.qmd
-        - api/5-Interp.qmd
+        # - api/5-Interp.qmd
+        - api/6-Visualization.qmd
         - api/z-index.qmd 
 
     navbar: 

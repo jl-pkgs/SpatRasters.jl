@@ -26,7 +26,13 @@ function find_neighbor(point, tree; nmax::Int=20, radius::Real=100)
   (; index=inds, distance=dists)
 end
 
-function find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=100, do_angle=true) 
+
+"""
+    find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=100, do_angle=true) 
+
+已经按照距离进行了排序。
+"""
+function find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=100, do_angle=true)
   Xt = collect(X')
   tree = BallTree(Xt, Haversine(6371.0); reorder=false)
 
@@ -38,7 +44,7 @@ function find_neighbor(ra::SpatRaster, X; nmax::Int=20, radius::Real=100, do_ang
   for i in 1:nlon, j in 1:nlat
     p0 = [lon[i], lat[j]]
     _inds, _dists = knn(tree, p0, nmax)
-    _I = sortperm(_dists)
+    _I = sortperm(_dists) # 已经排序
     _I = _I[_dists[_I].<=radius]
 
     _inds = @view _inds[_I]

@@ -11,8 +11,8 @@ using SpatRasters, Test, RTableTools
   target = make_rast(; b, cellsize=0.01)  
   # neighbor = find_neighbor(target, X; radius=100, do_angle=true)
 
-  @time ra_idw = interp(X, Y, target; wfun=weight_idw!)
-  @time ra_adw = interp(X, Y, target; wfun=weight_adw!, cdd=25, nmax=10, do_angle=true)
+  @time ra_idw = interp(X, Y, target; method="idw")
+  @time ra_adw = interp(X, Y, target; method="adw", cdd=25, nmax=10, do_angle=true)
   @time ra_tps1 = interp_tps(X, Y, target; λ = 0.01)
   @time ra_tps2 = interp_tps(X, Y, target; λ = 0.1)
   # @profview ra_adw = interp(X, Y, target; wfun=weight_adw!)

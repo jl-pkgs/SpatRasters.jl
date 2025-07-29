@@ -29,6 +29,7 @@ julia -e "@time using SpatRasters"
 - [x] Thin Plate Spline Interpolation (tps)
 - [x] Angular Distance Weighting Interpolation (adw)
 - [x] Inverse Distance Weighting Interpolation (idw)
+- [x] Nearest Interpolation (nearest)
 
 *Terrain*
 

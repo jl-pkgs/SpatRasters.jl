@@ -1,0 +1,19 @@
+---
+title: "6. Visualization"
+number-depth: 2
+execute:
+  echo: true
+  output: asis
+---
+
+
+```{julia}
+using SpatRasters
+using MakieLayers, CairoMakie
+import MakieLayers: imagesc, imagesc!
+
+```
+
+```{julia}
+imagesc(rand(10, 10))
+```
