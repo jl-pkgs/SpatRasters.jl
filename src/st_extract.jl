@@ -17,7 +17,7 @@ end
 # end
 
 function st_extract(ra::AbstractSpatRaster{FT}, point::P;) where {
-  FT,T,P<:Union{Tuple{T,T},AbstractPoint{T}}}
+  FT,T,P<:Union{Tuple{T,T}, Point{T}}}
 
   ij = st_location(RasterSize(ra), point)
   isnothing(ij) && return FT(NaN)
@@ -26,7 +26,7 @@ end
 
 
 function st_extract(ra::AbstractSpatRaster, points::Vector{P}; combine=hcat) where {
-  T<:Real,P<:Union{Tuple{T,T},AbstractPoint{T}}}
+  T<:Real,P<:Union{Tuple{T,T}, Point{T}}}
 
   _locs = st_location(ra, points)
   inds, locs = _rm_empty(_locs)

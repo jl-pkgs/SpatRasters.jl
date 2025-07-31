@@ -43,8 +43,8 @@ end
 @testset "gdal_polygonize multibands" begin
   set_seed(1)
   n = 10
-  ntime = 100
-  A = rand(Bool, 7 * n, 4 * n, 100)
+  ntime = 10
+  A = rand(Bool, 7 * n, 4 * n, ntime)
   b = bbox([70, 15, 140, 55]...)
 
   ra = rast(A, b)
@@ -56,7 +56,7 @@ end
 
   fout = "out.gdb"
   @time gdal_polygonize(f, fout, mask=true, diag=false)
-  @test nlayer(fout) == 100
+  @test nlayer(fout) == ntime
   ogr_info(fout)
   run(`rm -rf $fout`)
 

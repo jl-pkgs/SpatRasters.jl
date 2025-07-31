@@ -40,8 +40,8 @@ function earth_dist(p1::Tuple{T,T}, p2::Tuple{T,T}; R::T=T(6378.388), in_radian=
 end
 
 # 1 -> 1
-function earth_dist(p1::AbstractPoint{T}, p2::AbstractPoint{T}; in_radian=false) where {T}
-  earth_dist(p1.x, p1.y, p2.x, p2.y; in_radian)
+function earth_dist(p1::Point{T}, p2::Point{T}; in_radian=false) where {T}
+  earth_dist(p1[1], p1[2], p2[1], p2[2]; in_radian)
 end
 
 # 1 -> n

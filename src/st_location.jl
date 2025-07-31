@@ -31,7 +31,7 @@ function _st_location(rastsize::RasterSize, x::T, y::T) where {T<:Real}
 end
 
 function st_location(rastersize::RasterSize, points::Vector{P}; rm_empty::Bool=false) where {
-  T<:Real,P<:Union{Tuple{T,T},AbstractPoint{T}}}
+  T<:Real,P<:Union{Tuple{T,T},Point{T}}}
   map(p -> _st_location(rastersize, get_x(p), get_y(p)), points)
   # return rm_empty ? _rm_empty(locs) : locs
 end

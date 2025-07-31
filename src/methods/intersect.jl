@@ -94,7 +94,7 @@ points: 与网格边界相交的所有点
 # Return
 每两个点 确定一个网格中心，返回的是网格中心的[x, y, elev]
 """
-function interaction_RasterLine(ra::SpatRaster, points::AbstractVector{Point{T}}, rastersize::RasterSize) where {T}
+function interaction_RasterLine(ra::SpatRaster, points::AbstractVector{Point{2,T}}, rastersize::RasterSize) where {T}
 
   n = length(points)
   lon, lat = st_dims(ra)

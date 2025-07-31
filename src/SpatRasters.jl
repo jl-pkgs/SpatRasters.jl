@@ -4,6 +4,7 @@ using DocStringExtensions
 using ProgressMeter
 using Statistics: median, cor
 using Parameters
+using GeometryBasics
 
 export cor, median
 

@@ -5,7 +5,7 @@ using LinearAlgebra
 """
 计算二次方程系数
 """
-function calc_abc(p1::P, p2::P, p3::P, p4::P, out_x::T, out_y::T) where {T <: Real, P <: AbstractPoint{T}}
+function calc_abc(p1::P, p2::P, p3::P, p4::P, out_x::T, out_y::T) where {T<:Real,N,P<:Point{N,T}}
   # 参考点之间的经向分离
   x_21 = p2.x - p1.x
   x_31 = p3.x - p1.x
@@ -27,8 +27,6 @@ end
 function solve_quadratic(a::T, b::T, c::T; min::T=T(0), max::T=T(1)) where {T<:Real}
   # a x^2 + b x + c = 0
   Δ = b * b - 4 * a * c
-  # @show Δ
-  # @show max(Δ, T(0))
 
   sqrt_Δ = sqrt(Base.max(Δ, T(0)))
   # 求解二次多项式
@@ -53,7 +51,7 @@ end
 """
 获取不规则情况的分数距离
 """
-function get_fractional_distances_irregular(p1::P, p2::P, p3::P, p4::P, out_x::T, out_y::T) where {T <: Real, P <: AbstractPoint{T}}
+function get_fractional_distances_irregular(p1::P, p2::P, p3::P, p4::P, out_x::T, out_y::T) where {T<:Real,N,P<:Point{N,T}}
   a, b, c = calc_abc(p1, p2, p3, p4, out_y, out_x)
   t = solve_quadratic(a, b, c)
   # 注意p2和p3交换
@@ -70,10 +68,9 @@ function solve_another_fractional_distance(t::T, y_1::T, y_2::T, y_3::T, y_4::T,
 
   denominator = y_43 * t - y_21 * t + y_3 - y_1
   s = (out_y - y_1 - y_21 * t) / denominator
-  @show denominator, s
 
   # 将值限制在区间[0, 1]，处理除零情况
-  if abs(denominator) < eps(T) || _is_out_range(s, T(0), T(1)) 
+  if abs(denominator) < eps(T) || _is_out_range(s, T(0), T(1))
     s = T(NaN)
   end
   return s
