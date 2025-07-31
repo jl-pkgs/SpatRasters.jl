@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Dongdong Kong">
-<meta name="dcterms.date" content="2025-06-29">
 
-<title>SpatRasters</title>
+<title>4. Operation – SpatRasters</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./1-SpatRaster.html" rel="next">
+<link href="./5-Interp.html" rel="next">
+<link href="./3-IO.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -207,10 +206,10 @@ window.onload = function () {
 
 
 <link rel="stylesheet" href="_static/style.css">
-<meta property="og:title" content="SpatRasters">
+<meta property="og:title" content="4. Operation – SpatRasters">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="SpatRasters">
-<meta name="twitter:title" content="SpatRasters">
+<meta name="twitter:title" content="4. Operation – SpatRasters">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -414,7 +413,7 @@ window.onload = function () {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-title">Overview</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./4-Operation.html"><span class="chapter-title">4. Operation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -436,7 +435,7 @@ window.onload = function () {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Overview</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -456,7 +455,7 @@ window.onload = function () {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./4-Operation.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4. Operation</span></a>
+  <a href="./4-Operation.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">4. Operation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -489,10 +488,8 @@ window.onload = function () {
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#spatrasters.jl-simple-spatial-rasters-in-julia" id="toc-spatrasters.jl-simple-spatial-rasters-in-julia" class="nav-link active" data-scroll-target="#spatrasters.jl-simple-spatial-rasters-in-julia">SpatRasters.jl: Simple Spatial Rasters in Julia</a>
-  <ul class="collapse">
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
-  </ul></li>
+  <li><a href="#st_location" id="toc-st_location" class="nav-link active" data-scroll-target="#st_location">st_location</a></li>
+  <li><a href="#st_extrac" id="toc-st_extrac" class="nav-link" data-scroll-target="#st_extrac">st_extrac</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -502,26 +499,14 @@ window.onload = function () {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">SpatRasters</h1>
+<h1 class="title"><span class="chapter-title">4. Operation</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Dongdong Kong <a href="mailto:kongdd@users.noreply.github.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 29, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -531,40 +516,33 @@ window.onload = function () {
 </header>
 
 
-<section id="spatrasters.jl-simple-spatial-rasters-in-julia" class="level1">
-<h1>SpatRasters.jl: Simple Spatial Rasters in Julia</h1>
-<!-- [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://jl-pkgs.github.io/SpatRasters.jl/stable) -->
-<p><a href="https://jl-pkgs.github.io/SpatRasters.jl/dev"><img src="https://img.shields.io/badge/docs-dev-blue.svg" class="img-fluid" alt="Dev"></a> <a href="https://github.com/jl-pkgs/SpatRasters.jl/actions/workflows/CI.yml"><img src="https://github.com/jl-pkgs/SpatRasters.jl/actions/workflows/CI.yml/badge.svg" class="img-fluid" alt="CI"></a> <a href="https://app.codecov.io/gh/jl-pkgs/SpatRasters.jl/tree/master"><img src="https://codecov.io/gh/jl-pkgs/SpatRasters.jl/branch/master/graph/badge.svg" class="img-fluid" alt="Codecov"></a></p>
-<blockquote class="blockquote">
-<p>Dongdong Kong</p>
-</blockquote>
-<p><code>SpatRaster</code> is a simple spatial raster with WGS84 projection, abbreviated as <code>rast</code>.</p>
-<p>Due to its simplicity, <code>SpatRasters.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatRasters.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
-<p><code>SpatRasters.jl</code> used the class and function of R language <code>terra</code> and <code>sf</code> packages.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatRasters"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
-<p><em>Interpolation (point to raster)</em></p>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Thin Plate Spline Interpolation (tps)</label></li>
-<li><label><input type="checkbox" checked="">Angular Distance Weighting Interpolation (adw)</label></li>
-<li><label><input type="checkbox" checked="">Inverse Distance Weighting Interpolation (idw)</label></li>
-<li><label><input type="checkbox" checked="">Nearest Interpolation (nearest)</label></li>
-<li><label><input type="checkbox" checked="">Bilinear Interpolation</label></li>
+<div id="201e62cf" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatRasters</span>, <span class="bu">ArchGDAL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="st_location" class="level2">
+<h2 class="anchored" data-anchor-id="st_location">st_location</h2>
+<p>默认采用<code>st_location</code>，point压网格边界时，有待商榷如何取值。</p>
+<ul>
+<li><p><code>st_location_exact</code>:</p>
+<p>采用findnear去判断point落在哪个网格中，</p>
+<ol type="1">
+<li>首先判断x落在哪(i) 若距离最近的点，距离超过了<code>0.5cellsize</code>，则返回<code>-1</code></li>
+<li>其次判断y落在哪(j)</li>
+</ol></li>
+<li><p><code>st_location_fast</code>: 直接计算出ij</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> (x <span class="op">-</span> b.xmin) <span class="op">/</span> cellx</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>j <span class="op">=</span> j <span class="op">=</span> (b.ymax <span class="op">-</span> y) <span class="op">/</span> <span class="fu">abs</span>(celly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
-<p><em>Terrain</em></p>
-<ul class="task-list">
-<li><label><input type="checkbox" checked="">Sky view factor (SVF)</label></li>
-<li><label><input type="checkbox" checked="">sun shade</label></li>
-</ul>
-<p><em>methods</em></p>
-<ul class="task-list">
-<li><label><input type="checkbox" checked=""><code>intersect</code> (line &amp; raster)</label></li>
-</ul>
-
-
 </section>
+<section id="st_extrac" class="level2">
+<h2 class="anchored" data-anchor-id="st_extrac">st_extrac</h2>
+<ul>
+<li><code>st_extract(ra::AbstractSpatRaster, points::Vector{Tuple{T,T}}; combine=hcat)</code></li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> <span class="fu">st_points</span>(X[<span class="op">:</span>, <span class="fl">1</span>], X[<span class="op">:</span>, <span class="fl">2</span>])</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_extract</span>(ra, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -982,10 +960,13 @@ window.onload = function () {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./3-IO.html" class="pagination-link" aria-label="3. IO">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">3. IO</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./1-SpatRaster.html" class="pagination-link" aria-label="1. SpatRaster">
-        <span class="nav-page-text"><span class="chapter-title">1. SpatRaster</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./5-Interp.html" class="pagination-link" aria-label="5. Spatial Interpolations">
+        <span class="nav-page-text"><span class="chapter-title">5. Spatial Interpolations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
