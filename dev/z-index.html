@@ -716,7 +716,7 @@ window.onload = function () {
 </section>
 <section id="fields" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="fields">Fields</h3>
-<pre><code>origin  :: Point{T}
+<pre><code>origin  :: Point{2, T}
 azimuth :: T
 length  :: T
 k       :: T</code></pre>
@@ -1404,7 +1404,7 @@ bilinear(ra::SpatRaster{T,3}; cellsize=1, na_rm=true, kw...) where {T&lt;:Real}<
 <p>( 1-ex)(1-ey)<em>z11 + (1- ex)(ey)</em>z12 + ( ex)(1-ey)<em>z21 + ( ex)(ey)</em>z22</p>
 <p>Where the z’s are the corresponding elements of the Z matrix.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bilinear</span>(x, y, z, xx, yy; na_rm, parallel, progress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>defined at <a href="https://github.com/jl-pkgs/SpatRasters.jl/tree/a5cfc957475325b44c22f90e73b4e77415f8cbe8//src/Interp/bilinear.jl#L41"><code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/src/Interp/bilinear.jl:41</code></a>.</p>
+<p>defined at <a href="https://github.com/jl-pkgs/SpatRasters.jl/tree/ad3d5b6433a37c22e1076881de1c899f899a22f6//src/Interp/bilinear.jl#L41"><code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/src/Interp/bilinear.jl:41</code></a>.</p>
 <p>! 插值外延，可能会导致错误！</p>
 <section id="arguments-2" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="arguments-2">Arguments</h4>
