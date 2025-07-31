@@ -1360,24 +1360,30 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<pre><code>bilinear(x, y, z::AbstractArray{T,3}, xx, yy; na_rm=true, parallel=true, progress=true) where {T&lt;:Real}
-bilinear(x, y, z::AbstractArray{T,3}; b::bbox, reverse_lat=true, cellsize=1, na_rm=true)
+<pre><code>bilinear(x, y, z::AbstractArray{T}, xx, yy; na_rm=true, parallel=true, progress=true) where {T&lt;:Real}
+bilinear(x, y, z::AbstractArray{T}; b::bbox, reverse_lat=true, cellsize=1, na_rm=true)
 bilinear(ra::SpatRaster{T,3}; cellsize=1, na_rm=true, kw...) where {T&lt;:Real}</code></pre>
 <p>Suppose that the location, (locx, locy) lies in between the first two grid points in both x an y. That is locx is between x1 and x2 and locy is between y1 and y2. Let <code>ex= (l1-x1)/(x2-x1)</code> <code>ey= (l2-y1)/(y2-y1)</code>. The interpolant is</p>
 <p>( 1-ex)(1-ey)<em>z11 + (1- ex)(ey)</em>z12 + ( ex)(1-ey)<em>z21 + ( ex)(ey)</em>z22</p>
 <p>Where the z’s are the corresponding elements of the Z matrix.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bilinear</span>(x, y, z, xx, yy; na_rm, parallel, progress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>defined at <a href="https://github.com/jl-pkgs/SpatRasters.jl/tree/ef26394c5a894f2f072b0b98c2e7a540329e5265//src/Interp/bilinear.jl#L37"><code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/src/Interp/bilinear.jl:37</code></a>.</p>
+<p>defined at <a href="https://github.com/jl-pkgs/SpatRasters.jl/tree/a89bab19d61f436c6948dd6f0214ccec9c6e2756//src/Interp/bilinear.jl#L41"><code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/src/Interp/bilinear.jl:41</code></a>.</p>
 <p>! 插值外延，可能会导致错误！</p>
-<section id="references-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="references-2">References</h3>
+<section id="arguments-2" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arguments-2">Arguments</h4>
+<ul>
+<li><code>z</code>: 2d or 3d array</li>
+</ul>
+</section>
+<section id="references-2" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="references-2">References</h4>
 <ol type="1">
 <li>https://github.com/NCAR/fields/blob/master/fields/R/interp.surface.R#L48</li>
 <li>https://en.wikipedia.org/wiki/Bilinear_interpolation</li>
 </ol>
 </section>
-<section id="examples-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="examples-1">Examples</h3>
+<section id="examples-1" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="examples-1">Examples</h4>
 <pre class="jldoc"><code>lon = 70:5:140
 lat = 15:5:55
 
@@ -1915,8 +1921,8 @@ interp(x::AbstractMatrix, y::AbstractArray{FT}, target::SpatRaster;
     nmax::Int=20, radius::Real=200, do_angle=false, method="adw", kw...)
 
 interp(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignored...)</code></pre>
-<section id="arguments-2" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="arguments-2">Arguments</h4>
+<section id="arguments-3" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arguments-3">Arguments</h4>
 <ul>
 <li><p><code>method</code>: one of “adw”, “idw”, “nearest”, “bilinear”</p></li>
 <li><p><code>kw</code>: other parameters to <code>wfun</code></p>
@@ -2159,8 +2165,8 @@ julia&gt; median([1 2; 3 4], dims=1)
 <div class="callout-body-container">
 <pre><code>merge_var(fs; vars=nothing, var=nothing,
     progress=true, box::Union{bbox,Nothing}=nothing)</code></pre>
-<section id="arguments-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="arguments-3">Arguments</h3>
+<section id="arguments-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="arguments-4">Arguments</h3>
 <ul>
 <li><code>fs</code>: tiff file paths</li>
 <li><code>vars</code>: variables in the tiff</li>
@@ -2439,8 +2445,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <li>flow direction 32 64 128 16 0 1 8 4 2</li>
 </ul>
 </section>
-<section id="arguments-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="arguments-4">Arguments</h3>
+<section id="arguments-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="arguments-5">Arguments</h3>
 <ul>
 <li><code>k</code>: 8-neighbor 6 7 8 5 1 4 3 2</li>
 </ul>
@@ -2476,8 +2482,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <div class="callout-body-container">
 <pre><code>solve_tps(x,y,λ,compute_affine=true)</code></pre>
 <p>find solution of tps transformation (required for some operations but takes additional time.)</p>
-<section id="arguments-5" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="arguments-5">Arguments</h4>
+<section id="arguments-6" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="arguments-6">Arguments</h4>
 <pre><code>`x`: control points, n
 `y`: deformed (warped) control points
 `λ`: stiffness coefficient</code></pre>
@@ -2677,8 +2683,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <pre><code>st_mosaic(rs::Vector{SpatRaster{T,N}}; kw...) where {T,N}</code></pre>
-<section id="arguments-6" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="arguments-6">Arguments</h3>
+<section id="arguments-7" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="arguments-7">Arguments</h3>
 <ul>
 <li><code>kw</code>: others to <code>SpatRaster</code></li>
 </ul>
