@@ -14,6 +14,7 @@ function distance_norm(p1::AbstractArray{FT}, p2::AbstractArray{FT}; kw...) wher
   sqrt(dist2)
 end
 
+# 单点
 function distance_earth(p1::AbstractArray{FT}, p2::AbstractArray{FT}; R=6378.388) where {FT}
   lon1 = deg2rad(p1[1])
   lat1 = deg2rad(p1[2])
@@ -30,6 +31,8 @@ include("angle.jl")
 include("find_neighbor.jl")
 include("weights.jl")
 include("interp_tps.jl")
+include("bilinear_helper.jl")
+include("bilinear.jl")
 
 
 """
@@ -56,7 +59,14 @@ function interp(ra::SpatRaster, target::SpatRaster;
 
   X = st_coords(ra) # [lon, lat]
   Y = reshape(ra.A, nlon * nlat, ntime) # 这里需要做一个reshape
-  interp(X, Y, target; nmax, radius, do_angle, method, kw...)
+
+  if method == "bilinear"
+    x, y = st_dims(ra)
+    xx, yy = st_dims(target)
+    bilinear(x, y, ra.A[:, :, :], xx, yy)
+  else
+    interp(X, Y, target; nmax, radius, do_angle, method, kw...)
+  end
 end
 
 

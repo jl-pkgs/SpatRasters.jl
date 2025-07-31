@@ -30,11 +30,12 @@ julia -e "@time using SpatRasters"
 - [x] Angular Distance Weighting Interpolation (adw)
 - [x] Inverse Distance Weighting Interpolation (idw)
 - [x] Nearest Interpolation (nearest)
+- [x] Bilinear Interpolation
 
 *Terrain*
 
 - [x] Sky view factor (SVF)
-- [ ] sun shade
+- [x] sun shade
 
 *methods*
 
