@@ -1,18 +1,23 @@
-#import "@preview/modern-cug-report:0.1.1": *
+// #import "@preview/modern-cug-report:0.1.1": *
+#import "@local/modern-cug-report:0.1.2": *
 
-#counter(heading).update(0)
+// #counter(heading).update(0)
+#let out = "out"
 #let delta(x) = $Delta #x$
 
-// #show: doc => template(
-//   doc,
-//   footer: "CUG水文气象学2024",
-//   header: "蒸散发的基本原理",
-// )
+#show: doc => template(
+  doc,
+  footer: "CUG水文气象学2025",
+  header: "空间插值",
+)
 
-= 不规则网格的双线性插值
+= 1 *不规则网格的双线性插值*
+
+#beamer-block[#par(leading: 0.9em)[
+参考`pyresample`的实现方法：\ https://github.com/pytroll/pyresample/blob/main/pyresample/bilinear/_base.py]]
 
 #h(2em)
-对于不规则四边形的四个角点 P_1, P_2, P_3, P_4，目标点 (out_x, out_y) 可以表示为：
+对于不规则四边形的四个角点 $P_1, P_2, P_3, P_4$，目标点 $(out_x, out_y)$ 可以表示为：
 
 $
   P(s,t) = (1-s)(1-t) P_1 + s(1-t)P_2 + (1-s) t P_3 + s t P_4
@@ -45,7 +50,7 @@ $
   "out"_x - x₁ = s x₂₁ + t x₃₁ + s t(x₄₂ - x₃₁) \
   // "out"_x - x₁ - t x₃₁ = s[x₂₁ + t(x₄₂ - x₃₁)] \
   s = ("out"_x - x₁ - t x₃₁) / [x₂₁ + t(x₄₂ - x₃₁)]
-$
+$ <eq_s>
 
 将$s$代入$"out"_y$：
 
@@ -62,7 +67,6 @@ $
   + t("out"_x - x₁ - t x₃₁)(y₄₂ - y₃₁)
 $
 
-#let out = "out"
 
 #box-blue[
   $
@@ -88,3 +92,5 @@ $
     c = (out_y - y₁)x₂₁ - (out_x - x₁)y₂₁ = out_y x₂₁ - out_x y₂₁ + x₁y₂ - y₁x₂
   $
 ]
+
+之后，将t代入式#[@eq_s]可得`s`。

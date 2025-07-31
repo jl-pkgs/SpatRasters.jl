@@ -7,14 +7,15 @@ format:
 
 
 ```{=typst} 
-// #import "@preview/modern-cug-report:0.1.1": *
-// = 1 **你好**
+#import "@preview/modern-cug-report:0.1.1": *
+= 1 **你好**
 
-// #show: doc => template(
-//   doc,
-//   footer: "CUG水文气象学2024",
-//   header: "蒸散发的基本原理",
-// )
-// 你好。
-#include("5.2 bilinear.typ")
+#show: doc => template(
+  doc,
+  footer: "CUG水文气象学2024",
+  header: "蒸散发的基本原理",
+)
+
+你好。
+// #include("5.2 bilinear.typ")
 ```

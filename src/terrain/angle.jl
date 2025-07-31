@@ -22,11 +22,14 @@ end
 
 azimuth2slope(ψ) = tan(deg2rad(azimuth2deg(ψ)))
 
-function azimuth2xy(Φ::Real)
+function azimuth2xy(Φ::Real; verbose::Bool=false)
   θ = azimuth2deg(Φ) |> deg2rad
   x, y = cos(θ), sin(θ)
-  # dir = direction(x, y)
-  # println(dir)
+  
+  if verbose
+    dir = direction(x, y)
+    println(dir)
+  end
   x, y
 end
 

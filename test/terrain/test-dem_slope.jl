@@ -1,7 +1,10 @@
 using SpatRasters, Test, NaNStatistics, Dates
 using Random
 
-@testset "dem_angle_MaxElevation" begin
+@testset "terrain" begin
+  @test azimuth2xy(45; verbose=true) ==
+        (0.7071067811865476, 0.7071067811865475)
+
   Random.seed!(1234)
 
   b = bbox(100., 20., 102., 22.) # 5 * 5

@@ -3,6 +3,7 @@ export line_start, line_end
 export RasterSize
 
 
+import Base
 abstract type AbstractPoint{T} end
 
 Base.@kwdef mutable struct Point3{T} <: AbstractPoint{T}
@@ -19,8 +20,28 @@ end
 get_x(p::Tuple{T,T}) where {T} = p[1]
 get_y(p::Tuple{T,T}) where {T} = p[2]
 
+get_x(p::Tuple{T,T,T}) where {T} = p[1]
+get_y(p::Tuple{T,T,T}) where {T} = p[2]
+get_z(p::Tuple{T,T,T}) where {T} = p[3]
+
 get_x(p::AbstractPoint{T}) where {T} = p.x
 get_y(p::AbstractPoint{T}) where {T} = p.y
+get_z(p::Point3{T}) where {T} = p.z
+
+
+function Base.getproperty(p::Tuple{T,T}, sym::Symbol) where {T}
+  sym === :x && return p[1]
+  sym === :y && return p[2]
+  return getfield(p, sym)
+end
+
+function Base.getproperty(p::Tuple{T,T,T}, sym::Symbol) where {T}
+  sym === :x && return p[1]
+  sym === :y && return p[2]
+  sym === :z && return p[3]
+  return getfield(p, sym)
+end
+
 
 
 Base.@kwdef mutable struct Line{T}

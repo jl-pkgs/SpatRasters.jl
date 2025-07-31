@@ -21,6 +21,7 @@ include("weights.jl")
 include("interp_tps.jl")
 include("bilinear_helper.jl")
 include("bilinear.jl")
+include("bilinear/bilinear_irregular.jl")
 
 
 """
