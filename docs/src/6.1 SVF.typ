@@ -1,5 +1,6 @@
-#import "@local/modern-cug-report:0.1.2": *
-// #import "@preview/modern-cug-report:0.1.1": *
+// #import "@local/modern-cug-report:0.1.2": *
+#import "@preview/modern-cug-report:0.1.1": *
+
 #counter(heading).update(2)
 #let delta(x) = $Delta #x$
 
