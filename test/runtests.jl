@@ -8,6 +8,8 @@ include("test-sun_angle.jl")
 include("test-intersect.jl")
 include("test-distance.jl")
 
+include("terrain/test-dem_slope.jl")
+
 include("Interp/test-interp.jl")
 include("Interp/test-tps.jl")
 include("Interp/test-angle.jl")

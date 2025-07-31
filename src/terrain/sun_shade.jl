@@ -7,7 +7,7 @@ function sun_shade(α::SpatRaster, time::DateTime; δψ=3)
   lon, lat = st_dims(α)
   nlon, nlat = length(lon), length(lat)
 
-  R = zeros(nlon, nlat)
+  R = trues(nlon, nlat)
   # p = Progress(length(lon))
   @inbounds @threads for i in 1:nlon
     # next!(p)

@@ -27,18 +27,21 @@ Dates = "1.11.0"
 Distances = "0.10.12"
 DocStringExtensions = "0.9"
 LinearAlgebra = "1.11.0"
+NaNStatistics = "0.6.53"
 NearestNeighbors = "0.4"
 Parameters = "0.12.3"
 ProgressMeter = "1.10.4"
+Random = "1.11.0"
 Statistics = "1.11.1"
 julia = "1.11"
 
 [extras]
 ArchGDAL = "c9ce4bd3-c3d5-55b8-8973-c0e20141b8c3"
 GeoDataFrames = "62cb38b5-d8d2-4862-a48e-6a340996859f"
+NaNStatistics = "b946abbf-3ea7-4610-9019-9858bfdeaf2d"
 RTableTools = "76227a05-389e-44bd-84ad-996dde4b1834"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "Random", "RTableTools", "ArchGDAL", "GeoDataFrames"]
+test = ["Test", "Random", "RTableTools", "ArchGDAL", "GeoDataFrames", "NaNStatistics"]
