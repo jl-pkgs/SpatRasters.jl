@@ -6,10 +6,12 @@ set_seed(seed) = seed!(seed)
 # include("hydro/test-flowdir.jl")
 include("test-sun_angle.jl")
 include("test-intersect.jl")
+include("test-distance.jl")
 
 include("Interp/test-interp.jl")
 include("Interp/test-tps.jl")
 include("Interp/test-angle.jl")
+include("Interp/test-bilinear.jl")
 
 include("test-gdal_polygonize.jl")
 include("test-bbox.jl")

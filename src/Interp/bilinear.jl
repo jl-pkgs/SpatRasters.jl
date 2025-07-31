@@ -2,8 +2,8 @@ export bilinear
 
 
 """
-    bilinear(x, y, z::AbstractArray{T,3}, xx, yy; na_rm=true, parallel=true, progress=true) where {T<:Real}
-    bilinear(x, y, z::AbstractArray{T,3}; b::bbox, reverse_lat=true, cellsize=1, na_rm=true)
+    bilinear(x, y, z::AbstractArray{T}, xx, yy; na_rm=true, parallel=true, progress=true) where {T<:Real}
+    bilinear(x, y, z::AbstractArray{T}; b::bbox, reverse_lat=true, cellsize=1, na_rm=true)
     bilinear(ra::SpatRaster{T,3}; cellsize=1, na_rm=true, kw...) where {T<:Real}
 
 Suppose that the location, (locx, locy) lies in between the first two grid points in both x an y. That is locx is between x1 and x2 and locy is between y1 and y2. Let `ex= (l1-x1)/(x2-x1)` `ey= (l2-y1)/(y2-y1)`. The interpolant is
@@ -16,13 +16,17 @@ Where the z's are the corresponding elements of the Z matrix.
 
 ! 插值外延，可能会导致错误！
 
-# References
+## Arguments
+
+- `z`: 2d or 3d array
+
+## References
 
 1. https://github.com/NCAR/fields/blob/master/fields/R/interp.surface.R#L48
 
 2. https://en.wikipedia.org/wiki/Bilinear_interpolation
 
-# Examples
+## Examples
 
 ```jldoc
 lon = 70:5:140
@@ -34,7 +38,7 @@ Z = rand(T, length(lon), length(lat), 2)
 r = bilinear(lon, lat, Z, Lon, Lat; na_rm=true)
 ```
 """
-function bilinear(x::AbstractVector, y::AbstractVector, z::AbstractArray{T,3}, xx, yy; na_rm=true,
+function bilinear(x::AbstractVector, y::AbstractVector, z::AbstractArray{T}, xx, yy; na_rm=true,
   parallel=true, progress=true) where {T<:Real}
 
   nx = length(x)
@@ -62,7 +66,8 @@ function bilinear(x::AbstractVector, y::AbstractVector, z::AbstractArray{T,3}, x
   ex[lx1.==nx] .= 1
   ey[ly1.==ny] .= 1
 
-  ntime = size(z, 3)
+  _dims = size(z)
+  ntime = ndims(z) >= 3 ? _dims[3] : 1
   res = zeros(T, nxx, nyy, ntime)
   p = Progress(nyy)
   
