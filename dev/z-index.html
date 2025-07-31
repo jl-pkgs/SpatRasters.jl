@@ -780,19 +780,58 @@ weight :: AbstractArray{FT, N}</code></pre>
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>No documentation found for public symbol.</p>
-<section id="summary-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-3">Summary</h3>
-<pre><code>mutable struct Point{T}</code></pre>
-</section>
-<section id="fields-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fields-2">Fields</h3>
-<pre><code>x :: T
-y :: T</code></pre>
-</section>
-<section id="supertype-hierarchy" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy">Supertype Hierarchy</h3>
-<pre><code>Point{T} &lt;: SpatRasters.AbstractPoint{T} &lt;: Any</code></pre>
+<pre><code>Point{N, T}(args...)
+Point{N, T}(args::Union{AbstractVector, Tuple, NTuple, StaticVector})</code></pre>
+<p>Constructs a Point of length <code>N</code> from the given arguments.</p>
+<p>Note that Point and Vec don’t follow strict mathematical definitions. Instead we allow them to be used interchangeably.</p>
+<section id="aliases" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="aliases">Aliases</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 19%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: right;"><code>T</code></th>
+<th style="text-align: right;"><code>Float64</code></th>
+<th style="text-align: right;"><code>Float32</code></th>
+<th style="text-align: right;"><code>Int</code></th>
+<th style="text-align: right;"><code>UInt</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>N</code></td>
+<td style="text-align: right;"><code>Point{N,T}</code></td>
+<td style="text-align: right;"><code>Pointd{N}</code></td>
+<td style="text-align: right;"><code>Pointf{N}</code></td>
+<td style="text-align: right;"><code>Pointi{N}</code></td>
+<td style="text-align: right;"><code>Pointui{N}</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>2</code></td>
+<td style="text-align: right;"><code>Point2{T}</code></td>
+<td style="text-align: right;"><code>Point2d</code></td>
+<td style="text-align: right;"><code>Point2f</code></td>
+<td style="text-align: right;"><code>Point2i</code></td>
+<td style="text-align: right;"><code>Point2ui</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>3</code></td>
+<td style="text-align: right;"><code>Point3{T}</code></td>
+<td style="text-align: right;"><code>Point3d</code></td>
+<td style="text-align: right;"><code>Point3f</code></td>
+<td style="text-align: right;"><code>Point3i</code></td>
+<td style="text-align: right;"><code>Point3ui</code></td>
+</tr>
+</tbody>
+</table>
 </section>
 </div>
 </div>
@@ -808,19 +847,17 @@ y :: T</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<section id="summary-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-4">Summary</h3>
-<pre><code>mutable struct Point3{T}</code></pre>
+<section id="summary-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-3">Summary</h3>
+<pre><code>struct Point{3, T}</code></pre>
 </section>
-<section id="fields-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fields-3">Fields</h3>
-<pre><code>x :: T
-y :: T
-z :: T</code></pre>
+<section id="fields-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fields-2">Fields</h3>
+<pre><code>data :: Tuple{T, T, T}</code></pre>
 </section>
-<section id="supertype-hierarchy-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-1">Supertype Hierarchy</h3>
-<pre><code>Point3{T} &lt;: SpatRasters.AbstractPoint{T} &lt;: Any</code></pre>
+<section id="supertype-hierarchy" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy">Supertype Hierarchy</h3>
+<pre><code>Point{3, T} &lt;: GeometryBasics.AbstractPoint{3, T} &lt;: StaticArraysCore.StaticArray{Tuple{3}, T, 1} &lt;: AbstractArray{T, 1} &lt;: Any</code></pre>
 </section>
 </div>
 </div>
@@ -836,12 +873,12 @@ z :: T</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<section id="summary-5" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-5">Summary</h3>
+<section id="summary-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-4">Summary</h3>
 <pre><code>mutable struct RasterSize</code></pre>
 </section>
-<section id="fields-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fields-4">Fields</h3>
+<section id="fields-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fields-3">Fields</h3>
 <pre><code>b        :: bbox
 cellsize :: Tuple{Float64, Float64}
 nx       :: Int64
@@ -958,8 +995,8 @@ ny       :: Int64</code></pre>
 <p><code>SpatRaster</code> is a simple spatial raster with WGS84 projection, abbreviated as <code>rast</code>.</p>
 <p>Due to its simplicity, <code>SpatRasters.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatRasters.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
 <p><code>SpatRasters.jl</code> used the class and function of R language <code>terra</code> and <code>sf</code> packages.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatRasters"</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatRasters"</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="functions" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="functions">Functions</h4>
 <p><em>Interpolation (point to raster)</em></p>
@@ -998,7 +1035,7 @@ ny       :: Int64</code></pre>
 <p>return the overlaping indexes <code>inds</code>, and corresponding (i,j)</p>
 <section id="examples" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples">Examples</h3>
-<div class="sourceCode" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -1106,8 +1143,8 @@ ny       :: Int64</code></pre>
 </div>
 <div class="callout-body-container">
 <p>球面方位角 (0~360°)</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth_sphere</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>)) <span class="co"># 正北，0</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>))        <span class="co"># 正北，0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth_sphere</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>)) <span class="co"># 正北，0</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">angle_azimuth</span>((<span class="fl">0</span>, <span class="fl">0</span>), (<span class="fl">0</span>, <span class="fl">1</span>))        <span class="co"># 正北，0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="references-1" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="references-1">References</h4>
 <p>https://chatgpt.com/c/6876ff2c-834c-8012-98cd-2bc9691d453f</p>
@@ -1144,10 +1181,10 @@ ny       :: Int64</code></pre>
 </div>
 <div class="callout-body-container">
 <p>方位角转换为数学角度，限定在0-360°</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">0</span> <span class="at">-</span><span class="op">&gt;</span>   90</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">90</span> <span class="at">-</span><span class="op">&gt;</span>    0</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">180</span> <span class="at">-</span><span class="op">&gt;</span>  -90</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="ex">270</span> <span class="at">-</span><span class="op">&gt;</span> -180</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">0</span> <span class="at">-</span><span class="op">&gt;</span>   90</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">90</span> <span class="at">-</span><span class="op">&gt;</span>    0</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="ex">180</span> <span class="at">-</span><span class="op">&gt;</span>  -90</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">270</span> <span class="at">-</span><span class="op">&gt;</span> -180</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1366,8 +1403,8 @@ bilinear(ra::SpatRaster{T,3}; cellsize=1, na_rm=true, kw...) where {T&lt;:Real}<
 <p>Suppose that the location, (locx, locy) lies in between the first two grid points in both x an y. That is locx is between x1 and x2 and locy is between y1 and y2. Let <code>ex= (l1-x1)/(x2-x1)</code> <code>ey= (l2-y1)/(y2-y1)</code>. The interpolant is</p>
 <p>( 1-ex)(1-ey)<em>z11 + (1- ex)(ey)</em>z12 + ( ex)(1-ey)<em>z21 + ( ex)(ey)</em>z22</p>
 <p>Where the z’s are the corresponding elements of the Z matrix.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bilinear</span>(x, y, z, xx, yy; na_rm, parallel, progress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>defined at <a href="https://github.com/jl-pkgs/SpatRasters.jl/tree/821e31dfb38bfdae65f8b0aeb07db418396f4e78//src/Interp/bilinear.jl#L41"><code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/src/Interp/bilinear.jl:41</code></a>.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bilinear</span>(x, y, z, xx, yy; na_rm, parallel, progress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>defined at <a href="https://github.com/jl-pkgs/SpatRasters.jl/tree/a5cfc957475325b44c22f90e73b4e77415f8cbe8//src/Interp/bilinear.jl#L41"><code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/src/Interp/bilinear.jl:41</code></a>.</p>
 <p>! 插值外延，可能会导致错误！</p>
 <section id="arguments-2" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="arguments-2">Arguments</h4>
@@ -1409,7 +1446,7 @@ r = bilinear(lon, lat, Z, Lon, Lat; na_rm=true)</code></pre>
 <p><code>SpatRasters.cellArea</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "cellArea" from SpatRasters:
  [1] cellArea(x, y, cellsize)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:106</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:107</code></pre>
 </div>
 </div>
 </div>
@@ -1605,9 +1642,9 @@ r = bilinear(lon, lat, Z, Lon, Lat; na_rm=true)</code></pre>
 <div class="callout-body-container">
 <pre><code>earth_dist(x1::Matrix, x2::Matrix; R=6378.388)
 earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1828,12 +1865,12 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.guanshan_dem</code> is of type <code>String</code>.</p>
-<section id="summary-6" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-6">Summary</h3>
+<section id="summary-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-5">Summary</h3>
 <pre><code>mutable struct String</code></pre>
 </section>
-<section id="supertype-hierarchy-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-2">Supertype Hierarchy</h3>
+<section id="supertype-hierarchy-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-1">Supertype Hierarchy</h3>
 <pre><code>String &lt;: AbstractString &lt;: Any</code></pre>
 </section>
 </div>
@@ -1851,12 +1888,12 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.guanshan_flowdir_cpp</code> is of type <code>String</code>.</p>
-<section id="summary-7" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-7">Summary</h3>
+<section id="summary-6" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-6">Summary</h3>
 <pre><code>mutable struct String</code></pre>
 </section>
-<section id="supertype-hierarchy-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-3">Supertype Hierarchy</h3>
+<section id="supertype-hierarchy-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-2">Supertype Hierarchy</h3>
 <pre><code>String &lt;: AbstractString &lt;: Any</code></pre>
 </section>
 </div>
@@ -1874,12 +1911,12 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.guanshan_flowdir_gis</code> is of type <code>String</code>.</p>
-<section id="summary-8" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-8">Summary</h3>
+<section id="summary-7" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-7">Summary</h3>
 <pre><code>mutable struct String</code></pre>
 </section>
-<section id="supertype-hierarchy-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-4">Supertype Hierarchy</h3>
+<section id="supertype-hierarchy-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-3">Supertype Hierarchy</h3>
 <pre><code>String &lt;: AbstractString &lt;: Any</code></pre>
 </section>
 </div>
@@ -2049,7 +2086,7 @@ Set{Float64} with 1 element:
 <p><code>SpatRasters.line_end</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "line_end" from SpatRasters:
  [1] line_end(line::Line)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:57</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:63</code></pre>
 </div>
 </div>
 </div>
@@ -2067,7 +2104,7 @@ Set{Float64} with 1 element:
 <p><code>SpatRasters.line_start</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "line_start" from SpatRasters:
  [1] line_start(line::Line)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:55</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:61</code></pre>
 </div>
 </div>
 </div>
@@ -2171,7 +2208,7 @@ julia&gt; median([1 2; 3 4], dims=1)
 </section>
 <section id="examples-5" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples-5">Examples</h3>
-<div class="sourceCode" id="cb100"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -2327,12 +2364,12 @@ julia&gt; median([1 2; 3 4], dims=1)
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<section id="summary-9" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-9">Summary</h3>
+<section id="summary-8" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-8">Summary</h3>
 <pre><code>mutable struct SpatRaster{T, N}</code></pre>
 </section>
-<section id="fields-5" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fields-5">Fields</h3>
+<section id="fields-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fields-4">Fields</h3>
 <pre><code>A        :: AbstractArray{T, N}
 b        :: bbox
 cellsize :: Tuple{Real, Real}
@@ -2343,8 +2380,8 @@ bands    :: Union{Nothing, AbstractVector{String}}
 name     :: String
 nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </section>
-<section id="supertype-hierarchy-5" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-5">Supertype Hierarchy</h3>
+<section id="supertype-hierarchy-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-4">Supertype Hierarchy</h3>
 <pre><code>SpatRaster{T, N} &lt;: AbstractSpatRaster{T, N} &lt;: Any</code></pre>
 </section>
 </div>
@@ -2420,7 +2457,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.rm_shp</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "rm_shp" from SpatRasters:
  [1] rm_shp(f)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:100</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:101</code></pre>
 </div>
 </div>
 </div>
@@ -2522,7 +2559,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
  [5] st_bbox(r::AbstractSpatRaster)
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2
  [6] st_bbox(line::Line)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:65</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:71</code></pre>
 </div>
 </div>
 </div>
@@ -2562,7 +2599,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.st_coords</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "st_coords" from SpatRasters:
  [1] st_coords(ra::SpatRaster)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:82</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:83</code></pre>
 </div>
 </div>
 </div>
@@ -2623,9 +2660,9 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.st_extract</code> is a <code>Function</code>.</p>
 <pre><code># 2 methods for generic function "st_extract" from SpatRasters:
- [1] st_extract(ra::AbstractSpatRaster, points::Vector{P}; combine) where {T&lt;:Real, P&lt;:Union{Tuple{T, T}, SpatRasters.AbstractPoint{T}}}
+ [1] st_extract(ra::AbstractSpatRaster, points::Vector{P}; combine) where {T&lt;:Real, P&lt;:Union{Tuple{T, T}, Point{T}}}
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:28
- [2] st_extract(ra::AbstractSpatRaster{FT}, point::P) where {FT, T, P&lt;:Union{Tuple{T, T}, SpatRasters.AbstractPoint{T}}}
+ [2] st_extract(ra::AbstractSpatRaster{FT}, point::P) where {FT, T, P&lt;:Union{Tuple{T, T}, Point{T}}}
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:19</code></pre>
 </div>
 </div>
@@ -2645,7 +2682,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <pre><code># 2 methods for generic function "st_location" from SpatRasters:
  [1] st_location(ra::AbstractSpatRaster, args...; kw...)
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_location.jl:41
- [2] st_location(rastersize::RasterSize, points::Vector{P}; rm_empty) where {T&lt;:Real, P&lt;:Union{Tuple{T, T}, SpatRasters.AbstractPoint{T}}}
+ [2] st_location(rastersize::RasterSize, points::Vector{P}; rm_empty) where {T&lt;:Real, P&lt;:Union{Tuple{T, T}, Point{T}}}
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_location.jl:33</code></pre>
 </div>
 </div>
@@ -2702,7 +2739,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 <p><code>SpatRasters.st_points</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "st_points" from SpatRasters:
  [1] st_points(x::AbstractVector, y::AbstractVector)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:88</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:89</code></pre>
 </div>
 </div>
 </div>
