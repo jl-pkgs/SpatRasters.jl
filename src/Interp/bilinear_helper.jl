@@ -1,8 +1,8 @@
 
 # export approx
-# import Interpolations: linear_interpolation, Line
+# import Interpolations: linear_interpolation, dLine
 # function approx(x, y, xout)
-#   interp_linear_extrap = linear_interpolation(x, y, extrapolation_bc=Line())
+#   interp_linear_extrap = linear_interpolation(x, y, extrapolation_bc=dLine())
 #   interp_linear_extrap.(xout) # outside grid: linear extrapolation
 # end
 export find_first, interp_linear

@@ -1,4 +1,4 @@
-export Point, Point3, Line
+export Point, Point3, dLine
 export line_start, line_end
 export RasterSize
 
@@ -50,7 +50,8 @@ function Base.getproperty(p::Point{T}, sym::Symbol) where {T}
 end
 
 
-Base.@kwdef mutable struct Line{T}
+"direction line"
+Base.@kwdef mutable struct dLine{T}
   origin::Point2{T} = Point(0.0, 0.0)
   azimuth::T = 0.0 # deg, 正北为0, 顺时针为正
   length::T = 2.0 # in deg
@@ -58,9 +59,9 @@ Base.@kwdef mutable struct Line{T}
 end
 
 
-@inline line_start(line::Line) = line.origin
+@inline line_start(line::dLine) = line.origin
 
-function line_end(line::Line)
+function line_end(line::dLine)
   p0 = line.origin
   length = line.length
   x, y = p0.x, p0.y
@@ -68,7 +69,7 @@ function line_end(line::Line)
   Point(x + cos(θ) * length, y + sin(θ) * length)
 end
 
-function st_bbox(line::Line)
+function st_bbox(line::dLine)
   p0 = line_start(line)
   p1 = line_end(line)
   xmax = max(p0.x, p1.x)
@@ -78,7 +79,7 @@ function st_bbox(line::Line)
   bbox(; xmin, ymin, xmax, ymax)
 end
 
-function is_vertical(line::Line; eps=1e-4)
+function is_vertical(line::dLine; eps=1e-4)
   abs(mod(line.azimuth, 180)) <= eps # 0或180，认为是垂线
 end
 

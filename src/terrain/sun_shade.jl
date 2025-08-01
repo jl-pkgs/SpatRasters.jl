@@ -42,7 +42,7 @@ end
 
 #   H, Φ_sun = angle_SunAzimuth(lat, time_local)
 
-#   l = Line(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
+#   l = dLine(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
 #   points = intersect(elev, l; cellsize)
 
 #   αs = dem_slope(P0, points) # 判断最大s仰角

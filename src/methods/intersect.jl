@@ -2,7 +2,7 @@ export intersect
 import Base: intersect
 
 "和x轴的交点，如果k = Inf or -Inf，则需要用y轴相交的方法"
-function intersect_x(line::Line{T}, xs::AbstractVector{T}) where {T}
+function intersect_x(line::dLine{T}, xs::AbstractVector{T}) where {T}
   (; k) = line
   p0 = line_start(line)
   x0, y0 = p0.x, p0.y
@@ -13,7 +13,7 @@ function intersect_x(line::Line{T}, xs::AbstractVector{T}) where {T}
     end, xs)
 end
 
-function intersect_y(line::Line{T}, ys::AbstractVector{T}) where {T}
+function intersect_y(line::dLine{T}, ys::AbstractVector{T}) where {T}
   (; k) = line
   p0 = line_start(line)
   x0, y0 = p0.x, p0.y
@@ -42,7 +42,7 @@ function range_lon(values::AbstractVector{T}, min::T, max::T) where {T}
 end
 
 
-function intersect(rastersize::RasterSize, line::Line; sort=true)
+function intersect(rastersize::RasterSize, line::dLine; sort=true)
   (; b, cellsize) = rastersize
   cellx, celly = cellsize
   
@@ -73,13 +73,13 @@ function intersect(rastersize::RasterSize, line::Line; sort=true)
 end
 
 
-function intersect(ra::SpatRaster, line::Line, rastersize::RasterSize)
+function intersect(ra::SpatRaster, line::dLine, rastersize::RasterSize)
   points = intersect(rastersize, line)
   # 然后两点判断一个网格位置
   interaction_RasterLine(ra, points, rastersize)
 end
 
-function intersect(ra::SpatRaster, line::Line)
+function intersect(ra::SpatRaster, line::dLine)
   rastersize = RasterSize(ra)
   intersect(ra, line, rastersize)
 end

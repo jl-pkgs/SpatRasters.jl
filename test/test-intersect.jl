@@ -7,7 +7,7 @@ using SpatRasters, Test
 
   p0 = Point(101.11, 20.11)
 
-  l = Line(; origin=p0, azimuth=0.0)
+  l = dLine(; origin=p0, azimuth=0.0)
   _points = intersect(ra, l)
   @test length(_points) >= 7
 
@@ -15,7 +15,7 @@ using SpatRasters, Test
   ψs = δψ/2:δψ:360 # 天文学方位角
 
   for ψ = ψs
-    l = Line(; origin=p0, azimuth=ψ, length=2.0) # 200km^2
+    l = dLine(; origin=p0, azimuth=ψ, length=2.0) # 200km^2
     points = intersect(ra, l)
     # @show ψ, length(points)
     @test length(points) >= 7
@@ -37,7 +37,7 @@ if false
 
   for k = eachindex(l_points)
     (; points, ψ) = l_points[k]
-    l = Line(; origin=Point(101.11, 20.11), azimuth=ψ, length=2.0) # 200km^2
+    l = dLine(; origin=Point(101.11, 20.11), azimuth=ψ, length=2.0) # 200km^2
     p0 = line_start(l)
     p1 = line_end(l)
 

@@ -24,7 +24,7 @@ function dem_angle_MaxElevation(elev::SpatRaster, p0::Point{T};
   ψs = δψ/2:δψ:360 # 天文学方位角
   # ψs =[180.0]
   map(Φ_sun -> begin
-      l = Line(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
+      l = dLine(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
       points = intersect(elev, l, rastersize)
       length(points) == 0 && return NaN
 

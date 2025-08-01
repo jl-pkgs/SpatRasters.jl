@@ -36,7 +36,7 @@ function SVF(elev::SpatRaster, p0::Point; rastersize::RasterSize,
   ψs = δψ/2:δψ:360 # 天文学方位角
   N = length(ψs)
   for (i, Φ_sun) in enumerate(ψs)
-    l = Line(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
+    l = dLine(; origin=p0, azimuth=Φ_sun, length=radian) # 200km^2
     points = intersect(elev, l, rastersize)
     length(points) == 0 && continue
 
