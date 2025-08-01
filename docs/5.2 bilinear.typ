@@ -13,11 +13,17 @@
 
 = 1 *不规则网格的双线性插值*
 
-#beamer-block[#par(leading: 0.9em)[
-参考`pyresample`的实现方法：\ https://github.com/pytroll/pyresample/blob/main/pyresample/bilinear/_base.py]]
+#beamer-block[#par(leading: 0.9em, spacing: 0.9em)[#text(size:12pt)[
+参考`pyresample`的实现方法。
+]]]
+
+#v(-0.3em)
 
 #h(2em)
 对于不规则四边形的四个角点 $P_1, P_2, P_3, P_4$，目标点 $(out_x, out_y)$ 可以表示为：
+
+- $P_1$: Upper Left；$P_2$: Upper right
+- $P_3$: Lower Left；$P_4$: Lower right；*顺序要对，否则会产生错误结果。*
 
 $
   P(s,t) = (1-s)(1-t) P_1 + s(1-t)P_2 + (1-s) t P_3 + s t P_4
@@ -52,7 +58,12 @@ $
   s = ("out"_x - x₁ - t x₃₁) / [x₂₁ + t(x₄₂ - x₃₁)]
 $ <eq_s>
 
-将$s$代入$"out"_y$：
+// #h(2em)
+同时，$s$也可以写成$y$的形式：
+
+$ s = ("out"_y - y₁ - t y₃₁) / [y₂₁ + t(y₄₂ - y₃₁)] $ <eq_s_y>
+
+将式#[@eq_s]中的$s$代入$"out"_y$：
 
 $
   "out"_y - y₁ = s y₂₁ + t y₃₁ + s t(y₄₂ - y₃₁) \
@@ -93,4 +104,13 @@ $
   $
 ]
 
-之后，将t代入式#[@eq_s]可得`s`。
+之后，将t代入式#[@eq_s_y]可得$s$。注意$t, s in [0, 1]$
+
+
+= *References* // <!-- omit in toc -->
+
+1. https://github.com/pytroll/pyresample/blob/main/pyresample/bilinear/_base.py \
+
+2. https://github.com/pytroll/pyresample/blob/main/pyresample/test/test_bilinear.py \
+
+3. http://www.ahinson.com/algorithms_general/Sections/InterpolationRegression/InterpolationIrregularBilinear.pdf
