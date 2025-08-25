@@ -10,3 +10,7 @@ Manifest.toml
 *.nc
 
 *temp*
+*.ipynb
+
+*.csv
+*.xlsx

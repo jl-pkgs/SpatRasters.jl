@@ -23,7 +23,7 @@ GeoDataFrames = "62cb38b5-d8d2-4862-a48e-6a340996859f"
 SpatRastersArchGDALExt = "ArchGDAL"
 
 [compat]
-DataStructures = "0.18.22"
+DataStructures = "0.18.22, 0.19"
 Dates = "1.11.0"
 Distances = "0.10.12"
 DocStringExtensions = "0.9"

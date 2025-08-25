@@ -102,17 +102,17 @@ function solve_tps(x::AbstractMatrix, y::AbstractArray, λ::Real; distance::Func
   # homogeneous coordinates
   X = hcat(ones(n, 1), x)
   Y = y
-  Φ = tps_kernel(x; distance) # compute TPS kernel
+  Φ = tps_kernel(x; distance) # compute TPS kernel, also known as K
 
   # full QR decomposition
   Q, r = qr(X)
-  q1 = Q[:, 1:(D+1)]
-  q2 = Q[:, (D+2):end]
+  Q1 = Q[:, 1:(D+1)]
+  Q2 = Q[:, (D+2):end]
 
   # warping coefficients
-  b = inv(UniformScaling(λ) + q2' * Φ * q2) * q2' * Y # Ghosh 2010, Eq. 3.6
-  c = q2 * b
-  d = r \ (q1' * (Y - Φ * c))                         # Ghosh 2010, Eq. 3.7
+  b = inv(UniformScaling(λ) + Q2' * Φ * Q2) * Q2' * Y # Ghosh 2010, Eq. 3.7
+  c = Q2 * b
+  d = r \ (Q1' * (Y - Φ * c))                         # Ghosh 2010, Eq. 3.6
   return ThinPlateSpline(λ, x, y, Φ, d, c)
 end
 
@@ -131,10 +131,10 @@ function predict(tps::ThinPlateSpline, x2::AbstractMatrix{FT};
   U = tps_kernel(x1, x2; distance) # [n_points, n_control]
 
   p = Progress(ntime)
-  for j in 1:ntime
+  @inbounds for j in 1:ntime
     progress && next!(p)
 
-    for i in 1:n_points
+     @threads for i in 1:n_points
       z = d[1, j] # 常数项
       for l in 1:nx
         z += d[l+1, j] * x2[i, l]

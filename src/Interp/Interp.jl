@@ -83,7 +83,9 @@ WFUNS = Dict(
 )
 
 
-function interp_weight(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignored...) where {FT,N}
+function interp_weight(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster;
+  progress=true, ignored...) where {FT,N}
+
   ntime = size(y, 2)
   lon, lat = st_dims(target)
   nlon, nlat = length(lon), length(lat)
@@ -91,42 +93,52 @@ function interp_weight(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::S
 
   (; count, index, weight) = neighbor
   ∅ = FT(0)
-  for i in 1:nlon, j in 1:nlat
-    n_control = count[i, j]
-    inds = @view index[i, j, 1:n_control]
-    ws = @view weight[i, j, 1:n_control]
+  p = Progress(nlat)
+  @inbounds for j in 1:nlat
+    progress && next!(p)
+    for i in 1:nlon
 
-    for k in 1:ntime
-      ∑ = FT(0)
-      ∑w = 0
-      for l in 1:n_control # control points
-        _i = inds[l]
-        yᵢ = y[_i, k]
-        notnan = yᵢ == yᵢ
-        ∑ += ifelse(notnan, yᵢ * ws[l], ∅)
-        ∑w += ifelse(notnan, ws[l], ∅)
+      n_control = count[i, j]
+      inds = @view index[i, j, 1:n_control]
+      ws = @view weight[i, j, 1:n_control]
+
+      @threads for k in 1:ntime
+        ∑ = FT(0)
+        ∑w = 0
+
+        for l in 1:n_control # control points
+          _i = inds[l]
+          yᵢ = y[_i, k]
+          notnan = yᵢ == yᵢ
+          ∑ += ifelse(notnan, yᵢ * ws[l], ∅)
+          ∑w += ifelse(notnan, ws[l], ∅)
+        end
+        R[i, j, k] = ∑ / ∑w
       end
-      R[i, j, k] = ∑ / ∑w
     end
   end
   rast(R, target)
 end
 
 
-function interp_nearest(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster; ignored...) where {FT,N}
+function interp_nearest(neighbor::Neighbor{FT,N}, y::AbstractArray{FT}, target::SpatRaster;
+  progress=true, ignored...) where {FT,N}
   ntime = size(y, 2)
   lon, lat = st_dims(target)
   nlon, nlat = length(lon), length(lat)
   R = zeros(FT, nlon, nlat, ntime)
 
-  (; count, index, weight) = neighbor
-  # ∅ = FT(0)
-  @inbounds for i in 1:nlon
-    for j in 1:nlat
+  (; count, index) = neighbor
+
+  p = Progress(nlat)
+  @inbounds for j in 1:nlat
+    progress && next!(p)
+    for i in 1:nlon
+      
       n_control = count[i, j]
       inds = @view index[i, j, 1:n_control]
 
-      for k in 1:ntime
+      @threads for k in 1:ntime
         for l in 1:n_control # control points
           _i = inds[l]
           yᵢ = y[_i, k]
