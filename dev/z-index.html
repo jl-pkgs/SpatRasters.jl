@@ -464,11 +464,6 @@ window.onload = function () {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./5.2 typst.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.2 typst.html</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./6-Visualization.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6. Visualization</span></a>
   </div>
 </li>
@@ -1382,7 +1377,7 @@ bilinear(ra::SpatRaster{T,3}; cellsize=1, na_rm=true, kw...) where {T&lt;:Real}<
 <p>( 1-ex)(1-ey)<em>z11 + (1- ex)(ey)</em>z12 + ( ex)(1-ey)<em>z21 + ( ex)(ey)</em>z22</p>
 <p>Where the z’s are the corresponding elements of the Z matrix.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bilinear</span>(x, y, z, xx, yy; na_rm, parallel, progress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>defined at <a href="https://github.com/jl-pkgs/SpatRasters.jl/tree/2ff55bd298bd6d1af6143f9efaf777d4b7794960//src/Interp/bilinear.jl#L41"><code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/src/Interp/bilinear.jl:41</code></a>.</p>
+<p>defined at <a href="https://github.com/jl-pkgs/SpatRasters.jl/tree/8224131d88d7f1de232723233b5e55d990e20032//src/Interp/bilinear.jl#L41"><code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/src/Interp/bilinear.jl:41</code></a>.</p>
 <p>! 插值外延，可能会导致错误！</p>
 <section id="arguments-2" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="arguments-2">Arguments</h4>
@@ -2092,8 +2087,8 @@ Set{Float64} with 1 element:
   2.0</code></pre>
 <pre><code>intersect(h1::Rect, h2::Rect)</code></pre>
 <p>Perform a intersection between two Rects.</p>
-<pre><code>intersect(ss, others...)</code></pre>
-<p>Each argument is a SortedSet with the same key and order type. The return variable is a new SortedSet that is the intersection of all the sets that are input. Time: O(<em>cn</em> log <em>n</em>), where <em>n</em> is the total number of items in all the arguments.</p>
+<pre><code>Base.intersect(ss::SortedSet, others...)</code></pre>
+<p>Intersect SortedSets with other SortedSets or other iterables and return the intersection as a new SortedSet. Time: O(<em>cn</em>), where <em>n</em> is the total number of items in all the arguments if all the arguments are SortedSets of the same type and same order object. Otherwise, the time is O(<em>cn</em> log <em>n</em>)</p>
 </section>
 </div>
 </div>
