@@ -15,7 +15,7 @@ book:
         - 3-IO.qmd
         - 4-Operation.qmd
         - 5-Interp.qmd
-        - 5.2 typst.qmd
+        # - 5.2 typst.qmd
         - 6-Visualization.qmd
         - z-index.qmd 
 
