@@ -14,7 +14,7 @@ Due to its simplicity, `SpatRasters.jl` doesn't rely on any other geospatial
 packages, which makes `SpatRasters.jl` more lightweight than `GeoArrays` and
 `Rasters.jl`.
 
-`SpatRasters.jl` used the class and function of R language `terra` and `sf`
+`SpatRasters.jl` used the class and function name of R language `terra` and `sf`
 packages.
 
 ```bash
