@@ -77,9 +77,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1f2c5671f16b03fccc3dca3f2befe5e0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-881aa8d321e24980e37d9a9b110e67f7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-1f2c5671f16b03fccc3dca3f2befe5e0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-70036a5793246c9d86baa7c3bf9c5655.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-03b54430f85c8d73068944a5a7c35ea3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-70036a5793246c9d86baa7c3bf9c5655.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -616,58 +616,19 @@ window.onload = function () {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<pre><code>Point{N, T}(args...)
-Point{N, T}(args::Union{AbstractVector, Tuple, NTuple, StaticVector})</code></pre>
-<p>Constructs a Point of length <code>N</code> from the given arguments.</p>
-<p>Note that Point and Vec don’t follow strict mathematical definitions. Instead we allow them to be used interchangeably.</p>
-<section id="aliases" class="level4 unnumbered">
-<h4 class="unnumbered anchored" data-anchor-id="aliases">Aliases</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 6%">
-<col style="width: 19%">
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 18%">
-<col style="width: 19%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;"></th>
-<th style="text-align: right;"><code>T</code></th>
-<th style="text-align: right;"><code>Float64</code></th>
-<th style="text-align: right;"><code>Float32</code></th>
-<th style="text-align: right;"><code>Int</code></th>
-<th style="text-align: right;"><code>UInt</code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><code>N</code></td>
-<td style="text-align: right;"><code>Point{N,T}</code></td>
-<td style="text-align: right;"><code>Pointd{N}</code></td>
-<td style="text-align: right;"><code>Pointf{N}</code></td>
-<td style="text-align: right;"><code>Pointi{N}</code></td>
-<td style="text-align: right;"><code>Pointui{N}</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;"><code>2</code></td>
-<td style="text-align: right;"><code>Point2{T}</code></td>
-<td style="text-align: right;"><code>Point2d</code></td>
-<td style="text-align: right;"><code>Point2f</code></td>
-<td style="text-align: right;"><code>Point2i</code></td>
-<td style="text-align: right;"><code>Point2ui</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;"><code>3</code></td>
-<td style="text-align: right;"><code>Point3{T}</code></td>
-<td style="text-align: right;"><code>Point3d</code></td>
-<td style="text-align: right;"><code>Point3f</code></td>
-<td style="text-align: right;"><code>Point3i</code></td>
-<td style="text-align: right;"><code>Point3ui</code></td>
-</tr>
-</tbody>
-</table>
+<p>No documentation found for public symbol.</p>
+<section id="summary-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-1">Summary</h3>
+<pre><code>mutable struct Point{T}</code></pre>
+</section>
+<section id="fields" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fields">Fields</h3>
+<pre><code>x :: T
+y :: T</code></pre>
+</section>
+<section id="supertype-hierarchy" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy">Supertype Hierarchy</h3>
+<pre><code>Point{T} &lt;: SpatRasters.AbstractPoint{T} &lt;: Any</code></pre>
 </section>
 </div>
 </div>
@@ -683,17 +644,19 @@ Point{N, T}(args::Union{AbstractVector, Tuple, NTuple, StaticVector})</code></pr
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<section id="summary-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-1">Summary</h3>
-<pre><code>struct Point{3, T}</code></pre>
+<section id="summary-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-2">Summary</h3>
+<pre><code>mutable struct Point3{T}</code></pre>
 </section>
-<section id="fields" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fields">Fields</h3>
-<pre><code>data :: Tuple{T, T, T}</code></pre>
+<section id="fields-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fields-1">Fields</h3>
+<pre><code>x :: T
+y :: T
+z :: T</code></pre>
 </section>
-<section id="supertype-hierarchy" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy">Supertype Hierarchy</h3>
-<pre><code>Point{3, T} &lt;: GeometryBasics.AbstractPoint{3, T} &lt;: StaticArraysCore.StaticArray{Tuple{3}, T, 1} &lt;: AbstractArray{T, 1} &lt;: Any</code></pre>
+<section id="supertype-hierarchy-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-1">Supertype Hierarchy</h3>
+<pre><code>Point3{T} &lt;: SpatRasters.AbstractPoint{T} &lt;: Any</code></pre>
 </section>
 </div>
 </div>
@@ -709,12 +672,12 @@ Point{N, T}(args::Union{AbstractVector, Tuple, NTuple, StaticVector})</code></pr
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<section id="summary-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-2">Summary</h3>
+<section id="summary-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-3">Summary</h3>
 <pre><code>mutable struct RasterSize</code></pre>
 </section>
-<section id="fields-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fields-1">Fields</h3>
+<section id="fields-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fields-2">Fields</h3>
 <pre><code>b        :: bbox
 cellsize :: Tuple{Float64, Float64}
 nx       :: Int64
@@ -831,8 +794,8 @@ ny       :: Int64</code></pre>
 <p><code>SpatRaster</code> is a simple spatial raster with WGS84 projection, abbreviated as <code>rast</code>.</p>
 <p>Due to its simplicity, <code>SpatRasters.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatRasters.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
 <p><code>SpatRasters.jl</code> used the class and function name of R language <code>terra</code> and <code>sf</code> packages.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatRasters"</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatRasters"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="functions" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="functions">Functions</h4>
 <p><em>Interpolation (point to raster)</em></p>
@@ -874,7 +837,7 @@ ny       :: Int64</code></pre>
 <p>return the overlaping indexes <code>inds</code>, and corresponding (i,j)</p>
 <section id="examples" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples">Examples</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>inds, locs <span class="op">=</span> <span class="fu">st_location</span>(r, points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -944,10 +907,10 @@ ny       :: Int64</code></pre>
 </div>
 <div class="callout-body-container">
 <p>方位角转换为数学角度，限定在0-360°</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">0</span> <span class="at">-</span><span class="op">&gt;</span>   90</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">90</span> <span class="at">-</span><span class="op">&gt;</span>    0</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">180</span> <span class="at">-</span><span class="op">&gt;</span>  -90</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="ex">270</span> <span class="at">-</span><span class="op">&gt;</span> -180</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">0</span> <span class="at">-</span><span class="op">&gt;</span>   90</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a> <span class="ex">90</span> <span class="at">-</span><span class="op">&gt;</span>    0</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">180</span> <span class="at">-</span><span class="op">&gt;</span>  -90</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">270</span> <span class="at">-</span><span class="op">&gt;</span> -180</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1338,9 +1301,9 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 <div class="callout-body-container">
 <pre><code>earth_dist(x1::Matrix, x2::Matrix; R=6378.388)
 earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>p1 <span class="op">=</span> [<span class="fl">110</span> <span class="fl">30</span>; <span class="fl">111</span> <span class="fl">31</span>]</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>p2 <span class="op">=</span> [<span class="fl">113</span> <span class="fl">32</span>; <span class="fl">115</span> <span class="fl">35</span>]</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">earth_dist</span>(p1, p2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1478,12 +1441,12 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.guanshan_dem</code> is of type <code>String</code>.</p>
-<section id="summary-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-3">Summary</h3>
+<section id="summary-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-4">Summary</h3>
 <pre><code>mutable struct String</code></pre>
 </section>
-<section id="supertype-hierarchy-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-1">Supertype Hierarchy</h3>
+<section id="supertype-hierarchy-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-2">Supertype Hierarchy</h3>
 <pre><code>String &lt;: AbstractString &lt;: Any</code></pre>
 </section>
 </div>
@@ -1501,12 +1464,12 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.guanshan_flowdir_cpp</code> is of type <code>String</code>.</p>
-<section id="summary-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-4">Summary</h3>
+<section id="summary-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-5">Summary</h3>
 <pre><code>mutable struct String</code></pre>
 </section>
-<section id="supertype-hierarchy-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-2">Supertype Hierarchy</h3>
+<section id="supertype-hierarchy-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-3">Supertype Hierarchy</h3>
 <pre><code>String &lt;: AbstractString &lt;: Any</code></pre>
 </section>
 </div>
@@ -1524,12 +1487,12 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
 <p><code>SpatRasters.guanshan_flowdir_gis</code> is of type <code>String</code>.</p>
-<section id="summary-5" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-5">Summary</h3>
+<section id="summary-6" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-6">Summary</h3>
 <pre><code>mutable struct String</code></pre>
 </section>
-<section id="supertype-hierarchy-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-3">Supertype Hierarchy</h3>
+<section id="supertype-hierarchy-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-4">Supertype Hierarchy</h3>
 <pre><code>String &lt;: AbstractString &lt;: Any</code></pre>
 </section>
 </div>
@@ -1632,7 +1595,7 @@ Set{Float64} with 1 element:
 <p><code>SpatRasters.line_end</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "line_end" from SpatRasters:
  [1] line_end(line::dLine)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:64</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:69</code></pre>
 </div>
 </div>
 </div>
@@ -1650,7 +1613,7 @@ Set{Float64} with 1 element:
 <p><code>SpatRasters.line_start</code> is a <code>Function</code>.</p>
 <pre><code># 1 method for generic function "line_start" from SpatRasters:
  [1] line_start(line::dLine)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:62</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:67</code></pre>
 </div>
 </div>
 </div>
@@ -1754,7 +1717,7 @@ julia&gt; median([1 2; 3 4], dims=1)
 </section>
 <section id="examples-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="examples-4">Examples</h3>
-<div class="sourceCode" id="cb74"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> <span class="fu">bbox</span>(<span class="op">-</span><span class="fl">180</span>, <span class="op">-</span><span class="fl">60</span>, <span class="fl">180</span>, <span class="fl">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -1892,12 +1855,12 @@ julia&gt; median([1 2; 3 4], dims=1)
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<section id="summary-6" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="summary-6">Summary</h3>
+<section id="summary-7" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="summary-7">Summary</h3>
 <pre><code>mutable struct SpatRaster{T, N}</code></pre>
 </section>
-<section id="fields-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="fields-2">Fields</h3>
+<section id="fields-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="fields-3">Fields</h3>
 <pre><code>A        :: AbstractArray{T, N}
 b        :: bbox
 cellsize :: Tuple{Real, Real}
@@ -1908,8 +1871,8 @@ bands    :: Union{Nothing, AbstractVector{String}}
 name     :: String
 nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </section>
-<section id="supertype-hierarchy-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-4">Supertype Hierarchy</h3>
+<section id="supertype-hierarchy-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-5">Supertype Hierarchy</h3>
 <pre><code>SpatRaster{T, N} &lt;: AbstractSpatRaster{T, N} &lt;: Any</code></pre>
 </section>
 </div>
@@ -2029,7 +1992,7 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
  [5] st_bbox(r::AbstractSpatRaster)
      @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2
  [6] st_bbox(line::dLine)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:72</code></pre>
+     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:77</code></pre>
 </div>
 </div>
 </div>

@@ -184,7 +184,7 @@
     "href": "z-index.html#point",
     "title": "Reference",
     "section": "Point",
-    "text": "Point\n\n\n\n\n\n\nPoint{N, T}(args...)\nPoint{N, T}(args::Union{AbstractVector, Tuple, NTuple, StaticVector})\nConstructs a Point of length N from the given arguments.\nNote that Point and Vec don’t follow strict mathematical definitions. Instead we allow them to be used interchangeably.\n\nAliases\n\n\n\n\n\n\n\n\n\n\n\n\nT\nFloat64\nFloat32\nInt\nUInt\n\n\n\n\nN\nPoint{N,T}\nPointd{N}\nPointf{N}\nPointi{N}\nPointui{N}\n\n\n2\nPoint2{T}\nPoint2d\nPoint2f\nPoint2i\nPoint2ui\n\n\n3\nPoint3{T}\nPoint3d\nPoint3f\nPoint3i\nPoint3ui",
+    "text": "Point\n\n\n\n\n\n\nNo documentation found for public symbol.\n\nSummary\nmutable struct Point{T}\n\n\nFields\nx :: T\ny :: T\n\n\nSupertype Hierarchy\nPoint{T} &lt;: SpatRasters.AbstractPoint{T} &lt;: Any",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -194,7 +194,7 @@
     "href": "z-index.html#point3",
     "title": "Reference",
     "section": "Point3",
-    "text": "Point3\n\n\n\n\n\n\nNo documentation found for public symbol.\n\nSummary\nstruct Point{3, T}\n\n\nFields\ndata :: Tuple{T, T, T}\n\n\nSupertype Hierarchy\nPoint{3, T} &lt;: GeometryBasics.AbstractPoint{3, T} &lt;: StaticArraysCore.StaticArray{Tuple{3}, T, 1} &lt;: AbstractArray{T, 1} &lt;: Any",
+    "text": "Point3\n\n\n\n\n\n\nNo documentation found for public symbol.\n\nSummary\nmutable struct Point3{T}\n\n\nFields\nx :: T\ny :: T\nz :: T\n\n\nSupertype Hierarchy\nPoint3{T} &lt;: SpatRasters.AbstractPoint{T} &lt;: Any",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -654,7 +654,7 @@
     "href": "z-index.html#line_end",
     "title": "Reference",
     "section": "line_end",
-    "text": "line_end\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.line_end is a Function.\n# 1 method for generic function \"line_end\" from SpatRasters:\n [1] line_end(line::dLine)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:64",
+    "text": "line_end\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.line_end is a Function.\n# 1 method for generic function \"line_end\" from SpatRasters:\n [1] line_end(line::dLine)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:69",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -664,7 +664,7 @@
     "href": "z-index.html#line_start",
     "title": "Reference",
     "section": "line_start",
-    "text": "line_start\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.line_start is a Function.\n# 1 method for generic function \"line_start\" from SpatRasters:\n [1] line_start(line::dLine)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:62",
+    "text": "line_start\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.line_start is a Function.\n# 1 method for generic function \"line_start\" from SpatRasters:\n [1] line_start(line::dLine)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:67",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
@@ -834,7 +834,7 @@
     "href": "z-index.html#st_bbox",
     "title": "Reference",
     "section": "st_bbox",
-    "text": "st_bbox\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_bbox is a Function.\n# 6 methods for generic function \"st_bbox\" from SpatRasters:\n [1] st_bbox(bs::Vector{bbox})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:22\n [2] st_bbox(f::String)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:15\n [3] st_bbox(lon, lat)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:8\n [4] st_bbox(v::Vector{&lt;:Real})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:4\n [5] st_bbox(r::AbstractSpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2\n [6] st_bbox(line::dLine)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:72",
+    "text": "st_bbox\n\n\n\n\n\n\nNo documentation found for public symbol.\nSpatRasters.st_bbox is a Function.\n# 6 methods for generic function \"st_bbox\" from SpatRasters:\n [1] st_bbox(bs::Vector{bbox})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:22\n [2] st_bbox(f::String)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:15\n [3] st_bbox(lon, lat)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:8\n [4] st_bbox(v::Vector{&lt;:Real})\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:4\n [5] st_bbox(r::AbstractSpatRaster)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2\n [6] st_bbox(line::dLine)\n     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:77",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Reference</span>"
     ]
