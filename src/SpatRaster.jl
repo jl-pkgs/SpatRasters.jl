@@ -69,10 +69,10 @@ function SpatRaster(f::String; FT::Union{DataType,Nothing}=nothing, kw...)
 end
 
 
-function make_rast(; b::bbox=bbox(70, 15, 140, 55), cellsize=0.5)
+function make_rast(; b::bbox=bbox(70, 15, 140, 55), cellsize=0.5, FT=Float64)
   lon, lat = bbox2dims(b; cellsize)
   nlon, nlat = length(lon), length(lat)
-  rast(zeros(nlon, nlat), b)
+  rast(zeros(FT, nlon, nlat), b)
 end
 
 

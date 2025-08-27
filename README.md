@@ -26,6 +26,8 @@ julia -e "@time using SpatRasters"
 
 *Interpolation (point to raster)*
 
+> move to `SpatInterp.jl`
+
 - [x] Thin Plate Spline Interpolation (tps)
 - [x] Angular Distance Weighting Interpolation (adw)
 - [x] Inverse Distance Weighting Interpolation (idw)
