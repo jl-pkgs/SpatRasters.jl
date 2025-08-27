@@ -1,11 +1,11 @@
 using SpatRasters, Test
-
+const sf = SpatRasters
 
 @testset "intersect" begin
   b = bbox(95.0, 15.0, 105.0, 25.0)
   ra = make_rast(; b, cellsize=0.25)
 
-  p0 = Point(101.11, 20.11)
+  p0 = sf.Point(101.11, 20.11)
 
   l = dLine(; origin=p0, azimuth=0.0)
   _points = intersect(ra, l)

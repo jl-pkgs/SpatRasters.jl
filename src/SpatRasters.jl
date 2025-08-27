@@ -4,7 +4,7 @@ using DocStringExtensions
 using ProgressMeter
 using Statistics: median, cor
 using Parameters
-using GeometryBasics
+# using GeometryBasics
 using Base.Threads
 
 export cor, median
@@ -90,7 +90,7 @@ function st_points(x::AbstractVector, y::AbstractVector)
   [(x[i], y[i]) for i in eachindex(x)]
 end
 
-st_points(X::AbstractMatrix{T}) where {T} = map(p -> Point{2,T}(p[1], p[2]), eachrow(X))
+st_points(X::AbstractMatrix{T}) where {T} = map(p -> Point{T}(p[1], p[2]), eachrow(X))
 
 
 function shp_files(f)
