@@ -5,6 +5,7 @@ using ProgressMeter
 using Statistics: median, cor
 using Parameters
 using GeometryBasics
+using Base.Threads
 
 export cor, median
 
@@ -22,6 +23,7 @@ export bbox2lims,
   bbox2dims, bbox2ndim
 export range2bbox
 export st_points
+export st_coords
 export st_bbox, st_dims, st_cellsize, st_mosaic
 export st_write, st_read, nlyr
 export rm_shp
@@ -77,7 +79,6 @@ include("hydro/Hydro.jl")
 include("methods/intersect.jl")
 include("terrain/terrain.jl")
 
-export st_coords
 
 function st_coords(ra::SpatRaster)
   lon, lat = st_dims(ra)
@@ -88,6 +89,8 @@ end
 function st_points(x::AbstractVector, y::AbstractVector)
   [(x[i], y[i]) for i in eachindex(x)]
 end
+
+st_points(X::AbstractMatrix{T}) where {T} = map(p -> Point{2,T}(p[1], p[2]), eachrow(X))
 
 
 function shp_files(f)

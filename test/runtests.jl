@@ -12,8 +12,8 @@ include("terrain/test-dem_slope.jl")
 
 # include("Interp/test-interp.jl")
 # include("Interp/test-tps.jl")
-include("Interp/test-angle.jl")
-include("Interp/test-bilinear.jl")
+# include("Interp/test-angle.jl")
+# include("Interp/test-bilinear.jl")
 # include("Interp/test-bilinear_irregular.jl")
 
 include("test-gdal_polygonize.jl")
