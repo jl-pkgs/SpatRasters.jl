@@ -74,7 +74,7 @@ include("st_mosaic.jl")
 include("st_crop.jl")
 
 include("distance.jl")
-include("hydro/Hydro.jl")
+# include("hydro/Hydro.jl")
 
 include("methods/intersect.jl")
 include("terrain/terrain.jl")

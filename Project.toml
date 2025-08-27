@@ -4,7 +4,6 @@ authors = ["Dongdong Kong <kongdd@users.noreply.github.com>"]
 version = "0.1.0"
 
 [deps]
-DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 DocStringExtensions = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
 GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
@@ -20,7 +19,6 @@ GeoDataFrames = "62cb38b5-d8d2-4862-a48e-6a340996859f"
 SpatRastersArchGDALExt = "ArchGDAL"
 
 [compat]
-DataStructures = "0.18, 0.19"
 Dates = "1.11.0"
 DocStringExtensions = "0.9"
 GeometryBasics = "0.5.10"
