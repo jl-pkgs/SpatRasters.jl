@@ -9,7 +9,7 @@
 <meta name="author" content="Dongdong Kong">
 <meta name="dcterms.date" content="2025-06-29">
 
-<title>SpatRasters</title>
+<title>SpatialRasterLite</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -137,7 +137,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 // SOFTWARE.
 
 window.onload = function () {
-    const versionsUrl = 'https://raw.githubusercontent.com/jl-pkgs/SpatRasters.jl/gh-pages/versions.js';
+    const versionsUrl = 'https://raw.githubusercontent.com/jl-pkgs/SpatialRasterLite.jl/gh-pages/versions.js';
 
     // Fetch the versions.js file
     fetch(versionsUrl)
@@ -177,7 +177,7 @@ window.onload = function () {
                         const li = document.createElement('li');
                         const a = document.createElement('a');
                         a.className = 'dropdown-item';
-                        a.href = `/SpatRasters.jl/${version}/index.html`;
+                        a.href = `/SpatialRasterLite.jl/${version}/index.html`;
 
                         // Wrap version text in a <code> element
                         const code = document.createElement('code');
@@ -207,10 +207,10 @@ window.onload = function () {
 
 
 <link rel="stylesheet" href="_static/style.css">
-<meta property="og:title" content="SpatRasters">
+<meta property="og:title" content="SpatialRasterLite">
 <meta property="og:description" content="">
-<meta property="og:site_name" content="SpatRasters">
-<meta name="twitter:title" content="SpatRasters">
+<meta property="og:site_name" content="SpatialRasterLite">
+<meta name="twitter:title" content="SpatialRasterLite">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -385,7 +385,7 @@ window.onload = function () {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">SpatRasters</span>
+    <span class="navbar-title">SpatialRasterLite</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -404,7 +404,7 @@ window.onload = function () {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/jl-pkgs/SpatRasters.jl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jl-pkgs/SpatialRasterLite.jl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -479,12 +479,12 @@ window.onload = function () {
     <h2 id="toc-title">Table of Contents</h2>
    
   <ul>
-  <li><a href="#spatrasters.jl-simple-spatial-rasters-in-julia" id="toc-spatrasters.jl-simple-spatial-rasters-in-julia" class="nav-link active" data-scroll-target="#spatrasters.jl-simple-spatial-rasters-in-julia">SpatRasters.jl: Simple Spatial Rasters in Julia</a>
+  <li><a href="#spatialrasterlite.jl-simple-spatial-rasters-in-julia" id="toc-spatialrasterlite.jl-simple-spatial-rasters-in-julia" class="nav-link active" data-scroll-target="#spatialrasterlite.jl-simple-spatial-rasters-in-julia">SpatialRasterLite.jl: Simple Spatial Rasters in Julia</a>
   <ul class="collapse">
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -492,7 +492,7 @@ window.onload = function () {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">SpatRasters</h1>
+<h1 class="title">SpatialRasterLite</h1>
 </div>
 
 
@@ -521,17 +521,17 @@ window.onload = function () {
 </header>
 
 
-<section id="spatrasters.jl-simple-spatial-rasters-in-julia" class="level1">
-<h1>SpatRasters.jl: Simple Spatial Rasters in Julia</h1>
-<!-- [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://jl-pkgs.github.io/SpatRasters.jl/stable) -->
-<p><a href="https://jl-pkgs.github.io/SpatRasters.jl/dev"><img src="https://img.shields.io/badge/docs-dev-blue.svg" class="img-fluid" alt="Dev"></a> <a href="https://github.com/jl-pkgs/SpatRasters.jl/actions/workflows/CI.yml"><img src="https://github.com/jl-pkgs/SpatRasters.jl/actions/workflows/CI.yml/badge.svg" class="img-fluid" alt="CI"></a> <a href="https://app.codecov.io/gh/jl-pkgs/SpatRasters.jl/tree/master"><img src="https://codecov.io/gh/jl-pkgs/SpatRasters.jl/branch/master/graph/badge.svg" class="img-fluid" alt="Codecov"></a></p>
+<section id="spatialrasterlite.jl-simple-spatial-rasters-in-julia" class="level1">
+<h1>SpatialRasterLite.jl: Simple Spatial Rasters in Julia</h1>
+<!-- [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://jl-pkgs.github.io/SpatialRasterLite.jl/stable) -->
+<p><a href="https://jl-pkgs.github.io/SpatialRasterLite.jl/dev"><img src="https://img.shields.io/badge/docs-dev-blue.svg" class="img-fluid" alt="Dev"></a> <a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/actions/workflows/CI.yml"><img src="https://github.com/jl-pkgs/SpatialRasterLite.jl/actions/workflows/CI.yml/badge.svg" class="img-fluid" alt="CI"></a> <a href="https://app.codecov.io/gh/jl-pkgs/SpatialRasterLite.jl/tree/master"><img src="https://codecov.io/gh/jl-pkgs/SpatialRasterLite.jl/branch/master/graph/badge.svg" class="img-fluid" alt="Codecov"></a></p>
 <blockquote class="blockquote">
 <p>Dongdong Kong</p>
 </blockquote>
 <p><code>SpatRaster</code> is a simple spatial raster with WGS84 projection, abbreviated as <code>rast</code>.</p>
-<p>Due to its simplicity, <code>SpatRasters.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatRasters.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
-<p><code>SpatRasters.jl</code> used the class and function name of R language <code>terra</code> and <code>sf</code> packages.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatRasters"</span></span>
+<p>Due to its simplicity, <code>SpatialRasterLite.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatialRasterLite.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
+<p><code>SpatialRasterLite.jl</code> used the class and function name of R language <code>terra</code> and <code>sf</code> packages.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatialRasterLite"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
@@ -987,4 +987,4 @@ window.onload = function () {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

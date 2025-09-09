@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Reference – SpatRasters</title>
+<title>Reference – SpatialRasterLite</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 // SOFTWARE.
 
 window.onload = function () {
-    const versionsUrl = 'https://raw.githubusercontent.com/jl-pkgs/SpatRasters.jl/gh-pages/versions.js';
+    const versionsUrl = 'https://raw.githubusercontent.com/jl-pkgs/SpatialRasterLite.jl/gh-pages/versions.js';
 
     // Fetch the versions.js file
     fetch(versionsUrl)
@@ -175,7 +175,7 @@ window.onload = function () {
                         const li = document.createElement('li');
                         const a = document.createElement('a');
                         a.className = 'dropdown-item';
-                        a.href = `/SpatRasters.jl/${version}/index.html`;
+                        a.href = `/SpatialRasterLite.jl/${version}/index.html`;
 
                         // Wrap version text in a <code> element
                         const code = document.createElement('code');
@@ -205,10 +205,10 @@ window.onload = function () {
 
 
 <link rel="stylesheet" href="_static/style.css">
-<meta property="og:title" content="Reference – SpatRasters">
+<meta property="og:title" content="Reference – SpatialRasterLite">
 <meta property="og:description" content="">
-<meta property="og:site_name" content="SpatRasters">
-<meta name="twitter:title" content="Reference – SpatRasters">
+<meta property="og:site_name" content="SpatialRasterLite">
+<meta name="twitter:title" content="Reference – SpatialRasterLite">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -383,7 +383,7 @@ window.onload = function () {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">SpatRasters</span>
+    <span class="navbar-title">SpatialRasterLite</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -402,7 +402,7 @@ window.onload = function () {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/jl-pkgs/SpatRasters.jl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jl-pkgs/SpatialRasterLite.jl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -485,7 +485,7 @@ window.onload = function () {
   <li><a href="#svf_azimuth" id="toc-svf_azimuth" class="nav-link" data-scroll-target="#svf_azimuth"><code>SVF_azimuth</code></a></li>
   <li><a href="#svf_azimuth_simple" id="toc-svf_azimuth_simple" class="nav-link" data-scroll-target="#svf_azimuth_simple"><code>SVF_azimuth_simple</code></a></li>
   <li><a href="#spatraster" id="toc-spatraster" class="nav-link" data-scroll-target="#spatraster"><code>SpatRaster</code></a></li>
-  <li><a href="#spatrasters" id="toc-spatrasters" class="nav-link" data-scroll-target="#spatrasters"><code>SpatRasters</code></a></li>
+  <li><a href="#spatialrasterlite" id="toc-spatialrasterlite" class="nav-link" data-scroll-target="#spatialrasterlite"><code>SpatialRasterLite</code></a></li>
   <li><a href="#st_location" id="toc-st_location" class="nav-link" data-scroll-target="#st_location"><code>_st_location</code></a></li>
   <li><a href="#angle_solardeclination" id="toc-angle_solardeclination" class="nav-link" data-scroll-target="#angle_solardeclination"><code>angle_SolarDeclination</code></a></li>
   <li><a href="#angle_sunazimuth" id="toc-angle_sunazimuth" class="nav-link" data-scroll-target="#angle_sunazimuth"><code>angle_SunAzimuth</code></a></li>
@@ -560,7 +560,7 @@ window.onload = function () {
   <li><a href="#write_gdal" id="toc-write_gdal" class="nav-link" data-scroll-target="#write_gdal"><code>write_gdal</code></a></li>
   <li><a href="#write_sf" id="toc-write_sf" class="nav-link" data-scroll-target="#write_sf"><code>write_sf</code></a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -585,7 +585,7 @@ window.onload = function () {
 </header>
 
 
-<p><em>Docstrings for SpatRasters.</em></p>
+<p><em>Docstrings for SpatialRasterLite.</em></p>
 <section id="abstractspatraster" class="level2">
 <h2 class="anchored" data-anchor-id="abstractspatraster"><code>AbstractSpatRaster</code></h2>
 <div class="callout callout-style-simple callout-none no-icon">
@@ -628,7 +628,7 @@ y :: T</code></pre>
 </section>
 <section id="supertype-hierarchy" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy">Supertype Hierarchy</h3>
-<pre><code>Point{T} &lt;: SpatRasters.AbstractPoint{T} &lt;: Any</code></pre>
+<pre><code>Point{T} &lt;: SpatialRasterLite.AbstractPoint{T} &lt;: Any</code></pre>
 </section>
 </div>
 </div>
@@ -656,7 +656,7 @@ z :: T</code></pre>
 </section>
 <section id="supertype-hierarchy-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="supertype-hierarchy-1">Supertype Hierarchy</h3>
-<pre><code>Point3{T} &lt;: SpatRasters.AbstractPoint{T} &lt;: Any</code></pre>
+<pre><code>Point3{T} &lt;: SpatialRasterLite.AbstractPoint{T} &lt;: Any</code></pre>
 </section>
 </div>
 </div>
@@ -714,10 +714,10 @@ ny       :: Int64</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.SVF_azimuth</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "SVF_azimuth" from SpatRasters:
+<p><code>SpatialRasterLite.SVF_azimuth</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "SVF_azimuth" from SpatialRasterLite:
  [1] SVF_azimuth(Φ_sun::T, Φ_slope::T, β_slope::T, zenith_max::T) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sky_view_factor.jl:5</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/sky_view_factor.jl:5</code></pre>
 </div>
 </div>
 </div>
@@ -732,10 +732,10 @@ ny       :: Int64</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.SVF_azimuth_simple</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "SVF_azimuth_simple" from SpatRasters:
+<p><code>SpatialRasterLite.SVF_azimuth_simple</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "SVF_azimuth_simple" from SpatialRasterLite:
  [1] SVF_azimuth_simple(zenith_max::T) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sky_view_factor.jl:15</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/sky_view_factor.jl:15</code></pre>
 </div>
 </div>
 </div>
@@ -769,32 +769,32 @@ ny       :: Int64</code></pre>
 </div>
 <div style="page-break-after: always;"></div>
 </section>
-<section id="spatrasters" class="level2">
-<h2 class="anchored" data-anchor-id="spatrasters"><code>SpatRasters</code></h2>
+<section id="spatialrasterlite" class="level2">
+<h2 class="anchored" data-anchor-id="spatialrasterlite"><code>SpatialRasterLite</code></h2>
 <div class="callout callout-style-simple callout-none no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>No docstring found for public module <code>SpatRasters</code>.</p>
+<p>No docstring found for public module <code>SpatialRasterLite</code>.</p>
 <section id="public-names" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="public-names">Public names</h3>
 <p><code>AbstractSpatRaster</code>, <code>Point</code>, <code>Point3</code>, <code>RasterSize</code>, <code>SVF</code>, <code>SVF_azimuth</code>, <code>SVF_azimuth_simple</code>, <code>SpatRaster</code>, <code>_st_location</code>, <code>angle_SolarDeclination</code>, <code>angle_SunAzimuth</code>, <code>angle_SunElevation</code>, <code>azimuth2deg</code>, <code>azimuth2slope</code>, <code>azimuth2xy</code>, <code>bandnames</code>, <code>bbox</code>, <code>bbox2cellsize</code>, <code>bbox2dims</code>, <code>bbox2lims</code>, <code>bbox2ndim</code>, <code>bbox2range</code>, <code>bbox2vec</code>, <code>bbox_overlap</code>, <code>cellArea</code>, <code>cor</code>, <code>dLine</code>, <code>deg2xy</code>, <code>dem_angle_MaxElevation</code>, <code>dem_slope</code>, <code>direction</code>, <code>direction_E</code>, <code>direction_N</code>, <code>earth_dist</code>, <code>fliplr</code>, <code>flipud</code>, <code>gdal_info</code>, <code>gdal_nodata</code>, <code>gdal_polygonize</code>, <code>gdalinfo</code>, <code>getgeotransform</code>, <code>guanshan_dem</code>, <code>guanshan_flowdir_cpp</code>, <code>guanshan_flowdir_gis</code>, <code>in_bbox</code>, <code>intersect</code>, <code>isscalar</code>, <code>line_end</code>, <code>line_start</code>, <code>make_rast</code>, <code>median</code>, <code>merge_var</code>, <code>merge_var!</code>, <code>meshgrid</code>, <code>nband</code>, <code>nlayer</code>, <code>nlyr</code>, <code>ogr_info</code>, <code>range2bbox</code>, <code>rast</code>, <code>read_gdal</code>, <code>read_sf</code>, <code>resample_first</code>, <code>rm_shp</code>, <code>set_bandnames</code>, <code>st_bbox</code>, <code>st_cellsize</code>, <code>st_coords</code>, <code>st_crop</code>, <code>st_dims</code>, <code>st_extract</code>, <code>st_location</code>, <code>st_location_exact</code>, <code>st_mosaic</code>, <code>st_points</code>, <code>st_read</code>, <code>st_write</code>, <code>sun_shade</code>, <code>time2local</code>, <code>write_gdal</code>, <code>write_sf</code></p>
 </section>
-<section id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="displaying-contents-of-readme-found-at-homerunnerworkspatrasters.jlspatrasters.jlreadme.md">Displaying contents of readme found at <code>/home/runner/work/SpatRasters.jl/SpatRasters.jl/README.md</code></h3>
+<section id="displaying-contents-of-readme-found-at-homerunnerworkspatialrasterlite.jlspatialrasterlite.jlreadme.md" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="displaying-contents-of-readme-found-at-homerunnerworkspatialrasterlite.jlspatialrasterlite.jlreadme.md">Displaying contents of readme found at <code>/home/runner/work/SpatialRasterLite.jl/SpatialRasterLite.jl/README.md</code></h3>
 </section>
-<section id="spatrasters.jl-simple-spatial-rasters-in-julia" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="spatrasters.jl-simple-spatial-rasters-in-julia">SpatRasters.jl: Simple Spatial Rasters in Julia</h3>
-<p>&lt;!– <a href="https://jl-pkgs.github.io/SpatRasters.jl/stable"><img src="https://img.shields.io/badge/docs-stable-blue.svg" class="img-fluid" alt="Stable"></a> –&gt; <a href="https://jl-pkgs.github.io/SpatRasters.jl/dev"><img src="https://img.shields.io/badge/docs-dev-blue.svg" class="img-fluid" alt="Dev"></a> <a href="https://github.com/jl-pkgs/SpatRasters.jl/actions/workflows/CI.yml"><img src="https://github.com/jl-pkgs/SpatRasters.jl/actions/workflows/CI.yml/badge.svg" class="img-fluid" alt="CI"></a> <a href="https://app.codecov.io/gh/jl-pkgs/SpatRasters.jl/tree/master"><img src="https://codecov.io/gh/jl-pkgs/SpatRasters.jl/branch/master/graph/badge.svg" class="img-fluid" alt="Codecov"></a></p>
+<section id="spatialrasterlite.jl-simple-spatial-rasters-in-julia" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="spatialrasterlite.jl-simple-spatial-rasters-in-julia">SpatialRasterLite.jl: Simple Spatial Rasters in Julia</h3>
+<p>&lt;!– <a href="https://jl-pkgs.github.io/SpatialRasterLite.jl/stable"><img src="https://img.shields.io/badge/docs-stable-blue.svg" class="img-fluid" alt="Stable"></a> –&gt; <a href="https://jl-pkgs.github.io/SpatialRasterLite.jl/dev"><img src="https://img.shields.io/badge/docs-dev-blue.svg" class="img-fluid" alt="Dev"></a> <a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/actions/workflows/CI.yml"><img src="https://github.com/jl-pkgs/SpatialRasterLite.jl/actions/workflows/CI.yml/badge.svg" class="img-fluid" alt="CI"></a> <a href="https://app.codecov.io/gh/jl-pkgs/SpatialRasterLite.jl/tree/master"><img src="https://codecov.io/gh/jl-pkgs/SpatialRasterLite.jl/branch/master/graph/badge.svg" class="img-fluid" alt="Codecov"></a></p>
 <blockquote class="blockquote">
 <p>Dongdong Kong</p>
 </blockquote>
 <p><code>SpatRaster</code> is a simple spatial raster with WGS84 projection, abbreviated as <code>rast</code>.</p>
-<p>Due to its simplicity, <code>SpatRasters.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatRasters.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
-<p><code>SpatRasters.jl</code> used the class and function name of R language <code>terra</code> and <code>sf</code> packages.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatRasters"</span></span>
+<p>Due to its simplicity, <code>SpatialRasterLite.jl</code> doesn’t rely on any other geospatial packages, which makes <code>SpatialRasterLite.jl</code> more lightweight than <code>GeoArrays</code> and <code>Rasters.jl</code>.</p>
+<p><code>SpatialRasterLite.jl</code> used the class and function name of R language <code>terra</code> and <code>sf</code> packages.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">"@time using SpatialRasterLite"</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.053372 seconds (50.83 k allocations: 3.506 MiB, 8.44% compilation time)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="functions" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="functions">Functions</h4>
@@ -925,10 +925,10 @@ ny       :: Int64</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.azimuth2slope</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "azimuth2slope" from SpatRasters:
+<p><code>SpatialRasterLite.azimuth2slope</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "azimuth2slope" from SpatialRasterLite:
  [1] azimuth2slope(ψ)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:23</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/angle.jl:23</code></pre>
 </div>
 </div>
 </div>
@@ -943,10 +943,10 @@ ny       :: Int64</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.azimuth2xy</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "azimuth2xy" from SpatRasters:
+<p><code>SpatialRasterLite.azimuth2xy</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "azimuth2xy" from SpatialRasterLite:
  [1] azimuth2xy(Φ::Real; verbose)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:25</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/angle.jl:25</code></pre>
 </div>
 </div>
 </div>
@@ -961,8 +961,8 @@ ny       :: Int64</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.bandnames</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "bandnames" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.bandnames</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "bandnames" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -996,10 +996,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.bbox2cellsize</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "bbox2cellsize" from SpatRasters:
+<p><code>SpatialRasterLite.bbox2cellsize</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "bbox2cellsize" from SpatialRasterLite:
  [1] bbox2cellsize(b::bbox, size)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:19</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/bbox.jl:19</code></pre>
 </div>
 </div>
 </div>
@@ -1034,10 +1034,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.bbox2lims</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "bbox2lims" from SpatRasters:
+<p><code>SpatialRasterLite.bbox2lims</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "bbox2lims" from SpatialRasterLite:
  [1] bbox2lims(b::bbox)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:65</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/bbox.jl:65</code></pre>
 </div>
 </div>
 </div>
@@ -1052,10 +1052,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.bbox2ndim</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "bbox2ndim" from SpatRasters:
+<p><code>SpatialRasterLite.bbox2ndim</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "bbox2ndim" from SpatialRasterLite:
  [1] bbox2ndim(b; size, cellsize)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:48</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/bbox.jl:48</code></pre>
 </div>
 </div>
 </div>
@@ -1070,10 +1070,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.bbox2range</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "bbox2range" from SpatRasters:
+<p><code>SpatialRasterLite.bbox2range</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "bbox2range" from SpatialRasterLite:
  [1] bbox2range(b::bbox)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:62</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/bbox.jl:62</code></pre>
 </div>
 </div>
 </div>
@@ -1088,10 +1088,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.bbox2vec</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "bbox2vec" from SpatRasters:
+<p><code>SpatialRasterLite.bbox2vec</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "bbox2vec" from SpatialRasterLite:
  [1] bbox2vec(b::bbox)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:64</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/bbox.jl:64</code></pre>
 </div>
 </div>
 </div>
@@ -1106,10 +1106,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.bbox_overlap</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "bbox_overlap" from SpatRasters:
+<p><code>SpatialRasterLite.bbox_overlap</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "bbox_overlap" from SpatialRasterLite:
  [1] bbox_overlap(b::bbox, box::bbox; size, cellsize, reverse_lat, zip)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:69</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/bbox.jl:69</code></pre>
 </div>
 </div>
 </div>
@@ -1124,10 +1124,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.cellArea</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "cellArea" from SpatRasters:
+<p><code>SpatialRasterLite.cellArea</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "cellArea" from SpatialRasterLite:
  [1] cellArea(x, y, cellsize)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:109</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/SpatialRasterLite.jl:109</code></pre>
 </div>
 </div>
 </div>
@@ -1194,10 +1194,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.deg2xy</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "deg2xy" from SpatRasters:
+<p><code>SpatialRasterLite.deg2xy</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "deg2xy" from SpatialRasterLite:
  [1] deg2xy(θ::Real)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:36</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/angle.jl:36</code></pre>
 </div>
 </div>
 </div>
@@ -1212,12 +1212,12 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.dem_angle_MaxElevation</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "dem_angle_MaxElevation" from SpatRasters:
+<p><code>SpatialRasterLite.dem_angle_MaxElevation</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "dem_angle_MaxElevation" from SpatialRasterLite:
  [1] dem_angle_MaxElevation(elev::SpatRaster; δψ, radian)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/dem_slope.jl:37
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/dem_slope.jl:37
  [2] dem_angle_MaxElevation(elev::SpatRaster, p0::Point{T}; δψ, radian, rastersize) where T
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/dem_slope.jl:18</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/dem_slope.jl:18</code></pre>
 </div>
 </div>
 </div>
@@ -1246,10 +1246,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.direction</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "direction" from SpatRasters:
+<p><code>SpatialRasterLite.direction</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "direction" from SpatialRasterLite:
  [1] direction(x::T, y::T) where T
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:54</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/angle.jl:54</code></pre>
 </div>
 </div>
 </div>
@@ -1264,10 +1264,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.direction_E</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "direction_E" from SpatRasters:
+<p><code>SpatialRasterLite.direction_E</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "direction_E" from SpatialRasterLite:
  [1] direction_E(x::Real; eps)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:44</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/angle.jl:44</code></pre>
 </div>
 </div>
 </div>
@@ -1282,10 +1282,10 @@ bbox2affine(size::Tuple{Integer, Integer}, b::bbox)</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.direction_N</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "direction_N" from SpatRasters:
+<p><code>SpatialRasterLite.direction_N</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "direction_N" from SpatialRasterLite:
  [1] direction_N(y::Real; eps)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/angle.jl:49</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/angle.jl:49</code></pre>
 </div>
 </div>
 </div>
@@ -1318,12 +1318,12 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.fliplr</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "fliplr" from SpatRasters:
+<p><code>SpatialRasterLite.fliplr</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "fliplr" from SpatialRasterLite:
  [1] fliplr(x::AbstractArray{T, 3}) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:14
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/Ops.jl:14
  [2] fliplr(x::AbstractMatrix{T}) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:13</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/Ops.jl:13</code></pre>
 </div>
 </div>
 </div>
@@ -1338,12 +1338,12 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.flipud</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "flipud" from SpatRasters:
+<p><code>SpatialRasterLite.flipud</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "flipud" from SpatialRasterLite:
  [1] flipud(x::AbstractArray{T, 3}) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:12
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/Ops.jl:12
  [2] flipud(x::AbstractMatrix{T}) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:11</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/Ops.jl:11</code></pre>
 </div>
 </div>
 </div>
@@ -1358,8 +1358,8 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.gdal_info</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "gdal_info" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.gdal_info</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "gdal_info" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -1374,8 +1374,8 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.gdal_nodata</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "gdal_nodata" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.gdal_nodata</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "gdal_nodata" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -1390,8 +1390,8 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.gdal_polygonize</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "gdal_polygonize" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.gdal_polygonize</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "gdal_polygonize" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -1406,8 +1406,8 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.gdalinfo</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "gdalinfo" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.gdalinfo</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "gdalinfo" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -1422,10 +1422,10 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.getgeotransform</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "getgeotransform" from SpatRasters:
+<p><code>SpatialRasterLite.getgeotransform</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "getgeotransform" from SpatialRasterLite:
  [1] getgeotransform(ra::AbstractSpatRaster)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/Ops.jl:2</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/Ops.jl:2</code></pre>
 </div>
 </div>
 </div>
@@ -1440,7 +1440,7 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.guanshan_dem</code> is of type <code>String</code>.</p>
+<p><code>SpatialRasterLite.guanshan_dem</code> is of type <code>String</code>.</p>
 <section id="summary-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="summary-4">Summary</h3>
 <pre><code>mutable struct String</code></pre>
@@ -1463,7 +1463,7 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.guanshan_flowdir_cpp</code> is of type <code>String</code>.</p>
+<p><code>SpatialRasterLite.guanshan_flowdir_cpp</code> is of type <code>String</code>.</p>
 <section id="summary-5" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="summary-5">Summary</h3>
 <pre><code>mutable struct String</code></pre>
@@ -1486,7 +1486,7 @@ earth_dist(p1::Tuple{FT,FT}, x2::AbstractMatrix; R=6378.388) where {FT}</code></
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.guanshan_flowdir_gis</code> is of type <code>String</code>.</p>
+<p><code>SpatialRasterLite.guanshan_flowdir_gis</code> is of type <code>String</code>.</p>
 <section id="summary-6" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="summary-6">Summary</h3>
 <pre><code>mutable struct String</code></pre>
@@ -1572,12 +1572,12 @@ Set{Float64} with 1 element:
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.isscalar</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "isscalar" from SpatRasters:
+<p><code>SpatialRasterLite.isscalar</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "isscalar" from SpatialRasterLite:
  [1] isscalar(::Nothing)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:4
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/tools_Ipaper.jl:4
  [2] isscalar(x)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:3</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/tools_Ipaper.jl:3</code></pre>
 </div>
 </div>
 </div>
@@ -1592,10 +1592,10 @@ Set{Float64} with 1 element:
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.line_end</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "line_end" from SpatRasters:
+<p><code>SpatialRasterLite.line_end</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "line_end" from SpatialRasterLite:
  [1] line_end(line::dLine)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:69</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/datatype.jl:69</code></pre>
 </div>
 </div>
 </div>
@@ -1610,10 +1610,10 @@ Set{Float64} with 1 element:
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.line_start</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "line_start" from SpatRasters:
+<p><code>SpatialRasterLite.line_start</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "line_start" from SpatialRasterLite:
  [1] line_start(line::dLine)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:67</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/datatype.jl:67</code></pre>
 </div>
 </div>
 </div>
@@ -1628,10 +1628,10 @@ Set{Float64} with 1 element:
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.make_rast</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "make_rast" from SpatRasters:
+<p><code>SpatialRasterLite.make_rast</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "make_rast" from SpatialRasterLite:
  [1] make_rast(; b, cellsize, FT)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:72</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/SpatRaster.jl:72</code></pre>
 </div>
 </div>
 </div>
@@ -1733,10 +1733,10 @@ julia&gt; median([1 2; 3 4], dims=1)
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.merge_var!</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "merge_var!" from SpatRasters:
+<p><code>SpatialRasterLite.merge_var!</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "merge_var!" from SpatialRasterLite:
  [1] merge_var!(R::AbstractArray, f; var, box, cellsize)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_mosaic.jl:35</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_mosaic.jl:35</code></pre>
 </div>
 </div>
 </div>
@@ -1751,10 +1751,10 @@ julia&gt; median([1 2; 3 4], dims=1)
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.meshgrid</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "meshgrid" from SpatRasters:
+<p><code>SpatialRasterLite.meshgrid</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "meshgrid" from SpatialRasterLite:
  [1] meshgrid(x, y)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/tools_Ipaper.jl:7</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/tools_Ipaper.jl:7</code></pre>
 </div>
 </div>
 </div>
@@ -1769,10 +1769,10 @@ julia&gt; median([1 2; 3 4], dims=1)
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.nband</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "nband" from SpatRasters:
+<p><code>SpatialRasterLite.nband</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "nband" from SpatialRasterLite:
  [1] nband(ra::SpatRaster{T, N}) where {T, N}
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:21</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/SpatRaster.jl:21</code></pre>
 </div>
 </div>
 </div>
@@ -1787,8 +1787,8 @@ julia&gt; median([1 2; 3 4], dims=1)
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.nlayer</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "nlayer" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.nlayer</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "nlayer" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -1803,10 +1803,10 @@ julia&gt; median([1 2; 3 4], dims=1)
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.nband</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "nband" from SpatRasters:
+<p><code>SpatialRasterLite.nband</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "nband" from SpatialRasterLite:
  [1] nband(ra::SpatRaster{T, N}) where {T, N}
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:21</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/SpatRaster.jl:21</code></pre>
 </div>
 </div>
 </div>
@@ -1821,8 +1821,8 @@ julia&gt; median([1 2; 3 4], dims=1)
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.ogr_info</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "ogr_info" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.ogr_info</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "ogr_info" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -1837,10 +1837,10 @@ julia&gt; median([1 2; 3 4], dims=1)
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.range2bbox</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "range2bbox" from SpatRasters:
+<p><code>SpatialRasterLite.range2bbox</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "range2bbox" from SpatialRasterLite:
  [1] range2bbox(r::AbstractVector)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/bbox.jl:67</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/bbox.jl:67</code></pre>
 </div>
 </div>
 </div>
@@ -1889,14 +1889,14 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.read_gdal</code> is a <code>Function</code>.</p>
-<pre><code># 3 methods for generic function "read_gdal" from SpatRasters:
+<p><code>SpatialRasterLite.read_gdal</code> is a <code>Function</code>.</p>
+<pre><code># 3 methods for generic function "read_gdal" from SpatialRasterLite:
  [1] read_gdal(file::AbstractString, b::bbox, options...)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:35
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/IO.jl:35
  [2] read_gdal(file::AbstractString, indices, b::bbox, options...)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:22
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/IO.jl:22
  [3] read_gdal(files::Vector{&lt;:AbstractString}, options...)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:13</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/IO.jl:13</code></pre>
 </div>
 </div>
 </div>
@@ -1911,8 +1911,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.read_sf</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "read_sf" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.read_sf</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "read_sf" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -1927,10 +1927,10 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.resample_first</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "resample_first" from SpatRasters:
+<p><code>SpatialRasterLite.resample_first</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "resample_first" from SpatialRasterLite:
  [1] resample_first(r::AbstractArray; fact, deepcopy)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_resample.jl:6</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_resample.jl:6</code></pre>
 </div>
 </div>
 </div>
@@ -1945,10 +1945,10 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.rm_shp</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "rm_shp" from SpatRasters:
+<p><code>SpatialRasterLite.rm_shp</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "rm_shp" from SpatialRasterLite:
  [1] rm_shp(f)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:103</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/SpatialRasterLite.jl:103</code></pre>
 </div>
 </div>
 </div>
@@ -1963,8 +1963,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.set_bandnames</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "set_bandnames" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.set_bandnames</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "set_bandnames" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -1979,20 +1979,20 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.st_bbox</code> is a <code>Function</code>.</p>
-<pre><code># 6 methods for generic function "st_bbox" from SpatRasters:
+<p><code>SpatialRasterLite.st_bbox</code> is a <code>Function</code>.</p>
+<pre><code># 6 methods for generic function "st_bbox" from SpatialRasterLite:
  [1] st_bbox(bs::Vector{bbox})
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:22
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_bbox.jl:22
  [2] st_bbox(f::String)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:15
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_bbox.jl:15
  [3] st_bbox(lon, lat)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:8
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_bbox.jl:8
  [4] st_bbox(v::Vector{&lt;:Real})
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:4
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_bbox.jl:4
  [5] st_bbox(r::AbstractSpatRaster)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_bbox.jl:2
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_bbox.jl:2
  [6] st_bbox(line::dLine)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/datatype.jl:77</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/datatype.jl:77</code></pre>
 </div>
 </div>
 </div>
@@ -2007,14 +2007,14 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.st_cellsize</code> is a <code>Function</code>.</p>
-<pre><code># 3 methods for generic function "st_cellsize" from SpatRasters:
+<p><code>SpatialRasterLite.st_cellsize</code> is a <code>Function</code>.</p>
+<pre><code># 3 methods for generic function "st_cellsize" from SpatialRasterLite:
  [1] st_cellsize(f::AbstractString)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:51
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_dims.jl:51
  [2] st_cellsize(lon::AbstractVector, lat::AbstractVector)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:47
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_dims.jl:47
  [3] st_cellsize(r::AbstractSpatRaster)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:45</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_dims.jl:45</code></pre>
 </div>
 </div>
 </div>
@@ -2029,10 +2029,10 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.st_coords</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "st_coords" from SpatRasters:
+<p><code>SpatialRasterLite.st_coords</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "st_coords" from SpatialRasterLite:
  [1] st_coords(ra::SpatRaster)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:83</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/SpatialRasterLite.jl:83</code></pre>
 </div>
 </div>
 </div>
@@ -2047,12 +2047,12 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.st_crop</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "st_crop" from SpatRasters:
+<p><code>SpatialRasterLite.st_crop</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "st_crop" from SpatialRasterLite:
  [1] st_crop(f::String, b::bbox)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_crop.jl:3
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_crop.jl:3
  [2] st_crop(ra::SpatRaster, b::bbox)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_crop.jl:5</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_crop.jl:5</code></pre>
 </div>
 </div>
 </div>
@@ -2067,16 +2067,16 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.st_dims</code> is a <code>Function</code>.</p>
-<pre><code># 4 methods for generic function "st_dims" from SpatRasters:
- [1] st_dims(x::SpatRasters.FileGDAL)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:32
+<p><code>SpatialRasterLite.st_dims</code> is a <code>Function</code>.</p>
+<pre><code># 4 methods for generic function "st_dims" from SpatialRasterLite:
+ [1] st_dims(x::SpatialRasterLite.FileGDAL)
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_dims.jl:32
  [2] st_dims(f::String)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:26
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_dims.jl:26
  [3] st_dims(rastersize::RasterSize)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRaster.jl:202
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/SpatRaster.jl:202
  [4] st_dims(r::AbstractSpatRaster)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_dims.jl:24</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_dims.jl:24</code></pre>
 </div>
 </div>
 </div>
@@ -2091,12 +2091,12 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.st_extract</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "st_extract" from SpatRasters:
+<p><code>SpatialRasterLite.st_extract</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "st_extract" from SpatialRasterLite:
  [1] st_extract(ra::AbstractSpatRaster, points::Vector{P}; combine) where {T&lt;:Real, P&lt;:Union{Tuple{T, T}, Point{T}}}
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:28
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_extract.jl:28
  [2] st_extract(ra::AbstractSpatRaster{FT}, point::P) where {FT, T, P&lt;:Union{Tuple{T, T}, Point{T}}}
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_extract.jl:19</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_extract.jl:19</code></pre>
 </div>
 </div>
 </div>
@@ -2111,12 +2111,12 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.st_location</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "st_location" from SpatRasters:
+<p><code>SpatialRasterLite.st_location</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "st_location" from SpatialRasterLite:
  [1] st_location(ra::AbstractSpatRaster, args...; kw...)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_location.jl:41
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_location.jl:41
  [2] st_location(rastersize::RasterSize, points::Vector{P}; rm_empty) where {T&lt;:Real, P&lt;:Union{Tuple{T, T}, Point{T}}}
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_location.jl:33</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_location.jl:33</code></pre>
 </div>
 </div>
 </div>
@@ -2131,10 +2131,10 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.st_location_exact</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "st_location_exact" from SpatRasters:
+<p><code>SpatialRasterLite.st_location_exact</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "st_location_exact" from SpatialRasterLite:
  [1] st_location_exact(lon::AbstractVector, lat::AbstractVector, points::Array{Tuple{T, T}, 1}; rm_empty, cellsize, tol) where T&lt;:Real
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/st_location.jl:48</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/st_location.jl:48</code></pre>
 </div>
 </div>
 </div>
@@ -2169,12 +2169,12 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.st_points</code> is a <code>Function</code>.</p>
-<pre><code># 2 methods for generic function "st_points" from SpatRasters:
+<p><code>SpatialRasterLite.st_points</code> is a <code>Function</code>.</p>
+<pre><code># 2 methods for generic function "st_points" from SpatialRasterLite:
  [1] st_points(X::AbstractMatrix{T}) where T
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:93
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/SpatialRasterLite.jl:93
  [2] st_points(x::AbstractVector, y::AbstractVector)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/SpatRasters.jl:89</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/SpatialRasterLite.jl:89</code></pre>
 </div>
 </div>
 </div>
@@ -2189,14 +2189,14 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.read_gdal</code> is a <code>Function</code>.</p>
-<pre><code># 3 methods for generic function "read_gdal" from SpatRasters:
+<p><code>SpatialRasterLite.read_gdal</code> is a <code>Function</code>.</p>
+<pre><code># 3 methods for generic function "read_gdal" from SpatialRasterLite:
  [1] read_gdal(file::AbstractString, b::bbox, options...)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:35
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/IO.jl:35
  [2] read_gdal(file::AbstractString, indices, b::bbox, options...)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:22
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/IO.jl:22
  [3] read_gdal(files::Vector{&lt;:AbstractString}, options...)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/IO.jl:13</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/IO.jl:13</code></pre>
 </div>
 </div>
 </div>
@@ -2211,8 +2211,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.write_gdal</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "write_gdal" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.write_gdal</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "write_gdal" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -2227,10 +2227,10 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.sun_shade</code> is a <code>Function</code>.</p>
-<pre><code># 1 method for generic function "sun_shade" from SpatRasters:
+<p><code>SpatialRasterLite.sun_shade</code> is a <code>Function</code>.</p>
+<pre><code># 1 method for generic function "sun_shade" from SpatialRasterLite:
  [1] sun_shade(α::SpatRaster, time::Dates.DateTime; δψ)
-     @ ~/work/SpatRasters.jl/SpatRasters.jl/src/terrain/sun_shade.jl:3</code></pre>
+     @ ~/work/SpatialRasterLite.jl/SpatialRasterLite.jl/src/terrain/sun_shade.jl:3</code></pre>
 </div>
 </div>
 </div>
@@ -2259,8 +2259,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.write_gdal</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "write_gdal" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.write_gdal</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "write_gdal" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -2275,8 +2275,8 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 </div>
 <div class="callout-body-container">
 <p>No documentation found for public symbol.</p>
-<p><code>SpatRasters.write_sf</code> is a <code>Function</code>.</p>
-<pre><code># 0 methods for generic function "write_sf" from SpatRasters</code></pre>
+<p><code>SpatialRasterLite.write_sf</code> is a <code>Function</code>.</p>
+<pre><code># 0 methods for generic function "write_sf" from SpatialRasterLite</code></pre>
 </div>
 </div>
 </div>
@@ -2712,4 +2712,4 @@ nodata   :: Union{Nothing, AbstractArray{T, 1}}</code></pre>
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

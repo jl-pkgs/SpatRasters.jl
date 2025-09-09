@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1. SpatRaster – SpatRasters</title>
+<title>1. SpatRaster – SpatialRasterLite</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -136,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 // SOFTWARE.
 
 window.onload = function () {
-    const versionsUrl = 'https://raw.githubusercontent.com/jl-pkgs/SpatRasters.jl/gh-pages/versions.js';
+    const versionsUrl = 'https://raw.githubusercontent.com/jl-pkgs/SpatialRasterLite.jl/gh-pages/versions.js';
 
     // Fetch the versions.js file
     fetch(versionsUrl)
@@ -176,7 +176,7 @@ window.onload = function () {
                         const li = document.createElement('li');
                         const a = document.createElement('a');
                         a.className = 'dropdown-item';
-                        a.href = `/SpatRasters.jl/${version}/index.html`;
+                        a.href = `/SpatialRasterLite.jl/${version}/index.html`;
 
                         // Wrap version text in a <code> element
                         const code = document.createElement('code');
@@ -206,10 +206,10 @@ window.onload = function () {
 
 
 <link rel="stylesheet" href="_static/style.css">
-<meta property="og:title" content="1. SpatRaster – SpatRasters">
+<meta property="og:title" content="1. SpatRaster – SpatialRasterLite">
 <meta property="og:description" content="">
-<meta property="og:site_name" content="SpatRasters">
-<meta name="twitter:title" content="1. SpatRaster – SpatRasters">
+<meta property="og:site_name" content="SpatialRasterLite">
+<meta name="twitter:title" content="1. SpatRaster – SpatialRasterLite">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -384,7 +384,7 @@ window.onload = function () {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">SpatRasters</span>
+    <span class="navbar-title">SpatialRasterLite</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -403,7 +403,7 @@ window.onload = function () {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/jl-pkgs/SpatRasters.jl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jl-pkgs/SpatialRasterLite.jl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -485,7 +485,7 @@ window.onload = function () {
   <li><a href="#crop" id="toc-crop" class="nav-link" data-scroll-target="#crop">crop</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -541,7 +541,7 @@ window.onload = function () {
 </ul>
 <section id="construction" class="level2">
 <h2 class="anchored" data-anchor-id="construction">Construction</h2>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatRasters</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatialRasterLite</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Dates</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>dates <span class="op">=</span> <span class="fu">Date</span>(<span class="fl">2010</span>, <span class="fl">1</span>, <span class="fl">1</span>)<span class="op">:</span><span class="fu">Day</span>(<span class="fl">1</span>)<span class="op">:</span><span class="fu">Date</span>(<span class="fl">2010</span>, <span class="fl">1</span>, <span class="fl">10</span>)</span>
@@ -1063,4 +1063,4 @@ window.onload = function () {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

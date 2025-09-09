@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2. bbox – SpatRasters</title>
+<title>2. bbox – SpatialRasterLite</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -136,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 // SOFTWARE.
 
 window.onload = function () {
-    const versionsUrl = 'https://raw.githubusercontent.com/jl-pkgs/SpatRasters.jl/gh-pages/versions.js';
+    const versionsUrl = 'https://raw.githubusercontent.com/jl-pkgs/SpatialRasterLite.jl/gh-pages/versions.js';
 
     // Fetch the versions.js file
     fetch(versionsUrl)
@@ -176,7 +176,7 @@ window.onload = function () {
                         const li = document.createElement('li');
                         const a = document.createElement('a');
                         a.className = 'dropdown-item';
-                        a.href = `/SpatRasters.jl/${version}/index.html`;
+                        a.href = `/SpatialRasterLite.jl/${version}/index.html`;
 
                         // Wrap version text in a <code> element
                         const code = document.createElement('code');
@@ -206,9 +206,9 @@ window.onload = function () {
 
 
 <link rel="stylesheet" href="_static/style.css">
-<meta property="og:title" content="2. bbox – SpatRasters">
-<meta property="og:site_name" content="SpatRasters">
-<meta name="twitter:title" content="2. bbox – SpatRasters">
+<meta property="og:title" content="2. bbox – SpatialRasterLite">
+<meta property="og:site_name" content="SpatialRasterLite">
+<meta name="twitter:title" content="2. bbox – SpatialRasterLite">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -382,7 +382,7 @@ window.onload = function () {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">SpatRasters</span>
+    <span class="navbar-title">SpatialRasterLite</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -401,7 +401,7 @@ window.onload = function () {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/jl-pkgs/SpatRasters.jl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/jl-pkgs/SpatialRasterLite.jl" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -479,7 +479,7 @@ window.onload = function () {
   <li><a href="#bbox" id="toc-bbox" class="nav-link active" data-scroll-target="#bbox">bbox</a></li>
   <li><a href="#st_bbox" id="toc-st_bbox" class="nav-link" data-scroll-target="#st_bbox">st_bbox</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -504,8 +504,8 @@ window.onload = function () {
 </header>
 
 
-<div id="0fbe3905" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatRasters</span>, <span class="bu">ArchGDAL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="62794cbd" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SpatialRasterLite</span>, <span class="bu">ArchGDAL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="bbox" class="level2">
 <h2 class="anchored" data-anchor-id="bbox">bbox</h2>
@@ -541,7 +541,7 @@ window.onload = function () {
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st_bbox</span>(lon, lat) <span class="op">==</span> <span class="fu">st_bbox</span>(ra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>true</code></pre>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>guanshan_dem</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>"/home/runner/work/SpatRasters.jl/SpatRasters.jl/data/GuanShan_dem250m.tif"</code></pre>
+<pre><code>"/home/runner/work/SpatialRasterLite.jl/SpatialRasterLite.jl/data/GuanShan_dem250m.tif"</code></pre>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_bbox</span>(guanshan_dem)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>bbox(110.7, 32.25, 111.025, 32.5)</code></pre>
 
@@ -978,4 +978,4 @@ window.onload = function () {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatRasters.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jl-pkgs/SpatialRasterLite.jl/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
