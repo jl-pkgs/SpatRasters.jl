@@ -1,4 +1,4 @@
-using SpatRasters, Dates, Test
+using SpatialRasterLite, Dates, Test
 
 
 @testset "sun_angle" begin

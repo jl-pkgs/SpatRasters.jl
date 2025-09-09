@@ -1,4 +1,4 @@
-using SpatRasters, ArchGDAL, Test
+using SpatialRasterLite, ArchGDAL, Test
 
 @testset "flowdir" begin
   dem = read_gdal(guanshan_dem, 1)

@@ -11,7 +11,7 @@ execute:
 注意：bands信息可以写入tif，但time无法写入
 
 ```{julia}
-using SpatRasters, ArchGDAL
+using SpatialRasterLite, ArchGDAL
 using Dates
 
 dates = Date(2010, 1, 1):Day(1):Date(2010, 1, 10)

@@ -1,4 +1,4 @@
-module SpatRasters
+module SpatialRasterLite
 
 using DocStringExtensions
 using ProgressMeter
@@ -113,4 +113,4 @@ function cellArea(x, y, cellsize)
   return dx * dy
 end
 
-end # module SpatRasters
+end # module SpatialRasterLite

@@ -1,5 +1,5 @@
-using Test, SpatRasters
-const sf = SpatRasters
+using Test, SpatialRasterLite
+const sf = SpatialRasterLite
 
 
 @testset "earth_dist" begin

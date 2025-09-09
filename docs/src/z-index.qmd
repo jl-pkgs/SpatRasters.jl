@@ -4,17 +4,17 @@ number-depth: 2
 
 # Reference
 
-_Docstrings for SpatRasters._
+_Docstrings for SpatialRasterLite._
 
 ```{julia}
 #| echo: false
 #| output: false
 using DocumenterQuarto
-using SpatRasters
+using SpatialRasterLite
 ```
 
 ```{julia}
 #| echo: false
 #| output: asis
-DocumenterQuarto.autodoc(SpatRasters)
+DocumenterQuarto.autodoc(SpatialRasterLite)
 ```

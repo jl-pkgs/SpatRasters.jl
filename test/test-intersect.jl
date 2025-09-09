@@ -1,5 +1,5 @@
-using SpatRasters, Test
-const sf = SpatRasters
+using SpatialRasterLite, Test
+const sf = SpatialRasterLite
 
 @testset "intersect" begin
   b = bbox(95.0, 15.0, 105.0, 25.0)

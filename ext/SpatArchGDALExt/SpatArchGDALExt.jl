@@ -1,5 +1,5 @@
-export SpatRastersArchGDALExt
-module SpatRastersArchGDALExt
+export SpatArchGDALExt
+module SpatArchGDALExt
 
 using DocStringExtensions: TYPEDSIGNATURES, METHODLIST
 
@@ -7,13 +7,13 @@ using ArchGDAL
 using ArchGDAL.GDAL
 using ArchGDAL.GDAL.GDAL_jll: gdalinfo_path, ogrinfo_path
 
-using SpatRasters
-import SpatRasters: write_gdal, read_gdal, gdalinfo, getgeotransform, 
+using SpatialRasterLite
+import SpatialRasterLite: write_gdal, read_gdal, gdalinfo, getgeotransform, 
   gdal_polygonize, nband, nlayer, gdal_nodata, 
   gdal_info, ogr_info, bandnames, set_bandnames, 
   find_shortname, cast_to_gdal
 
-# import SpatRasters: WGS84
+# import SpatialRasterLite: WGS84
 
 include("gdal_basic.jl")
 include("IO.jl")

@@ -1,4 +1,4 @@
-using Test, SpatRasters, ArchGDAL
+using Test, SpatialRasterLite, ArchGDAL
 
 import Random: seed!
 set_seed(seed) = seed!(seed)

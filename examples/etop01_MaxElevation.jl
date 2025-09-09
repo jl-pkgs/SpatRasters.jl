@@ -1,6 +1,6 @@
 using Dates, Test
-using SpatRasters
-using SpatRasters, ArchGDAL
+using SpatialRasterLite
+using SpatialRasterLite, ArchGDAL
 using NetCDFTools
 
 elev = rast("data/dem_etop01_G010deg.tif", FT=Float64)

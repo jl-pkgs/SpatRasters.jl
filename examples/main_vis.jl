@@ -1,4 +1,4 @@
-using SpatRasters
+using SpatialRasterLite
 using MakieLayers, GLMakie
 import MakieLayers: imagesc, imagesc!
 

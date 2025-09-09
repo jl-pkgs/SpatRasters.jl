@@ -1,9 +1,9 @@
 using Dates, Test
-using SpatRasters
-using SpatRasters, ArchGDAL
+using SpatialRasterLite
+using SpatialRasterLite, ArchGDAL
 using NetCDFTools
 
-const sf = SpatRasters
+const sf = SpatialRasterLite
 # elev = rast("data/dem_etop01_G010deg.tif", FT=Float64)
 # @time MaxElevation = dem_angle_MaxElevation(elev; δψ=3, radian=2.0)
 # p0 = sf.Point(90., 30.0)

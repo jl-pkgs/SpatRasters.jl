@@ -1,4 +1,4 @@
-using SpatRasters, Test, NaNStatistics, Dates
+using SpatialRasterLite, Test, NaNStatistics, Dates
 using Random
 
 @testset "terrain" begin

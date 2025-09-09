@@ -9,7 +9,7 @@ execute:
 ```{julia}
 #| echo: true
 #| output: false
-using SpatRasters, ArchGDAL
+using SpatialRasterLite, ArchGDAL
 ```
 
 ## bbox
