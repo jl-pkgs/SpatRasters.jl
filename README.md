@@ -23,15 +23,16 @@ julia -e "@time using SpatialRasterLite"
 
 ## Functions
 
-*Interpolation (point to raster)*
-
-> move to `SpatInterp.jl`
-
+This package is used to support spatial interpolations in `SpatInterp.jl` and `MGWR.jl`. 
+They implemented:
+<!-- *Interpolation (point to raster)* -->
 - [x] Thin Plate Spline Interpolation (tps)
 - [x] Angular Distance Weighting Interpolation (adw)
 - [x] Inverse Distance Weighting Interpolation (idw)
 - [x] Nearest Interpolation (nearest)
 - [x] Bilinear Interpolation
+- [x] Irregular Bilinear Interpolation, referred to `pyresample`
+- [x] Mixed Geographically Weighted Regression 
 
 *Terrain*
 
